@@ -1,0 +1,177 @@
+fileFormatVersion: 2
+guid: 3a1c8d3c243b3b045a69abc7bd768d70
+timeCreated: 1453240502
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Stationary Concepts_0
+    21300002: Stationary Concepts_1
+    21300004: Stationary Concepts_2
+    21300006: Stationary Concepts_3
+    21300008: Stationary Concepts_4
+    21300010: Stationary Concepts_5
+    21300012: Stationary Concepts_6
+    21300014: Stationary Concepts_7
+    21300016: Stationary Concepts_8
+    21300018: Stationary Concepts_9
+    21300020: Stationary Concepts_10
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 25
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Stationary Concepts_0
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 162
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stationary Concepts_1
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 162
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stationary Concepts_2
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 162
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stationary Concepts_3
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 162
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stationary Concepts_4
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 162
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stationary Concepts_5
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 162
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stationary Concepts_6
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 127
+        width: 27
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stationary Concepts_7
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 127
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stationary Concepts_8
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 102
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stationary Concepts_9
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 54
+        width: 77
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stationary Concepts_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 300
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
