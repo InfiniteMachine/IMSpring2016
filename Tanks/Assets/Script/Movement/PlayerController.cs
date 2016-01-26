@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour {
     public float accelDuration = 1f;
     private float counter = 0;
 
+    private Transform crown;
+    private bool hasCrown = false;
+    public Vector3 crownLocation = new Vector3(0, 0, -0.1f);
     private Rigidbody2D rBody;
     private StayGrounded sGround;
     public IsGrounded groundCheck;
@@ -27,6 +30,7 @@ public class PlayerController : MonoBehaviour {
     {
         rBody = GetComponent<Rigidbody2D>();
         sGround = GetComponent<StayGrounded>();
+        crown = GameObject.FindGameObjectWithTag("Crown").transform;
     }
 
     // Update is called once per frame
@@ -69,4 +73,21 @@ public class PlayerController : MonoBehaviour {
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Crown"))
+        {
+            other.enabled = false;
+            hasCrown = true;
+        }
+    }
+    void LateUpdate()
+    {
+        if (hasCrown)
+        {
+            crown.position = transform.position + crownLocation;
+        }
+    }
+
+
 }
