@@ -34,7 +34,7 @@ public class Menu : MonoBehaviour
 
         if (action == "Return")
         {
-            SceneManager.LoadScene("1");
+            SceneManager.LoadScene("Menu");
         }
     }
 }
