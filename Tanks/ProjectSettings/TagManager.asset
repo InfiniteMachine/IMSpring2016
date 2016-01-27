@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Crown
+  - Ground
+  - Spawn
+  - KillBox
   layers:
   - Default
   - TransparentFX

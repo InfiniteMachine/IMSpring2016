@@ -96,7 +96,7 @@ GameObject:
   - 114: {fileID: 1160713444}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,12 +112,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 173fba8aed3381c4bbbb8c02f7fea249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tanks: []
-  matchActive: 0
-  middlePoint: {x: 0, y: 0, z: 0}
+  tanks:
+  - {fileID: 186026, guid: d4beea9ddef4d2f42afe95562851290b, type: 2}
+  - {fileID: 186026, guid: d4beea9ddef4d2f42afe95562851290b, type: 2}
+  - {fileID: 186026, guid: d4beea9ddef4d2f42afe95562851290b, type: 2}
+  - {fileID: 186026, guid: d4beea9ddef4d2f42afe95562851290b, type: 2}
+  gameMode: 1
+  teamGame: 0
   playerTanks: 
+  endTime: 150
+  endScore: 150
+  activeMatch: 0
+  time: 0
   activeTanks: []
-  faceRight: 
+  playerTeamID: 
+  indScore: []
+  teamScore: []
+  middlePoint: {x: 0, y: 0, z: 0}
 --- !u!4 &1160713445
 Transform:
   m_ObjectHideFlags: 0

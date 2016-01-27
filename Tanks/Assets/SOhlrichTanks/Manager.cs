@@ -28,13 +28,9 @@ public class Manager : MonoBehaviour {
 	int batons;
 
 	[HideInInspector]
-	public bool[] faceRight;
-
-	[HideInInspector]
-	public Vector3 middlePoint;
-
-	[HideInInspector]
 	static public Manager instance;
+
+    private bool initOnLoad = false;
 
 	public class ScoreBaton {
 
@@ -67,6 +63,8 @@ public class Manager : MonoBehaviour {
 			Manager.instance.indScore[player] += time;
 		}
 	}
+
+    private GameObject[] spawns;
 
 	void SetScoreFunc()
 	{
@@ -142,7 +140,7 @@ public class Manager : MonoBehaviour {
 		{
 			// Go through each player, add team scores.
 			for(int x=0;x<teamScore.Length;x++)
-				teamScore = -1f;
+				teamScore[x] = -1f;
 
 			for(int x=0;x<indScore.Length;x++)
 			{
@@ -240,18 +238,12 @@ public class Manager : MonoBehaviour {
 
 		int players = playerTanks.Length;
 		GameObject[] newPlayerObjects = new GameObject[players];
-		GameObject[] spawns = GameObject.FindGameObjectsWithTag("Spawn");
+		spawns = GameObject.FindGameObjectsWithTag("Spawn");
 
 		if(spawns.Length<players)
 		{
 			Debug.LogError("Not enough spawns for players");
 			return false;
-		}
-
-		int l = spawns.Length;
-		for(int x=0;x<spawns.Length;x++)
-		{
-			middlePoint += spawns[x].transform.position / (float) l;
 		}
 
 		bool[] spawnUsed = new bool[spawns.Length];
@@ -265,7 +257,7 @@ public class Manager : MonoBehaviour {
 			// Find spawn point
 			while(true)
 			{
-				randInt = Random.Range(0, l);
+				randInt = Random.Range(0, spawns.Length);
 				if(!spawnUsed[randInt])
 				{
 					nextSpawn = spawns[randInt].transform.position;
@@ -276,10 +268,31 @@ public class Manager : MonoBehaviour {
 
 			// Spawn new tank
 			newPlayerObjects[x] = (GameObject) GameObject.Instantiate(tanks[playerTanks[x]], nextSpawn, Quaternion.identity);
-
-			// Put something here that gives tank an ID, and whatever else is needed.
-		}
+            newPlayerObjects[x].GetComponent<PlayerController>().playerID = x;
+        }
 
 		return true;
 	}
+
+    public Vector3 GetSpawn(int spawn = -1)
+    {
+        if (spawn == -1)
+            return spawns[Random.Range(0, spawns.Length)].transform.position;
+        else
+            return spawns[spawn].transform.position;
+    }
+
+    public void InitOnNextScene()
+    {
+        initOnLoad = true;
+    }
+
+    void OnLevelWasLoaded(int level)
+    {
+        if (initOnLoad)
+        {
+            StartMatch();
+            initOnLoad = false;
+        }
+    }
 }

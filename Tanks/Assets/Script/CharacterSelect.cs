@@ -15,25 +15,8 @@ public class CharacterSelect : MonoBehaviour {
         playerSelect = transform.FindChild("PlayerSelect").gameObject;
         sceneSelect = transform.FindChild("SceneSelect").gameObject;
         sceneSelect.SetActive(false);
-    }
-
-    void Update()
-    {
-        /*
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100))
-        {
-            if (hit.collider.name == "Tank01")
-                SelectedCharacter(player, 1);
-            if (hit.collider.name == "Tank02")
-                SelectedCharacter(player, 2);
-            if (hit.collider.name == "Tank03")
-                SelectedCharacter(player, 3);
-            if (hit.collider.name == "Tank04")
-                SelectedCharacter(player, 4);
-        }
-        */
+        //Replace with control for selecting players
+        Manager.instance.playerTanks = new int[4];
     }
 
     public void SelectedCharacter(int character)
@@ -41,22 +24,24 @@ public class CharacterSelect : MonoBehaviour {
         selectedPlayer = character;
         if (player == 1)
         {
-            PlayerPrefs.SetInt("selectedPlayer1", selectedPlayer);
-            player = 2;
-            display.text = "Player 2 Select";
+            Manager.instance.playerTanks[0] = character;
+            player = 2; 
+            display.text = "Player Select";
         }
         else if (player == 2)
         {
-            PlayerPrefs.SetInt("selectedPlayer2", selectedPlayer);
+            Manager.instance.playerTanks[0] = character;
             sceneSelect.SetActive(true);
             playerSelect.SetActive(false);
         }
-        
     }
 
     public void SelectedArena(int Area)
     {
         if (Area <= areaNames.Length && Area > 0)
+        {
             SceneManager.LoadScene(areaNames[Area - 1]);
+            Manager.instance.InitOnNextScene();
+        }
     }
 }

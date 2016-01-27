@@ -38,25 +38,12 @@ public class TankGun : MonoBehaviour {
 
     bool faceRight = true;
 
-	// Use this for initialization
-	void Awake () {
-
-        if (GameObject.Find("GameManager"))
-        {
-            if (transform.position.x <= Manager.instance.middlePoint.x)
-                faceRight = true;
-            else faceRight = false;
-        }
-        else
-        {
-            if (transform.lossyScale.x>0f)
-                faceRight = true;
-            else faceRight = false;
-        }
-
-		InitChargeStats();
-		ResetPower();
-	}
+    // Use this for initialization
+    void Awake()
+    {
+        InitChargeStats();
+        ResetPower();
+    }
 
 	void InitChargeStats()
 	{
@@ -150,6 +137,9 @@ public class TankGun : MonoBehaviour {
 	}
 
 	void Fire()	{
+        if (transform.lossyScale.x > 0f)
+            faceRight = true;
+        else faceRight = false;
         Vector3 newPos = transform.position;
         if (faceRight)
             newPos += (transform.right * barrelLength);

@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour {
     public float jumpVel = 5f;
     public float ignoreRange = 15f;
 
+    public int playerID;
     // Use this for initialization
     void Start()
     {
@@ -43,12 +44,18 @@ public class PlayerController : MonoBehaviour {
                 counter = 0; velocity.x = 0;
             counter += Time.deltaTime;
             velocity.x = Mathf.Lerp(0, movementSpeed, counter / accelDuration);
+            Vector3 scale = transform.localScale;
+            scale.x = Mathf.Abs(transform.localScale.x);
+            transform.localScale = scale;
         }else if(input < 0)
         {
             if (velocity.x > 0)
                 counter = 0; velocity.x = 0;
             counter += Time.deltaTime;
             velocity.x = Mathf.Lerp(0, -movementSpeed, counter / accelDuration);
+            Vector3 scale = transform.localScale;
+            scale.x = -Mathf.Abs(transform.localScale.x);
+            transform.localScale = scale;
         }
         else
         {
@@ -73,14 +80,23 @@ public class PlayerController : MonoBehaviour {
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Crown"))
         {
             other.enabled = false;
             hasCrown = true;
+            //HEY I HAVE A BATON??
+        }
+        else if (other.gameObject.CompareTag("KillBox"))
+        {
+            Debug.Log(transform.position);
+            transform.position = Manager.instance.GetSpawn();
+            Debug.Log(transform.position);
         }
     }
+
     void LateUpdate()
     {
         if (hasCrown)
@@ -88,6 +104,4 @@ public class PlayerController : MonoBehaviour {
             crown.position = transform.position + crownLocation;
         }
     }
-
-
 }
