@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GameInfo : MonoBehaviour {
 
+	// This script's variables were folded into Manager.cs
+
 	public bool matchActive = false;
 	public int[] playerTanks;
 	public GameObject[] activeTanks;
