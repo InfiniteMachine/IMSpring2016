@@ -40,6 +40,6 @@ public class ActionTemplate : MonoBehaviour, IAction {
     //Call this to start delay timer
     private void FinishAction()
     {
-        fireTimer = fireDelay;
+        fireTimer = fireDelay; //Resets the timer so that the action can't be fired repeatedly
     }
 }
