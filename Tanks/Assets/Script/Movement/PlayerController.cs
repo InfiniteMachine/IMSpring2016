@@ -1,21 +1,19 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class PlayerController : MonoBehaviour {
-
     [System.Serializable]
     public class KeyboardInput
     {
         public KeyCode left;
         public KeyCode right;
         public KeyCode jump;
+        public KeyCode specialAttack;
+        public KeyCode specialDefense;
     }
     public KeyboardInput keys;
-
     public float movementSpeed = 4f;
     public float accelDuration = 1f;
     private float counter = 0;
-
     private Transform crown;
     private bool hasCrown = false;
     public Vector3 crownLocation = new Vector3(0, 0, -0.1f);
@@ -24,14 +22,26 @@ public class PlayerController : MonoBehaviour {
     public IsGrounded groundCheck;
     public float jumpVel = 5f;
     public float ignoreRange = 15f;
-
     public int playerID;
+    private IAction specialAttack;
+    private IAction specialDefense;
+
     // Use this for initialization
     void Start()
     {
         rBody = GetComponent<Rigidbody2D>();
         sGround = GetComponent<StayGrounded>();
-        crown = GameObject.FindGameObjectWithTag("Crown").transform;
+        GameObject go = GameObject.FindGameObjectWithTag("Crown");
+        if (go != null)
+            crown = go.transform;
+        IAction[] attachedActions = GetComponents<IAction>();
+        for(int i = 0; i < attachedActions.Length; i++)
+        {
+            if (attachedActions[i].IsAttack())
+                specialAttack = attachedActions[i];
+            else
+                specialDefense = attachedActions[i];
+        }
     }
 
     // Update is called once per frame
@@ -47,7 +57,8 @@ public class PlayerController : MonoBehaviour {
             Vector3 scale = transform.localScale;
             scale.x = Mathf.Abs(transform.localScale.x);
             transform.localScale = scale;
-        }else if(input < 0)
+        }
+        else if(input < 0)
         {
             if (velocity.x > 0)
                 counter = 0; velocity.x = 0;
@@ -62,15 +73,16 @@ public class PlayerController : MonoBehaviour {
             counter = 0;
             velocity.x = Mathf.MoveTowards(velocity.x, 0, movementSpeed / accelDuration * Time.deltaTime);
         }
-
+        if (Input.GetKey(keys.specialAttack) && specialAttack.CanFire())
+            specialAttack.StartAction();
+        if (Input.GetKey(keys.specialDefense) && specialDefense.CanFire())
+            specialDefense.StartAction();
         if(groundCheck.CheckGrounded() && Input.GetKeyDown(keys.jump))
         {
             sGround.Ignore(0.1f);
             velocity.y = jumpVel;
         }
-
         rBody.velocity = velocity;
-
         RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, Vector2.down, 4);
         if (hit)
         {
