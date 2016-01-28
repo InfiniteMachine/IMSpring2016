@@ -128,7 +128,6 @@ MonoBehaviour:
   playerTeamID: 
   indScore: []
   teamScore: []
-  middlePoint: {x: 0, y: 0, z: 0}
 --- !u!4 &1160713445
 Transform:
   m_ObjectHideFlags: 0
