@@ -22,9 +22,15 @@ public class PlayerController : MonoBehaviour {
     public IsGrounded groundCheck;
     public float jumpVel = 5f;
     public float ignoreRange = 15f;
-    public int playerID;
     private IAction specialAttack;
     private IAction specialDefense;
+
+    private InputController iCont;
+
+    [HideInInspector]
+    public int playerID;
+    [HideInInspector]
+    public int controllerNumber;
 
     // Use this for initialization
     void Start()
@@ -42,28 +48,28 @@ public class PlayerController : MonoBehaviour {
             else
                 specialDefense = attachedActions[i];
         }
+        iCont = GetComponent<InputController>();
     }
 
     // Update is called once per frame
     void Update () {
         Vector2 velocity = rBody.velocity;
-        int input = (Input.GetKey(keys.right) ? 1 : 0) - (Input.GetKey(keys.left) ? 1 : 0);
-        if(input > 0)
+        if(iCont.GetAxis(InputController.Axis.MOVE) > 0)
         {
             if (velocity.x < 0)
                 counter = 0; velocity.x = 0;
             counter += Time.deltaTime;
-            velocity.x = Mathf.Lerp(0, movementSpeed, counter / accelDuration);
+            velocity.x = Mathf.Lerp(0, movementSpeed * iCont.GetAxis(InputController.Axis.MOVE), counter / accelDuration);
             Vector3 scale = transform.localScale;
             scale.x = Mathf.Abs(transform.localScale.x);
             transform.localScale = scale;
         }
-        else if(input < 0)
+        else if(iCont.GetAxis(InputController.Axis.MOVE) < 0)
         {
             if (velocity.x > 0)
                 counter = 0; velocity.x = 0;
             counter += Time.deltaTime;
-            velocity.x = Mathf.Lerp(0, -movementSpeed, counter / accelDuration);
+            velocity.x = Mathf.Lerp(0, movementSpeed * iCont.GetAxis(InputController.Axis.MOVE), counter / accelDuration);
             Vector3 scale = transform.localScale;
             scale.x = -Mathf.Abs(transform.localScale.x);
             transform.localScale = scale;
@@ -73,17 +79,24 @@ public class PlayerController : MonoBehaviour {
             counter = 0;
             velocity.x = Mathf.MoveTowards(velocity.x, 0, movementSpeed / accelDuration * Time.deltaTime);
         }
-        if (Input.GetKey(keys.specialAttack) && specialAttack.CanFire())
+        if (iCont.GetButton(InputController.Buttons.SPECIAL_FIRE) && specialAttack.CanFire())
+        {
             specialAttack.StartAction();
-        if (Input.GetKey(keys.specialDefense) && specialDefense.CanFire())
+            iCont.ClearButton(InputController.Buttons.SPECIAL_FIRE);
+        }
+        if (iCont.GetButton(InputController.Buttons.SPECIAL_DEFENSE) && specialDefense.CanFire())
+        {
             specialDefense.StartAction();
-        if(groundCheck.CheckGrounded() && Input.GetKeyDown(keys.jump))
+            iCont.ClearButton(InputController.Buttons.SPECIAL_DEFENSE);
+        }
+        if(groundCheck.CheckGrounded() && iCont.GetButton(InputController.Buttons.JUMP))
         {
             sGround.Ignore(0.1f);
             velocity.y = jumpVel;
+            iCont.ClearButton(InputController.Buttons.JUMP);
         }
         rBody.velocity = velocity;
-        RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, Vector2.down, 4);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 4);
         if (hit)
         {
             float angle = Vector2.Angle(hit.normal, Vector2.up);

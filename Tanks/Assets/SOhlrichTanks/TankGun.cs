@@ -32,17 +32,16 @@ public class TankGun : MonoBehaviour {
 	public int currentLevel = 0;
 	public bool charging = false;
 
-	public KeyCode chargeButton = KeyCode.Space;
-	public KeyCode upButton = KeyCode.W;
-	public KeyCode downButton = KeyCode.S;
-
     bool faceRight = true;
+
+    private InputController iCont;
 
     // Use this for initialization
     void Awake()
     {
         InitChargeStats();
         ResetPower();
+        iCont = transform.parent.GetComponent<InputController>();
     }
 
 	void InitChargeStats()
@@ -64,7 +63,7 @@ public class TankGun : MonoBehaviour {
 		{
 			currentReloadTime = 0f; // Just to make sure this never mistakenly reloads while charging.
 			bool mustFire = AddCharge(Time.deltaTime);
-			if(mustFire || !Input.GetKey(chargeButton))
+			if(mustFire || !iCont.GetButton(InputController.Buttons.FIRE))
 			{
 				Fire();
 			}
@@ -72,7 +71,7 @@ public class TankGun : MonoBehaviour {
 		else
 		{
 			currentReloadTime += Time.deltaTime;
-			if(Input.GetKey(chargeButton) && currentReloadTime>reloadTimeAfterFiring)
+			if(iCont.GetButton(InputController.Buttons.FIRE) && currentReloadTime>reloadTimeAfterFiring)
 			{
 				if(chargeLevels.Length>0)
 					charging = true;
@@ -121,11 +120,9 @@ public class TankGun : MonoBehaviour {
 	}
 
 	void RotateBarrel() {
-		if(Input.GetKey(upButton))
-			transform.eulerAngles += new Vector3(0f, 0f, Time.deltaTime * angularVelocity);
-		if(Input.GetKey(downButton))
-			transform.eulerAngles += new Vector3(0f, 0f, -Time.deltaTime * angularVelocity);
-
+        if(iCont.GetAxis(InputController.Axis.AIM) != 0) {
+            transform.eulerAngles += new Vector3(0f, 0f, Time.deltaTime * angularVelocity * -iCont.GetAxis(InputController.Axis.AIM));
+        }
 		CheckBarrelBounds();
 	}
 

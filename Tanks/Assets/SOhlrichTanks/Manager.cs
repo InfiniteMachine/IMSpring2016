@@ -269,6 +269,7 @@ public class Manager : MonoBehaviour {
 			// Spawn new tank
 			newPlayerObjects[x] = (GameObject) GameObject.Instantiate(tanks[playerTanks[x]], nextSpawn, Quaternion.identity);
             newPlayerObjects[x].GetComponent<PlayerController>().playerID = x;
+            newPlayerObjects[x].GetComponent<PlayerController>().controllerNumber = 1;
         }
 
 		return true;
