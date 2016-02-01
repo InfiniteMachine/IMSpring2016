@@ -30,7 +30,9 @@ public class PlayerController : MonoBehaviour {
     [HideInInspector]
     public int playerID;
     [HideInInspector]
-    public int controllerNumber;
+    public int controllerNumber = -1;
+
+    private Vector3 startLocation;
 
     // Use this for initialization
     void Start()
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour {
                 specialDefense = attachedActions[i];
         }
         iCont = GetComponent<InputController>();
+        startLocation = transform.position;
     }
 
     // Update is called once per frame
@@ -116,9 +119,10 @@ public class PlayerController : MonoBehaviour {
         }
         else if (other.gameObject.CompareTag("KillBox"))
         {
-            Debug.Log(transform.position);
-            transform.position = Manager.instance.GetSpawn();
-            Debug.Log(transform.position);
+            if (Manager.instance != null)
+                transform.position = Manager.instance.GetSpawn();
+            else
+                transform.position = startLocation;
         }
     }
 

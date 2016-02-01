@@ -6,7 +6,7 @@ public class Controller{
     private float dead = 0.15f;
     private float[] axes;
     private int[] axisNeutral;
-    private float clear = 0.15f;
+    private float clear = 0.25f;
     private int controllerNumber = 1;
     private bool isConnected = false;
     private bool hasSync = false;
@@ -82,8 +82,9 @@ public class Controller{
         if (axes[number] > 0)
             return false;
         float value = GetAxis(number);
-        if ((positive && value > dead) || (value < -dead))
+        if ((positive && value > dead) || (!positive && value < -dead))
         {
+            axes[number] = clear;
             return true;
         }
         return false;

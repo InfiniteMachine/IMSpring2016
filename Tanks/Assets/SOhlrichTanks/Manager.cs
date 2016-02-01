@@ -12,7 +12,10 @@ public class Manager : MonoBehaviour {
 	[Header("Setup Match Info:")] // Match info for setup, not used in active game
 	public GameMode gameMode = GameMode.koth;
 	public bool teamGame = false;
-	public int[] playerTanks;
+    public int[] playerTanks;
+    public int[] playerControllers;
+    [HideInInspector]
+    public int numPlayers = 0;
 	public float endTime = 150f;
 	public float endScore = 150f;
 
@@ -78,6 +81,13 @@ public class Manager : MonoBehaviour {
 	void Awake () {
 		DontDestroyOnLoad(gameObject);
 		instance = this;
+        playerTanks = new int[4];
+        playerControllers = new int[4];
+        for (int i = 0; i < 4; i++)
+        {
+            playerTanks[i] = -1;
+            playerControllers[i] = -1;
+        }
 	}
 	
 	// Update is called once per frame
@@ -235,12 +245,10 @@ public class Manager : MonoBehaviour {
 	{
 		// Assumed that spawns are somewhat symmetrical
 		// Assumed that any spawn may accept any player regardless of number of players
-
-		int players = playerTanks.Length;
-		GameObject[] newPlayerObjects = new GameObject[players];
+		GameObject[] newPlayerObjects = new GameObject[numPlayers];
 		spawns = GameObject.FindGameObjectsWithTag("Spawn");
 
-		if(spawns.Length<players)
+		if(spawns.Length< numPlayers)
 		{
 			Debug.LogError("Not enough spawns for players");
 			return false;
@@ -252,24 +260,24 @@ public class Manager : MonoBehaviour {
 
 		Vector3 nextSpawn;
 		int randInt;
-		for(int x=0;x<players;x++)
-		{
-			// Find spawn point
-			while(true)
-			{
-				randInt = Random.Range(0, spawns.Length);
-				if(!spawnUsed[randInt])
-				{
-					nextSpawn = spawns[randInt].transform.position;
-					spawnUsed[randInt] = true;
-					break;
-				}
-			}
+        for (int x = 0; x < numPlayers; x++)
+        {
+            // Find spawn point
+            while (true)
+            {
+                randInt = Random.Range(0, spawns.Length);
+                if (!spawnUsed[randInt])
+                {
+                    nextSpawn = spawns[randInt].transform.position;
+                    spawnUsed[randInt] = true;
+                    break;
+                }
+            }
 
-			// Spawn new tank
-			newPlayerObjects[x] = (GameObject) GameObject.Instantiate(tanks[playerTanks[x]], nextSpawn, Quaternion.identity);
+            // Spawn new tank
+            newPlayerObjects[x] = (GameObject)Instantiate(tanks[playerTanks[x]], nextSpawn, Quaternion.identity);
             newPlayerObjects[x].GetComponent<PlayerController>().playerID = x;
-            newPlayerObjects[x].GetComponent<PlayerController>().controllerNumber = 1;
+            newPlayerObjects[x].GetComponent<PlayerController>().controllerNumber = playerControllers[x];
         }
 
 		return true;

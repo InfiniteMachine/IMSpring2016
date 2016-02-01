@@ -121,6 +121,8 @@ MonoBehaviour:
   gameMode: 1
   teamGame: 0
   playerTanks: 
+  playerControllers: 
+  numPlayers: 0
   endTime: 150
   endScore: 150
   activeMatch: 0

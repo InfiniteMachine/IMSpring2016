@@ -14,9 +14,6 @@ public class ControllerPool : MonoBehaviour{
     public float clearDuration = 0.15f;
 
     private static ControllerPool instance;
-    
-    private string[] newControllers;
-    private string newJoined;
 
     public static ControllerPool GetInstance()
     {

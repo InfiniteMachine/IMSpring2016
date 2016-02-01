@@ -10,7 +10,7 @@ public class InputController : MonoBehaviour
     private State[] buttons;
     
     private Controller controller;
-    
+    private bool useKeyboard = false;
     void Start()
     {
         Cursor.visible = false;
@@ -20,13 +20,19 @@ public class InputController : MonoBehaviour
         buttons = new State[System.Enum.GetNames(typeof(Buttons)).Length];
         for (int i = 0; i < buttons.Length; i++)
             buttons[i] = State.RELEASED;
-        controller = ControllerPool.GetInstance().GetController(GetComponent<PlayerController>().controllerNumber);
+        if(GetComponent<PlayerController>().controllerNumber == -1)
+            useKeyboard = true;
+        else
+            controller = ControllerPool.GetInstance().GetController(GetComponent<PlayerController>().controllerNumber);
     }
 
     // Update is called once per frame
     void Update()
     {
-        GamePadControl();
+        if (!useKeyboard)
+            GamePadControl();
+        else
+            KeyboardControl();
     }
 
     public float GetAxis(Axis a)
@@ -100,6 +106,47 @@ public class InputController : MonoBehaviour
             buttons[(int)Buttons.SPECIAL_FIRE] = State.PRESSED;
         }
         else if (buttons[(int)Buttons.SPECIAL_FIRE] != State.RELEASED && !controller.GetButton(5))
+        {
+            buttons[(int)Buttons.SPECIAL_FIRE] = State.RELEASED;
+        }
+    }
+
+    private void KeyboardControl()
+    {
+        axis[(int)Axis.MOVE] = (Input.GetKey(KeyCode.D) ? 1 : 0) - (Input.GetKey(KeyCode.A) ? 1 : 0);
+        axis[(int)Axis.AIM] = (Input.GetKey(KeyCode.S) ? 1 : 0) - (Input.GetKey(KeyCode.W) ? 1 : 0);
+        if (buttons[(int)Buttons.FIRE] == State.RELEASED && Input.GetKey(KeyCode.Space))
+        {
+            buttons[(int)Buttons.FIRE] = State.PRESSED;
+        }
+        else if (buttons[(int)Buttons.FIRE] != State.RELEASED && !Input.GetKey(KeyCode.Space))
+        {
+            buttons[(int)Buttons.FIRE] = State.RELEASED;
+        }
+
+        if (buttons[(int)Buttons.JUMP] == State.RELEASED && Input.GetKey(KeyCode.LeftShift))
+        {
+            buttons[(int)Buttons.JUMP] = State.PRESSED;
+        }
+        else if (buttons[(int)Buttons.JUMP] != State.RELEASED && !Input.GetKey(KeyCode.LeftShift))
+        {
+            buttons[(int)Buttons.JUMP] = State.RELEASED;
+        }
+
+        if (buttons[(int)Buttons.SPECIAL_DEFENSE] == State.RELEASED && Input.GetKey(KeyCode.Q))
+        {
+            buttons[(int)Buttons.SPECIAL_DEFENSE] = State.PRESSED;
+        }
+        else if (buttons[(int)Buttons.SPECIAL_DEFENSE] != State.RELEASED && !Input.GetKey(KeyCode.Q))
+        {
+            buttons[(int)Buttons.SPECIAL_DEFENSE] = State.RELEASED;
+        }
+
+        if (buttons[(int)Buttons.SPECIAL_FIRE] == State.RELEASED && Input.GetKey(KeyCode.E))
+        {
+            buttons[(int)Buttons.SPECIAL_FIRE] = State.PRESSED;
+        }
+        else if (buttons[(int)Buttons.SPECIAL_FIRE] != State.RELEASED && !Input.GetKey(KeyCode.E))
         {
             buttons[(int)Buttons.SPECIAL_FIRE] = State.RELEASED;
         }
