@@ -20,7 +20,7 @@ public class InputController : MonoBehaviour
         buttons = new State[System.Enum.GetNames(typeof(Buttons)).Length];
         for (int i = 0; i < buttons.Length; i++)
             buttons[i] = State.RELEASED;
-        if(GetComponent<PlayerController>().controllerNumber == -1)
+        if(GetComponent<PlayerController>().controllerNumber == -1 || ControllerPool.GetInstance() == null)
             useKeyboard = true;
         else
             controller = ControllerPool.GetInstance().GetController(GetComponent<PlayerController>().controllerNumber);
