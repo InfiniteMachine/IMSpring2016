@@ -7,11 +7,10 @@ public class CharacterSelect : MonoBehaviour {
     private MenuState curMenu = MenuState.CHARACTER;
     private GameObject playerSelect;
     public Sprite[] characterArt;
-    public Sprite disabledArt;
     private enum PStates { DISABLED, CHOOSING, LOCKED };
     private PStates[] pStates;
     private Image[] podiums;
-    
+    private Image[] podiumDisabled;
     private GameObject sceneSelect;
     public string[] areaNames;
     public Sprite[] scenes;
@@ -30,8 +29,14 @@ public class CharacterSelect : MonoBehaviour {
         for (int i = 0; i < pStates.Length; i++)
             pStates[i] = PStates.DISABLED;
         podiums = new Image[4];
-        for(int i = 0; i < podiums.Length; i++)
-            podiums[i] = playerSelect.transform.FindChild("Tank" + (i + 1)).GetComponent<Image>();
+        podiumDisabled = new Image[4];
+        Transform displays = playerSelect.transform.FindChild("CharacterDisplays");
+        for (int i = 0; i < podiums.Length; i++)
+        {
+            Transform tank = displays.FindChild("Tank" + (i + 1));
+            podiums[i] = tank.GetComponent<Image>();
+            podiumDisabled[i] = tank.FindChild("Disabled").GetComponent<Image>();
+        }
         if(scenes.Length != areaNames.Length)
             Debug.Log("There is a mismatch of artwork and arena names");
         playerDisplay = sceneSelect.transform.FindChild("SelectPlayer").GetComponent<Text>();
@@ -182,12 +187,15 @@ public class CharacterSelect : MonoBehaviour {
             switch (pStates[i])
             {
                 case PStates.DISABLED:
-                    podiums[i].sprite = disabledArt;
+                    podiums[i].enabled = false;
                     podiums[i].color = Color.white;
+                    podiumDisabled[i].enabled = true;
                     break;
                 case PStates.CHOOSING:
+                    podiums[i].enabled = true;
                     podiums[i].sprite = characterArt[Manager.instance.playerTanks[i]];
                     podiums[i].color = Color.white;
+                    podiumDisabled[i].enabled = false;
                     break;
                 case PStates.LOCKED:
                     podiums[i].color = Color.gray;
