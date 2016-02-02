@@ -6,31 +6,31 @@ using System.Collections;
 public class MenuController : MonoBehaviour {
     public Color defaultColor = Color.white;
     public Color selectedColor = Color.yellow;
-    private enum Buttons { Play = 0, Options, Controls, Exit};
-    private int numButtons = 4;
+    private enum Buttons { Play = 0, Options, Help, Exit};
+    private int numButtons = 3;
     private Buttons selected = Buttons.Play;
-    private Text[] buttons;
+    private Image[] buttons;
 	// Use this for initialization
 	void Start () {
-        buttons = new Text[numButtons];
+        buttons = new Image[numButtons];
         for(int i = 0; i < numButtons; i++)
         {
-            GameObject go = transform.GetChild(i).gameObject;
+            GameObject go = transform.FindChild(((Buttons)i).ToString()).GetChild(0).gameObject;
             if(go != null)
             {
-                Text t = go.GetComponent<Text>();
+                Image t = go.GetComponent<Image>();
                 if(t != null)
                 {
                     buttons[i] = t;
                 }
                 else
                 {
-                    Debug.LogError("There is a text component missing from " + go.name);
+                    Debug.LogError("There is an image component missing from " + go.name);
                 }
             }
             else
             {
-                Debug.LogError("There is a button missing from the menu.");
+                Debug.LogError("There is an image missing from the menu.");
             }
         }
 	}
@@ -103,7 +103,7 @@ public class MenuController : MonoBehaviour {
             case Buttons.Options:
                 SceneManager.LoadScene("Options");
                 break;
-            case Buttons.Controls:
+            case Buttons.Help:
                 SceneManager.LoadScene("Controls");
                 break;
             case Buttons.Exit:

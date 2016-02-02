@@ -65,7 +65,7 @@ public class CharacterSelect : MonoBehaviour {
                 {
                     //Player specific update
                     usedController = true;
-                    if (pStates[i] == PStates.CHOOSING)
+                    if (pStates[p] == PStates.CHOOSING)
                     {
                         if (controllers[i].GetAxisAsButton(0, true) || controllers[i].GetAxisAsButton(5, false))
                         {
@@ -135,7 +135,7 @@ public class CharacterSelect : MonoBehaviour {
                         pStates[p] = PStates.LOCKED;
                     }
                 }
-                else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Escape))
+                else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
                 {
                     //Cancel
                     pStates[p] = PStates.CHOOSING;

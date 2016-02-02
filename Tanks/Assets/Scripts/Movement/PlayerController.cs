@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour {
     public float movementSpeed = 4f;
@@ -30,6 +31,9 @@ public class PlayerController : MonoBehaviour {
     private IAction specialAttack;
     private IAction specialDefense;
 
+    private List<Collider2D> colliders;
+    private List<SpriteRenderer> renderers;
+
     //ExtraGravity
     [Header("Extra Gravity")]
     public float downAccelDuration = 1f;
@@ -59,6 +63,12 @@ public class PlayerController : MonoBehaviour {
         if (go != null)
             crown = go.transform;
         startLocation = transform.position;
+        renderers = new List<SpriteRenderer>();
+        renderers.AddRange(GetComponentsInChildren<SpriteRenderer>());
+        renderers.Add(GetComponent<SpriteRenderer>());
+        colliders = new List<Collider2D>();
+        colliders.AddRange(GetComponentsInChildren<Collider2D>());
+        colliders.AddRange(GetComponents<Collider2D>());
     }
 
     // Update is called once per frame
@@ -69,11 +79,7 @@ public class PlayerController : MonoBehaviour {
             respawnCounter -= Time.deltaTime;
             if(respawnCounter <= 0)
             {
-                if (Manager.instance != null)
-                    transform.position = Manager.instance.GetSpawn();
-                else
-                    transform.position = startLocation;
-                rBody.velocity = Vector2.zero;
+                Respawn();
             }
         }
         else
@@ -111,6 +117,7 @@ public class PlayerController : MonoBehaviour {
                     velocity.x = Mathf.MoveTowards(velocity.x, 0, movementSpeed / accelDuration * Time.deltaTime);
                 }
             }
+
             if (rBody.velocity.y < 0)
             {
                 gravityCounter += Time.fixedDeltaTime;
@@ -154,16 +161,19 @@ public class PlayerController : MonoBehaviour {
     {
         if (respawnCounter > 0)
             return;
-        if (other.gameObject.CompareTag("Crown"))
+        if (other.gameObject.CompareTag("Baton"))
         {
             other.enabled = false;
             hasCrown = true;
-            //HEY I HAVE A BATON??
+            Manager.instance.GiveBaton(playerID);
         }
         else if (other.gameObject.CompareTag("KillBox"))
         {
-            respawnCounter = respawnTime;
-            Manager.instance.ResetBaton();
+            Die(true);
+        }
+        else if (other.gameObject.CompareTag("Bullet"))
+        {
+            Die(false);
         }
         else if (other.gameObject.CompareTag("ScreenWrap"))
         {
@@ -179,20 +189,40 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-	public void Die()
-	{
-		// Drop baton
-		Manager.instance.TakeBaton(playerID);
-		// Need something here like put-crown-here
-
-		transform.position = Manager.instance.GetSpawn();
-	}
-
     void LateUpdate()
     {
         if (hasCrown)
         {
             crown.position = transform.position + crownLocation;
         }
+    }
+
+    private void Die(bool self)
+    {
+        respawnCounter = respawnTime;
+        if (hasCrown)
+        {
+            Manager.instance.ResetBaton(self);
+            hasCrown = false;
+        }
+        SetInteractable(false);
+    }
+
+    private void Respawn()
+    {
+        if (Manager.instance != null)
+            transform.position = Manager.instance.GetSpawn();
+        else
+            transform.position = startLocation;
+        rBody.velocity = Vector2.zero;
+        SetInteractable(true);
+    }
+
+    private void SetInteractable(bool interactable)
+    {
+        foreach (Collider2D col in colliders)
+            col.enabled = interactable;
+        foreach (SpriteRenderer srend in renderers)
+            srend.enabled = interactable;
     }
 }

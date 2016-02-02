@@ -118,19 +118,15 @@ MonoBehaviour:
   - {fileID: 186026, guid: d4beea9ddef4d2f42afe95562851290b, type: 2}
   - {fileID: 186026, guid: d4beea9ddef4d2f42afe95562851290b, type: 2}
   - {fileID: 186026, guid: d4beea9ddef4d2f42afe95562851290b, type: 2}
-  gameMode: 1
-  teamGame: 0
   playerTanks: 
   playerControllers: 
   numPlayers: 0
+  maxPlayers: 4
   endTime: 150
   endScore: 150
   activeMatch: 0
   time: 0
-  activeTanks: []
-  playerTeamID: 
   indScore: []
-  teamScore: []
 --- !u!4 &1160713445
 Transform:
   m_ObjectHideFlags: 0
