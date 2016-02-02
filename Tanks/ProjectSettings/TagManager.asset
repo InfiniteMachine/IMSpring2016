@@ -10,6 +10,7 @@ TagManager:
   - KillBox
   - ScreenWrap
   - BatonLocation
+  - Bullet
   layers:
   - Default
   - TransparentFX
