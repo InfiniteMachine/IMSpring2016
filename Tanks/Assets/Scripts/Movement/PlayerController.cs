@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour {
         {
             other.enabled = false;
             hasCrown = true;
-            Manager.instance.GiveBaton(playerID);
+            //HEY I HAVE A BATON??
         }
         else if (other.gameObject.CompareTag("KillBox"))
         {
@@ -178,6 +178,15 @@ public class PlayerController : MonoBehaviour {
             }
         }
     }
+
+	public void Die()
+	{
+		// Drop baton
+		Manager.instance.TakeBaton(playerID);
+		// Need something here like put-crown-here
+
+		transform.position = Manager.instance.GetSpawn();
+	}
 
     void LateUpdate()
     {
