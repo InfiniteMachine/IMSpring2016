@@ -11,11 +11,19 @@ public class ActionTemplate : MonoBehaviour, IAction {
 
     }
 
+	void UpdateTimer()
+	{
+		if (fireTimer >= 0)
+			fireTimer -= Time.deltaTime;
+	}
+
     //Used for effects that happen over time
     void Update()
     {
-        if (fireTimer >= 0)
-            fireTimer -= Time.deltaTime;
+		UpdateTimer(); // Should probably always be called.
+
+		// Update effect code here
+
     }
     
     public bool IsAttack()
