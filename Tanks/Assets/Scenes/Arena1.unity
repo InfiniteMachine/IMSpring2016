@@ -1281,8 +1281,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 387868667}
+  - 61: {fileID: 387868668}
+  - 114: {fileID: 387868669}
   m_Layer: 0
-  m_Name: Spawn1 (1)
+  m_Name: Spawn3
   m_TagString: Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1300,6 +1302,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 726917827}
   m_RootOrder: 2
+--- !u!61 &387868668
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 387868666}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 3, y: 3}
+--- !u!114 &387868669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 387868666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eea87816755cdc841bb0a57979c6f148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &395862649
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,8 +1683,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 445811013}
+  - 61: {fileID: 445811014}
+  - 114: {fileID: 445811015}
   m_Layer: 0
-  m_Name: Spawn2 (1)
+  m_Name: Spawn4
   m_TagString: Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1675,6 +1704,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 726917827}
   m_RootOrder: 3
+--- !u!61 &445811014
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 445811012}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 3, y: 3}
+--- !u!114 &445811015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 445811012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eea87816755cdc841bb0a57979c6f148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &453111703
 GameObject:
   m_ObjectHideFlags: 0
@@ -2970,6 +3024,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 838878504}
+  - 61: {fileID: 838878505}
+  - 114: {fileID: 838878506}
   m_Layer: 0
   m_Name: Spawn1
   m_TagString: Spawn
@@ -2984,11 +3040,36 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 838878503}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11, y: -4, z: 0}
+  m_LocalPosition: {x: -12, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 726917827}
   m_RootOrder: 0
+--- !u!61 &838878505
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 838878503}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 3, y: 3}
+--- !u!114 &838878506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 838878503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eea87816755cdc841bb0a57979c6f148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &880108548
 GameObject:
   m_ObjectHideFlags: 0
@@ -2999,6 +3080,8 @@ GameObject:
   - 4: {fileID: 880108550}
   - 212: {fileID: 880108549}
   - 61: {fileID: 880108551}
+  - 50: {fileID: 880108553}
+  - 114: {fileID: 880108552}
   m_Layer: 0
   m_Name: CrownPlaceholder
   m_TagString: Baton
@@ -3057,11 +3140,39 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+--- !u!114 &880108552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 880108548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b6114e01be82ad40b014028f126377f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &880108553
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 880108548}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &933241233
 GameObject:
   m_ObjectHideFlags: 0
@@ -3302,6 +3413,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 985475561}
+  - 61: {fileID: 985475562}
+  - 114: {fileID: 985475563}
   m_Layer: 0
   m_Name: Spawn2
   m_TagString: Spawn
@@ -3316,11 +3429,36 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 985475560}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11, y: -4, z: 0}
+  m_LocalPosition: {x: 12, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 726917827}
   m_RootOrder: 1
+--- !u!61 &985475562
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 985475560}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 3, y: 3}
+--- !u!114 &985475563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 985475560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eea87816755cdc841bb0a57979c6f148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1024425900
 GameObject:
   m_ObjectHideFlags: 0
@@ -3634,7 +3772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff654e8cb38c50a4ab2b5f7025f925f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetTime: 2
+  resetTime: 1
 --- !u!4 &1116601192
 Transform:
   m_ObjectHideFlags: 0

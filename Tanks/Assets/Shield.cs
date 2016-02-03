@@ -12,7 +12,7 @@ public class Shield : MonoBehaviour
 
 
 
-    void OnTriggerEnter2D.Collider2D(Collider "Missle")
+    void OnTriggerEnter2D(Collider2D col)
     {
 
     }

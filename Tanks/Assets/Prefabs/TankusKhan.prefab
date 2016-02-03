@@ -74,11 +74,9 @@ GameObject:
   - 4: {fileID: 467246}
   - 212: {fileID: 21272090}
   - 50: {fileID: 5049276}
-  - 58: {fileID: 5856274}
   - 61: {fileID: 6196168}
   - 114: {fileID: 11451924}
   - 114: {fileID: 11408660}
-  - 114: {fileID: 11421426}
   m_Layer: 2
   m_Name: TankusKhan
   m_TagString: Player
@@ -131,7 +129,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 288.90182, y: 303.84323, z: 0}
+  m_LocalPosition: {x: -5.516173, y: -2.2734108, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 417524}
@@ -145,7 +143,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.813, y: 0.046, z: 0}
+  m_LocalPosition: {x: 1, y: 0.046, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 417524}
@@ -181,20 +179,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!58 &5856274
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 186026}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.75
 --- !u!61 &6196168
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -208,7 +192,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1}
+  m_Size: {x: 1, y: 1.5}
 --- !u!114 &11408660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -223,28 +207,17 @@ MonoBehaviour:
   movementSpeed: 6
   accelDuration: 1
   crownLocation: {x: -0.15, y: 1.1, z: -0.1}
-  respawnTime: 3
+  respawnTime: 1
   respawnCounter: 0
   jumpVel: 8.5
   ignoreRange: 5
   playerID: 0
   controllerNumber: 0
   downAccelDuration: 1
-  downMaxAccel: 0.25
+  downMaxAccel: 0.5
   forceMoveDuration: 0.5
---- !u!114 &11421426
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 186026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db9f07dfdabd262438e82ff5d2845283, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distance: 3
-  errorPercentage: 0.8
+  dashVelocity: 15
+  spawnInvulnurability: 2
 --- !u!114 &11430054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -373,7 +346,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: downMaxAccel
-      value: 0.25
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString
@@ -386,6 +359,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Name
       value: GeorgeWashingtank
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: downAccelDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: dashVelocity
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: respawnTime
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

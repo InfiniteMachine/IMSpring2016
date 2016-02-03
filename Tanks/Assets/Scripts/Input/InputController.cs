@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-	public enum Axis { MOVE = 0, AIM }
+	public enum Axis { MOVE = 0, AIM_X, AIM_Y, AIM_ANGLE }
     private float[] axis;
 
-    public enum Buttons { JUMP = 0, FIRE, CHARGE, SPECIAL_FIRE, SPECIAL_DEFENSE }
+    public enum Buttons { JUMP = 0, FIRE, CHARGE, SPECIAL_FIRE, SPECIAL_DEFENSE, DASH_DOWN }
     public enum State { RELEASED, PRESSED, CLEARED }
     private State[] buttons;
     
@@ -73,15 +73,9 @@ public class InputController : MonoBehaviour
     private void GamePadControl()
     {
         axis[(int)Axis.MOVE] = controller.GetAxis(0);
-        axis[(int)Axis.AIM] = controller.GetAxis(4);
-        if (buttons[(int)Buttons.FIRE] == State.RELEASED && controller.GetAxisAsButton(9, true))
-        {
-            buttons[(int)Buttons.FIRE] = State.PRESSED;
-        }
-        else if (buttons[(int)Buttons.FIRE] != State.RELEASED && !controller.GetAxisAsButton(9, true))
-        {
-            buttons[(int)Buttons.FIRE] = State.RELEASED;
-        }
+        axis[(int)Axis.AIM_X] = controller.GetAxis(3);
+        axis[(int)Axis.AIM_Y] = Mathf.Max(-controller.GetAxis(4), 0);
+        axis[(int)Axis.AIM_ANGLE] = Mathf.Atan2(axis[(int)Axis.AIM_Y], axis[(int)Axis.AIM_X]) * Mathf.Rad2Deg;
 
         if (buttons[(int)Buttons.JUMP] == State.RELEASED && controller.GetButton(0))
         {
@@ -92,11 +86,11 @@ public class InputController : MonoBehaviour
             buttons[(int)Buttons.JUMP] = State.RELEASED;
         }
 
-        if (buttons[(int)Buttons.SPECIAL_DEFENSE] == State.RELEASED && controller.GetAxisAsButton(8, true))
+        if (buttons[(int)Buttons.SPECIAL_DEFENSE] == State.RELEASED && controller.GetButton(4))
         {
             buttons[(int)Buttons.SPECIAL_DEFENSE] = State.PRESSED;
         }
-        else if (buttons[(int)Buttons.SPECIAL_DEFENSE] != State.RELEASED && !controller.GetAxisAsButton(8, true))
+        else if (buttons[(int)Buttons.SPECIAL_DEFENSE] != State.RELEASED && !controller.GetButton(4))
         {
             buttons[(int)Buttons.SPECIAL_DEFENSE] = State.RELEASED;
         }
@@ -109,20 +103,31 @@ public class InputController : MonoBehaviour
         {
             buttons[(int)Buttons.SPECIAL_FIRE] = State.RELEASED;
         }
+
+        if (buttons[(int)Buttons.DASH_DOWN] == State.RELEASED && controller.GetButton(1))
+        {
+            buttons[(int)Buttons.DASH_DOWN] = State.PRESSED;
+        }
+        else if (buttons[(int)Buttons.DASH_DOWN] != State.RELEASED && !controller.GetButton(1))
+        {
+            buttons[(int)Buttons.DASH_DOWN] = State.RELEASED;
+        }
+
+        if (buttons[(int)Buttons.FIRE] == State.RELEASED && controller.GetAxis(2) < 0)
+        {
+            buttons[(int)Buttons.FIRE] = State.PRESSED;
+        }
+        else if (buttons[(int)Buttons.FIRE] != State.RELEASED && !(controller.GetAxis(2) < 0))
+        {
+            buttons[(int)Buttons.FIRE] = State.RELEASED;
+        }
     }
 
     private void KeyboardControl()
     {
         axis[(int)Axis.MOVE] = (Input.GetKey(KeyCode.D) ? 1 : 0) - (Input.GetKey(KeyCode.A) ? 1 : 0);
-        axis[(int)Axis.AIM] = (Input.GetKey(KeyCode.S) ? 1 : 0) - (Input.GetKey(KeyCode.W) ? 1 : 0);
-        if (buttons[(int)Buttons.FIRE] == State.RELEASED && Input.GetKey(KeyCode.Space))
-        {
-            buttons[(int)Buttons.FIRE] = State.PRESSED;
-        }
-        else if (buttons[(int)Buttons.FIRE] != State.RELEASED && !Input.GetKey(KeyCode.Space))
-        {
-            buttons[(int)Buttons.FIRE] = State.RELEASED;
-        }
+        axis[(int)Axis.AIM_Y] = (Input.GetKey(KeyCode.S) ? 1 : 0) - (Input.GetKey(KeyCode.W) ? 1 : 0);
+        
 
         if (buttons[(int)Buttons.JUMP] == State.RELEASED && Input.GetKey(KeyCode.LeftShift))
         {

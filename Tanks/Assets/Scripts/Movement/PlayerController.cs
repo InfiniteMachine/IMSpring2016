@@ -4,7 +4,6 @@ using System.Collections.Generic;
 public class PlayerController : MonoBehaviour {
     public float movementSpeed = 4f;
     public float accelDuration = 1f;
-    private float counter = 0;
 
     private Transform crown;
     private bool hasCrown = false;
@@ -25,7 +24,7 @@ public class PlayerController : MonoBehaviour {
 
     //Components
     private Rigidbody2D rBody;
-    private StayGrounded sGround;
+    //private StayGrounded sGround;
     private IsGrounded groundCheck;
     private InputController iCont;
     private IAction specialAttack;
@@ -44,11 +43,16 @@ public class PlayerController : MonoBehaviour {
     private float forceMoveSpeed = 0;
     public float forceMoveDuration = 0.5f;
 
+    private bool canDash = false;
+    public float dashVelocity = 4;
+
+    public float spawnInvulnurability = 2;
+    private float spawnCounter = 0;
     // Use this for initialization
     void Start()
     {
         rBody = GetComponent<Rigidbody2D>();
-        sGround = GetComponent<StayGrounded>();
+        //sGround = GetComponent<StayGrounded>();
         groundCheck = GetComponentInChildren<IsGrounded>();
         iCont = GetComponent<InputController>();
         IAction[] attachedActions = GetComponents<IAction>();
@@ -84,36 +88,26 @@ public class PlayerController : MonoBehaviour {
         }
         else
         {
+            if(spawnCounter > 0)
+            {
+                spawnCounter -= Time.deltaTime;
+            }
             Vector2 velocity = rBody.velocity;
             if (forceMoveCounter > 0)
             {
                 velocity.x = forceMoveSpeed;
                 forceMoveCounter -= Time.deltaTime;
+                Vector3 scale = transform.localScale;
+                scale.x = Mathf.Abs(transform.localScale.x) * Mathf.Sign(forceMoveSpeed);
+                transform.localScale = scale;
             }
             else {
-                if (iCont.GetAxis(InputController.Axis.MOVE) > 0)
+                if (iCont.GetAxis(InputController.Axis.MOVE) != 0)
                 {
-                    if (velocity.x < 0)
-                        counter = 0; velocity.x = 0;
-                    counter += Time.deltaTime;
-                    velocity.x = Mathf.Lerp(0, movementSpeed * iCont.GetAxis(InputController.Axis.MOVE), counter / accelDuration);
-                    Vector3 scale = transform.localScale;
-                    scale.x = Mathf.Abs(transform.localScale.x);
-                    transform.localScale = scale;
-                }
-                else if (iCont.GetAxis(InputController.Axis.MOVE) < 0)
-                {
-                    if (velocity.x > 0)
-                        counter = 0; velocity.x = 0;
-                    counter += Time.deltaTime;
-                    velocity.x = Mathf.Lerp(0, movementSpeed * iCont.GetAxis(InputController.Axis.MOVE), counter / accelDuration);
-                    Vector3 scale = transform.localScale;
-                    scale.x = -Mathf.Abs(transform.localScale.x);
-                    transform.localScale = scale;
+                    velocity.x = movementSpeed * iCont.GetAxis(InputController.Axis.MOVE);
                 }
                 else
                 {
-                    counter = 0;
                     velocity.x = Mathf.MoveTowards(velocity.x, 0, movementSpeed / accelDuration * Time.deltaTime);
                 }
             }
@@ -139,11 +133,23 @@ public class PlayerController : MonoBehaviour {
                 specialDefense.StartAction();
                 iCont.ClearButton(InputController.Buttons.SPECIAL_DEFENSE);
             }
-            if (groundCheck.CheckGrounded() && iCont.GetButton(InputController.Buttons.JUMP))
+            if (groundCheck.CheckGrounded())
             {
-                sGround.Ignore(0.1f);
-                velocity.y = jumpVel;
-                iCont.ClearButton(InputController.Buttons.JUMP);
+                canDash = true;
+                if (iCont.GetButton(InputController.Buttons.JUMP))
+                {
+                    //sGround.Ignore(0.1f);
+                    velocity.y = jumpVel;
+                    iCont.ClearButton(InputController.Buttons.JUMP);
+                }
+            }
+            else if(canDash)
+            {
+                if (iCont.GetButton(InputController.Buttons.DASH_DOWN))
+                {
+                    canDash = false;
+                    velocity.y = -dashVelocity;
+                }
             }
             rBody.velocity = velocity;
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 4);
@@ -171,7 +177,7 @@ public class PlayerController : MonoBehaviour {
         {
             Die(true);
         }
-        else if (other.gameObject.CompareTag("Bullet"))
+        else if (other.gameObject.CompareTag("Bullet") && spawnCounter <= 0)
         {
             Die(false);
         }
@@ -202,20 +208,26 @@ public class PlayerController : MonoBehaviour {
         respawnCounter = respawnTime;
         if (hasCrown)
         {
-            Manager.instance.ResetBaton(self);
+            if (!crown.GetComponent<SpriteRenderer>().isVisible)
+                Manager.instance.ResetBaton(true);
+            else
+                Manager.instance.ResetBaton(self);
             hasCrown = false;
         }
+        GetComponentInChildren<TankGun>().enabled = false;
         SetInteractable(false);
     }
 
     private void Respawn()
     {
         if (Manager.instance != null)
-            transform.position = Manager.instance.GetSpawn();
+            transform.position = Manager.instance.GetRandomSpawn();
         else
             transform.position = startLocation;
         rBody.velocity = Vector2.zero;
+        GetComponentInChildren<TankGun>().enabled = true;
         SetInteractable(true);
+        spawnCounter = spawnInvulnurability;
     }
 
     private void SetInteractable(bool interactable)

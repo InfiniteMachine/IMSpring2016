@@ -114,8 +114,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tanks:
-  - {fileID: 186026, guid: d4beea9ddef4d2f42afe95562851290b, type: 2}
   - {fileID: 186026, guid: 64dee0e81e8a45c4bbc9d7a5844e0636, type: 2}
+  - {fileID: 186026, guid: d4beea9ddef4d2f42afe95562851290b, type: 2}
   - {fileID: 186026, guid: d4beea9ddef4d2f42afe95562851290b, type: 2}
   - {fileID: 186026, guid: d4beea9ddef4d2f42afe95562851290b, type: 2}
   playerTanks: 

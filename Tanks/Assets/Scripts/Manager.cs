@@ -22,7 +22,7 @@ public class Manager : MonoBehaviour {
 	public bool activeMatch = false;
 	public float time = 0f;
 	public float[] indScore;
-    private GameObject[] spawns;
+    private Spawn[] spawns;
     private GameObject[] batonLocations;
     private int playerWithBaton = -1;
     private GameObject baton;
@@ -105,6 +105,7 @@ public class Manager : MonoBehaviour {
             baton.transform.position = batonLocations[Random.Range(0, batonLocations.Length)].transform.position;
         playerWithBaton = -1;
         baton.GetComponent<Collider2D>().enabled = true;
+        baton.GetComponent<BatonController>().Activate();
 	}
 
 	public bool SpawnTanks()
@@ -115,7 +116,12 @@ public class Manager : MonoBehaviour {
         baton = GameObject.FindGameObjectWithTag("Baton");
         ResetBaton(true);
         GameObject[] newPlayerObjects = new GameObject[numPlayers];
-		spawns = GameObject.FindGameObjectsWithTag("Spawn");
+		GameObject[] spawnLocations = GameObject.FindGameObjectsWithTag("Spawn");
+        spawns = new Spawn[spawnLocations.Length];
+        for(int i = 0; i < spawnLocations.Length; i++)
+        {
+            spawns[i] = spawnLocations[i].GetComponent<Spawn>();
+        }
 		if(spawns.Length< numPlayers)
 		{
 			Debug.LogError("Not enough spawns for players");
@@ -150,12 +156,15 @@ public class Manager : MonoBehaviour {
 		return true;
 	}
 
-    public Vector3 GetSpawn(int spawn = -1)
+    public Vector3 GetRandomSpawn()
     {
-        if (spawn == -1)
-            return spawns[Random.Range(0, spawns.Length)].transform.position;
-        else
-            return spawns[spawn].transform.position;
+        int selected = Random.Range(0, spawns.Length);
+        while (!spawns[selected].IsEmpty())
+        {
+            selected = Random.Range(0, spawns.Length);
+            Debug.Log("Trying to find spawn");
+        }
+        return spawns[selected].transform.position;
     }
 
     public void InitOnNextScene()

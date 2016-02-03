@@ -62,7 +62,7 @@ public class TankGun : MonoBehaviour {
 		{
 			currentReloadTime = 0f; // Just to make sure this never mistakenly reloads while charging.
 			bool mustFire = AddCharge(Time.deltaTime);
-			if(mustFire || !iCont.GetButton(InputController.Buttons.FIRE))
+			if(mustFire || iCont.GetButton(InputController.Buttons.FIRE))
 			{
 				Fire();
 			}
@@ -118,19 +118,23 @@ public class TankGun : MonoBehaviour {
 		}
 	}
 
-	void RotateBarrel() {
-        if(iCont.GetAxis(InputController.Axis.AIM) != 0) {
-            transform.eulerAngles += new Vector3(0f, 0f, Time.deltaTime * angularVelocity * -iCont.GetAxis(InputController.Axis.AIM));
+    void RotateBarrel()
+    {
+        Vector3 scale = transform.parent.localScale;
+        if(iCont.GetAxis(InputController.Axis.AIM_Y) != 0 || iCont.GetAxis(InputController.Axis.AIM_X) != 0){
+            if (iCont.GetAxis(InputController.Axis.AIM_ANGLE) > 90)
+            {
+                transform.eulerAngles = new Vector3(0, 0, Mathf.Clamp(180 - iCont.GetAxis(InputController.Axis.AIM_ANGLE), maxAngleDown, maxAngleUp));
+                scale.x = -Mathf.Abs(scale.x);
+            }
+            else
+            {
+                transform.eulerAngles = new Vector3(0, 0, Mathf.Clamp(iCont.GetAxis(InputController.Axis.AIM_ANGLE), maxAngleDown, maxAngleUp));
+                scale.x = Mathf.Abs(scale.x);
+            }
+            transform.parent.localScale = scale;
         }
-		CheckBarrelBounds();
-	}
-
-	void CheckBarrelBounds() {
-		if(transform.eulerAngles.z>maxAngleUp)
-			transform.eulerAngles = new Vector3(0f,0f, maxAngleUp);
-		if(transform.eulerAngles.z<maxAngleDown)
-			transform.eulerAngles = new Vector3(0f,0f, maxAngleDown);
-	}
+    }
 
 	void Fire()	{
         GameObject newBullet = (GameObject)Instantiate(bullet, firePosition.position, Quaternion.identity);
