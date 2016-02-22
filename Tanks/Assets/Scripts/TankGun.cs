@@ -55,7 +55,8 @@ public class TankGun : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if (!Manager.instance.activeMatch)
+            return;
 		RotateBarrel();
 
 		if(charging)

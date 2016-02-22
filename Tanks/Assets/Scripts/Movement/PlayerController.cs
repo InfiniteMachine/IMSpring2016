@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour {
+    public string characterName = "PlaceHolder";
+
     public float movementSpeed = 4f;
     public float accelDuration = 1f;
 
@@ -78,6 +80,8 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (!Manager.instance.activeMatch)
+            return;
         if (respawnCounter > 0)
         {
             respawnCounter -= Time.deltaTime;
@@ -221,9 +225,12 @@ public class PlayerController : MonoBehaviour {
     private void Respawn()
     {
         if (Manager.instance != null)
+        {
             transform.position = Manager.instance.GetRandomSpawn();
-        else
+        }
+        else {
             transform.position = startLocation;
+        }
         rBody.velocity = Vector2.zero;
         GetComponentInChildren<TankGun>().enabled = true;
         SetInteractable(true);

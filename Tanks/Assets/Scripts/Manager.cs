@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class Manager : MonoBehaviour {
 	// I could load these in dynamically from Resources but lets not unless we add a bunch more tanks
@@ -12,6 +13,9 @@ public class Manager : MonoBehaviour {
     public int[] playerControllers;
     [HideInInspector]
     public int numPlayers = 0;
+    private Text[] scoreDisplays;
+    private Text timer;
+    private GameObject scorePanel;
     [Header("Setup Match Info:")] // Match info for setup, not used in active game
     public int maxPlayers = 4;
     public float endTime = 150f;
@@ -57,8 +61,20 @@ public class Manager : MonoBehaviour {
 			else
 			{
 				ApplyScore(Time.deltaTime);
-			}
-		}
+                if (endTime - time > 60)
+                {
+                    timer.text = string.Format("{0:0}:{1:00}", (int)(endTime - time) / 60, (int)(endTime - time) % 60);
+                }
+                else
+                {
+                    timer.text = (Mathf.RoundToInt((endTime - time) * 10) / 10f).ToString();
+                    if (!timer.text.Contains("."))
+                        timer.text += ".0";
+                    if (endTime - time < 10)
+                        timer.text = " " + timer.text;
+                }
+            }
+        }
 	}
 
 	public void StartMatch()
@@ -81,12 +97,45 @@ public class Manager : MonoBehaviour {
 	public void EndMatch(bool timeout = false)
 	{
 		activeMatch = false;
+        for (int i = 0; i < numPlayers; i++)
+            scoreDisplays[i].transform.parent.gameObject.SetActive(false);
+        for (int i = numPlayers + 1; i <= 4; i++)
+            scorePanel.transform.FindChild("Place" + i).gameObject.SetActive(false);
+        timer.gameObject.SetActive(false);
+        scorePanel.SetActive(true);
+        List<int> players = new List<int>();
+        players.Add(0);
+        for(int i = 1; i < numPlayers; i++)
+        {
+            bool insert = false;
+            for(int j = 0; j < players.Count; j++)
+            {
+                if (indScore[i] > indScore[players[j]])
+                {
+                    players.Insert(j, i);
+                    insert = true;
+                    break;
+                }
+            }
+            if (!insert)
+                players.Add(i);
+        }
+        for (int i = 0; i < players.Count; i++)
+        {
+            Transform placeHolder = scorePanel.transform.FindChild("Place" + (i + 1));
+            placeHolder.FindChild("Display").GetComponent<Image>().sprite = tanks[playerTanks[players[i]]].GetComponent<SpriteRenderer>().sprite;
+            placeHolder.FindChild("Character").GetComponent<Text>().text = tanks[playerTanks[players[i]]].GetComponent<PlayerController>().characterName;
+            placeHolder.FindChild("Player").GetComponent<Text>().text = "Player " + (players[i] + 1);
+        }
 	}
 
 	public void ApplyScore(float time)
 	{
-        if(playerWithBaton >= 0 && playerWithBaton < numPlayers)
+        if (playerWithBaton >= 0 && playerWithBaton < numPlayers)
+        {
             indScore[playerWithBaton] += time;
+            scoreDisplays[playerWithBaton].text = Mathf.RoundToInt(indScore[playerWithBaton]).ToString();
+        }
 	}
 
 	public void GiveBaton(int playerID)
@@ -128,6 +177,20 @@ public class Manager : MonoBehaviour {
 			return false;
 		}
 
+        GameObject screenCanvas = GameObject.FindGameObjectWithTag("UICanvas");
+        scorePanel = screenCanvas.transform.FindChild("ScoresPanel").gameObject;
+        scorePanel.SetActive(false);
+        for (int i = numPlayers + 1; i <= 4; i++)
+        {
+            screenCanvas.transform.FindChild("Score" + i + "Panel").gameObject.SetActive(false);
+        }
+        scoreDisplays = new Text[numPlayers];
+        for(int i = 0; i < numPlayers; i++)
+        {
+            scoreDisplays[i] = screenCanvas.transform.FindChild("Score" + (i + 1) + "Panel").FindChild("Text").GetComponent<Text>();
+            scoreDisplays[i].text = 0 + "";
+        }
+        timer = screenCanvas.transform.FindChild("Timer").GetComponent<Text>();
 		bool[] spawnUsed = new bool[spawns.Length];
 		for(int x=0;x<spawnUsed.Length;x++)
 			spawnUsed[x] = false;
@@ -152,6 +215,7 @@ public class Manager : MonoBehaviour {
             newPlayerObjects[x] = (GameObject)Instantiate(tanks[playerTanks[x]], nextSpawn, Quaternion.identity);
             newPlayerObjects[x].GetComponent<PlayerController>().playerID = x;
             newPlayerObjects[x].GetComponent<PlayerController>().controllerNumber = playerControllers[x];
+            screenCanvas.transform.FindChild("Score" + (x + 1) + "Panel").FindChild("Image").GetComponent<Image>().sprite = newPlayerObjects[x].GetComponent<SpriteRenderer>().sprite;
         }
 		return true;
 	}
@@ -162,7 +226,6 @@ public class Manager : MonoBehaviour {
         while (!spawns[selected].IsEmpty())
         {
             selected = Random.Range(0, spawns.Length);
-            Debug.Log("Trying to find spawn");
         }
         return spawns[selected].transform.position;
     }

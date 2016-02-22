@@ -11,6 +11,7 @@ TagManager:
   - ScreenWrap
   - BatonLocation
   - Bullet
+  - UICanvas
   layers:
   - Default
   - TransparentFX
