@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour {
     private float spawnCounter = 0;
 
     private float disabledCounter = 0;
+
+    private Animator aController;
     // Use this for initialization
     void Start()
     {
@@ -77,6 +79,7 @@ public class PlayerController : MonoBehaviour {
         colliders = new List<Collider2D>();
         colliders.AddRange(GetComponentsInChildren<Collider2D>());
         colliders.AddRange(GetComponents<Collider2D>());
+        aController = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -159,6 +162,10 @@ public class PlayerController : MonoBehaviour {
             {
                 disabledCounter -= Time.deltaTime;
                 return;
+            }
+            if(aController != null)
+            {
+                aController.SetBool("bMoving", (velocity.x != 0));
             }
             rBody.velocity = velocity;
         }

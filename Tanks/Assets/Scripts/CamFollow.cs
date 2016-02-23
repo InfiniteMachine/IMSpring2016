@@ -6,8 +6,11 @@ public class CamFollow : MonoBehaviour
     public static CamFollow instance;
     
     public float margin = 2f;
-    public float moveSpeed = 3f;
-    public float orthoScaleSpeed = 1f;
+    public float moveFastSpeed = 3f;
+    public float moveSlowSpeed = 3f;
+    public float orthoGrowSpeed = 1f;
+    public float orthoShrinkSpeed = 5f;
+    public float distancePadding = 4f;
     [HideInInspector]
     public float leftBounds = -5;
     [HideInInspector]
@@ -51,9 +54,19 @@ public class CamFollow : MonoBehaviour
         //Generate camera bounds
         Rect r = GenerateRect();
         float newOrtho = Mathf.Max((r.height) / 2, (r.width) / (2 * Camera.main.aspect));
-        Camera.main.orthographicSize = Mathf.MoveTowards(Camera.main.orthographicSize, newOrtho, orthoScaleSpeed * Time.deltaTime);
+        if (newOrtho < Camera.main.orthographicSize)
+        {
+            Camera.main.orthographicSize = Mathf.MoveTowards(Camera.main.orthographicSize, newOrtho, orthoShrinkSpeed * Time.deltaTime);
+        }
+        else
+        {
+            Camera.main.orthographicSize = Mathf.MoveTowards(Camera.main.orthographicSize, newOrtho, orthoGrowSpeed * Time.deltaTime);
+        }
         Vector3 newPosition = new Vector3(r.x + (r.width / 2), r.y + (r.height / 2), Camera.main.transform.position.z);
-        Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position, newPosition, moveSpeed * Time.deltaTime);
+        if(Vector2.Distance(Camera.main.transform.position, newPosition) > distancePadding)
+            Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position, newPosition, moveFastSpeed * Time.deltaTime);
+        else
+            Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position, newPosition, moveSlowSpeed * Time.deltaTime);
         ConstrainCameraToView();
     }
 

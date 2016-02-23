@@ -938,8 +938,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   margin: 3
-  moveSpeed: 1
-  orthoScaleSpeed: 1
+  moveFastSpeed: 5
+  moveSlowSpeed: 2
+  orthoGrowSpeed: 3
+  orthoShrinkSpeed: 1
+  distancePadding: 2
   leftBounds: -13.28911
   rightBounds: 13.364537
   upperBounds: 8.467808
