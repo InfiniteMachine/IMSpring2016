@@ -104,4 +104,24 @@ public class CamFollow : MonoBehaviour
             lastOrtographicSize = Camera.main.orthographicSize;
         }
     }
+
+    public float GetLeftBound()
+    {
+        return leftBounds;
+    }
+
+    public float GetRightBound()
+    {
+        return rightBounds;
+    }
+
+    public float GetTopBound()
+    {
+        return upperBounds;
+    }
+
+    public float GetLowerBound()
+    {
+        return lowerBounds;
+    }
 }

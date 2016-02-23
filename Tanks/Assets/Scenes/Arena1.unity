@@ -2349,6 +2349,10 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 111690, guid: 1d8ddeb77314f4440a39d9a2b2a407a3, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1d8ddeb77314f4440a39d9a2b2a407a3, type: 2}
   m_IsPrefabParent: 0
@@ -2478,7 +2482,7 @@ GameObject:
   - 4: {fileID: 674897734}
   - 61: {fileID: 674897735}
   - 114: {fileID: 674897736}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightSide
   m_TagString: ScreenWrap
   m_Icon: {fileID: 0}
@@ -3863,7 +3867,7 @@ GameObject:
   - 4: {fileID: 1116178791}
   - 61: {fileID: 1116178792}
   - 114: {fileID: 1116178793}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftSide
   m_TagString: ScreenWrap
   m_Icon: {fileID: 0}
@@ -3916,7 +3920,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1116601192}
   - 114: {fileID: 1116601191}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MapWraparound
   m_TagString: Untagged
   m_Icon: {fileID: 0}

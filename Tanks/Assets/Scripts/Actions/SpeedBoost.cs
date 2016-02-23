@@ -1,35 +1,44 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ActionTemplate : MonoBehaviour, IAction {
+public class SpeedBoost : MonoBehaviour, IAction
+{
     //Can be modified
     public float fireDelay = 5; //seconds between uses
-    
+    private PlayerController PControl;
+    private float BoostTimer = 0;
+    public float BoostDelay = 2.0f;
     //Use for initiation
     void Start()
     {
-
+        PControl = GetComponent<PlayerController>();
     }
 
-	void UpdateTimer()
-	{
+    void UpdateTimer()
+    {
         if (fireTimer > 0)
         {
             fireTimer -= Time.deltaTime;
             if (fireTimer < 0)
                 fireTimer = 0;
         }
-	}
+    }
 
     //Used for effects that happen over time
     void Update()
     {
-		UpdateTimer(); // Should probably always be called.
-
-		// Update effect code here
+        UpdateTimer(); // Should probably always be called.
+        if (BoostTimer >= 0)
+        {
+            BoostTimer -= Time.deltaTime;
+        }
+        else
+            PControl.movementSpeed /= 2;
+            FinishAction();
+        // Update effect code here
 
     }
-    
+
     public bool IsAttack()
     {
         //true if special attack, false if special defense
@@ -39,13 +48,16 @@ public class ActionTemplate : MonoBehaviour, IAction {
     public void StartAction()
     {
         //Start Action Here, If the action doesnt happen over time, call FinishAction()
+        PControl.movementSpeed *= 2;
+        BoostTimer = BoostDelay;
     }
-    
+
     //Don't touch
+    private bool canFire = false;
     private float fireTimer = 0; //counter variable
     public bool CanFire()
     {
-        return fireTimer == 0;
+        return fireTimer <= 0;
     }
 
     //Call this to start delay timer

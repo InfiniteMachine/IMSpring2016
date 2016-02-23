@@ -2,4 +2,5 @@
     bool CanFire();
     bool IsAttack();
     void StartAction();
+    void AllowFire();
 }

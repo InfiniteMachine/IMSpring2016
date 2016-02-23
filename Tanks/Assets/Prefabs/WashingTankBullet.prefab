@@ -13,7 +13,7 @@ GameObject:
   - 212: {fileID: 21227280}
   - 58: {fileID: 5837648}
   m_Layer: 0
-  m_Name: BulletObject
+  m_Name: WashingTankBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

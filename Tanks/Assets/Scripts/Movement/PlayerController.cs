@@ -50,6 +50,8 @@ public class PlayerController : MonoBehaviour {
 
     public float spawnInvulnurability = 2;
     private float spawnCounter = 0;
+
+    private float disabledCounter = 0;
     // Use this for initialization
     void Start()
     {
@@ -129,13 +131,11 @@ public class PlayerController : MonoBehaviour {
 
             if (iCont.GetButton(InputController.Buttons.SPECIAL_FIRE) && specialAttack.CanFire())
             {
-                specialAttack.StartAction();
-                iCont.ClearButton(InputController.Buttons.SPECIAL_FIRE);
+                specialAttack.AllowFire();
             }
             if (iCont.GetButton(InputController.Buttons.SPECIAL_DEFENSE) && specialDefense.CanFire())
             {
-                specialDefense.StartAction();
-                iCont.ClearButton(InputController.Buttons.SPECIAL_DEFENSE);
+                specialDefense.AllowFire();
             }
             if (groundCheck.CheckGrounded())
             {
@@ -155,21 +155,18 @@ public class PlayerController : MonoBehaviour {
                     velocity.y = -dashVelocity;
                 }
             }
-            rBody.velocity = velocity;
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 4);
-            if (hit)
+            if (disabledCounter > 0)
             {
-                float angle = Vector2.Angle(hit.normal, Vector2.up);
-                if (Mathf.Abs(angle) > ignoreRange)
-                    angle = 0;
-                transform.rotation = Quaternion.Euler(0, 0, angle);
+                disabledCounter -= Time.deltaTime;
+                return;
             }
+            rBody.velocity = velocity;
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (respawnCounter > 0)
+        if (respawnCounter > 0 || !enabled)
             return;
         if (other.gameObject.CompareTag("Baton"))
         {
@@ -198,13 +195,18 @@ public class PlayerController : MonoBehaviour {
             }
         }
     }
-
+    
     void LateUpdate()
     {
         if (hasCrown)
         {
             crown.position = transform.position + crownLocation;
         }
+    }
+
+    public void Attack()
+    {
+        Die(false);
     }
 
     private void Die(bool self)
@@ -220,6 +222,12 @@ public class PlayerController : MonoBehaviour {
         }
         GetComponentInChildren<TankGun>().enabled = false;
         SetInteractable(false);
+    }
+
+    public void ForcePush(Vector2 force, float disable)
+    {
+        rBody.AddForce(force, ForceMode2D.Impulse);
+        disabledCounter = disable;
     }
 
     private void Respawn()

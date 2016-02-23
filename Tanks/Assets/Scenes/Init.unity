@@ -116,8 +116,9 @@ MonoBehaviour:
   tanks:
   - {fileID: 186026, guid: 64dee0e81e8a45c4bbc9d7a5844e0636, type: 2}
   - {fileID: 186026, guid: d4beea9ddef4d2f42afe95562851290b, type: 2}
-  - {fileID: 186026, guid: d4beea9ddef4d2f42afe95562851290b, type: 2}
-  - {fileID: 186026, guid: d4beea9ddef4d2f42afe95562851290b, type: 2}
+  - {fileID: 161638, guid: 8ca8abdd0b281b9439ff5f231a4400f7, type: 2}
+  - {fileID: 136508, guid: 048e4895bfc331e41808d0e465be94a1, type: 2}
+  - {fileID: 127546, guid: b1d6b008b4f43c748ad8ba12abfc7a2f, type: 2}
   playerTanks: 
   playerControllers: 
   numPlayers: 0
@@ -127,6 +128,7 @@ MonoBehaviour:
   activeMatch: 0
   time: 0
   indScore: []
+  scoreScreenDuration: 10
 --- !u!4 &1160713445
 Transform:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
@@ -34,7 +35,8 @@ public class Manager : MonoBehaviour {
 	static public Manager instance;
     private bool initOnLoad = false;
 
-    
+    public float scoreScreenDuration = 10f;
+
 	// Use this for initialization
 	void Awake () {
 		DontDestroyOnLoad(gameObject);
@@ -127,6 +129,7 @@ public class Manager : MonoBehaviour {
             placeHolder.FindChild("Character").GetComponent<Text>().text = tanks[playerTanks[players[i]]].GetComponent<PlayerController>().characterName;
             placeHolder.FindChild("Player").GetComponent<Text>().text = "Player " + (players[i] + 1);
         }
+        Invoke("GotoMenu", scoreScreenDuration);
 	}
 
 	public void ApplyScore(float time)
@@ -242,5 +245,10 @@ public class Manager : MonoBehaviour {
             StartMatch();
             initOnLoad = false;
         }
+    }
+
+    private void GotoMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

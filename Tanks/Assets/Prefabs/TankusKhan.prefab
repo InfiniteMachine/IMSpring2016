@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 418032}
   - 58: {fileID: 5824074}
   - 114: {fileID: 11451810}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Grounded
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 488382}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: FirePosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 417524}
   - 114: {fileID: 11430054}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: GunObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   - 61: {fileID: 6196168}
   - 114: {fileID: 11451924}
   - 114: {fileID: 11408660}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: TankusKhan
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -376,6 +376,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: characterName
       value: Ghengis Khan
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
