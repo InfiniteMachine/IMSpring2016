@@ -194,12 +194,14 @@ MonoBehaviour:
   - Level2
   - Level3
   - Level4
+  - Level5
   scenes:
   - {fileID: 21300000, guid: cb65f866ccf48b44792525c9ecdc9112, type: 3}
   - {fileID: 21300000, guid: 2f9a1b7a1b52d7a42bdd51c02ccf212c, type: 3}
   - {fileID: 21300000, guid: 022e1f5090aeb3841b0fd482ac817266, type: 3}
   - {fileID: 21300000, guid: ebc03d2207c9bc24aa2aeaa06b40c6db, type: 3}
   - {fileID: 21300000, guid: 9028bde0c52f7294ca0f832219a9cf5e, type: 3}
+  - {fileID: 21300000, guid: 657f977b1c96ad740b53e70ae31c8952, type: 3}
 --- !u!224 &137373099
 RectTransform:
   m_ObjectHideFlags: 0
