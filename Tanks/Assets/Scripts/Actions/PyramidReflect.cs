@@ -1,49 +1,49 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpeedBoost : MonoBehaviour, IAction
+public class PyramidShield : MonoBehaviour, IAction
 {
     //Can be modified
     public float fireDelay = 5; //seconds between uses
-    private PlayerController PControl;
-    private float BoostTimer = 0;
-    public float BoostDelay = 2.0f;
+    public float PyramidDelay = 10;
+    public Vector2 Pyramidlocation;
+    public GameObject pyramidShield;
+    private GameObject storage;
+    public float PyramidShieldTimer = 0;
+    private bool PyramidShieldActive = false;
+
     //Use for initiation
     void Start()
     {
-        PControl = GetComponent<PlayerController>();
-    }
-
-    void UpdateTimer()
-    {
-        if (fireTimer > 0)
-        {
-            fireTimer -= Time.deltaTime;
-            if (fireTimer < 0)
-                fireTimer = 0;
-        }
+        storage = Instantiate(pyramidShield);
+        storage.transform.SetParent(transform);
+        storage.transform.localPosition = Pyramidlocation;
+        storage.SetActive(false);
     }
 
     //Used for effects that happen over time
     void Update()
     {
-        UpdateTimer(); // Should probably always be called.
-        if (BoostTimer >= 0)
+        if (fireTimer >= 0)
+            fireTimer -= Time.deltaTime;
+        if (PyramidShieldTimer >= 0)
         {
-            BoostTimer -= Time.deltaTime;
+            PyramidShieldTimer -= Time.deltaTime;
         }
-        else
-            PControl.movementSpeed /= 2;
+        else if (PyramidShieldActive)
+        {
+            storage.SetActive(false);
+            PyramidShieldActive = false;
             FinishAction();
-        // Update effect code here
-
+        }
     }
-
     public void ForceDeactivate()
     {
-        BoostTimer = 0;
+        PyramidShieldActive = false;
+        PyramidShieldTimer = 0;
         FinishAction();
     }
+
     public bool IsAttack()
     {
         //true if special attack, false if special defense
@@ -53,8 +53,9 @@ public class SpeedBoost : MonoBehaviour, IAction
     public void StartAction()
     {
         //Start Action Here, If the action doesnt happen over time, call FinishAction()
-        PControl.movementSpeed *= 2;
-        BoostTimer = BoostDelay;
+        storage.SetActive(true);
+        PyramidShieldActive = true;
+        PyramidShieldTimer = PyramidDelay;
     }
 
     //Don't touch
@@ -70,7 +71,6 @@ public class SpeedBoost : MonoBehaviour, IAction
     {
         fireTimer = fireDelay; //Resets the timer so that the action can't be fired repeatedly
     }
-
     public void AllowFire()
     {
         fireTimer = -1;

@@ -30,6 +30,10 @@ public class ActionTemplate : MonoBehaviour, IAction {
 
     }
     
+    public void ForceDeactivate()
+    {
+        FinishAction();
+    }
     public bool IsAttack()
     {
         //true if special attack, false if special defense

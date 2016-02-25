@@ -56,7 +56,13 @@ public class BearBite : MonoBehaviour, IAction
         // Update effect code here
 
     }
-
+    
+    public void ForceDeactivate()
+    {
+        bearBiteActive = false;
+        bearBiteTimer = 0;
+        FinishAction();
+    }
     public bool IsAttack()
     {
         //true if special attack, false if special defense

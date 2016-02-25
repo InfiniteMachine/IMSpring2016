@@ -66,6 +66,13 @@ public class BatShield : MonoBehaviour, IAction
         }
     }
 
+    public void ForceDeactivate()
+    {
+        batShieldActive = false;
+        batShieldTimer = 0;
+        FinishAction();
+    }
+
     public bool IsAttack()
     {
         return false;

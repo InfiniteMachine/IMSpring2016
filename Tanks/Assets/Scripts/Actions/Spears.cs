@@ -44,6 +44,13 @@ public class Spears : MonoBehaviour, IAction
         }
     }
 
+    public void ForceDeactivate()
+    {
+        spearActive = false;
+        spearTimer = 0;
+        FinishAction();
+    }
+
     public bool IsAttack()
     {
         //true if special attack, false if special defense

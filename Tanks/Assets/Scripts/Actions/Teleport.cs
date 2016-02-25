@@ -30,6 +30,10 @@ public class Teleport : MonoBehaviour, IAction
         UpdateTimer(); // Should probably always be called.
         // Update effect code here
     }
+    public void ForceDeactivate()
+    {
+        FinishAction();
+    }
 
     public bool IsAttack()
     {

@@ -3,4 +3,5 @@
     bool IsAttack();
     void StartAction();
     void AllowFire();
+    void ForceDeactivate();
 }

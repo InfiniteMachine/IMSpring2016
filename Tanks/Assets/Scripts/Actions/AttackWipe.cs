@@ -30,6 +30,11 @@ public class AttackWipe : MonoBehaviour, IAction
         // Update effect code here
     }
 
+    public void ForceDeactivate()
+    {
+        FinishAction();
+    }
+
     public bool IsAttack()
     {
         //true if special attack, false if special defense
