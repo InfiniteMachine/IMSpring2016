@@ -34,9 +34,9 @@ public class Manager : MonoBehaviour {
     [HideInInspector]
 	static public Manager instance;
     private bool initOnLoad = false;
-
     public float scoreScreenDuration = 10f;
 
+    private int lastSecond = -1;
 	// Use this for initialization
 	void Awake () {
 		DontDestroyOnLoad(gameObject);
@@ -62,7 +62,7 @@ public class Manager : MonoBehaviour {
 			}
 			else
 			{
-				ApplyScore(Time.deltaTime);
+                ApplyScore(Time.deltaTime);
                 if (endTime - time > 60)
                 {
                     timer.text = string.Format("{0:0}:{1:00}", (int)(endTime - time) / 60, (int)(endTime - time) % 60);
@@ -73,7 +73,18 @@ public class Manager : MonoBehaviour {
                     if (!timer.text.Contains("."))
                         timer.text += ".0";
                     if (endTime - time < 10)
+                    {
                         timer.text = " " + timer.text;
+                        if(endTime - time < 6)
+                        {
+                            int value = Mathf.RoundToInt(endTime - time);
+                            if(value != lastSecond && value > 0)
+                            {
+                                lastSecond = value;
+                                SoundManager.instance.PlayOneShot("Countdown");
+                            }
+                        }
+                    }
                 }
             }
         }

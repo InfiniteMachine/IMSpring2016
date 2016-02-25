@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour {
 
     private Animator aController;
     private bool playingMove = false;
+    private Transform smoke;
     // Use this for initialization
     void Start()
     {
@@ -85,6 +86,7 @@ public class PlayerController : MonoBehaviour {
         colliders.AddRange(GetComponents<Collider2D>());
         aController = GetComponent<Animator>();
         SoundManager.instance.SetBackgroundVolume("TankMovement", 0.25f);
+        smoke = transform.FindChild("smoke");
     }
 
     // Update is called once per frame
@@ -207,12 +209,16 @@ public class PlayerController : MonoBehaviour {
                     playingMove = true;
                     SoundManager.instance.PlayBackground("TankMovement");
                 }
-            }else if (playingMove)
+            }
+            else if (playingMove)
             {
                 playingMove = false;
                 SoundManager.instance.StopBackground("TankMovement");
             }
-
+            if (transform.localScale.x < 0)
+                smoke.rotation = Quaternion.Euler(0, 0, 180);
+            else
+                smoke.rotation = Quaternion.identity;
             rBody.velocity = velocity;
         }
     }
