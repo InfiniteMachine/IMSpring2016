@@ -219,6 +219,7 @@ MonoBehaviour:
   downAccelDuration: 1
   downMaxAccel: 0.5
   forceMoveDuration: 0.5
+  extraJumpDelay: 0.25
   dashVelocity: 15
   spawnInvulnurability: 2
 --- !u!114 &11406304
@@ -296,7 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireDelay: 5
-  batShieldDuration: 10
+  batShieldDuration: 2
   shieldPrefab: {fileID: 149078, guid: 5e616e8c5717a1243ab6388ec1bbf701, type: 2}
 --- !u!212 &21258982
 SpriteRenderer:

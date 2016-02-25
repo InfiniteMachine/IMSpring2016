@@ -54,6 +54,14 @@ public class CamFollow : MonoBehaviour
         //Generate camera bounds
         Rect r = GenerateRect();
         float newOrtho = Mathf.Max((r.height) / 2, (r.width) / (2 * Camera.main.aspect));
+        if(newOrtho * (2 * Camera.main.aspect) > (rightBounds - leftBounds))
+        {
+            newOrtho = (rightBounds - leftBounds) / (2 * Camera.main.aspect);
+        }
+        if(newOrtho * 2 > (upperBounds - lowerBounds))
+        {
+            newOrtho = (upperBounds - lowerBounds) / 2;
+        }
         if (newOrtho < Camera.main.orthographicSize)
         {
             Camera.main.orthographicSize = Mathf.MoveTowards(Camera.main.orthographicSize, newOrtho, orthoShrinkSpeed * Time.deltaTime);

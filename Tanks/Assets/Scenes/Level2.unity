@@ -211,9 +211,10 @@ GameObject:
   - 4: {fileID: 17724549}
   - 212: {fileID: 17724548}
   - 114: {fileID: 17724550}
+  - 61: {fileID: 17724551}
   m_Layer: 0
   m_Name: NStone (24)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -271,6 +272,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &17724551
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 17724547}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &24520673
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,9 +296,10 @@ GameObject:
   - 4: {fileID: 24520675}
   - 212: {fileID: 24520674}
   - 114: {fileID: 24520676}
+  - 61: {fileID: 24520677}
   m_Layer: 0
   m_Name: NStone (20)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -341,6 +357,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &24520677
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 24520673}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &25396657
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,9 +497,10 @@ GameObject:
   - 4: {fileID: 35824618}
   - 212: {fileID: 35824617}
   - 114: {fileID: 35824619}
+  - 61: {fileID: 35824620}
   m_Layer: 0
   m_Name: NGrass (11)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -527,6 +558,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &35824620
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 35824616}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &41366892
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,9 +582,10 @@ GameObject:
   - 4: {fileID: 41366894}
   - 212: {fileID: 41366893}
   - 114: {fileID: 41366895}
+  - 61: {fileID: 41366896}
   m_Layer: 0
   m_Name: NGrass (22)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -597,6 +643,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &41366896
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 41366892}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &65279359
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,9 +1127,10 @@ GameObject:
   - 4: {fileID: 111380118}
   - 212: {fileID: 111380117}
   - 114: {fileID: 111380119}
+  - 61: {fileID: 111380120}
   m_Layer: 0
   m_Name: NGrass (27)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1127,6 +1188,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &111380120
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 111380116}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &116218719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,9 +1444,10 @@ GameObject:
   - 4: {fileID: 129362398}
   - 212: {fileID: 129362397}
   - 114: {fileID: 129362399}
+  - 61: {fileID: 129362400}
   m_Layer: 0
   m_Name: NGrass (10)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1429,6 +1505,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &129362400
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 129362396}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &137022006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,9 +1529,10 @@ GameObject:
   - 4: {fileID: 137022008}
   - 212: {fileID: 137022007}
   - 114: {fileID: 137022009}
+  - 61: {fileID: 137022010}
   m_Layer: 0
   m_Name: NStone (32)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1499,6 +1590,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &137022010
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 137022006}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &139478615
 GameObject:
   m_ObjectHideFlags: 0
@@ -1509,9 +1614,10 @@ GameObject:
   - 4: {fileID: 139478617}
   - 212: {fileID: 139478616}
   - 114: {fileID: 139478618}
+  - 61: {fileID: 139478619}
   m_Layer: 0
   m_Name: NStone (39)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1569,6 +1675,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &139478619
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 139478615}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &141409349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1777,9 +1897,10 @@ GameObject:
   - 4: {fileID: 164523148}
   - 212: {fileID: 164523147}
   - 114: {fileID: 164523149}
+  - 61: {fileID: 164523150}
   m_Layer: 0
   m_Name: NStone (46)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1837,6 +1958,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &164523150
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 164523146}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &177927934
 GameObject:
   m_ObjectHideFlags: 0
@@ -2485,9 +2620,10 @@ GameObject:
   - 4: {fileID: 320113202}
   - 212: {fileID: 320113201}
   - 114: {fileID: 320113203}
+  - 61: {fileID: 320113204}
   m_Layer: 0
   m_Name: NStone (49)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2545,6 +2681,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &320113204
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 320113200}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &323208924
 GameObject:
   m_ObjectHideFlags: 0
@@ -2671,9 +2821,10 @@ GameObject:
   - 4: {fileID: 341446790}
   - 212: {fileID: 341446789}
   - 114: {fileID: 341446791}
+  - 61: {fileID: 341446792}
   m_Layer: 0
   m_Name: NGrass (38)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2731,6 +2882,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &341446792
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 341446788}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &346778608
 GameObject:
   m_ObjectHideFlags: 0
@@ -2880,9 +3045,10 @@ GameObject:
   - 4: {fileID: 408883604}
   - 212: {fileID: 408883603}
   - 114: {fileID: 408883605}
+  - 61: {fileID: 408883606}
   m_Layer: 0
   m_Name: NStone (40)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2940,6 +3106,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &408883606
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 408883602}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &409492447
 GameObject:
   m_ObjectHideFlags: 0
@@ -3008,9 +3188,10 @@ GameObject:
   - 4: {fileID: 410704193}
   - 212: {fileID: 410704192}
   - 114: {fileID: 410704194}
+  - 61: {fileID: 410704195}
   m_Layer: 0
   m_Name: NGrass (28)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3068,6 +3249,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &410704195
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 410704191}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &423504237
 GameObject:
   m_ObjectHideFlags: 0
@@ -3252,9 +3447,10 @@ GameObject:
   - 4: {fileID: 439083378}
   - 212: {fileID: 439083377}
   - 114: {fileID: 439083379}
+  - 61: {fileID: 439083380}
   m_Layer: 0
   m_Name: NGrass (16)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3312,6 +3508,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &439083380
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 439083376}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &447165152
 GameObject:
   m_ObjectHideFlags: 0
@@ -3554,9 +3764,10 @@ GameObject:
   - 4: {fileID: 480212586}
   - 212: {fileID: 480212585}
   - 114: {fileID: 480212587}
+  - 61: {fileID: 480212588}
   m_Layer: 0
   m_Name: NGrass (30)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3614,6 +3825,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &480212588
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 480212584}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &482973944
 GameObject:
   m_ObjectHideFlags: 0
@@ -3682,9 +3907,10 @@ GameObject:
   - 4: {fileID: 500373546}
   - 212: {fileID: 500373545}
   - 114: {fileID: 500373547}
+  - 61: {fileID: 500373548}
   m_Layer: 0
   m_Name: NGrass (14)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3742,6 +3968,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &500373548
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 500373544}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &502815564
 GameObject:
   m_ObjectHideFlags: 0
@@ -3752,9 +3992,10 @@ GameObject:
   - 4: {fileID: 502815566}
   - 212: {fileID: 502815565}
   - 114: {fileID: 502815567}
+  - 61: {fileID: 502815568}
   m_Layer: 0
   m_Name: NGrass (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3812,6 +4053,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &502815568
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 502815564}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &508143655
 GameObject:
   m_ObjectHideFlags: 0
@@ -3996,9 +4251,10 @@ GameObject:
   - 4: {fileID: 550235087}
   - 212: {fileID: 550235086}
   - 114: {fileID: 550235088}
+  - 61: {fileID: 550235089}
   m_Layer: 0
   m_Name: NGrass (20)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4056,6 +4312,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &550235089
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 550235085}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &552978238
 GameObject:
   m_ObjectHideFlags: 0
@@ -4588,9 +4858,10 @@ GameObject:
   - 4: {fileID: 646265965}
   - 212: {fileID: 646265964}
   - 114: {fileID: 646265966}
+  - 61: {fileID: 646265967}
   m_Layer: 0
   m_Name: NGrass (21)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4648,6 +4919,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &646265967
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 646265963}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &656196060
 GameObject:
   m_ObjectHideFlags: 0
@@ -4828,9 +5113,10 @@ GameObject:
   - 4: {fileID: 660260327}
   - 212: {fileID: 660260326}
   - 114: {fileID: 660260328}
+  - 61: {fileID: 660260329}
   m_Layer: 0
   m_Name: NGrass (23)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4888,6 +5174,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &660260329
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 660260325}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &661406295
 GameObject:
   m_ObjectHideFlags: 0
@@ -4956,9 +5256,10 @@ GameObject:
   - 4: {fileID: 661627702}
   - 212: {fileID: 661627701}
   - 114: {fileID: 661627703}
+  - 61: {fileID: 661627704}
   m_Layer: 0
   m_Name: NStone (8)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5016,6 +5317,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &661627704
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 661627700}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &665468337
 GameObject:
   m_ObjectHideFlags: 0
@@ -5026,9 +5341,10 @@ GameObject:
   - 4: {fileID: 665468339}
   - 212: {fileID: 665468338}
   - 114: {fileID: 665468340}
+  - 61: {fileID: 665468341}
   m_Layer: 0
   m_Name: NStone (11)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5086,6 +5402,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &665468341
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 665468337}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &666622355
 GameObject:
   m_ObjectHideFlags: 0
@@ -5328,9 +5658,10 @@ GameObject:
   - 4: {fileID: 680617182}
   - 212: {fileID: 680617181}
   - 114: {fileID: 680617183}
+  - 61: {fileID: 680617184}
   m_Layer: 0
   m_Name: NStone (22)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5388,6 +5719,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &680617184
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 680617180}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &686961905
 GameObject:
   m_ObjectHideFlags: 0
@@ -5456,9 +5801,10 @@ GameObject:
   - 4: {fileID: 720755198}
   - 212: {fileID: 720755197}
   - 114: {fileID: 720755199}
+  - 61: {fileID: 720755200}
   m_Layer: 0
   m_Name: NGrass (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5516,6 +5862,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &720755200
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 720755196}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &723005787
 GameObject:
   m_ObjectHideFlags: 0
@@ -5526,9 +5886,10 @@ GameObject:
   - 4: {fileID: 723005789}
   - 212: {fileID: 723005788}
   - 114: {fileID: 723005790}
+  - 61: {fileID: 723005791}
   m_Layer: 0
   m_Name: NStone (28)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5586,6 +5947,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &723005791
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 723005787}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &728316419
 GameObject:
   m_ObjectHideFlags: 0
@@ -5712,9 +6087,10 @@ GameObject:
   - 4: {fileID: 732385960}
   - 212: {fileID: 732385959}
   - 114: {fileID: 732385961}
+  - 61: {fileID: 732385962}
   m_Layer: 0
   m_Name: NStone (41)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5772,6 +6148,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &732385962
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 732385958}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &734375216
 GameObject:
   m_ObjectHideFlags: 0
@@ -5840,9 +6230,10 @@ GameObject:
   - 4: {fileID: 736173990}
   - 212: {fileID: 736173989}
   - 114: {fileID: 736173991}
+  - 61: {fileID: 736173992}
   m_Layer: 0
   m_Name: NStone (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5900,6 +6291,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &736173992
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 736173988}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &754387923
 GameObject:
   m_ObjectHideFlags: 0
@@ -6347,9 +6752,10 @@ GameObject:
   - 4: {fileID: 798021750}
   - 212: {fileID: 798021749}
   - 114: {fileID: 798021751}
+  - 61: {fileID: 798021752}
   m_Layer: 0
   m_Name: NStone (51)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6407,6 +6813,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &798021752
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 798021748}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &805967958
 GameObject:
   m_ObjectHideFlags: 0
@@ -6475,9 +6895,10 @@ GameObject:
   - 4: {fileID: 812651632}
   - 212: {fileID: 812651631}
   - 114: {fileID: 812651633}
+  - 61: {fileID: 812651634}
   m_Layer: 0
   m_Name: NGrass (15)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6535,6 +6956,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &812651634
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 812651630}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &815584859
 GameObject:
   m_ObjectHideFlags: 0
@@ -6661,9 +7096,10 @@ GameObject:
   - 4: {fileID: 819229730}
   - 212: {fileID: 819229729}
   - 114: {fileID: 819229731}
+  - 61: {fileID: 819229732}
   m_Layer: 0
   m_Name: NGrass (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6721,6 +7157,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &819229732
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 819229728}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &830597771
 GameObject:
   m_ObjectHideFlags: 0
@@ -6847,9 +7297,10 @@ GameObject:
   - 4: {fileID: 843121324}
   - 212: {fileID: 843121323}
   - 114: {fileID: 843121325}
+  - 61: {fileID: 843121326}
   m_Layer: 0
   m_Name: NGrass (12)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6907,6 +7358,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &843121326
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 843121322}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &846254521
 GameObject:
   m_ObjectHideFlags: 0
@@ -7033,9 +7498,10 @@ GameObject:
   - 4: {fileID: 894213820}
   - 212: {fileID: 894213819}
   - 114: {fileID: 894213821}
+  - 61: {fileID: 894213822}
   m_Layer: 0
   m_Name: NStone (12)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7093,6 +7559,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &894213822
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 894213818}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &896011826
 GameObject:
   m_ObjectHideFlags: 0
@@ -7667,9 +8147,10 @@ GameObject:
   - 4: {fileID: 945907023}
   - 212: {fileID: 945907022}
   - 114: {fileID: 945907024}
+  - 61: {fileID: 945907025}
   m_Layer: 0
   m_Name: NGrass
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7727,6 +8208,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &945907025
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 945907021}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &958359841
 GameObject:
   m_ObjectHideFlags: 0
@@ -7969,9 +8464,10 @@ GameObject:
   - 4: {fileID: 988718691}
   - 212: {fileID: 988718690}
   - 114: {fileID: 988718692}
+  - 61: {fileID: 988718693}
   m_Layer: 0
   m_Name: NStone (50)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8029,6 +8525,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &988718693
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 988718689}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1009716417
 GameObject:
   m_ObjectHideFlags: 0
@@ -8213,9 +8723,10 @@ GameObject:
   - 4: {fileID: 1029137407}
   - 212: {fileID: 1029137406}
   - 114: {fileID: 1029137408}
+  - 61: {fileID: 1029137409}
   m_Layer: 0
   m_Name: NGrass (24)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8273,6 +8784,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1029137409
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1029137405}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1030748551
 GameObject:
   m_ObjectHideFlags: 0
@@ -8399,9 +8924,10 @@ GameObject:
   - 4: {fileID: 1046634882}
   - 212: {fileID: 1046634881}
   - 114: {fileID: 1046634883}
+  - 61: {fileID: 1046634884}
   m_Layer: 0
   m_Name: NGrass (37)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8459,6 +8985,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1046634884
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1046634880}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1071837625
 GameObject:
   m_ObjectHideFlags: 0
@@ -8759,9 +9299,10 @@ GameObject:
   - 4: {fileID: 1109022597}
   - 212: {fileID: 1109022596}
   - 114: {fileID: 1109022598}
+  - 61: {fileID: 1109022599}
   m_Layer: 0
   m_Name: NStone (31)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8819,6 +9360,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1109022599
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1109022595}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1112655541
 GameObject:
   m_ObjectHideFlags: 0
@@ -9583,9 +10138,10 @@ GameObject:
   - 4: {fileID: 1184634335}
   - 212: {fileID: 1184634334}
   - 114: {fileID: 1184634336}
+  - 61: {fileID: 1184634337}
   m_Layer: 0
   m_Name: NStone (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9643,6 +10199,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1184634337
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1184634333}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1193547247
 GameObject:
   m_ObjectHideFlags: 0
@@ -9943,9 +10513,10 @@ GameObject:
   - 4: {fileID: 1218465309}
   - 212: {fileID: 1218465308}
   - 114: {fileID: 1218465310}
+  - 61: {fileID: 1218465311}
   m_Layer: 0
   m_Name: NGrass (35)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10003,6 +10574,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1218465311
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1218465307}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1223363074
 GameObject:
   m_ObjectHideFlags: 0
@@ -10129,9 +10714,10 @@ GameObject:
   - 4: {fileID: 1225778102}
   - 212: {fileID: 1225778101}
   - 114: {fileID: 1225778103}
+  - 61: {fileID: 1225778104}
   m_Layer: 0
   m_Name: NStone (10)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10189,6 +10775,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1225778104
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1225778100}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1227705804
 GameObject:
   m_ObjectHideFlags: 0
@@ -10257,9 +10857,10 @@ GameObject:
   - 4: {fileID: 1230693313}
   - 212: {fileID: 1230693312}
   - 114: {fileID: 1230693314}
+  - 61: {fileID: 1230693315}
   m_Layer: 0
   m_Name: NGrass (31)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10317,6 +10918,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1230693315
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1230693311}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1257454332
 GameObject:
   m_ObjectHideFlags: 0
@@ -10443,9 +11058,10 @@ GameObject:
   - 4: {fileID: 1275254829}
   - 212: {fileID: 1275254828}
   - 114: {fileID: 1275254830}
+  - 61: {fileID: 1275254831}
   m_Layer: 0
   m_Name: NStone (23)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10503,6 +11119,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1275254831
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1275254827}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1280563417
 GameObject:
   m_ObjectHideFlags: 0
@@ -10513,9 +11143,10 @@ GameObject:
   - 4: {fileID: 1280563419}
   - 212: {fileID: 1280563418}
   - 114: {fileID: 1280563420}
+  - 61: {fileID: 1280563421}
   m_Layer: 0
   m_Name: NStone (16)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10573,6 +11204,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1280563421
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1280563417}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1284349976
 GameObject:
   m_ObjectHideFlags: 0
@@ -10583,9 +11228,10 @@ GameObject:
   - 4: {fileID: 1284349978}
   - 212: {fileID: 1284349977}
   - 114: {fileID: 1284349979}
+  - 61: {fileID: 1284349980}
   m_Layer: 0
   m_Name: NGrass (40)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10643,6 +11289,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1284349980
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1284349976}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1305145580
 GameObject:
   m_ObjectHideFlags: 0
@@ -11059,9 +11719,10 @@ GameObject:
   - 4: {fileID: 1364158430}
   - 212: {fileID: 1364158429}
   - 114: {fileID: 1364158431}
+  - 61: {fileID: 1364158432}
   m_Layer: 0
   m_Name: NGrass (19)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11119,6 +11780,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1364158432
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1364158428}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1365136861
 GameObject:
   m_ObjectHideFlags: 0
@@ -11129,9 +11804,10 @@ GameObject:
   - 4: {fileID: 1365136863}
   - 212: {fileID: 1365136862}
   - 114: {fileID: 1365136864}
+  - 61: {fileID: 1365136865}
   m_Layer: 0
   m_Name: NStone (7)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11189,6 +11865,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1365136865
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1365136861}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1365268987
 GameObject:
   m_ObjectHideFlags: 0
@@ -11361,9 +12051,10 @@ GameObject:
   - 4: {fileID: 1386097848}
   - 212: {fileID: 1386097847}
   - 114: {fileID: 1386097849}
+  - 61: {fileID: 1386097850}
   m_Layer: 0
   m_Name: NStone (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11421,6 +12112,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1386097850
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1386097846}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1387172560
 GameObject:
   m_ObjectHideFlags: 0
@@ -11431,9 +12136,10 @@ GameObject:
   - 4: {fileID: 1387172562}
   - 212: {fileID: 1387172561}
   - 114: {fileID: 1387172563}
+  - 61: {fileID: 1387172564}
   m_Layer: 0
   m_Name: NGrass (9)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11491,6 +12197,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1387172564
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1387172560}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1406141056
 GameObject:
   m_ObjectHideFlags: 0
@@ -11559,9 +12279,10 @@ GameObject:
   - 4: {fileID: 1417318454}
   - 212: {fileID: 1417318453}
   - 114: {fileID: 1417318455}
+  - 61: {fileID: 1417318456}
   m_Layer: 0
   m_Name: NGrass (34)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11619,6 +12340,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1417318456
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1417318452}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1432020743
 GameObject:
   m_ObjectHideFlags: 0
@@ -11803,9 +12538,10 @@ GameObject:
   - 4: {fileID: 1441205141}
   - 212: {fileID: 1441205140}
   - 114: {fileID: 1441205142}
+  - 61: {fileID: 1441205143}
   m_Layer: 0
   m_Name: NGrass (32)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11863,6 +12599,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1441205143
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1441205139}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1452486255
 GameObject:
   m_ObjectHideFlags: 0
@@ -12163,9 +12913,10 @@ GameObject:
   - 4: {fileID: 1471787080}
   - 212: {fileID: 1471787079}
   - 114: {fileID: 1471787081}
+  - 61: {fileID: 1471787082}
   m_Layer: 0
   m_Name: NGrass (6)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12223,6 +12974,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1471787082
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1471787078}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1476279077
 GameObject:
   m_ObjectHideFlags: 0
@@ -12700,7 +13465,7 @@ GameObject:
   - 61: {fileID: 1518751346}
   m_Layer: 0
   m_Name: Environment
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13237,9 +14002,10 @@ GameObject:
   - 4: {fileID: 1542419558}
   - 212: {fileID: 1542419557}
   - 114: {fileID: 1542419559}
+  - 61: {fileID: 1542419560}
   m_Layer: 0
   m_Name: NStone (19)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13297,6 +14063,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1542419560
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1542419556}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1546922214
 GameObject:
   m_ObjectHideFlags: 0
@@ -13307,9 +14087,10 @@ GameObject:
   - 4: {fileID: 1546922216}
   - 212: {fileID: 1546922215}
   - 114: {fileID: 1546922217}
+  - 61: {fileID: 1546922218}
   m_Layer: 0
   m_Name: NStone
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13367,6 +14148,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1546922218
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1546922214}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1551852119
 GameObject:
   m_ObjectHideFlags: 0
@@ -13493,9 +14288,10 @@ GameObject:
   - 4: {fileID: 1581674669}
   - 212: {fileID: 1581674668}
   - 114: {fileID: 1581674670}
+  - 61: {fileID: 1581674671}
   m_Layer: 0
   m_Name: NGrass (33)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13553,6 +14349,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1581674671
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1581674667}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1584693349
 GameObject:
   m_ObjectHideFlags: 0
@@ -13679,9 +14489,10 @@ GameObject:
   - 4: {fileID: 1609928504}
   - 212: {fileID: 1609928503}
   - 114: {fileID: 1609928505}
+  - 61: {fileID: 1609928506}
   m_Layer: 0
   m_Name: NStone (48)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13739,6 +14550,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1609928506
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1609928502}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1614018593
 GameObject:
   m_ObjectHideFlags: 0
@@ -13981,9 +14806,10 @@ GameObject:
   - 4: {fileID: 1642630176}
   - 212: {fileID: 1642630175}
   - 114: {fileID: 1642630177}
+  - 61: {fileID: 1642630178}
   m_Layer: 0
   m_Name: NGrass (26)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14041,6 +14867,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1642630178
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1642630174}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1642759680
 GameObject:
   m_ObjectHideFlags: 0
@@ -14341,9 +15181,10 @@ GameObject:
   - 4: {fileID: 1696803556}
   - 212: {fileID: 1696803555}
   - 114: {fileID: 1696803557}
+  - 61: {fileID: 1696803558}
   m_Layer: 0
   m_Name: NStone (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14401,6 +15242,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1696803558
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1696803554}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1697806356
 GameObject:
   m_ObjectHideFlags: 0
@@ -14527,9 +15382,10 @@ GameObject:
   - 4: {fileID: 1698818968}
   - 212: {fileID: 1698818967}
   - 114: {fileID: 1698818969}
+  - 61: {fileID: 1698818970}
   m_Layer: 0
   m_Name: NGrass (17)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14587,6 +15443,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1698818970
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1698818966}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1709668447
 GameObject:
   m_ObjectHideFlags: 0
@@ -14771,9 +15641,10 @@ GameObject:
   - 4: {fileID: 1736052227}
   - 212: {fileID: 1736052226}
   - 114: {fileID: 1736052228}
+  - 61: {fileID: 1736052229}
   m_Layer: 0
   m_Name: NStone (6)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14831,6 +15702,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1736052229
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1736052225}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1737164674
 GameObject:
   m_ObjectHideFlags: 0
@@ -14841,9 +15726,10 @@ GameObject:
   - 4: {fileID: 1737164676}
   - 212: {fileID: 1737164675}
   - 114: {fileID: 1737164677}
+  - 61: {fileID: 1737164678}
   m_Layer: 0
   m_Name: NStone (13)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14901,6 +15787,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1737164678
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1737164674}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1738305737
 GameObject:
   m_ObjectHideFlags: 0
@@ -14911,9 +15811,10 @@ GameObject:
   - 4: {fileID: 1738305739}
   - 212: {fileID: 1738305738}
   - 114: {fileID: 1738305740}
+  - 61: {fileID: 1738305741}
   m_Layer: 0
   m_Name: NGrass (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14971,6 +15872,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1738305741
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1738305737}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1748713946
 GameObject:
   m_ObjectHideFlags: 0
@@ -15039,9 +15954,10 @@ GameObject:
   - 4: {fileID: 1749065343}
   - 212: {fileID: 1749065342}
   - 114: {fileID: 1749065344}
+  - 61: {fileID: 1749065345}
   m_Layer: 0
   m_Name: NGrass (8)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15099,6 +16015,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1749065345
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1749065341}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1755158324
 GameObject:
   m_ObjectHideFlags: 0
@@ -15283,9 +16213,10 @@ GameObject:
   - 4: {fileID: 1769189206}
   - 212: {fileID: 1769189205}
   - 114: {fileID: 1769189207}
+  - 61: {fileID: 1769189208}
   m_Layer: 0
   m_Name: NStone (47)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15343,6 +16274,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1769189208
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1769189204}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1779407178
 GameObject:
   m_ObjectHideFlags: 0
@@ -15353,9 +16298,10 @@ GameObject:
   - 4: {fileID: 1779407180}
   - 212: {fileID: 1779407179}
   - 114: {fileID: 1779407181}
+  - 61: {fileID: 1779407182}
   m_Layer: 0
   m_Name: NStone (44)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15413,6 +16359,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1779407182
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1779407178}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1001 &1783030080
 Prefab:
   m_ObjectHideFlags: 0
@@ -15697,9 +16657,10 @@ GameObject:
   - 4: {fileID: 1789453518}
   - 212: {fileID: 1789453517}
   - 114: {fileID: 1789453519}
+  - 61: {fileID: 1789453520}
   m_Layer: 0
   m_Name: NGrass (18)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15757,6 +16718,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1789453520
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1789453516}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1790037386
 GameObject:
   m_ObjectHideFlags: 0
@@ -15999,9 +16974,10 @@ GameObject:
   - 4: {fileID: 1814083082}
   - 212: {fileID: 1814083081}
   - 114: {fileID: 1814083083}
+  - 61: {fileID: 1814083084}
   m_Layer: 0
   m_Name: NStone (38)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16059,6 +17035,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1814083084
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1814083080}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1821276044
 GameObject:
   m_ObjectHideFlags: 0
@@ -16127,9 +17117,10 @@ GameObject:
   - 4: {fileID: 1824138629}
   - 212: {fileID: 1824138628}
   - 114: {fileID: 1824138630}
+  - 61: {fileID: 1824138631}
   m_Layer: 0
   m_Name: NGrass (39)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16187,6 +17178,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1824138631
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1824138627}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1824512355
 GameObject:
   m_ObjectHideFlags: 0
@@ -16197,9 +17202,10 @@ GameObject:
   - 4: {fileID: 1824512357}
   - 212: {fileID: 1824512356}
   - 114: {fileID: 1824512358}
+  - 61: {fileID: 1824512359}
   m_Layer: 0
   m_Name: NStone (15)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16257,6 +17263,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1824512359
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1824512355}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1829750914
 GameObject:
   m_ObjectHideFlags: 0
@@ -16731,9 +17751,10 @@ GameObject:
   - 4: {fileID: 1906802805}
   - 212: {fileID: 1906802804}
   - 114: {fileID: 1906802806}
+  - 61: {fileID: 1906802807}
   m_Layer: 0
   m_Name: NGrass (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16791,6 +17812,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1906802807
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1906802803}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1909293039
 GameObject:
   m_ObjectHideFlags: 0
@@ -16801,9 +17836,10 @@ GameObject:
   - 4: {fileID: 1909293041}
   - 212: {fileID: 1909293040}
   - 114: {fileID: 1909293042}
+  - 61: {fileID: 1909293043}
   m_Layer: 0
   m_Name: NStone (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16861,6 +17897,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1909293043
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1909293039}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1911168371
 GameObject:
   m_ObjectHideFlags: 0
@@ -16987,9 +18037,10 @@ GameObject:
   - 4: {fileID: 1932197768}
   - 212: {fileID: 1932197767}
   - 114: {fileID: 1932197769}
+  - 61: {fileID: 1932197770}
   m_Layer: 0
   m_Name: NGrass (25)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17047,6 +18098,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1932197770
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1932197766}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1932455787
 GameObject:
   m_ObjectHideFlags: 0
@@ -17057,9 +18122,10 @@ GameObject:
   - 4: {fileID: 1932455789}
   - 212: {fileID: 1932455788}
   - 114: {fileID: 1932455790}
+  - 61: {fileID: 1932455791}
   m_Layer: 0
   m_Name: NStone (21)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17117,6 +18183,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1932455791
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1932455787}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1944406075
 GameObject:
   m_ObjectHideFlags: 0
@@ -17297,9 +18377,10 @@ GameObject:
   - 4: {fileID: 1965879196}
   - 212: {fileID: 1965879195}
   - 114: {fileID: 1965879197}
+  - 61: {fileID: 1965879198}
   m_Layer: 0
   m_Name: NGrass (29)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17357,6 +18438,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1965879198
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1965879194}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1980189184
 GameObject:
   m_ObjectHideFlags: 0
@@ -17367,9 +18462,10 @@ GameObject:
   - 4: {fileID: 1980189186}
   - 212: {fileID: 1980189185}
   - 114: {fileID: 1980189187}
+  - 61: {fileID: 1980189188}
   m_Layer: 0
   m_Name: NStone (9)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17427,6 +18523,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1980189188
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1980189184}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1998744245
 GameObject:
   m_ObjectHideFlags: 0
@@ -17437,9 +18547,10 @@ GameObject:
   - 4: {fileID: 1998744247}
   - 212: {fileID: 1998744246}
   - 114: {fileID: 1998744248}
+  - 61: {fileID: 1998744249}
   m_Layer: 0
   m_Name: NStone (26)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17497,6 +18608,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1998744249
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1998744245}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1998871903
 GameObject:
   m_ObjectHideFlags: 0
@@ -17507,9 +18632,10 @@ GameObject:
   - 4: {fileID: 1998871905}
   - 212: {fileID: 1998871904}
   - 114: {fileID: 1998871906}
+  - 61: {fileID: 1998871907}
   m_Layer: 0
   m_Name: NGrass (13)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17567,6 +18693,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1998871907
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1998871903}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &2022631922
 GameObject:
   m_ObjectHideFlags: 0
@@ -17867,9 +19007,10 @@ GameObject:
   - 4: {fileID: 2051457222}
   - 212: {fileID: 2051457221}
   - 114: {fileID: 2051457223}
+  - 61: {fileID: 2051457224}
   m_Layer: 0
   m_Name: NStone (30)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17927,6 +19068,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &2051457224
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2051457220}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &2055528801
 GameObject:
   m_ObjectHideFlags: 0
@@ -18053,9 +19208,10 @@ GameObject:
   - 4: {fileID: 2063112442}
   - 212: {fileID: 2063112441}
   - 114: {fileID: 2063112443}
+  - 61: {fileID: 2063112444}
   m_Layer: 0
   m_Name: NGrass (36)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18113,6 +19269,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &2063112444
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2063112440}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &2069812154
 GameObject:
   m_ObjectHideFlags: 0
@@ -18471,9 +19641,10 @@ GameObject:
   - 4: {fileID: 2100521962}
   - 212: {fileID: 2100521961}
   - 114: {fileID: 2100521963}
+  - 61: {fileID: 2100521964}
   m_Layer: 0
   m_Name: NStone (45)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18531,6 +19702,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &2100521964
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2100521960}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &2104314528
 GameObject:
   m_ObjectHideFlags: 0
@@ -18773,9 +19958,10 @@ GameObject:
   - 4: {fileID: 2137677184}
   - 212: {fileID: 2137677183}
   - 114: {fileID: 2137677185}
+  - 61: {fileID: 2137677186}
   m_Layer: 0
   m_Name: NGrass (7)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18833,6 +20019,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &2137677186
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2137677182}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &2137805898
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,6 +46,9 @@ public class PlayerController : MonoBehaviour {
     public float forceMoveDuration = 0.5f;
 
     private bool canDash = false;
+    private bool canJump = false;
+    private bool waitingForJump = false;
+    public float extraJumpDelay = 0.25f;
     public float dashVelocity = 4;
 
     public float spawnInvulnurability = 2;
@@ -54,6 +57,7 @@ public class PlayerController : MonoBehaviour {
     private float disabledCounter = 0;
 
     private Animator aController;
+    private bool playingMove = false;
     // Use this for initialization
     void Start()
     {
@@ -80,6 +84,7 @@ public class PlayerController : MonoBehaviour {
         colliders.AddRange(GetComponentsInChildren<Collider2D>());
         colliders.AddRange(GetComponents<Collider2D>());
         aController = GetComponent<Animator>();
+        SoundManager.instance.SetBackgroundVolume("TankMovement", 0.25f);
     }
 
     // Update is called once per frame
@@ -90,14 +95,14 @@ public class PlayerController : MonoBehaviour {
         if (respawnCounter > 0)
         {
             respawnCounter -= Time.deltaTime;
-            if(respawnCounter <= 0)
+            if (respawnCounter <= 0)
             {
                 Respawn();
             }
         }
         else
         {
-            if(spawnCounter > 0)
+            if (spawnCounter > 0)
             {
                 spawnCounter -= Time.deltaTime;
             }
@@ -131,33 +136,60 @@ public class PlayerController : MonoBehaviour {
                 gravityCounter = 0;
                 velocity.y = rBody.velocity.y;
             }
-
-            if (iCont.GetButton(InputController.Buttons.SPECIAL_FIRE) && specialAttack.CanFire())
+            if (specialAttack != null)
             {
-                specialAttack.AllowFire();
+                if (iCont.GetButton(InputController.Buttons.SPECIAL_FIRE) && specialAttack.CanFire())
+                {
+                    specialAttack.AllowFire();
+                    SoundManager.instance.PlayOneShot("AbilityActivation");
+                }
             }
-            if (iCont.GetButton(InputController.Buttons.SPECIAL_DEFENSE) && specialDefense.CanFire())
+            if (specialDefense != null)
             {
-                specialDefense.AllowFire();
+                if (iCont.GetButton(InputController.Buttons.SPECIAL_DEFENSE) && specialDefense.CanFire())
+                {
+                    specialDefense.AllowFire();
+                    SoundManager.instance.PlayOneShot("AbilityActivation");
+                }
             }
             if (groundCheck.CheckGrounded())
             {
+                if (!canJump)
+                {
+                    if (canDash)
+                        SoundManager.instance.PlayOneShot("Landing");
+                    else
+                        SoundManager.instance.PlayOneShot("GroundPound");
+                }
                 canDash = true;
-                if (iCont.GetButton(InputController.Buttons.JUMP))
-                {
-                    //sGround.Ignore(0.1f);
-                    velocity.y = jumpVel;
-                    iCont.ClearButton(InputController.Buttons.JUMP);
-                }
+                canJump = true;
+                waitingForJump = false;
             }
-            else if(canDash)
+            else
             {
-                if (iCont.GetButton(InputController.Buttons.DASH_DOWN))
+                if (!waitingForJump)
                 {
-                    canDash = false;
-                    velocity.y = -dashVelocity;
+                    Invoke("ResetJump", extraJumpDelay);
+                    waitingForJump = true;
+                }
+                if (canDash)
+                {
+                    if (iCont.GetButton(InputController.Buttons.DASH_DOWN))
+                    {
+                        canDash = false;
+                        velocity.y = -dashVelocity;
+                    }
                 }
             }
+
+            if (canJump && iCont.GetButton(InputController.Buttons.JUMP))
+            {
+                //sGround.Ignore(0.1f);
+                velocity.y = jumpVel;
+                iCont.ClearButton(InputController.Buttons.JUMP);
+                SoundManager.instance.PlayOneShot("Jump");
+            }
+
             if (disabledCounter > 0)
             {
                 disabledCounter -= Time.deltaTime;
@@ -167,10 +199,24 @@ public class PlayerController : MonoBehaviour {
             {
                 aController.SetBool("bMoving", (velocity.x != 0));
             }
+
+            if(velocity.x != 0)
+            {
+                if (!playingMove)
+                {
+                    playingMove = true;
+                    SoundManager.instance.PlayBackground("TankMovement");
+                }
+            }else if (playingMove)
+            {
+                playingMove = false;
+                SoundManager.instance.StopBackground("TankMovement");
+            }
+
             rBody.velocity = velocity;
         }
     }
-
+    
     void OnTriggerEnter2D(Collider2D other)
     {
         if (respawnCounter > 0 || !enabled)
@@ -203,6 +249,11 @@ public class PlayerController : MonoBehaviour {
         }
     }
     
+    private void ResetJump()
+    {
+        canJump = false;
+    }
+
     void LateUpdate()
     {
         if (hasCrown)
@@ -218,6 +269,12 @@ public class PlayerController : MonoBehaviour {
 
     private void Die(bool self)
     {
+        SoundManager.instance.PlayOneShot("Explosion");
+        if (playingMove)
+        {
+            playingMove = false;
+            SoundManager.instance.StopBackground("TankMovement");
+        }
         respawnCounter = respawnTime;
         if (hasCrown)
         {

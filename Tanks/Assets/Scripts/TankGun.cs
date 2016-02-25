@@ -138,6 +138,7 @@ public class TankGun : MonoBehaviour {
     }
 
 	void Fire()	{
+        SoundManager.instance.PlayOneShot("Shoot");
         GameObject newBullet = (GameObject)Instantiate(bullet, firePosition.position, Quaternion.identity);
 		Destroy(newBullet, 15f);
         newBullet.GetComponent<TankBullet>().SetPower(currentPower, Vector2.Angle(Vector2.right, (firePosition.position - transform.position)), myBulletType);

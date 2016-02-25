@@ -46,8 +46,9 @@ public class MenuController : MonoBehaviour {
             {
                 //Down
                 selected++;
-                if (selected > Buttons.Exit)
+                if (selected > Buttons.Help)
                     selected = Buttons.Play;
+                SoundManager.instance.PlayOneShot("Swap");
                 break;
             }
             else if (controllers[i].GetAxisAsButton(1, false) || controllers[i].GetAxisAsButton(6, true))
@@ -55,13 +56,15 @@ public class MenuController : MonoBehaviour {
                 //Up
                 selected--;
                 if (selected < Buttons.Play)
-                    selected = Buttons.Exit;
+                    selected = Buttons.Help;
+                SoundManager.instance.PlayOneShot("Swap");
                 break;
             }
             else if (controllers[i].GetButtonDown(0))
             {
                 //Submit
                 PerformAction();
+                SoundManager.instance.PlayOneShot("Select");
                 break;
             }
             broken = false;
@@ -72,18 +75,23 @@ public class MenuController : MonoBehaviour {
             {
                 //Down
                 selected++;
-                if (selected > Buttons.Exit)
+                if (selected > Buttons.Help)
                     selected = Buttons.Play;
+                SoundManager.instance.PlayOneShot("Swap");
             }
             else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 //Up
                 selected--;
                 if (selected < Buttons.Play)
-                    selected = Buttons.Exit;
+                    selected = Buttons.Help;
+                SoundManager.instance.PlayOneShot("Swap");
             }
             else if (Input.GetKeyDown(KeyCode.Return))
+            {
                 PerformAction();
+                SoundManager.instance.PlayOneShot("Select");
+            }
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {

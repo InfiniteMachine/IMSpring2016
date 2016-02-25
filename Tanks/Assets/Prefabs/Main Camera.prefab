@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58a73addbea4304698bbafc56c6098f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  margin: 3
+  margin: 6
   moveFastSpeed: 5
   moveSlowSpeed: 2
   orthoGrowSpeed: 3

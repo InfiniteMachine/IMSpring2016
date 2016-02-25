@@ -48,9 +48,13 @@ public class SoundManager : MonoBehaviour {
     {
         for(int i = 0; i < background.Length; i++)
         {
-            if(background[i].clip.name == name)
+            if (background[i].clip.name == name)
+            {
                 background[i].volume = volume * globalVolume;
+                return;
+            }
         }
+        Debug.Log("SoundManager: Background '" + name + "' does not exits.");
     }
 
     public void PlayOneShot(string name)
@@ -69,9 +73,10 @@ public class SoundManager : MonoBehaviour {
                 oneShot.transform.position = Vector3.zero;
                 OneShotAudio audio = oneShot.GetComponent<OneShotAudio>();
                 audio.PlayOneShot(soundEffects[i], volume * globalVolume);
-                break;
+                return;
             }
         }
+        Debug.Log("SoundManager: OneShot '" + name + "' does not exits.");
     }
 
     public void StopAll()
@@ -93,13 +98,14 @@ public class SoundManager : MonoBehaviour {
             {
                 if (maxPlaying[i] > 0)
                 {
-                    if (maxPlaying[i] > 1)
-                        maxPlaying[i]--;
-                    else
+                    if (maxPlaying[i] == 1)
                         background[i].Stop();
+                    maxPlaying[i]--;
                 }
+                return;
             }
         }
+        Debug.Log("SoundManager: Background '" + name + "' does not exits.");
     }
 
     public void PlayBackground(string name)
@@ -111,7 +117,9 @@ public class SoundManager : MonoBehaviour {
                 if(maxPlaying[i] == 0)
                     background[i].Play();
                 maxPlaying[i]++;
+                return;
             }
         }
+        Debug.Log("SoundManager: Background '" + name + "' does not exits.");
     }
 }

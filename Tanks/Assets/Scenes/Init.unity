@@ -170,9 +170,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oneShotAudio: {fileID: 171236, guid: 2a20bb8202ed2ae42b0aae78a403d85d, type: 2}
   backgroundAudio: {fileID: 171236, guid: d8440e14e8b6e7f4487c0609eb478ee2, type: 2}
-  backgroundClips: []
-  soundEffects: []
-  globalVolume: 1
+  backgroundClips:
+  - {fileID: 8300000, guid: 308a9185c2cb04642924a2d3236580d5, type: 3}
+  soundEffects:
+  - {fileID: 8300000, guid: 94b5afdc7ebc30e4f879a5dd804fe808, type: 3}
+  - {fileID: 8300000, guid: f092173b13c2fb046988b80f517fa835, type: 3}
+  - {fileID: 8300000, guid: 8fa165aa115ae49419483455058352b3, type: 3}
+  - {fileID: 8300000, guid: 41c1550b7fb764c488307e0ae3002413, type: 3}
+  - {fileID: 8300000, guid: 623d459c7b8accb45a4788c2e38117f0, type: 3}
+  - {fileID: 8300000, guid: 6b0f8624e67189646928d8a51d811d33, type: 3}
+  - {fileID: 8300000, guid: c65884dbe20f93a4b94815e7d004552c, type: 3}
+  - {fileID: 8300000, guid: e40eabd10d4714d4da50f1cb1f6879a5, type: 3}
+  - {fileID: 8300000, guid: 578580986691c544dbdaecc061f63a62, type: 3}
+  - {fileID: 8300000, guid: d6038acd57780684a9ce18debcb74ebc, type: 3}
+  globalVolume: 0.2
 --- !u!1 &1579034475
 GameObject:
   m_ObjectHideFlags: 0
