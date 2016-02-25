@@ -32,7 +32,11 @@ public class TankBullet : MonoBehaviour {
 
 		override public void Update(float deltaTime) {
 			script.myRigidbody.velocity += new Vector2(0f, -g*script.weight*deltaTime);
-		}
+            if(script.myRigidbody.velocity.y > 0)
+                script.transform.rotation = Quaternion.Euler(0, 0, Vector2.Angle(script.myRigidbody.velocity.normalized, Vector2.right));
+            else
+                script.transform.rotation = Quaternion.Euler(0, 0, -Vector2.Angle(script.myRigidbody.velocity.normalized, Vector2.right));
+        }
 
 		override public void BlockCollision(GameObject block) {
 			Destroy(script.gameObject);

@@ -95,6 +95,7 @@ GameObject:
   - 4: {fileID: 1160713445}
   - 114: {fileID: 1160713444}
   - 114: {fileID: 1160713446}
+  - 114: {fileID: 1160713447}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -156,6 +157,22 @@ MonoBehaviour:
   numAxes: 10
   numButtons: 10
   clearDuration: 0.15
+--- !u!114 &1160713447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1160713443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1525250d83a9edd4084dbc23eca5740b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oneShotAudio: {fileID: 171236, guid: 2a20bb8202ed2ae42b0aae78a403d85d, type: 2}
+  backgroundAudio: {fileID: 171236, guid: d8440e14e8b6e7f4487c0609eb478ee2, type: 2}
+  backgroundClips: []
+  soundEffects: []
+  globalVolume: 1
 --- !u!1 &1579034475
 GameObject:
   m_ObjectHideFlags: 0

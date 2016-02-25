@@ -9,7 +9,7 @@ public class DestructibleObj : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void OnCollisionEnter2D (Collision2D col) {
+	void OnTriggerEnter2D (Collider2D col) {
         //change number to change amount of time before destroyed, to allow for
         //animations or whatever
         if (col.gameObject.tag == "Bullet")

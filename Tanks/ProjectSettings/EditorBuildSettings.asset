@@ -17,3 +17,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Player_Select_Screen.unity
   - enabled: 1
     path: Assets/Scenes/Arena1.unity
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
