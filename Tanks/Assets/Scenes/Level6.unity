@@ -250,7 +250,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 15, y: 9}
   serializedVersion: 2
@@ -2779,6 +2779,10 @@ Prefab:
     - target: {fileID: 22412712, guid: 1d8ddeb77314f4440a39d9a2b2a407a3, type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 111690, guid: 1d8ddeb77314f4440a39d9a2b2a407a3, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1d8ddeb77314f4440a39d9a2b2a407a3, type: 2}
@@ -8873,7 +8877,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: -15, y: 9}
   serializedVersion: 2
@@ -9881,7 +9885,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 410210, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -2.03
       objectReference: {fileID: 0}
     - target: {fileID: 410210, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
       propertyPath: m_LocalPosition.z
@@ -9922,6 +9926,10 @@ Prefab:
     - target: {fileID: 11432074, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
       propertyPath: upperBounds
       value: 12.497947
+      objectReference: {fileID: 0}
+    - target: {fileID: 2043578, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
+      propertyPath: orthographic size
+      value: 10.314449
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
@@ -11998,7 +12006,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: -14, y: -7}
   serializedVersion: 2
@@ -12531,7 +12539,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 14, y: -7}
   serializedVersion: 2
@@ -18270,7 +18278,7 @@ Transform:
   m_Children:
   - {fileID: 363784048}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
 --- !u!1 &1980934721
 GameObject:
   m_ObjectHideFlags: 0
