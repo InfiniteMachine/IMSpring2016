@@ -34,6 +34,7 @@ public class TankGun : MonoBehaviour {
 
     private InputController iCont;
     private Transform firePosition;
+    private ParticleSystem fireParticles;
     // Use this for initialization
     void Awake()
     {
@@ -41,6 +42,7 @@ public class TankGun : MonoBehaviour {
         ResetPower();
         iCont = transform.parent.GetComponent<InputController>();
         firePosition = transform.FindChild("FirePosition");
+        fireParticles = transform.FindChild("gun smoke").GetComponent<ParticleSystem>();
     }
 
 	void InitChargeStats()
@@ -139,6 +141,7 @@ public class TankGun : MonoBehaviour {
 
 	void Fire()	{
         SoundManager.instance.PlayOneShot("Shoot");
+        fireParticles.Emit(10);
         GameObject newBullet = (GameObject)Instantiate(bullet, firePosition.position, Quaternion.identity);
 		Destroy(newBullet, 15f);
         newBullet.GetComponent<TankBullet>().SetPower(currentPower, Vector2.Angle(Vector2.right, (firePosition.position - transform.position)), myBulletType);
