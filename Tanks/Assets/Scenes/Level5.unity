@@ -15225,7 +15225,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -13.5}
+  m_Offset: {x: 0, y: -15.5}
   serializedVersion: 2
   m_Size: {x: 45, y: 2}
 --- !u!4 &936324747
@@ -15239,7 +15239,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &943632596
 GameObject:
   m_ObjectHideFlags: 0
@@ -25166,7 +25166,7 @@ Transform:
   m_Children:
   - {fileID: 468063560}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1 &1498216457
 GameObject:
   m_ObjectHideFlags: 0
@@ -26824,7 +26824,7 @@ Transform:
   - {fileID: 1531551168}
   - {fileID: 1426489145}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &1702134206
 GameObject:
   m_ObjectHideFlags: 0

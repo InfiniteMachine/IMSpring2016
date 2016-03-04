@@ -8122,7 +8122,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 1, y: -14.5}
+  m_Offset: {x: 1, y: -16.5}
   serializedVersion: 2
   m_Size: {x: 51, y: 2}
 --- !u!4 &943517013

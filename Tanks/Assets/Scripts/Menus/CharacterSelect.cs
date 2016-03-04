@@ -19,6 +19,7 @@ public class CharacterSelect : MonoBehaviour {
     private Image arenaDisplay;
     private Text playerDisplay;
     private Text arenaNameDisplay;
+    public bool debug = false;
     // Update is called once per frame
     void Start()
     {
@@ -168,7 +169,7 @@ public class CharacterSelect : MonoBehaviour {
             }
         }
 
-        if (Manager.instance.numPlayers > 1)
+        if (Manager.instance.numPlayers > 1 || (debug && Manager.instance.numPlayers > 0))
         {
             bool go = true;
             for (int p = 0; p < Manager.instance.numPlayers; p++)
