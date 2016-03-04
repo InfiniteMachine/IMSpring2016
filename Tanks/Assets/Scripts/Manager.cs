@@ -99,6 +99,7 @@ public class Manager : MonoBehaviour {
 		indScore = new float[numPlayers];
 		for(int x=0;x<indScore.Length;x++)
 			indScore[x] = 0f;
+        SoundManager.instance.PlayBackground("backgroundMusic");
 	}
 
 	public string GetScore(int ID)
@@ -260,6 +261,7 @@ public class Manager : MonoBehaviour {
 
     private void GotoMenu()
     {
+        SoundManager.instance.StopBackground("backgroundMusic");
         SceneManager.LoadScene("Menu");
     }
 }

@@ -23,6 +23,9 @@ public class CharacterSelect : MonoBehaviour {
     // Update is called once per frame
     void Start()
     {
+        Manager.instance.numPlayers = 0;
+        for(int i = 0; i < 4; i++)
+            Manager.instance.playerTanks[i] = 0;
         playerSelect = transform.FindChild("PlayerSelect").gameObject;
         sceneSelect = transform.FindChild("SceneSelect").gameObject;
         sceneSelect.SetActive(false);
@@ -61,6 +64,10 @@ public class CharacterSelect : MonoBehaviour {
 
     public void CharacterSelectUpdate()
     {
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.LeftBracket))
+            debug = !debug;
+#endif
         Controller[] controllers = ControllerPool.GetInstance().GetControllers();
         for (int i = 0; i < controllers.Length; i++)
         {

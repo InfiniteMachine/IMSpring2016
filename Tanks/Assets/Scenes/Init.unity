@@ -172,6 +172,7 @@ MonoBehaviour:
   backgroundAudio: {fileID: 171236, guid: d8440e14e8b6e7f4487c0609eb478ee2, type: 2}
   backgroundClips:
   - {fileID: 8300000, guid: 308a9185c2cb04642924a2d3236580d5, type: 3}
+  - {fileID: 8300000, guid: ef1e64c64225f0541af631c538656531, type: 3}
   soundEffects:
   - {fileID: 8300000, guid: 94b5afdc7ebc30e4f879a5dd804fe808, type: 3}
   - {fileID: 8300000, guid: f092173b13c2fb046988b80f517fa835, type: 3}
@@ -183,7 +184,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e40eabd10d4714d4da50f1cb1f6879a5, type: 3}
   - {fileID: 8300000, guid: 578580986691c544dbdaecc061f63a62, type: 3}
   - {fileID: 8300000, guid: d6038acd57780684a9ce18debcb74ebc, type: 3}
-  globalVolume: 0.2
+  globalVolume: 1
 --- !u!1 &1579034475
 GameObject:
   m_ObjectHideFlags: 0
