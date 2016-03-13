@@ -8,6 +8,7 @@ public class SpeedBoost : MonoBehaviour, IAction
     private PlayerController PControl;
     private float BoostTimer = 0;
     public float BoostDelay = 2.0f;
+    private bool boostActive = false;
     //Use for initiation
     void Start()
     {
@@ -32,16 +33,19 @@ public class SpeedBoost : MonoBehaviour, IAction
         {
             BoostTimer -= Time.deltaTime;
         }
-        else
+        else if (boostActive)
+        {
             PControl.movementSpeed /= 2;
             FinishAction();
-        // Update effect code here
-
+        }
     }
 
     public void ForceDeactivate()
     {
         BoostTimer = 0;
+        if (boostActive)
+            PControl.movementSpeed /= 2;
+        boostActive = false;
         FinishAction();
     }
     public bool IsAttack()

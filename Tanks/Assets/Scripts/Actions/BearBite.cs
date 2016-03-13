@@ -59,8 +59,9 @@ public class BearBite : MonoBehaviour, IAction
     
     public void ForceDeactivate()
     {
-        bearBiteActive = false;
         bearBiteTimer = 0;
+        bearBite.enabled = false;
+        bearBiteActive = false;
         FinishAction();
     }
     public bool IsAttack()

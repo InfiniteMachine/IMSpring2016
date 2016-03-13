@@ -21,12 +21,14 @@ public class Manager : MonoBehaviour {
     public int maxPlayers = 4;
     public float endTime = 150f;
 	public float endScore = 150f;
-
+    public Color[] playerColors = new Color[] { Color.green, Color.red, Color.blue, Color.yellow };
 	[Header("Active Match Info:")]
 	// Variables for an active game
 	public bool activeMatch = false;
 	public float time = 0f;
 	public float[] indScore;
+    public int[] kills;
+    public int[] deaths;
     private Spawn[] spawns;
     private GameObject[] batonLocations;
     private int playerWithBaton = -1;
@@ -96,8 +98,11 @@ public class Manager : MonoBehaviour {
 		activeMatch = true;
 		time = 0f;
 
-		indScore = new float[numPlayers];
-		for(int x=0;x<indScore.Length;x++)
+        indScore = new float[numPlayers];
+        kills = new int[numPlayers];
+        deaths = new int[numPlayers];
+
+        for (int x=0;x<indScore.Length;x++)
 			indScore[x] = 0f;
         SoundManager.instance.PlayBackground("backgroundMusic");
 	}
@@ -114,7 +119,10 @@ public class Manager : MonoBehaviour {
         for (int i = 0; i < numPlayers; i++)
             scoreDisplays[i].transform.parent.gameObject.SetActive(false);
         for (int i = numPlayers + 1; i <= 4; i++)
+        {
             scorePanel.transform.FindChild("Place" + i).gameObject.SetActive(false);
+            scorePanel.transform.FindChild("Stats/Place" + i).gameObject.SetActive(false);
+        }
         timer.gameObject.SetActive(false);
         scorePanel.SetActive(true);
         List<int> players = new List<int>();
@@ -140,7 +148,12 @@ public class Manager : MonoBehaviour {
             placeHolder.FindChild("Display").GetComponent<Image>().sprite = tanks[playerTanks[players[i]]].GetComponent<SpriteRenderer>().sprite;
             placeHolder.FindChild("Character").GetComponent<Text>().text = tanks[playerTanks[players[i]]].GetComponent<PlayerController>().characterName;
             placeHolder.FindChild("Player").GetComponent<Text>().text = "Player " + (players[i] + 1);
+            placeHolder = scorePanel.transform.FindChild("Stats/Place" + (i + 1));
+            placeHolder.FindChild("Player").GetComponent<Text>().text = "Player " + (players[i] + 1);
+            placeHolder.FindChild("Kills").GetComponent<Text>().text = "" + kills[players[i]];
+            placeHolder.FindChild("Deaths").GetComponent<Text>().text = "" + deaths[players[i]];
         }
+        SoundManager.instance.StopAll();
         Invoke("GotoMenu", scoreScreenDuration);
 	}
 
@@ -231,6 +244,7 @@ public class Manager : MonoBehaviour {
             newPlayerObjects[x].GetComponent<PlayerController>().playerID = x;
             newPlayerObjects[x].GetComponent<PlayerController>().controllerNumber = playerControllers[x];
             screenCanvas.transform.FindChild("Score" + (x + 1) + "Panel").FindChild("Image").GetComponent<Image>().sprite = newPlayerObjects[x].GetComponent<SpriteRenderer>().sprite;
+            newPlayerObjects[x].GetComponent<SpriteRenderer>().material.SetColor("_Color", playerColors[x]);
         }
 		return true;
 	}

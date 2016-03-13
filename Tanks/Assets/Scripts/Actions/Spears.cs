@@ -46,8 +46,10 @@ public class Spears : MonoBehaviour, IAction
 
     public void ForceDeactivate()
     {
-        spearActive = false;
         spearTimer = 0;
+        if(spearActive)
+            Destroy(storage);
+        spearActive = false;
         FinishAction();
     }
 

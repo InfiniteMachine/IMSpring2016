@@ -52,6 +52,7 @@ public class BatShield : MonoBehaviour, IAction
         if (batShieldTimer >= 0 && iCont.GetButton(InputController.Buttons.SPECIAL_DEFENSE))
         {
             batShieldTimer -= Time.deltaTime;
+            shieldPrefab.transform.localScale = Vector3.one * Mathf.Lerp(2, 3, batShieldTimer / batShieldDuration);
         }
         else if (batShieldActive)
         {
@@ -68,8 +69,14 @@ public class BatShield : MonoBehaviour, IAction
 
     public void ForceDeactivate()
     {
-        batShieldActive = false;
         batShieldTimer = 0;
+        iCont.ClearButton(InputController.Buttons.SPECIAL_DEFENSE);
+        batShield.enabled = false;
+        batShieldActive = false;
+        pCont.enabled = true;
+        tGun.enabled = true;
+        rbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        shieldPrefab.SetActive(false);
         FinishAction();
     }
 
@@ -81,6 +88,7 @@ public class BatShield : MonoBehaviour, IAction
     public void StartAction()
     {
         batShield.enabled = true;
+        shieldPrefab.transform.localScale = Vector3.one * 3f;
         batShieldTimer = batShieldDuration;
         batShieldActive = true;
         pCont.enabled = false;

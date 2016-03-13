@@ -110,4 +110,12 @@ public class ControllerPool : MonoBehaviour{
     {
         return pool.ToArray();
     }
+
+    public bool GetButtonDown(int button)
+    {
+        bool ret = false;
+        for (int i = 0; i < pool.Count; i++)
+            ret |= pool[i].GetButtonDown(button);
+        return ret;
+    }
 }

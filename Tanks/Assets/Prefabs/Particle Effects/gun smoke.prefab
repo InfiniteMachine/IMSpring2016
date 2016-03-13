@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 479122}
   - 198: {fileID: 19889260}
   - 199: {fileID: 19958318}
+  - 114: {fileID: 11484972}
   m_Layer: 0
   m_Name: gun smoke
   m_TagString: Untagged
@@ -24,11 +25,23 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140192}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.8, y: 0.3120985, z: 0.1}
+  m_LocalPosition: {x: -42.123363, y: -11.808859, z: 0.1}
   m_LocalScale: {x: 0.4999999, y: 0.054999985, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11484972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e426f921dc69cae4680711f55785d525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aliveDuration: 2
 --- !u!198 &19889260
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -77,7 +90,7 @@ ParticleSystem:
   looping: 0
   prewarm: 0
   playOnAwake: 1
-  moveWithTransform: 1
+  moveWithTransform: 0
   scalingMode: 1
   InitialModule:
     serializedVersion: 2
@@ -118,7 +131,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 0.35
+      scalar: 1.4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -449,11 +462,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    cnt0: 30
+    cnt0: 1
     cnt1: 30
     cnt2: 30
     cnt3: 30
-    cntmax0: 40
+    cntmax0: 1
     cntmax1: 30
     cntmax2: 30
     cntmax3: 30
@@ -461,7 +474,7 @@ ParticleSystem:
     time1: 5
     time2: 0
     time3: 0
-    m_BurstCount: 0
+    m_BurstCount: 1
   SizeModule:
     enabled: 1
     curve:
@@ -747,7 +760,7 @@ ParticleSystem:
     cycles: 1
     randomRow: 1
   VelocityModule:
-    enabled: 0
+    enabled: 1
     x:
       scalar: 0
       maxCurve:
@@ -784,7 +797,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     y:
-      scalar: 0
+      scalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -853,7 +866,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    inWorldSpace: 0
+    inWorldSpace: 1
   InheritVelocityModule:
     enabled: 0
     m_Mode: 0

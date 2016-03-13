@@ -2,28 +2,13 @@
 using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour {
+    //Game Stuff
     public string characterName = "PlaceHolder";
-
-    public float movementSpeed = 4f;
-    public float accelDuration = 1f;
-
-    private Transform crown;
-    private bool hasCrown = false;
-    public Vector3 crownLocation = new Vector3(0, 0, -0.1f);
-
-    public float respawnTime = 3f;
-    public float respawnCounter = 0;
-    
-    public float jumpVel = 5f;
-    public float ignoreRange = 15f;
-    
     [HideInInspector]
     public int playerID;
     [HideInInspector]
     public int controllerNumber = -1;
-
     private Vector3 startLocation;
-
     //Components
     private Rigidbody2D rBody;
     //private StayGrounded sGround;
@@ -31,34 +16,46 @@ public class PlayerController : MonoBehaviour {
     private InputController iCont;
     private IAction specialAttack;
     private IAction specialDefense;
-
     private List<Collider2D> colliders;
     private List<SpriteRenderer> renderers;
-
-    //ExtraGravity
+    //Respawn Variables
+    [Header("Respawn")]
+    public float respawnTime = 3f;
+    private float respawnCounter = 0;
+    public float spawnInvulnurability = 2;
+    private float spawnCounter = 0;
+    [Header("Movement")]
+    public float movementSpeed = 4f;
+    public float accelDuration = 1f;
+    //Force Movement
+    private float forceMoveCounter = 0;
+    private float forceMoveSpeed = 0;
+    public float wrapMoveDuration = 0.5f;
     [Header("Extra Gravity")]
     public float downAccelDuration = 1f;
     public float downMaxAccel = 0.5f;
-    private float gravityCounter = 0;
-
-    private float forceMoveCounter = 0;
-    private float forceMoveSpeed = 0;
-    public float forceMoveDuration = 0.5f;
-
-    private bool canDash = false;
-    private bool canJump = false;
-    private bool waitingForJump = false;
+    private float gravityCounter = 0;    
+    [Header("Jump")]
+    public float jumpVel = 5f;
+    public float doubleJumpVel = 5f;
     public float extraJumpDelay = 0.25f;
+    private bool canJump = false;
+    private bool canDoubleJump = false;
+    private bool waitingForJump = false;
+    [Header("Dash")]
     public float dashVelocity = 4;
-
-    public float spawnInvulnurability = 2;
-    private float spawnCounter = 0;
-
+    public float sideDashDuration = 0.5f;
+    public float sideDashSpeed = 10f;
+    private bool canDash = false;
+    //Ability Specific
     private float disabledCounter = 0;
-
+    //Crown
+    private Transform crown;
+    private bool hasCrown = false;
+    private Transform crownLocation;
+    //Animation variables
     private Animator aController;
     private bool playingMove = false;
-    private Transform smoke;
     // Use this for initialization
     void Start()
     {
@@ -85,8 +82,8 @@ public class PlayerController : MonoBehaviour {
         colliders.AddRange(GetComponentsInChildren<Collider2D>());
         colliders.AddRange(GetComponents<Collider2D>());
         aController = GetComponent<Animator>();
-        SoundManager.instance.SetBackgroundVolume("TankMovement", 0.25f);
-        smoke = transform.FindChild("smoke");
+        crownLocation = transform.FindChild("CrownLocation");
+        GetComponentInChildren<TankGun>().playerID = playerID;
     }
 
     // Update is called once per frame
@@ -122,9 +119,18 @@ public class PlayerController : MonoBehaviour {
                 {
                     velocity.x = movementSpeed * iCont.GetAxis(InputController.Axis.MOVE);
                 }
-                else
+                else if(groundCheck.CheckGrounded())
                 {
                     velocity.x = Mathf.MoveTowards(velocity.x, 0, movementSpeed / accelDuration * Time.deltaTime);
+                }
+                if (iCont.GetButton(InputController.Buttons.DASH))
+                {
+                    iCont.ClearButton(InputController.Buttons.DASH);
+                    forceMoveCounter = sideDashDuration;
+                    if(velocity.x == 0)
+                        forceMoveSpeed = sideDashSpeed * Mathf.Sign(transform.localScale.x);
+                    else
+                        forceMoveSpeed = sideDashSpeed * Mathf.Sign(velocity.x);
                 }
             }
 
@@ -165,6 +171,7 @@ public class PlayerController : MonoBehaviour {
                 }
                 canDash = true;
                 canJump = true;
+                canDoubleJump = true;
                 waitingForJump = false;
             }
             else
@@ -184,10 +191,18 @@ public class PlayerController : MonoBehaviour {
                 }
             }
 
-            if (canJump && iCont.GetButton(InputController.Buttons.JUMP))
+            if ((canJump || canDoubleJump) && iCont.GetButton(InputController.Buttons.JUMP))
             {
-                //sGround.Ignore(0.1f);
-                velocity.y = jumpVel;
+                if (canJump)
+                {
+                    canJump = false;
+                    velocity.y = jumpVel;
+                }
+                else
+                {
+                    canDoubleJump = false;
+                    velocity.y = doubleJumpVel;
+                }
                 iCont.ClearButton(InputController.Buttons.JUMP);
                 SoundManager.instance.PlayOneShot("Jump");
             }
@@ -215,10 +230,6 @@ public class PlayerController : MonoBehaviour {
                 playingMove = false;
                 SoundManager.instance.StopBackground("TankMovement");
             }
-            if (transform.localScale.x < 0)
-                smoke.rotation = Quaternion.Euler(0, 0, 180);
-            else
-                smoke.rotation = Quaternion.identity;
             rBody.velocity = velocity;
         }
     }
@@ -239,11 +250,13 @@ public class PlayerController : MonoBehaviour {
         }
         else if (other.gameObject.CompareTag("Bullet") && spawnCounter <= 0)
         {
+            Manager.instance.kills[other.GetComponent<TankBullet>().playerID]++;
+            Manager.instance.deaths[playerID]++;
             Die(false);
         }
         else if (other.gameObject.CompareTag("ScreenWrap"))
         {
-            forceMoveCounter = forceMoveDuration;
+            forceMoveCounter = wrapMoveDuration;
             if (other.name.Contains("Left"))
             {
                 forceMoveSpeed = movementSpeed;
@@ -264,7 +277,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (hasCrown)
         {
-            crown.position = transform.position + crownLocation;
+            crown.position = crownLocation.position;
         }
     }
 

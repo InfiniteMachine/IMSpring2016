@@ -66,7 +66,7 @@ public class TankBullet : MonoBehaviour {
 	public float weight = 0f;
 	public float velocity = 0f;
 	public float strength = 0f;
-
+    public int playerID;
 	// Use this for initialization
 	void Awake () {
 		myRigidbody = GetComponent<Rigidbody2D>();

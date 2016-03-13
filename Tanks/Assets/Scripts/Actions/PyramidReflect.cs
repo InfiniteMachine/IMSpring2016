@@ -39,8 +39,9 @@ public class PyramidShield : MonoBehaviour, IAction
     }
     public void ForceDeactivate()
     {
-        PyramidShieldActive = false;
         PyramidShieldTimer = 0;
+        storage.SetActive(false);
+        PyramidShieldActive = false;
         FinishAction();
     }
 

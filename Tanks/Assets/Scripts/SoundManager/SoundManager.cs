@@ -4,18 +4,24 @@ using System.Collections.Generic;
 public class SoundManager : MonoBehaviour {
     public static SoundManager instance;
 
+    [System.Serializable]
+    public class AudioData
+    {
+        public AudioClip soundEffect;
+        public float defautVolume = 1;
+    }
+
     public GameObject oneShotAudio;
     public GameObject backgroundAudio;
 
-    public AudioClip[] backgroundClips;
+    public AudioData[] backgroundClips;
     private int[] maxPlaying;
     private AudioSource[] background;
 
-
-    public AudioClip[] soundEffects;
+    public AudioData[] soundEffects;
     [Range(0f, 1f)]
     public float globalVolume = 1;
-    
+
 	void Start () {
         if (instance == null)
             instance = this;
@@ -27,8 +33,9 @@ public class SoundManager : MonoBehaviour {
             go.transform.SetParent(transform);
             go.transform.position = Vector3.zero;
             AudioSource aSource = go.GetComponent<AudioSource>();
-            aSource.clip = backgroundClips[i];
-            aSource.volume = globalVolume;
+            aSource.clip = backgroundClips[i].soundEffect;
+            aSource.volume = globalVolume * backgroundClips[i].defautVolume;
+            aSource.loop = true;
             background[i] = aSource;
             maxPlaying[i] = 0;
         }
@@ -50,7 +57,7 @@ public class SoundManager : MonoBehaviour {
         {
             if (background[i].clip.name == name)
             {
-                background[i].volume = volume * globalVolume;
+                background[i].volume = backgroundClips[i].defautVolume * volume * globalVolume;
                 return;
             }
         }
@@ -66,13 +73,13 @@ public class SoundManager : MonoBehaviour {
     {
         for (int i = 0; i < soundEffects.Length; i++)
         {
-            if (soundEffects[i].name == name)
+            if (soundEffects[i].soundEffect.name == name)
             {
                 GameObject oneShot = Instantiate(oneShotAudio);
                 oneShot.transform.SetParent(transform);
                 oneShot.transform.position = Vector3.zero;
                 OneShotAudio audio = oneShot.GetComponent<OneShotAudio>();
-                audio.PlayOneShot(soundEffects[i], volume * globalVolume);
+                audio.PlayOneShot(soundEffects[i].soundEffect, soundEffects[i].defautVolume * volume * globalVolume);
                 return;
             }
         }
@@ -88,6 +95,8 @@ public class SoundManager : MonoBehaviour {
         }
         foreach (AudioSource aSource in background)
             aSource.Stop();
+        for (int i = 0; i < maxPlaying.Length; i++)
+            maxPlaying[i] = 0;
     }
 
     public void StopBackground(string name)

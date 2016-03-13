@@ -1,17 +1,23 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class CharacterSelect : MonoBehaviour {
-    private enum MenuState { CHARACTER, SCENE}
+    private enum MenuState { CHARACTER, SCENE, MATCH_OPTIONS}
     private MenuState curMenu = MenuState.CHARACTER;
-    private GameObject playerSelect;
+    private CanvasGroup playerSelect;
     public Sprite[] characterArt;
     private enum PStates { DISABLED, CHOOSING, LOCKED };
-    private PStates[] pStates;
-    private Image[] podiums;
-    private Image[] podiumDisabled;
-    private GameObject sceneSelect;
+    private class Podium
+    {
+        public PStates state;
+        public Image display;
+        public Text name;
+        public Image disabled;
+    }
+    private Podium[] podiums;
+    private CanvasGroup sceneSelect;
     public string[] areaNames;
     public Sprite[] scenes;
     private int sceneChooser = -1;
@@ -19,38 +25,54 @@ public class CharacterSelect : MonoBehaviour {
     private Image arenaDisplay;
     private Text playerDisplay;
     private Text arenaNameDisplay;
-    public bool debug = false;
+    private CanvasGroup matchOptions;
+    private bool debug = false;
+#if UNITY_EDITOR
+    private string buttonMap = "2323";
+    private int currentButton = 0;
+#endif
+
+    private bool animating = false;
+    public float animationDuration = 0.5f;
     // Update is called once per frame
     void Start()
     {
         Manager.instance.numPlayers = 0;
         for(int i = 0; i < 4; i++)
             Manager.instance.playerTanks[i] = 0;
-        playerSelect = transform.FindChild("PlayerSelect").gameObject;
-        sceneSelect = transform.FindChild("SceneSelect").gameObject;
-        sceneSelect.SetActive(false);
-        pStates = new PStates[4];
-        for (int i = 0; i < pStates.Length; i++)
-            pStates[i] = PStates.DISABLED;
-        podiums = new Image[4];
-        podiumDisabled = new Image[4];
+        playerSelect = transform.FindChild("PlayerSelect").GetComponent<CanvasGroup>();
+        sceneSelect = transform.FindChild("SceneSelect").GetComponent<CanvasGroup>();
+        sceneSelect.alpha = 0;
+        sceneSelect.interactable = false;
+        sceneSelect.blocksRaycasts = false;
         Transform displays = playerSelect.transform.FindChild("CharacterDisplays");
+        podiums = new Podium[4];
         for (int i = 0; i < podiums.Length; i++)
         {
             Transform tank = displays.FindChild("Tank" + (i + 1));
-            podiums[i] = tank.GetComponent<Image>();
-            podiumDisabled[i] = tank.FindChild("Disabled").GetComponent<Image>();
+            podiums[i] = new Podium();
+            podiums[i].state = PStates.DISABLED;
+            podiums[i].display = tank.FindChild("Image").GetComponent<Image>();
+            podiums[i].disabled = tank.FindChild("Disabled").GetComponent<Image>();
+            podiums[i].name = tank.FindChild("Name").GetComponent<Text>();
         }
         if(scenes.Length != areaNames.Length)
             Debug.Log("There is a mismatch of artwork and arena names");
         playerDisplay = sceneSelect.transform.FindChild("SelectPlayer").GetComponent<Text>();
         arenaDisplay = sceneSelect.transform.FindChild("LevelArt").GetComponent<Image>();
         arenaNameDisplay = sceneSelect.transform.FindChild("LevelName").GetComponent<Text>();
+        matchOptions = transform.FindChild("MatchOptions").GetComponent<CanvasGroup>();
+        matchOptions.alpha = 0;
+        matchOptions.interactable = false;
+        matchOptions.blocksRaycasts = false;
         UpdatePodiums();
+        UpdateSceneSelectVisual();
     }
 
     void Update()
     {
+        if (animating)
+            return;
         switch (curMenu)
         {
             case MenuState.CHARACTER:
@@ -59,6 +81,9 @@ public class CharacterSelect : MonoBehaviour {
             case MenuState.SCENE:
                 SceneSelectUpdate();
                 break;
+            case MenuState.MATCH_OPTIONS:
+
+                break;
         }
     }
 
@@ -66,7 +91,18 @@ public class CharacterSelect : MonoBehaviour {
     {
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.LeftBracket))
+        {
             debug = !debug;
+            Debug.Log("Debug Value Changed to: " + debug);
+        }
+        if (ControllerPool.GetInstance().GetButtonDown(buttonMap[currentButton] - '0'))
+            currentButton++;
+        if (currentButton >= buttonMap.Length)
+        {
+            debug = !debug;
+            Debug.Log("Debug Value Changed to: " + debug);
+            currentButton = 0;
+        }
 #endif
         Controller[] controllers = ControllerPool.GetInstance().GetControllers();
         for (int i = 0; i < controllers.Length; i++)
@@ -78,7 +114,7 @@ public class CharacterSelect : MonoBehaviour {
                 {
                     //Player specific update
                     usedController = true;
-                    if (pStates[p] == PStates.CHOOSING)
+                    if (podiums[p].state == PStates.CHOOSING)
                     {
                         if (controllers[i].GetAxisAsButton(0, true) || controllers[i].GetAxisAsButton(5, false))
                         {
@@ -99,14 +135,14 @@ public class CharacterSelect : MonoBehaviour {
                         else if (controllers[i].GetButtonDown(0))
                         {
                             //Submit
-                            pStates[p] = PStates.LOCKED;
+                            podiums[p].state = PStates.LOCKED;
                             SoundManager.instance.PlayOneShot("Select");
                         }
                     }
                     else if (controllers[i].GetButtonDown(1))
                     {
                         //Cancel
-                        pStates[p] = PStates.CHOOSING;
+                        podiums[p].state = PStates.CHOOSING;
                     }
                 }
             }
@@ -117,7 +153,7 @@ public class CharacterSelect : MonoBehaviour {
                     //Submit
                     Manager.instance.playerControllers[Manager.instance.numPlayers] = i + 1;
                     Manager.instance.playerTanks[Manager.instance.numPlayers] = 0;
-                    pStates[Manager.instance.numPlayers] = PStates.CHOOSING;
+                    podiums[Manager.instance.numPlayers].state = PStates.CHOOSING;
                     Manager.instance.numPlayers++;
                     SoundManager.instance.PlayOneShot("Select");
                 }
@@ -130,7 +166,7 @@ public class CharacterSelect : MonoBehaviour {
             {
                 usedKeyboard = true;
                 //Player Specific Update
-                if (pStates[p] == PStates.CHOOSING)
+                if (podiums[p].state == PStates.CHOOSING)
                 {
                     if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
                     {
@@ -151,14 +187,14 @@ public class CharacterSelect : MonoBehaviour {
                     else if (Input.GetKeyDown(KeyCode.Return))
                     {
                         //Submit
-                        pStates[p] = PStates.LOCKED;
+                        podiums[p].state = PStates.LOCKED;
                         SoundManager.instance.PlayOneShot("Select");
                     }
                 }
                 else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
                 {
                     //Cancel
-                    pStates[p] = PStates.CHOOSING;
+                    podiums[p].state = PStates.CHOOSING;
                 }
 
             }
@@ -170,7 +206,7 @@ public class CharacterSelect : MonoBehaviour {
                 //Submit
                 Manager.instance.playerControllers[Manager.instance.numPlayers] = -1;
                 Manager.instance.playerTanks[Manager.instance.numPlayers] = 0;
-                pStates[Manager.instance.numPlayers] = PStates.CHOOSING;
+                podiums[Manager.instance.numPlayers].state = PStates.CHOOSING;
                 Manager.instance.numPlayers++;
                 SoundManager.instance.PlayOneShot("Select");
             }
@@ -181,16 +217,13 @@ public class CharacterSelect : MonoBehaviour {
             bool go = true;
             for (int p = 0; p < Manager.instance.numPlayers; p++)
             {
-                go &= (pStates[p] == PStates.LOCKED);
+                go &= (podiums[p].state == PStates.LOCKED);
             }
             if (go)
             {
                 //Setup arena select screen
-                curMenu = MenuState.SCENE;
                 sceneChooser = Random.Range(0, Manager.instance.numPlayers);
-                playerSelect.SetActive(false);
-                sceneSelect.SetActive(true);
-                UpdateSceneSelectVisual();
+                StartCoroutine(SwapMenu(MenuState.SCENE));
             }
         }
         UpdatePodiums();
@@ -200,21 +233,23 @@ public class CharacterSelect : MonoBehaviour {
     {
         for(int i = 0; i < podiums.Length; i++)
         {
-            switch (pStates[i])
+            switch (podiums[i].state)
             {
                 case PStates.DISABLED:
-                    podiums[i].enabled = false;
-                    podiums[i].color = Color.white;
-                    podiumDisabled[i].enabled = true;
+                    podiums[i].display.enabled = false;
+                    podiums[i].display.color = Color.white;
+                    podiums[i].disabled.enabled = true;
+                    podiums[i].name.text = "";
                     break;
                 case PStates.CHOOSING:
-                    podiums[i].enabled = true;
-                    podiums[i].sprite = characterArt[Manager.instance.playerTanks[i]];
-                    podiums[i].color = Color.white;
-                    podiumDisabled[i].enabled = false;
+                    podiums[i].display.enabled = true;
+                    podiums[i].display.sprite = characterArt[Manager.instance.playerTanks[i]];
+                    podiums[i].display.color = Color.white;
+                    podiums[i].disabled.enabled = false;
+                    podiums[i].name.text = Manager.instance.tanks[Manager.instance.playerTanks[i]].GetComponent<PlayerController>().characterName;
                     break;
                 case PStates.LOCKED:
-                    podiums[i].color = Color.gray;
+                    podiums[i].display.color = Color.gray;
                     break;
             }
         }
@@ -245,6 +280,10 @@ public class CharacterSelect : MonoBehaviour {
                 //Submit
                 GotoSelectedArena();
                 SoundManager.instance.PlayOneShot("Select");
+            }else if (Input.GetKeyDown(KeyCode.X))
+            {
+                StartCoroutine(SwapMenu(MenuState.MATCH_OPTIONS));
+                SoundManager.instance.PlayOneShot("Select");
             }
         }
         else
@@ -272,6 +311,11 @@ public class CharacterSelect : MonoBehaviour {
                 GotoSelectedArena();
                 SoundManager.instance.PlayOneShot("Select");
             }
+            else if (c.GetButtonDown(2))
+            {
+                StartCoroutine(SwapMenu(MenuState.MATCH_OPTIONS));
+                SoundManager.instance.PlayOneShot("Select");
+            }
         }
         UpdateSceneSelectVisual();
     }
@@ -287,5 +331,84 @@ public class CharacterSelect : MonoBehaviour {
     {
         Manager.instance.InitOnNextScene();
         SceneManager.LoadScene(areaNames[arena]);
+    }
+
+    private IEnumerator SwapMenu(MenuState newMenu)
+    {
+        animating = true;
+        float counter = 0;
+#if UNITY_EDITOR
+        Debug.Log(curMenu.ToString() + " to " + newMenu.ToString());
+#endif
+        switch (curMenu)
+        {
+            case MenuState.CHARACTER:
+                playerSelect.interactable = false;
+                playerSelect.blocksRaycasts = false;
+                break;
+            case MenuState.SCENE:
+                sceneSelect.interactable = false;
+                sceneSelect.blocksRaycasts = false;
+                break;
+            case MenuState.MATCH_OPTIONS:
+                matchOptions.interactable = false;
+                matchOptions.blocksRaycasts = false;
+                break;
+        }
+        while (counter < animationDuration / 2)
+        {
+            counter += Time.deltaTime;
+            switch (curMenu)
+            {
+                case MenuState.CHARACTER:
+                    playerSelect.alpha = (animationDuration - (2 * counter)) / animationDuration;
+                    break;
+                case MenuState.SCENE:
+                    sceneSelect.alpha = (animationDuration - (2 * counter)) / animationDuration;
+                    break;
+                case MenuState.MATCH_OPTIONS:
+                    matchOptions.alpha = (animationDuration - (2 * counter)) / animationDuration;
+                    break;
+            }
+            yield return null;
+        }
+        curMenu = newMenu;
+        counter = 0;
+        while (counter < animationDuration / 2)
+        {
+            counter += Time.deltaTime;
+            switch (curMenu)
+            {
+                case MenuState.CHARACTER:
+                    playerSelect.alpha = (2 * counter) / animationDuration;
+                    break;
+                case MenuState.SCENE:
+                    UpdateSceneSelectVisual();
+                    sceneSelect.alpha = (2 * counter) / animationDuration;
+                    break;
+                case MenuState.MATCH_OPTIONS:
+                    matchOptions.alpha = (2 * counter) / animationDuration;
+                    break;
+            }
+            yield return null;
+        }
+        switch (curMenu)
+        {
+            case MenuState.CHARACTER:
+                playerSelect.interactable = true;
+                playerSelect.blocksRaycasts = true;
+                UpdatePodiums();
+                break;
+            case MenuState.SCENE:
+                sceneSelect.interactable = true;
+                sceneSelect.blocksRaycasts = true;
+                UpdateSceneSelectVisual();
+                break;
+            case MenuState.MATCH_OPTIONS:
+                matchOptions.interactable = true;
+                matchOptions.blocksRaycasts = true;
+                break;
+        }
+        animating = false;
     }
 }

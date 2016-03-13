@@ -4,7 +4,7 @@ using System.Collections;
 public class TankGun : MonoBehaviour {
 
 	public GameObject bullet;
-
+    public GameObject particles;
 	[System.Serializable]
 	public class Charge {
 		public float time;
@@ -34,7 +34,8 @@ public class TankGun : MonoBehaviour {
 
     private InputController iCont;
     private Transform firePosition;
-    private ParticleSystem fireParticles;
+    private Collider2D parentCollider;
+    public int playerID;
     // Use this for initialization
     void Awake()
     {
@@ -42,7 +43,7 @@ public class TankGun : MonoBehaviour {
         ResetPower();
         iCont = transform.parent.GetComponent<InputController>();
         firePosition = transform.FindChild("FirePosition");
-        fireParticles = transform.FindChild("gun smoke").GetComponent<ParticleSystem>();
+        parentCollider = transform.parent.GetComponent<Collider2D>();
     }
 
 	void InitChargeStats()
@@ -141,11 +142,14 @@ public class TankGun : MonoBehaviour {
 
 	void Fire()	{
         SoundManager.instance.PlayOneShot("Shoot");
-        fireParticles.Emit(10);
+        GameObject go = (GameObject)Instantiate(particles, firePosition.position, Quaternion.identity);
+        go.transform.SetParent(firePosition);
         GameObject newBullet = (GameObject)Instantiate(bullet, firePosition.position, Quaternion.identity);
+        Physics2D.IgnoreCollision(newBullet.GetComponent<Collider2D>(), parentCollider);
 		Destroy(newBullet, 15f);
         newBullet.GetComponent<TankBullet>().SetPower(currentPower, Vector2.Angle(Vector2.right, (firePosition.position - transform.position)), myBulletType);
-		currentReloadTime = 0f;
+        newBullet.GetComponent<TankBullet>().playerID = playerID;
+        currentReloadTime = 0f;
 		ResetPower();
 	}
 

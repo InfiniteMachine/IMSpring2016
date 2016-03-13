@@ -5,7 +5,7 @@ public class InputController : MonoBehaviour
 	public enum Axis { MOVE = 0, AIM_X, AIM_Y, AIM_ANGLE }
     private float[] axis;
 
-    public enum Buttons { JUMP = 0, FIRE, CHARGE, SPECIAL_FIRE, SPECIAL_DEFENSE, DASH_DOWN }
+    public enum Buttons { JUMP = 0, FIRE, CHARGE, SPECIAL_FIRE, SPECIAL_DEFENSE, DASH_DOWN, DASH }
     public enum State { RELEASED, PRESSED, CLEARED }
     private State[] buttons;
     
@@ -33,6 +33,22 @@ public class InputController : MonoBehaviour
             GamePadControl();
         else
             KeyboardControl();
+    }
+
+    public bool GetControllerButton(int button)
+    {
+        if (useKeyboard)
+            return false;
+        else
+            return controller.GetButton(button);
+    }
+
+    public float GetControllerAxis(int axis)
+    {
+        if (useKeyboard)
+            return 0;
+        else
+            return controller.GetAxis(axis);
     }
 
     public float GetAxis(Axis a)
@@ -111,6 +127,15 @@ public class InputController : MonoBehaviour
         else if (buttons[(int)Buttons.DASH_DOWN] != State.RELEASED && !controller.GetButton(1))
         {
             buttons[(int)Buttons.DASH_DOWN] = State.RELEASED;
+        }
+
+        if (buttons[(int)Buttons.DASH] == State.RELEASED && controller.GetButton(8))
+        {
+            buttons[(int)Buttons.DASH] = State.PRESSED;
+        }
+        else if (buttons[(int)Buttons.DASH] != State.RELEASED && !controller.GetButton(8))
+        {
+            buttons[(int)Buttons.DASH] = State.RELEASED;
         }
 
         if (buttons[(int)Buttons.FIRE] == State.RELEASED && controller.GetAxis(2) < 0)
