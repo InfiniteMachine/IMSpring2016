@@ -44,6 +44,7 @@ GameObject:
   - 212: {fileID: 21242110}
   - 61: {fileID: 6100394}
   - 50: {fileID: 5023754}
+  - 58: {fileID: 5894406}
   - 114: {fileID: 11448126}
   - 114: {fileID: 11418138}
   - 114: {fileID: 11458136}
@@ -210,6 +211,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!58 &5894406
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127546}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: -0.25}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!61 &6100394
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -221,9 +236,9 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: e2909f1544ea08e40ada3b3c844fe648, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.3}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.5}
+  m_Size: {x: 1, y: 1}
 --- !u!95 &9523916
 Animator:
   serializedVersion: 3
@@ -267,6 +282,7 @@ MonoBehaviour:
   currentTime: 0
   currentLevel: 0
   charging: 0
+  playerID: 0
 --- !u!114 &11418138
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -2,10 +2,14 @@
 using System.Collections;
 
 public class DestructibleObj : MonoBehaviour {
-
+    public int hits = 2;
+    private int timesHit = 0;
+    public Sprite[] sprites;
+    private SpriteRenderer sRender;
 	// Use this for initialization
 	void Start () {
-	
+        sRender = GetComponent<SpriteRenderer>();
+        sRender.sprite = sprites[0];
 	}
 	
 	// Update is called once per frame
@@ -14,7 +18,11 @@ public class DestructibleObj : MonoBehaviour {
         //animations or whatever
         if (col.gameObject.tag == "Bullet")
         {
-            Destroy(gameObject, 0);
+            timesHit++;
+            if (timesHit >= hits)
+                Destroy(gameObject, 0);
+            else
+                sRender.sprite = sprites[timesHit];
         }
 	}
 }

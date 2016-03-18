@@ -134,6 +134,8 @@ MonoBehaviour:
   activeMatch: 0
   time: 0
   indScore: []
+  kills: 
+  deaths: 
   scoreScreenDuration: 10
 --- !u!4 &1160713445
 Transform:
