@@ -48,7 +48,7 @@ GameObject:
   - 114: {fileID: 11448126}
   - 114: {fileID: 11418138}
   - 114: {fileID: 11458136}
-  - 114: {fileID: 11496642}
+  - 114: {fileID: 11455096}
   - 95: {fileID: 9523916}
   m_Layer: 0
   m_Name: Ghandi
@@ -146,7 +146,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -38.832447, y: -9.689914, z: 0}
+  m_LocalPosition: {x: -6.7347383, y: -3.9538023, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 490206}
@@ -332,6 +332,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e66d8010b329c4ab014299d9849c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11455096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 858e62df182747f4ca931985a0b6c27d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireDelay: 5
+  batShieldDuration: 10
+  shieldPrefab: {fileID: 149078, guid: 5e616e8c5717a1243ab6388ec1bbf701, type: 2}
 --- !u!114 &11458136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -345,21 +359,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireDelay: 5
   explosionPrefab: {fileID: 146204, guid: 65c68a8ae321d5e4bb066db499c86bb8, type: 2}
---- !u!114 &11496642
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ad20a9a1f3191344906a3cb77cead78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireDelay: 5
-  force: 20
-  radius: 3
-  disableTime: 0.25
 --- !u!212 &21242110
 SpriteRenderer:
   m_ObjectHideFlags: 1

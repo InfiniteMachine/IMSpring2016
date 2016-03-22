@@ -121,6 +121,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9c86f70b640d75c4cbe994b235d234c0, type: 3}
   - {fileID: 21300000, guid: a7cc4470de6c4cc49aad666818f8c04e, type: 3}
   - {fileID: 21300000, guid: 287e5ac7c1150bf43a5b5d85468b8846, type: 3}
+  - {fileID: 21300000, guid: e2ec4ab74bde29248a56cd1f3739daae, type: 3}
+  - {fileID: 21300000, guid: b6f179dcace7d514b86709b09966ea1e, type: 3}
+  - {fileID: 21300000, guid: 59a953ec04cfc42478401d62ee473b7a, type: 3}
+  - {fileID: 21300000, guid: f6b72592abd7de1489ecdffca3dd2555, type: 3}
   areaNames:
   - Arena1
   - Level1

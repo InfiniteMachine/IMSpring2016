@@ -31,7 +31,7 @@ GameObject:
   - 114: {fileID: 11451438}
   - 114: {fileID: 11479692}
   - 114: {fileID: 11444098}
-  - 114: {fileID: 11462392}
+  - 114: {fileID: 11415592}
   - 95: {fileID: 9572852}
   m_Layer: 0
   m_Name: VladimirPutin
@@ -134,7 +134,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40.345783, y: -12.0414095, z: 0}
+  m_LocalPosition: {x: -44.78, y: -9.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 445662}
@@ -267,6 +267,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59413760938be634383ba3b5b81939f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11415592
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 858e62df182747f4ca931985a0b6c27d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireDelay: 5
+  batShieldDuration: 10
+  shieldPrefab: {fileID: 149078, guid: 5e616e8c5717a1243ab6388ec1bbf701, type: 2}
 --- !u!114 &11444098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -293,19 +307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e66d8010b329c4ab014299d9849c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11462392
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ea86d3470e4a8e419e953f7badc31e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireDelay: 2
-  blinkDistance: 4
 --- !u!114 &11462470
 MonoBehaviour:
   m_ObjectHideFlags: 1

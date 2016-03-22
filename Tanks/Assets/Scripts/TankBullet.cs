@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TankBullet : MonoBehaviour {
+public class TankBullet : MonoBehaviour, IPlayerID {
 
 	static public float g = 9.81f;
 
@@ -66,7 +66,7 @@ public class TankBullet : MonoBehaviour {
 	public float weight = 0f;
 	public float velocity = 0f;
 	public float strength = 0f;
-    public int playerID;
+    private int playerID;
 	// Use this for initialization
 	void Awake () {
 		myRigidbody = GetComponent<Rigidbody2D>();
@@ -107,4 +107,14 @@ public class TankBullet : MonoBehaviour {
 		// Not using ApplyVel here because the velocity is 0 and .normalized wouldnt work.
 		myRigidbody.velocity = transform.right * velocity;
 	}
+
+    public int GetPlayerID()
+    {
+        return playerID;
+    }
+
+    public void SetPlayerID(int id)
+    {
+        playerID = id;
+    }
 }
