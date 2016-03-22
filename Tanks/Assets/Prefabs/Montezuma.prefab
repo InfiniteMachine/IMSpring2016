@@ -158,7 +158,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136962}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -36.33, y: -8.34, z: 0}
+  m_LocalPosition: {x: -8.46344, y: -5.5787325, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 489818}
@@ -357,7 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireDelay: 5
-  batShieldDuration: 10
+  batShieldDuration: 2
   shieldPrefab: {fileID: 149078, guid: 5e616e8c5717a1243ab6388ec1bbf701, type: 2}
 --- !u!212 &21220700
 SpriteRenderer:
