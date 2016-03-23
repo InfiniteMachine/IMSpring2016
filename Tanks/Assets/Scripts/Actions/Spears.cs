@@ -10,11 +10,11 @@ public class Spears : MonoBehaviour, IAction
     private GameObject storage;
     public float spearTimer = 0;
     private bool spearActive = false;
-
+    private int playerID;
     //Use for initiation
     void Start()
     {
-        
+        playerID = GetComponent<PlayerController>().playerID;
     }
 
     void UpdateTimer()
@@ -65,6 +65,7 @@ public class Spears : MonoBehaviour, IAction
         storage = Instantiate(spear);
         storage.transform.SetParent(transform);
         storage.transform.localPosition = spearlocation;
+        storage.GetComponent<IPlayerID>().SetPlayerID(playerID);
         spearActive = true;
         spearTimer = spearDelay;
     }

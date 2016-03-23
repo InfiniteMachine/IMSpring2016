@@ -22,7 +22,8 @@ public class Manager : MonoBehaviour {
     public float endTime = 150f;
 	public float endScore = 150f;
     public Color[] playerColors = new Color[] { Color.green, Color.red, Color.blue, Color.yellow };
-	[Header("Active Match Info:")]
+    public Sprite[] playerTags;
+    [Header("Active Match Info:")]
 	// Variables for an active game
 	public bool activeMatch = false;
 	public float time = 0f;
@@ -243,6 +244,12 @@ public class Manager : MonoBehaviour {
             newPlayerObjects[x] = (GameObject)Instantiate(tanks[playerTanks[x]], nextSpawn, Quaternion.identity);
             newPlayerObjects[x].GetComponent<PlayerController>().playerID = x;
             newPlayerObjects[x].GetComponent<PlayerController>().controllerNumber = playerControllers[x];
+            GameObject go = new GameObject("PlayerTag");
+            go.transform.SetParent(newPlayerObjects[x].transform.FindChild("CrownLocation"));
+            go.transform.localPosition = Vector3.up;
+            go.transform.rotation = Quaternion.identity;
+            go.AddComponent<SpriteRenderer>().sprite = playerTags[x];
+            
             screenCanvas.transform.FindChild("Score" + (x + 1) + "Panel").FindChild("Image").GetComponent<Image>().sprite = newPlayerObjects[x].GetComponent<SpriteRenderer>().sprite;
             newPlayerObjects[x].GetComponent<SpriteRenderer>().material.SetColor("_Color", playerColors[x]);
         }

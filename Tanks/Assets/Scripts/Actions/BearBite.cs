@@ -5,21 +5,38 @@ public class BearBite : MonoBehaviour, IAction
 {
     //Can be modified
     public float fireDelay = 5; //seconds between uses
+
+    public GameObject bearBitePrefab;
+    private Animator bearBiteAnimator;
+
     private BoxCollider2D bearBite;
-    public Vector2 Offset;
-    public Vector2 Size;
+    public Vector2 offset = new Vector2(1.5f, 0);
+    public Vector2 size = new Vector2(1, 1.5f);
+
     public float bearBiteDelay = 1;
     private bool bearBiteActive = false;
     private float bearBiteTimer = 0;
+
+    private int tForceEnd;
+    private int tPlayAnim;
 
     //Use for initiation
     void Start()
     {
         bearBite = gameObject.AddComponent<BoxCollider2D>();
+        bearBite.size = size;
+        bearBite.offset = offset;
         bearBite.isTrigger = true;
         bearBite.enabled = false;
-        bearBite.offset = Offset;
-        bearBite.size = Size;
+
+        GameObject go = (GameObject)Instantiate(bearBitePrefab);
+        go.transform.SetParent(transform);
+        go.transform.localPosition = offset;
+        go.transform.rotation = Quaternion.identity;
+        bearBiteAnimator = go.GetComponent<Animator>();
+
+        tForceEnd = Animator.StringToHash("tForceEnd");
+        tPlayAnim = Animator.StringToHash("tPlayAnim");
     }
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -62,6 +79,7 @@ public class BearBite : MonoBehaviour, IAction
         bearBiteTimer = 0;
         bearBite.enabled = false;
         bearBiteActive = false;
+        bearBiteAnimator.SetTrigger(tForceEnd);
         FinishAction();
     }
     public bool IsAttack()
@@ -76,6 +94,7 @@ public class BearBite : MonoBehaviour, IAction
         bearBite.enabled = true;
         bearBiteTimer = bearBiteDelay;
         bearBiteActive = true;
+        bearBiteAnimator.SetTrigger(tPlayAnim);
     }
 
     //Don't touch

@@ -13,6 +13,7 @@ public class CharacterSelect : MonoBehaviour {
     {
         public PStates state;
         public Image display;
+        public Image leftArrow, rightArrow;
         public Text name;
         public Image disabled;
     }
@@ -55,6 +56,8 @@ public class CharacterSelect : MonoBehaviour {
             podiums[i].display = tank.FindChild("Image").GetComponent<Image>();
             podiums[i].disabled = tank.FindChild("Disabled").GetComponent<Image>();
             podiums[i].name = tank.FindChild("Name").GetComponent<Text>();
+            podiums[i].leftArrow = tank.FindChild("LeftArrow").GetComponent<Image>();
+            podiums[i].rightArrow = tank.FindChild("RightArrow").GetComponent<Image>();
         }
         if(scenes.Length != areaNames.Length)
             Debug.Log("There is a mismatch of artwork and arena names");
@@ -240,6 +243,8 @@ public class CharacterSelect : MonoBehaviour {
                     podiums[i].display.color = Color.white;
                     podiums[i].disabled.enabled = true;
                     podiums[i].name.text = "";
+                    podiums[i].leftArrow.enabled = false;
+                    podiums[i].rightArrow.enabled = false;
                     break;
                 case PStates.CHOOSING:
                     podiums[i].display.enabled = true;
@@ -247,9 +252,13 @@ public class CharacterSelect : MonoBehaviour {
                     podiums[i].display.color = Color.white;
                     podiums[i].disabled.enabled = false;
                     podiums[i].name.text = Manager.instance.tanks[Manager.instance.playerTanks[i]].GetComponent<PlayerController>().characterName;
+                    podiums[i].leftArrow.enabled = true;
+                    podiums[i].rightArrow.enabled = true;
                     break;
                 case PStates.LOCKED:
                     podiums[i].display.color = Color.gray;
+                    podiums[i].leftArrow.enabled = false;
+                    podiums[i].rightArrow.enabled = false;
                     break;
             }
         }

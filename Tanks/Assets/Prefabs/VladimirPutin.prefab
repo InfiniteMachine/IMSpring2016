@@ -110,7 +110,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.17, y: 0.26, z: 0}
+  m_LocalPosition: {x: 0.362, y: 0.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 445662}
@@ -134,7 +134,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.85199, y: -5.5900536, z: 0}
+  m_LocalPosition: {x: -3.35, y: -2.91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 445662}
@@ -293,9 +293,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireDelay: 5
-  Offset: {x: 1, y: -0.2}
-  Size: {x: 1, y: 1}
-  bearBiteDelay: 1
+  bearBitePrefab: {fileID: 126504, guid: d21570b49d8960b42a4edee03d0b445f, type: 2}
+  offset: {x: 1.5, y: 0}
+  size: {x: 1, y: 1.5}
+  bearBiteDelay: 0.75
 --- !u!114 &11451438
 MonoBehaviour:
   m_ObjectHideFlags: 1
