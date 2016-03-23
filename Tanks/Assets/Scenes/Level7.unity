@@ -840,11 +840,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 43544524}
   - 212: {fileID: 43544523}
-  - 114: {fileID: 43544526}
   - 61: {fileID: 43544525}
   m_Layer: 0
   m_Name: MMetal Plate (23)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -905,17 +904,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &43544526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 43544522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &58180896
 GameObject:
   m_ObjectHideFlags: 0
@@ -3079,11 +3067,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 180611091}
   - 212: {fileID: 180611090}
-  - 114: {fileID: 180611093}
   - 61: {fileID: 180611092}
   m_Layer: 0
   m_Name: MMetal Plate (51)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3144,17 +3131,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &180611093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 180611089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &192378670
 GameObject:
   m_ObjectHideFlags: 0
@@ -3423,11 +3399,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 209376814}
   - 212: {fileID: 209376813}
-  - 114: {fileID: 209376816}
   - 61: {fileID: 209376815}
   m_Layer: 0
   m_Name: MMetal Plate (40)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3488,17 +3463,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &209376816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 209376812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &209707837
 GameObject:
   m_ObjectHideFlags: 0
@@ -6310,11 +6274,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 428019490}
   - 212: {fileID: 428019489}
-  - 114: {fileID: 428019492}
   - 61: {fileID: 428019491}
   m_Layer: 0
   m_Name: MMetal Plate (25)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6375,17 +6338,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &428019492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 428019488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &433027894
 GameObject:
   m_ObjectHideFlags: 0
@@ -7373,11 +7325,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 528184794}
   - 212: {fileID: 528184793}
-  - 114: {fileID: 528184796}
   - 61: {fileID: 528184795}
   m_Layer: 0
   m_Name: MMetal Plate (39)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7438,17 +7389,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &528184796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 528184792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &537926597
 GameObject:
   m_ObjectHideFlags: 0
@@ -7686,11 +7626,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 562163302}
   - 212: {fileID: 562163301}
-  - 114: {fileID: 562163304}
   - 61: {fileID: 562163303}
   m_Layer: 0
   m_Name: MMetal Plate (45)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7751,17 +7690,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &562163304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 562163300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &563500461
 GameObject:
   m_ObjectHideFlags: 0
@@ -10384,11 +10312,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 759645038}
   - 212: {fileID: 759645037}
-  - 114: {fileID: 759645040}
   - 61: {fileID: 759645039}
   m_Layer: 0
   m_Name: MMetal Plate (24)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10449,17 +10376,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &759645040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 759645036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &766511100
 GameObject:
   m_ObjectHideFlags: 0
@@ -11756,11 +11672,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 861901351}
   - 212: {fileID: 861901350}
-  - 114: {fileID: 861901353}
   - 61: {fileID: 861901352}
   m_Layer: 0
   m_Name: MMetal Plate (43)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11821,17 +11736,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &861901353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 861901349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &864623719
 GameObject:
   m_ObjectHideFlags: 0
@@ -13191,11 +13095,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 965140281}
   - 212: {fileID: 965140280}
-  - 114: {fileID: 965140283}
   - 61: {fileID: 965140282}
   m_Layer: 0
   m_Name: MMetal Plate (46)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13256,17 +13159,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &965140283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 965140279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &967737047
 GameObject:
   m_ObjectHideFlags: 0
@@ -14698,11 +14590,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1066187771}
   - 212: {fileID: 1066187770}
-  - 114: {fileID: 1066187773}
   - 61: {fileID: 1066187772}
   m_Layer: 0
   m_Name: MMetal Plate (36)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14763,17 +14654,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &1066187773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1066187769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1078203278
 GameObject:
   m_ObjectHideFlags: 0
@@ -14953,11 +14833,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1084036035}
   - 212: {fileID: 1084036034}
-  - 114: {fileID: 1084036037}
   - 61: {fileID: 1084036036}
   m_Layer: 0
   m_Name: MMetal Plate (38)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15018,17 +14897,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &1084036037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1084036033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1095265842
 GameObject:
   m_ObjectHideFlags: 0
@@ -16097,11 +15965,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1158043630}
   - 212: {fileID: 1158043629}
-  - 114: {fileID: 1158043632}
   - 61: {fileID: 1158043631}
   m_Layer: 0
   m_Name: MMetal Plate (44)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16162,17 +16029,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &1158043632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1158043628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1161913458
 GameObject:
   m_ObjectHideFlags: 0
@@ -16510,11 +16366,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1184750571}
   - 212: {fileID: 1184750570}
-  - 114: {fileID: 1184750573}
   - 61: {fileID: 1184750572}
   m_Layer: 0
   m_Name: MMetal Plate (48)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16575,17 +16430,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &1184750573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1184750569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1199812071
 GameObject:
   m_ObjectHideFlags: 0
@@ -16653,11 +16497,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1210275465}
   - 212: {fileID: 1210275464}
-  - 114: {fileID: 1210275467}
   - 61: {fileID: 1210275466}
   m_Layer: 0
   m_Name: MMetal Plate (5)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16718,17 +16561,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &1210275467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1210275463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1211470924
 GameObject:
   m_ObjectHideFlags: 0
@@ -18923,11 +18755,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1396104142}
   - 212: {fileID: 1396104141}
-  - 114: {fileID: 1396104144}
   - 61: {fileID: 1396104143}
   m_Layer: 0
   m_Name: MMetal Plate (34)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18988,17 +18819,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &1396104144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1396104140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1398114757
 GameObject:
   m_ObjectHideFlags: 0
@@ -19236,11 +19056,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1401626701}
   - 212: {fileID: 1401626700}
-  - 114: {fileID: 1401626703}
   - 61: {fileID: 1401626702}
   m_Layer: 0
   m_Name: MMetal Plate (47)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19301,17 +19120,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &1401626703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1401626699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1406034637
 GameObject:
   m_ObjectHideFlags: 0
@@ -20983,11 +20791,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1432908184}
   - 212: {fileID: 1432908183}
-  - 114: {fileID: 1432908186}
   - 61: {fileID: 1432908185}
   m_Layer: 0
   m_Name: MMetal Plate (42)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21048,17 +20855,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &1432908186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1432908182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1434283561
 GameObject:
   m_ObjectHideFlags: 0
@@ -21953,11 +21749,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1513445999}
   - 212: {fileID: 1513445998}
-  - 114: {fileID: 1513446001}
   - 61: {fileID: 1513446000}
   m_Layer: 0
   m_Name: MMetal Plate (22)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22018,17 +21813,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &1513446001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1513445997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1516127165
 GameObject:
   m_ObjectHideFlags: 0
@@ -24759,11 +24543,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1678157300}
   - 212: {fileID: 1678157299}
-  - 114: {fileID: 1678157302}
   - 61: {fileID: 1678157301}
   m_Layer: 0
   m_Name: MMetal Plate (3)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24824,17 +24607,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &1678157302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1678157298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1687284817
 GameObject:
   m_ObjectHideFlags: 0
@@ -25161,11 +24933,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1699358533}
   - 212: {fileID: 1699358532}
-  - 114: {fileID: 1699358535}
   - 61: {fileID: 1699358534}
   m_Layer: 0
   m_Name: MMetal Plate (1)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25226,17 +24997,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &1699358535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1699358531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1700866271
 GameObject:
   m_ObjectHideFlags: 0
@@ -25304,11 +25064,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1703054044}
   - 212: {fileID: 1703054043}
-  - 114: {fileID: 1703054046}
   - 61: {fileID: 1703054045}
   m_Layer: 0
   m_Name: MMetal Plate (49)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25369,17 +25128,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &1703054046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1703054042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1706714826
 GameObject:
   m_ObjectHideFlags: 0
@@ -27400,11 +27148,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1861532386}
   - 212: {fileID: 1861532385}
-  - 114: {fileID: 1861532388}
   - 61: {fileID: 1861532387}
   m_Layer: 0
   m_Name: MMetal Plate (37)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27465,17 +27212,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &1861532388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1861532384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1865309565
 GameObject:
   m_ObjectHideFlags: 0
@@ -28231,11 +27967,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1899195041}
   - 212: {fileID: 1899195040}
-  - 114: {fileID: 1899195043}
   - 61: {fileID: 1899195042}
   m_Layer: 0
   m_Name: MMetal Plate (50)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28296,17 +28031,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &1899195043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1899195039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1902763749
 GameObject:
   m_ObjectHideFlags: 0
@@ -28517,11 +28241,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1953645694}
   - 212: {fileID: 1953645693}
-  - 114: {fileID: 1953645696}
   - 61: {fileID: 1953645695}
   m_Layer: 0
   m_Name: MMetal Plate (4)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28582,17 +28305,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &1953645696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1953645692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1956303904
 GameObject:
   m_ObjectHideFlags: 0
@@ -29401,6 +29113,67 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &2005130916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2005130918}
+  - 108: {fileID: 2005130917}
+  m_Layer: 0
+  m_Name: Directional light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &2005130917
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2005130916}
+  m_Enabled: 1
+  serializedVersion: 6
+  m_Type: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_BounceIntensity: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_AreaSize: {x: 1, y: 1}
+--- !u!4 &2005130918
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2005130916}
+  m_LocalRotation: {x: 0.40821794, y: -0.23456973, z: 0.109381676, w: 0.87542605}
+  m_LocalPosition: {x: 0.07729127, y: -1.7473726, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
 --- !u!1 &2007094984
 GameObject:
   m_ObjectHideFlags: 0
@@ -30620,11 +30393,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 2067027859}
   - 212: {fileID: 2067027858}
-  - 114: {fileID: 2067027861}
   - 61: {fileID: 2067027860}
   m_Layer: 0
   m_Name: MMetal Plate (41)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30685,17 +30457,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &2067027861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2067027857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2073939045
 GameObject:
   m_ObjectHideFlags: 0
@@ -30705,11 +30466,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 2073939047}
   - 212: {fileID: 2073939046}
-  - 114: {fileID: 2073939049}
   - 61: {fileID: 2073939048}
   m_Layer: 0
   m_Name: MMetal Plate (35)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30770,17 +30530,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &2073939049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2073939045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2078167374
 GameObject:
   m_ObjectHideFlags: 0
@@ -30875,11 +30624,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 2079612982}
   - 212: {fileID: 2079612981}
-  - 114: {fileID: 2079612984}
   - 61: {fileID: 2079612983}
   m_Layer: 0
   m_Name: MMetal Plate (26)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30940,17 +30688,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &2079612984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2079612980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2092798392
 GameObject:
   m_ObjectHideFlags: 0
@@ -31192,11 +30929,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 2096787785}
   - 212: {fileID: 2096787784}
-  - 114: {fileID: 2096787787}
   - 61: {fileID: 2096787786}
   m_Layer: 0
   m_Name: MMetal Plate (27)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31257,17 +30993,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &2096787787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2096787783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23958c739c656742aea3b2cbd135fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2097265264
 GameObject:
   m_ObjectHideFlags: 0
