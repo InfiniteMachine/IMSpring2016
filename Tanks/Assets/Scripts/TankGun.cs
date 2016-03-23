@@ -148,7 +148,7 @@ public class TankGun : MonoBehaviour {
         GameObject newBullet = (GameObject)Instantiate(bullet, firePosition.position, Quaternion.identity);
         pCont.IgnoreCollision(newBullet.GetComponent<Collider2D>());
 		Destroy(newBullet, 15f);
-        newBullet.GetComponent<TankBullet>().SetPower(currentPower, Vector2.Angle(Vector2.right, firePosition.right), myBulletType);
+        newBullet.GetComponent<TankBullet>().SetPower(currentPower, Vector2.Angle(Vector2.right, (pCont.transform.localScale.x < 0 ? Quaternion.Euler(0, 0, 180) : Quaternion.identity) * firePosition.right), myBulletType);
         newBullet.GetComponent<TankBullet>().SetPlayerID(playerID);
         currentReloadTime = 0f;
 		ResetPower();
