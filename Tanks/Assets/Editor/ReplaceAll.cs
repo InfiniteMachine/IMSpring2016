@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using System.Collections.Generic;
 // CopyComponents - by Michael L. Croswell for Colorado Game Coders, LLC
 // March 2010
@@ -23,7 +24,7 @@ public class ReplaceGameObjects : ScriptableWizard
     [MenuItem("Custom/RemoveColliders %j")]
     static void RemoveColliders()
     {
-        foreach(GameObject go in Selection.gameObjects)
+        foreach (GameObject go in Selection.gameObjects)
         {
             Stack<Collider> cols = new Stack<Collider>();
             Collider[] c = go.GetComponents<Collider>();
@@ -40,6 +41,7 @@ public class ReplaceGameObjects : ScriptableWizard
             while (cols2D.Count > 0)
                 DestroyImmediate(cols2D.Pop());
         }
+        EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
     }
     void OnWizardCreate()
     {
@@ -55,5 +57,6 @@ public class ReplaceGameObjects : ScriptableWizard
                 newObject.transform.name = go.transform.name;
             DestroyImmediate(go);
         }
+        EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
     }
 }
