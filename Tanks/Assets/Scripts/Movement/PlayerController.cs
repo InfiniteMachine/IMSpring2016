@@ -250,7 +250,7 @@ public class PlayerController : MonoBehaviour {
         }
         else if (other.gameObject.CompareTag("Bullet") && spawnCounter <= 0)
         {
-            Manager.instance.kills[other.GetComponent<TankBullet>().playerID]++;
+            Manager.instance.kills[other.GetComponent<IPlayerID>().GetPlayerID()]++;
             Manager.instance.deaths[playerID]++;
             Die(false);
         }
@@ -334,5 +334,11 @@ public class PlayerController : MonoBehaviour {
             col.enabled = interactable;
         foreach (SpriteRenderer srend in renderers)
             srend.enabled = interactable;
+    }
+
+    public void IgnoreCollision(Collider2D ignoreCol)
+    {
+        foreach (Collider2D col in colliders)
+            Physics2D.IgnoreCollision(col, ignoreCol);
     }
 }

@@ -6,8 +6,8 @@ using System.Collections;
 public class MenuController : MonoBehaviour {
     public Color defaultColor = Color.white;
     public Color selectedColor = Color.yellow;
-    private enum Buttons { Play = 0, Options, Help, Exit};
-    private int numButtons = 3;
+    private enum Buttons { Play = 0, Quit};
+    private int numButtons = 2;
     private Buttons selected = Buttons.Play;
     private Image[] buttons;
 	// Use this for initialization
@@ -42,21 +42,21 @@ public class MenuController : MonoBehaviour {
         for (int i = 0; i < controllers.Length; i++)
         {
             broken= true;
-            if (controllers[i].GetAxisAsButton(1, true) || controllers[i].GetAxisAsButton(6, false))
+            if (controllers[i].GetAxisAsButton(0, true) || controllers[i].GetAxisAsButton(5, false))
             {
                 //Down
                 selected++;
-                if (selected > Buttons.Help)
+                if (selected > Buttons.Quit)
                     selected = Buttons.Play;
                 SoundManager.instance.PlayOneShot("Swap");
                 break;
             }
-            else if (controllers[i].GetAxisAsButton(1, false) || controllers[i].GetAxisAsButton(6, true))
+            else if (controllers[i].GetAxisAsButton(0, false) || controllers[i].GetAxisAsButton(5, true))
             {
                 //Up
                 selected--;
                 if (selected < Buttons.Play)
-                    selected = Buttons.Help;
+                    selected = Buttons.Quit;
                 SoundManager.instance.PlayOneShot("Swap");
                 break;
             }
@@ -71,20 +71,20 @@ public class MenuController : MonoBehaviour {
         }
         if (!broken)
         {
-            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 //Down
                 selected++;
-                if (selected > Buttons.Help)
+                if (selected > Buttons.Quit)
                     selected = Buttons.Play;
                 SoundManager.instance.PlayOneShot("Swap");
             }
-            else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 //Up
                 selected--;
                 if (selected < Buttons.Play)
-                    selected = Buttons.Help;
+                    selected = Buttons.Quit;
                 SoundManager.instance.PlayOneShot("Swap");
             }
             else if (Input.GetKeyDown(KeyCode.Return))
@@ -95,7 +95,7 @@ public class MenuController : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            selected = Buttons.Exit;
+            selected = Buttons.Quit;
             PerformAction();
         }
         UpdateColors();
@@ -108,13 +108,7 @@ public class MenuController : MonoBehaviour {
             case Buttons.Play:
                 SceneManager.LoadScene("Player_Select_Screen");
                 break;
-            case Buttons.Options:
-                SceneManager.LoadScene("Options");
-                break;
-            case Buttons.Help:
-                SceneManager.LoadScene("Controls");
-                break;
-            case Buttons.Exit:
+            case Buttons.Quit:
                 Application.Quit();
                 Debug.Log("Would close if not in the editor");
                 break;

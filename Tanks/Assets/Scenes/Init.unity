@@ -120,6 +120,10 @@ MonoBehaviour:
   - {fileID: 161638, guid: 8ca8abdd0b281b9439ff5f231a4400f7, type: 2}
   - {fileID: 136508, guid: 048e4895bfc331e41808d0e465be94a1, type: 2}
   - {fileID: 127546, guid: b1d6b008b4f43c748ad8ba12abfc7a2f, type: 2}
+  - {fileID: 178032, guid: 5667457b8472d8243bb0d0e58b639be7, type: 2}
+  - {fileID: 136962, guid: 6a47931d0e3bf7f499ec6da12ba8b9d8, type: 2}
+  - {fileID: 165736, guid: 6c391a399430b964c88a974dfe8e062c, type: 2}
+  - {fileID: 197362, guid: 86d70891b28cd1e45bd411e4f9263288, type: 2}
   playerTanks: 
   playerControllers: 
   numPlayers: 0
@@ -127,10 +131,15 @@ MonoBehaviour:
   endTime: 150
   endScore: 150
   playerColors:
-  - {r: 0, g: 1, b: 0, a: 1}
   - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
   - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - {r: 1, g: 1, b: 0, a: 1}
+  playerTags:
+  - {fileID: 21300000, guid: 3d9f774a7a47da2468d826a5efd5fbae, type: 3}
+  - {fileID: 21300000, guid: da3f0b4745e69b041ad6e5fb52843a6a, type: 3}
+  - {fileID: 21300000, guid: 18c807db1a9967644a2a6523d8863bc0, type: 3}
+  - {fileID: 21300000, guid: 2e8f9cc86a1cff247b86f54b62291674, type: 3}
   activeMatch: 0
   time: 0
   indScore: []

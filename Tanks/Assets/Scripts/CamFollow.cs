@@ -27,6 +27,8 @@ public class CamFollow : MonoBehaviour
 
     private List<Transform> visibleObjects;
 
+    //add timer, camera only does zoom thing after x time
+
     void Awake()
     {
         instance = this;
@@ -62,14 +64,37 @@ public class CamFollow : MonoBehaviour
         {
             newOrtho = (upperBounds - lowerBounds) / 2;
         }
+
+        //HERE
+        float thing;
         if (newOrtho < Camera.main.orthographicSize)
         {
-            Camera.main.orthographicSize = Mathf.MoveTowards(Camera.main.orthographicSize, newOrtho, orthoShrinkSpeed * Time.deltaTime);
+            thing = (Camera.main.orthographicSize - newOrtho) / 2;
+            if (Camera.main.orthographicSize < thing)
+            {
+                Camera.main.orthographicSize = Mathf.MoveTowards(Camera.main.orthographicSize, newOrtho, (orthoShrinkSpeed +  Time.deltaTime) * Time.deltaTime);
+            }
+
+            else if (Camera.main.orthographicSize >= thing)
+            {
+                Camera.main.orthographicSize = Mathf.MoveTowards(Camera.main.orthographicSize, newOrtho, (orthoShrinkSpeed - Time.deltaTime) * Time.deltaTime);
+            }
         }
         else
         {
-            Camera.main.orthographicSize = Mathf.MoveTowards(Camera.main.orthographicSize, newOrtho, orthoGrowSpeed * Time.deltaTime);
+            thing = (newOrtho - Camera.main.orthographicSize) / 2;
+            if (Camera.main.orthographicSize < thing)
+            {
+                Camera.main.orthographicSize = Mathf.MoveTowards(Camera.main.orthographicSize, newOrtho, (orthoGrowSpeed + 2 * Time.deltaTime) * Time.deltaTime);
+            }
+
+            else if (Camera.main.orthographicSize >= thing)
+            {
+                Camera.main.orthographicSize = Mathf.MoveTowards(Camera.main.orthographicSize, newOrtho, (orthoGrowSpeed - 2 * Time.deltaTime) * Time.deltaTime);
+            }
         }
+
+
         Vector3 newPosition = new Vector3(r.x + (r.width / 2), r.y + (r.height / 2), Camera.main.transform.position.z);
         if(Vector2.Distance(Camera.main.transform.position, newPosition) > distancePadding)
             Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position, newPosition, moveFastSpeed * Time.deltaTime);

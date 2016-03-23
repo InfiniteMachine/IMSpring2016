@@ -28,7 +28,7 @@ public class BatShield : MonoBehaviour, IAction
 
         GameObject shield = Instantiate(shieldPrefab);
         shield.transform.SetParent(transform);
-        shield.transform.localPosition = Vector3.zero;
+        shield.transform.localPosition = Vector3.zero + Vector3.forward * -0.1f;
         shieldPrefab = shield;
         shieldPrefab.SetActive(false);
     }
@@ -52,7 +52,7 @@ public class BatShield : MonoBehaviour, IAction
         if (batShieldTimer >= 0 && iCont.GetButton(InputController.Buttons.SPECIAL_DEFENSE))
         {
             batShieldTimer -= Time.deltaTime;
-            shieldPrefab.transform.localScale = Vector3.one * Mathf.Lerp(2, 3, batShieldTimer / batShieldDuration);
+            shieldPrefab.transform.localScale = Vector3.one * Mathf.Lerp(1.5f, 2.5f, batShieldTimer / batShieldDuration);
         }
         else if (batShieldActive)
         {

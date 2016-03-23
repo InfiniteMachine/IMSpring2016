@@ -93,6 +93,8 @@ GameObject:
   - 50: {fileID: 5049276}
   - 114: {fileID: 11451924}
   - 114: {fileID: 11408660}
+  - 114: {fileID: 11409818}
+  - 114: {fileID: 11436618}
   m_Layer: 0
   m_Name: GeorgeWashingtank
   m_TagString: Player
@@ -107,7 +109,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129938}
   m_LocalRotation: {x: 0, y: 0, z: -0.16762914, w: 0.98585016}
-  m_LocalPosition: {x: -0.068, y: 0.056, z: 0}
+  m_LocalPosition: {x: -0.261, y: -0.131, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 417524}
@@ -119,7 +121,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151180}
   m_LocalRotation: {x: 0, y: 0, z: 0.16762914, w: 0.98585016}
-  m_LocalPosition: {x: 0.19699955, y: -0.013000011, z: 0}
+  m_LocalPosition: {x: 0.302, y: 0.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 413286}
@@ -145,7 +147,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.78, z: 0}
+  m_LocalPosition: {x: -0.275, y: 0.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 467246}
@@ -157,7 +159,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -41.6263, y: -9.620068, z: 0}
+  m_LocalPosition: {x: -1.67, y: -4.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 417524}
@@ -172,7 +174,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.683, y: 0.046, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0.046, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 417524}
@@ -263,6 +265,20 @@ MonoBehaviour:
   dashVelocity: 15
   sideDashDuration: 0.25
   sideDashSpeed: 20
+--- !u!114 &11409818
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 858e62df182747f4ca931985a0b6c27d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireDelay: 5
+  batShieldDuration: 2
+  shieldPrefab: {fileID: 149078, guid: 5e616e8c5717a1243ab6388ec1bbf701, type: 2}
 --- !u!114 &11430054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -290,6 +306,22 @@ MonoBehaviour:
   currentLevel: 0
   charging: 0
   playerID: 0
+--- !u!114 &11436618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7bc75016c2f8944c91945f4f777cb59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireDelay: 5
+  spearDelay: 3
+  spearlocation: {x: 0, y: 0}
+  spear: {fileID: 100690, guid: d125e08ad54298c4aa46b4dc47ec9239, type: 2}
+  spearTimer: 0
 --- !u!114 &11451810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -338,7 +370,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 321cd0bf72f9cf14b9d5b8975122b447, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1ec86c179b537e74a8c161aa8c012a28, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -368,7 +400,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 35a1f5b21f0001b4ebf4620de2095382, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f2254a8741274004fb2dd70b741cbf40, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
