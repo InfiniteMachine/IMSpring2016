@@ -12,7 +12,6 @@ GameObject:
   - 50: {fileID: 5058180}
   - 212: {fileID: 21227280}
   - 58: {fileID: 5837648}
-  - 114: {fileID: 11498426}
   m_Layer: 0
   m_Name: ImpalerBullet
   m_TagString: Bullet
@@ -80,17 +79,6 @@ MonoBehaviour:
   weight: 0
   velocity: 0
   strength: 0
---- !u!114 &11498426
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 166878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56a51c124d6fd574ea7a9d0171151aa8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &21227280
 SpriteRenderer:
   m_ObjectHideFlags: 1

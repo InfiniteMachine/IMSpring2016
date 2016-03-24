@@ -94,7 +94,7 @@ GameObject:
   - 114: {fileID: 11451924}
   - 114: {fileID: 11408660}
   - 114: {fileID: 11409818}
-  - 114: {fileID: 11436618}
+  - 114: {fileID: 11445190}
   m_Layer: 0
   m_Name: GeorgeWashingtank
   m_TagString: Player
@@ -159,7 +159,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.2896485, y: -2.929921, z: 0}
+  m_LocalPosition: {x: 12.07, y: -1.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 417524}
@@ -306,7 +306,7 @@ MonoBehaviour:
   currentLevel: 0
   charging: 0
   playerID: 0
---- !u!114 &11436618
+--- !u!114 &11445190
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -314,14 +314,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 186026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7bc75016c2f8944c91945f4f777cb59, type: 3}
+  m_Script: {fileID: 11500000, guid: 592ae5336a5ab2349ba705283956cf89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fireDelay: 5
-  spearDelay: 3
-  spearlocation: {x: 0, y: 0}
-  spear: {fileID: 100690, guid: d125e08ad54298c4aa46b4dc47ec9239, type: 2}
-  spearTimer: 0
+  wave: {fileID: 143764, guid: 7ea1cbc9b1baa284fba1336dea1c9d8d, type: 2}
 --- !u!114 &11451810
 MonoBehaviour:
   m_ObjectHideFlags: 1

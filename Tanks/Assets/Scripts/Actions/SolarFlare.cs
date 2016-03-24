@@ -3,7 +3,7 @@ public class SolarFlare : MonoBehaviour, IAction {
     //Can be modified
     public float fireDelay = 5; //seconds between uses
     public GameObject particles;
-
+    public float radius = 3.185f;
     void UpdateTimer()
     {
         if (fireTimer > 0)
@@ -37,7 +37,7 @@ public class SolarFlare : MonoBehaviour, IAction {
         Debug.Log("Fire");
         Instantiate(particles, transform.position, Quaternion.identity);
         //3.185
-        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, 3.185f);
+        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, radius);
         foreach(Collider2D col in cols)
         {
             if (col.gameObject != gameObject && col.tag == "Player")

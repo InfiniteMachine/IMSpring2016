@@ -159,7 +159,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.841686, y: -3.3225675, z: 0}
+  m_LocalPosition: {x: -0.58, y: -2.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 417524}
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25bd43dafd8a70f499d452abd07529c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 166878, guid: f7214ec5db79ec84e8d46629149fa447, type: 2}
+  bullet: {fileID: 168310, guid: d699d54302643f64dbaf12bbcf684301, type: 2}
   particles: {fileID: 140192, guid: 20eda79214a2e8c4ba18577c182a3f69, type: 2}
   barrelLength: 0.5
   angularVelocity: 25

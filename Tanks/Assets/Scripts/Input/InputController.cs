@@ -11,6 +11,9 @@ public class InputController : MonoBehaviour
     
     private Controller controller;
     private bool useKeyboard = false;
+
+    private static int screen = -1;
+
     void Start()
     {
         Cursor.visible = false;
@@ -24,6 +27,12 @@ public class InputController : MonoBehaviour
             useKeyboard = true;
         else
             controller = ControllerPool.GetInstance().GetController(GetComponent<PlayerController>().controllerNumber);
+        if (screen == -1)
+        {
+            screen = 1;
+            while (System.IO.File.Exists("screen" + screen + ".png"))
+                screen++;
+        }
     }
 
     // Update is called once per frame
@@ -145,6 +154,13 @@ public class InputController : MonoBehaviour
         else if (buttons[(int)Buttons.FIRE] != State.RELEASED && !(controller.GetAxis(2) < 0))
         {
             buttons[(int)Buttons.FIRE] = State.RELEASED;
+        }
+
+        if (controller.GetButtonDown(2))
+        {
+            Debug.Log("Capturing Screenshot: " + Application.persistentDataPath + "/" + "screen" + screen + ".png");
+//            Application.CaptureScreenshot(Application.persistentDataPath + "/" + "screen" + screen + ".png");
+            screen++;
         }
     }
 

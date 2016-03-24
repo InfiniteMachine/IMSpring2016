@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour {
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour {
     private float forceMoveCounter = 0;
     private float forceMoveSpeed = 0;
     public float wrapMoveDuration = 0.5f;
+    private bool interactable = true;
     [Header("Extra Gravity")]
     public float downAccelDuration = 1f;
     public float downMaxAccel = 0.5f;
@@ -230,7 +232,10 @@ public class PlayerController : MonoBehaviour {
                 playingMove = false;
                 SoundManager.instance.StopBackground("TankMovement");
             }
-            rBody.velocity = velocity;
+            if (interactable)
+                rBody.velocity = velocity;
+            else
+                rBody.velocity = Vector2.zero;
         }
     }
     
@@ -305,6 +310,7 @@ public class PlayerController : MonoBehaviour {
         }
         GetComponentInChildren<TankGun>().enabled = false;
         SetInteractable(false);
+        CancelInvoke("UnFreeze");
     }
 
     public void ForcePush(Vector2 force, float disable)
@@ -322,23 +328,36 @@ public class PlayerController : MonoBehaviour {
         else {
             transform.position = startLocation;
         }
-        rBody.velocity = Vector2.zero;
-        GetComponentInChildren<TankGun>().enabled = true;
         SetInteractable(true);
         spawnCounter = spawnInvulnurability;
     }
 
     private void SetInteractable(bool interactable)
     {
+        this.interactable = interactable;
+        GetComponentInChildren<TankGun>().enabled = interactable;
         foreach (Collider2D col in colliders)
             col.enabled = interactable;
         foreach (SpriteRenderer srend in renderers)
             srend.enabled = interactable;
+        Debug.Log(interactable);
     }
 
     public void IgnoreCollision(Collider2D ignoreCol)
     {
         foreach (Collider2D col in colliders)
             Physics2D.IgnoreCollision(col, ignoreCol);
+    }
+
+    public void Freeze(float duration)
+    {
+        SetInteractable(false);
+        StartCoroutine(UnFreeze(duration));
+    }
+
+    IEnumerator UnFreeze(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        SetInteractable(true);
     }
 }
