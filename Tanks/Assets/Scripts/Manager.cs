@@ -55,6 +55,8 @@ public class Manager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
 		if(activeMatch)
 		{
 			time += Time.deltaTime;

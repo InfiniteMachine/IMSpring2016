@@ -184,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterArt:
   - {fileID: 21300000, guid: f38295a06eb409644a4f47025f41ed0c, type: 3}
-  - {fileID: 21300000, guid: 8f30340525d55334aba254892936eb17, type: 3}
+  - {fileID: 21300000, guid: f2254a8741274004fb2dd70b741cbf40, type: 3}
   - {fileID: 21300000, guid: 9c86f70b640d75c4cbe994b235d234c0, type: 3}
   - {fileID: 21300000, guid: a7cc4470de6c4cc49aad666818f8c04e, type: 3}
   - {fileID: 21300000, guid: 8268fe6cd06236343b004417c4710059, type: 3}
