@@ -119,7 +119,7 @@ public class CharacterSelect : MonoBehaviour {
                     usedController = true;
                     if (podiums[p].state == PStates.CHOOSING)
                     {
-                        if (controllers[i].GetAxisAsButton(0, true) || controllers[i].GetAxisAsButton(5, false))
+                        if (controllers[i].GetAxisAsButton(0, true) || controllers[i].GetAxisAsButton(5, true))
                         {
                             //Right
                             Manager.instance.playerTanks[p] += 1;
@@ -127,7 +127,7 @@ public class CharacterSelect : MonoBehaviour {
                                 Manager.instance.playerTanks[p] = 0;
                             SoundManager.instance.PlayOneShot("Swap");
                         }
-                        else if (controllers[i].GetAxisAsButton(0, false) || controllers[i].GetAxisAsButton(5, true))
+                        else if (controllers[i].GetAxisAsButton(0, false) || controllers[i].GetAxisAsButton(5, false))
                         {
                             //Right's demon twin
                             Manager.instance.playerTanks[p] -= 1;
@@ -289,7 +289,8 @@ public class CharacterSelect : MonoBehaviour {
                 //Submit
                 GotoSelectedArena();
                 SoundManager.instance.PlayOneShot("Select");
-            }else if (Input.GetKeyDown(KeyCode.X))
+            }
+            else if (Input.GetKeyDown(KeyCode.X))
             {
                 StartCoroutine(SwapMenu(MenuState.MATCH_OPTIONS));
                 SoundManager.instance.PlayOneShot("Select");
@@ -298,7 +299,7 @@ public class CharacterSelect : MonoBehaviour {
         else
         {
             Controller c = ControllerPool.GetInstance().GetController(Manager.instance.playerControllers[sceneChooser]);
-            if (c.GetAxisAsButton(0, true) || c.GetAxisAsButton(5, false))
+            if (c.GetAxisAsButton(0, true) || c.GetAxisAsButton(5, true))
             {
                 //Right
                 arena++;
@@ -306,7 +307,7 @@ public class CharacterSelect : MonoBehaviour {
                     arena = 0;
                 SoundManager.instance.PlayOneShot("Swap");
             }
-            else if (c.GetAxisAsButton(0, false) || c.GetAxisAsButton(5, true))
+            else if (c.GetAxisAsButton(0, false) || c.GetAxisAsButton(5, false))
             {
                 //Right's demon twin
                 arena--;
@@ -324,6 +325,15 @@ public class CharacterSelect : MonoBehaviour {
             {
                 StartCoroutine(SwapMenu(MenuState.MATCH_OPTIONS));
                 SoundManager.instance.PlayOneShot("Select");
+            }
+            else if (c.GetButtonDown(1))
+            {
+                for (int i = 0; i < podiums.Length; i++)
+                {
+                    if (podiums[i].state == PStates.LOCKED)
+                        podiums[i].state = PStates.CHOOSING;
+                }
+                StartCoroutine(SwapMenu(MenuState.CHARACTER));
             }
         }
         UpdateSceneSelectVisual();

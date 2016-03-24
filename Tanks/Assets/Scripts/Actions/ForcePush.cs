@@ -40,7 +40,7 @@ public class ForcePush : MonoBehaviour, IAction
     public bool IsAttack()
     {
         //true if special attack, false if special defense
-        return false;
+        return true;
     }
 
     public void StartAction()
