@@ -128,8 +128,7 @@ MonoBehaviour:
   playerControllers: 
   numPlayers: 0
   maxPlayers: 4
-  endTime: 150
-  endScore: 150
+  endTime: 300
   playerColors:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 1, b: 0, a: 1}
@@ -146,6 +145,7 @@ MonoBehaviour:
   kills: 
   deaths: 
   scoreScreenDuration: 10
+  gameMode: 0
 --- !u!4 &1160713445
 Transform:
   m_ObjectHideFlags: 0

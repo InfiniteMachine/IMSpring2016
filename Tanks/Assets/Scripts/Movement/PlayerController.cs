@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour {
 
             if (rBody.velocity.y < 0)
             {
-                gravityCounter += Time.fixedDeltaTime;
+                gravityCounter += Time.deltaTime;
                 velocity.y = rBody.velocity.y - Mathf.Lerp(0, downMaxAccel, gravityCounter / downAccelDuration);
             }
             else
@@ -232,8 +232,6 @@ public class PlayerController : MonoBehaviour {
                 playingMove = false;
                 SoundManager.instance.StopBackground("TankMovement");
             }
-            Debug.Log(velocity.y);
-            velocity.y = Mathf.Clamp(velocity.y, -20f, 20f);
             if (interactable)
                 rBody.velocity = velocity;
             else

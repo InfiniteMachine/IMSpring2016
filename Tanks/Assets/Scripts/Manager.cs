@@ -19,8 +19,7 @@ public class Manager : MonoBehaviour {
     private GameObject scorePanel;
     [Header("Setup Match Info:")] // Match info for setup, not used in active game
     public int maxPlayers = 4;
-    public float endTime = 150f;
-	public float endScore = 150f;
+    public float endTime = 300f;
     public Color[] playerColors = new Color[] { Color.green, Color.red, Color.blue, Color.yellow };
     public Sprite[] playerTags;
     [Header("Active Match Info:")]
@@ -40,6 +39,10 @@ public class Manager : MonoBehaviour {
     public float scoreScreenDuration = 10f;
 
     private int lastSecond = -1;
+
+    public enum GameModes { KINGME= 0, DONTKINGME, ANARCHY };
+    [HideInInspector]
+    public GameModes gameMode = GameModes.KINGME;
 	// Use this for initialization
 	void Awake () {
 		DontDestroyOnLoad(gameObject);
