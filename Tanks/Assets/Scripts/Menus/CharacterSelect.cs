@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class CharacterSelect : MonoBehaviour {
-    private enum MenuState { CHARACTER, SCENE, MATCH_OPTIONS}
+    private enum MenuState { CHARACTER, SCENE, MATCH_OPTIONS, LOADING}
     private MenuState curMenu = MenuState.CHARACTER;
     private CanvasGroup playerSelect;
     public Sprite[] characterArt;
@@ -27,6 +27,7 @@ public class CharacterSelect : MonoBehaviour {
     private Text playerDisplay;
     private Text arenaNameDisplay;
     private CanvasGroup matchOptions;
+    private CanvasGroup loading;
     private bool debug = false;
 #if UNITY_EDITOR
     private string buttonMap = "2323";
@@ -42,6 +43,7 @@ public class CharacterSelect : MonoBehaviour {
         for(int i = 0; i < 4; i++)
             Manager.instance.playerTanks[i] = 0;
         playerSelect = transform.FindChild("PlayerSelect").GetComponent<CanvasGroup>();
+        loading = transform.FindChild("Loading").GetComponent<CanvasGroup>();
         sceneSelect = transform.FindChild("SceneSelect").GetComponent<CanvasGroup>();
         sceneSelect.alpha = 0;
         sceneSelect.interactable = false;
@@ -348,17 +350,23 @@ public class CharacterSelect : MonoBehaviour {
 
     public void GotoSelectedArena()
     {
+        sceneSelect.alpha = 0;
+        sceneSelect.blocksRaycasts = false;
+        sceneSelect.interactable = false;
+        loading.blocksRaycasts = true;
+        loading.interactable = true;
+        loading.alpha = 1;
         Manager.instance.InitOnNextScene();
-        SceneManager.LoadScene(areaNames[arena]);
+        //SceneManager.LoadScene(areaNames[arena]);
+        SceneManager.LoadSceneAsync(areaNames[arena]);
+        curMenu = MenuState.LOADING;
+        animating = true;
     }
 
     private IEnumerator SwapMenu(MenuState newMenu)
     {
         animating = true;
         float counter = 0;
-#if UNITY_EDITOR
-        Debug.Log(curMenu.ToString() + " to " + newMenu.ToString());
-#endif
         switch (curMenu)
         {
             case MenuState.CHARACTER:
