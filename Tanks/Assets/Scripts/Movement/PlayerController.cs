@@ -178,11 +178,11 @@ public class PlayerController : MonoBehaviour {
             }
             else
             {
-                if (!waitingForJump)
-                {
-                    Invoke("ResetJump", extraJumpDelay);
-                    waitingForJump = true;
-                }
+//                if (!waitingForJump)
+//                {
+//                    Invoke("ResetJump", extraJumpDelay);
+//                    waitingForJump = true;
+//                }
                 if (canDash)
                 {
                     if (iCont.GetButton(InputController.Buttons.DASH_DOWN))
@@ -232,6 +232,8 @@ public class PlayerController : MonoBehaviour {
                 playingMove = false;
                 SoundManager.instance.StopBackground("TankMovement");
             }
+            Debug.Log(velocity.y);
+            velocity.y = Mathf.Clamp(velocity.y, -20f, 20f);
             if (interactable)
                 rBody.velocity = velocity;
             else
