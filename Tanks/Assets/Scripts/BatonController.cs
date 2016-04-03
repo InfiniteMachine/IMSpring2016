@@ -15,6 +15,7 @@ public class BatonController : MonoBehaviour {
     {
         if(transform.position.y < bottom)
             Manager.instance.ResetBaton(true);
+        rBody.velocity = Vector2.zero;
     }
 
     public void Activate()

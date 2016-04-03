@@ -71,4 +71,9 @@ public class BoomerangThrow : MonoBehaviour, IAction
         fireTimer = -1;
         StartAction();
     }
+
+    public void ResetCounters()
+    {
+        fireTimer = 0;
+    }
 }

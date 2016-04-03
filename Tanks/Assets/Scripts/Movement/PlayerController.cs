@@ -162,7 +162,7 @@ public class PlayerController : MonoBehaviour {
                     SoundManager.instance.PlayOneShot("AbilityActivation");
                 }
             }
-            if (groundCheck.CheckGrounded())
+            if (groundCheck.CheckGrounded() && velocity.y >= 0)
             {
                 if (!canJump)
                 {
@@ -178,11 +178,6 @@ public class PlayerController : MonoBehaviour {
             }
             else
             {
-//                if (!waitingForJump)
-//                {
-//                    Invoke("ResetJump", extraJumpDelay);
-//                    waitingForJump = true;
-//                }
                 if (canDash)
                 {
                     if (iCont.GetButton(InputController.Buttons.DASH_DOWN))
@@ -310,6 +305,16 @@ public class PlayerController : MonoBehaviour {
         }
         GetComponentInChildren<TankGun>().enabled = false;
         SetInteractable(false);
+        if (specialAttack != null)
+        {
+            specialAttack.ForceDeactivate();
+            specialAttack.ResetCounters();
+        }
+        if (specialDefense != null)
+        {
+            specialDefense.ForceDeactivate();
+            specialDefense.ResetCounters();
+        }
         CancelInvoke("UnFreeze");
     }
 
@@ -325,11 +330,13 @@ public class PlayerController : MonoBehaviour {
         {
             transform.position = Manager.instance.GetRandomSpawn();
         }
-        else {
+        else
+        {
             transform.position = startLocation;
         }
         SetInteractable(true);
         spawnCounter = spawnInvulnurability;
+        rBody.velocity = Vector2.zero;
     }
 
     private void SetInteractable(bool interactable)
@@ -340,7 +347,6 @@ public class PlayerController : MonoBehaviour {
             col.enabled = interactable;
         foreach (SpriteRenderer srend in renderers)
             srend.enabled = interactable;
-        Debug.Log(interactable);
     }
 
     public void IgnoreCollision(Collider2D ignoreCol)

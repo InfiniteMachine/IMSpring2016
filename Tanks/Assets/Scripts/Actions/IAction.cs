@@ -4,4 +4,5 @@
     void StartAction();
     void AllowFire();
     void ForceDeactivate();
+    void ResetCounters();
 }

@@ -43,6 +43,8 @@ public class ArrowStorm : MonoBehaviour, IAction {
     public void ForceDeactivate()
     {
         FinishAction();
+        shooting = false;
+        CancelInvoke("FireRepeating");
     }
 
     public bool IsAttack()
@@ -85,5 +87,10 @@ public class ArrowStorm : MonoBehaviour, IAction {
     {
         fireTimer = -1;
         StartAction();
+    }
+
+    public void ResetCounters()
+    {
+        fireTimer = 0;
     }
 }
