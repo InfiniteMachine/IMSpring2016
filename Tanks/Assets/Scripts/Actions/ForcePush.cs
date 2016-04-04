@@ -8,11 +8,6 @@ public class ForcePush : MonoBehaviour, IAction
     public float force = 5.0f;
     public float radius = 2;
     public float disableTime = 2f;
-    //Use for initiation
-    void Start()
-    {
-
-    }
 
     void UpdateTimer()
     {
@@ -80,5 +75,10 @@ public class ForcePush : MonoBehaviour, IAction
     public void ResetCounters()
     {
         fireTimer = 0;
+    }
+
+    public float GetPercentage()
+    {
+        return (fireDelay - fireTimer) / fireDelay;
     }
 }

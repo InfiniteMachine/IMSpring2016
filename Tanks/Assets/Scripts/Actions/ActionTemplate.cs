@@ -5,12 +5,6 @@ public class ActionTemplate : MonoBehaviour, IAction {
     //Can be modified
     public float fireDelay = 5; //seconds between uses
     
-    //Use for initiation
-    void Start()
-    {
-
-    }
-
 	void UpdateTimer()
 	{
         if (fireTimer > 0)
@@ -67,5 +61,10 @@ public class ActionTemplate : MonoBehaviour, IAction {
     public void ResetCounters()
     {
         fireTimer = 0;
+    }
+
+    public float GetPercentage()
+    {
+        return (fireDelay - fireTimer) / fireDelay;
     }
 }

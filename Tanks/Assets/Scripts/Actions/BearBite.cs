@@ -20,6 +20,8 @@ public class BearBite : MonoBehaviour, IAction
     private int tForceEnd;
     private int tPlayAnim;
 
+    private int playerID;
+
     //Use for initiation
     void Start()
     {
@@ -37,12 +39,14 @@ public class BearBite : MonoBehaviour, IAction
 
         tForceEnd = Animator.StringToHash("tForceEnd");
         tPlayAnim = Animator.StringToHash("tPlayAnim");
+
+        playerID = GetComponent<PlayerController>().GetPlayerID();
     }
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Player") && bearBite.IsTouching(col))
         {
-            col.gameObject.GetComponent<PlayerController>().Attack();
+            col.gameObject.GetComponent<PlayerController>().Attack(playerID);
         }
     }
 
@@ -119,5 +123,12 @@ public class BearBite : MonoBehaviour, IAction
     public void ResetCounters()
     {
         fireTimer = 0;
+    }
+
+    public float GetPercentage()
+    {
+        if (bearBiteActive)
+            return 0;
+        return (fireDelay - fireTimer) / fireDelay;
     }
 }

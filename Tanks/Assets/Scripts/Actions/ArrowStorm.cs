@@ -93,4 +93,11 @@ public class ArrowStorm : MonoBehaviour, IAction {
     {
         fireTimer = 0;
     }
+
+    public float GetPercentage()
+    {
+        if (shooting)
+            return 0;
+        return (fireDelay - fireTimer) / fireDelay;
+    }
 }

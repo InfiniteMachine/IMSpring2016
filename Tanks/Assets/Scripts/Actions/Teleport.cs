@@ -90,4 +90,9 @@ public class Teleport : MonoBehaviour, IAction
     {
         fireTimer = 0;
     }
+
+    public float GetPercentage()
+    {
+        return (fireDelay - fireTimer) / fireDelay;
+    }
 }

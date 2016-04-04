@@ -9,6 +9,12 @@ public class KittenThrower : MonoBehaviour, IAction
     public float speed = 3f;
     public GameObject kitten;
     private PlayerController pCont;
+
+    void Start()
+    {
+        pCont = GetComponent<PlayerController>();
+    }
+
     void UpdateTimer()
     {
         if (fireTimer > 0)
@@ -17,16 +23,13 @@ public class KittenThrower : MonoBehaviour, IAction
             if (fireTimer < 0)
                 fireTimer = 0;
         }
-        pCont = GetComponent<PlayerController>();
     }
 
     //Used for effects that happen over time
     void Update()
     {
         UpdateTimer(); // Should probably always be called.
-
         // Update effect code here
-
     }
 
     public void ForceDeactivate()
@@ -75,5 +78,10 @@ public class KittenThrower : MonoBehaviour, IAction
     public void ResetCounters()
     {
         fireTimer = 0;
+    }
+
+    public float GetPercentage()
+    {
+        return (fireDelay - fireTimer) / fireDelay;
     }
 }

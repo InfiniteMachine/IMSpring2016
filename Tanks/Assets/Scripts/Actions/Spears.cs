@@ -14,7 +14,7 @@ public class Spears : MonoBehaviour, IAction
     //Use for initiation
     void Start()
     {
-        playerID = GetComponent<PlayerController>().playerID;
+        playerID = GetComponent<PlayerController>().GetPlayerID();
     }
 
     void UpdateTimer()
@@ -90,5 +90,12 @@ public class Spears : MonoBehaviour, IAction
     public void ResetCounters()
     {
         fireTimer = 0;
+    }
+
+    public float GetPercentage()
+    {
+        if (spearActive)
+            return 0;
+        return (fireDelay - fireTimer) / fireDelay;
     }
 }

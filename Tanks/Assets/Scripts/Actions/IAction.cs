@@ -5,4 +5,5 @@
     void AllowFire();
     void ForceDeactivate();
     void ResetCounters();
+    float GetPercentage();
 }

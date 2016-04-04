@@ -117,4 +117,11 @@ public class BatShield : MonoBehaviour, IAction
     {
         fireTimer = 0;
     }
+
+    public float GetPercentage()
+    {
+        if (batShieldActive)
+            return 0;
+        return (fireDelay - fireTimer) / fireDelay;
+    }
 }

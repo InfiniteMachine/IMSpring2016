@@ -6,9 +6,10 @@ public class ExplodingKitten : MonoBehaviour {
     public GameObject player;
     public GameObject explosion;
     public float radius = 1f;
+    private int playerID;
 	// Use this for initialization
 	void Start () {
-	
+        playerID = GetComponent<PlayerController>().GetPlayerID();
 	}
 	
 	// Update is called once per frame
@@ -27,7 +28,7 @@ public class ExplodingKitten : MonoBehaviour {
             foreach(Collider2D col1 in cols)
             {
                 if (col1.tag == "Player" && col1.gameObject != player)
-                    col1.GetComponent<PlayerController>().Attack();
+                    col1.GetComponent<PlayerController>().Attack(playerID);
             }
             //Destroy
             Destroy(gameObject);

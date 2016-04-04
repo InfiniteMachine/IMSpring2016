@@ -4,6 +4,13 @@ public class SolarFlare : MonoBehaviour, IAction {
     public float fireDelay = 5; //seconds between uses
     public GameObject particles;
     public float radius = 3.185f;
+
+    private int playerID;
+    void Start()
+    {
+        playerID = GetComponent<PlayerController>().GetPlayerID();
+    }
+
     void UpdateTimer()
     {
         if (fireTimer > 0)
@@ -34,7 +41,6 @@ public class SolarFlare : MonoBehaviour, IAction {
 
     public void StartAction()
     {
-        Debug.Log("Fire");
         Instantiate(particles, transform.position, Quaternion.identity);
         //3.185
         Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, radius);
@@ -42,7 +48,7 @@ public class SolarFlare : MonoBehaviour, IAction {
         {
             if (col.gameObject != gameObject && col.tag == "Player")
             {
-                col.gameObject.GetComponent<PlayerController>().Attack();
+                col.gameObject.GetComponent<PlayerController>().Attack(playerID);
             }
                 
         }
@@ -71,5 +77,10 @@ public class SolarFlare : MonoBehaviour, IAction {
     public void ResetCounters()
     {
         fireTimer = 0;
+    }
+
+    public float GetPercentage()
+    {
+        return (fireDelay - fireTimer) / fireDelay;
     }
 }

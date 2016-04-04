@@ -2,11 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour, IPlayerID {
     //Game Stuff
     public string characterName = "PlaceHolder";
-    [HideInInspector]
-    public int playerID;
+    private int playerID;
+    public void SetPlayerID(int id) { playerID = id; }
+    public int GetPlayerID() { return playerID; }
     [HideInInspector]
     public int controllerNumber = -1;
     private Vector3 startLocation;
@@ -250,9 +251,7 @@ public class PlayerController : MonoBehaviour {
         }
         else if (other.gameObject.CompareTag("Bullet") && spawnCounter <= 0)
         {
-            Manager.instance.kills[other.GetComponent<IPlayerID>().GetPlayerID()]++;
-            Manager.instance.deaths[playerID]++;
-            Die(false);
+            Die(false, other.GetComponent<IPlayerID>().GetPlayerID());
         }
         else if (other.gameObject.CompareTag("ScreenWrap"))
         {
@@ -281,9 +280,16 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    public void Attack()
+    public void Attack(int player)
     {
-        Die(false);
+        Die(false, player);
+    }
+
+    private void Die(bool self, int player)
+    {
+        Manager.instance.kills[player]++;
+        Manager.instance.deaths[playerID]++;
+        Die(self);
     }
 
     private void Die(bool self)
@@ -342,7 +348,13 @@ public class PlayerController : MonoBehaviour {
     private void SetInteractable(bool interactable)
     {
         this.interactable = interactable;
+        if(!interactable)
+        {
+            iCont.ResetAxes();
+            iCont.ResetButtons();
+        }
         GetComponentInChildren<TankGun>().enabled = interactable;
+        iCont.enabled = interactable;
         foreach (Collider2D col in colliders)
             col.enabled = interactable;
         foreach (SpriteRenderer srend in renderers)

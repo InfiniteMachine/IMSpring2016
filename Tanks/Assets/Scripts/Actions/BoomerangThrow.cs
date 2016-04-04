@@ -48,7 +48,7 @@ public class BoomerangThrow : MonoBehaviour, IAction
         boomerang = (GameObject)Instantiate(boomerangPrefab, transform.position, Quaternion.identity);
         BoomerangSepter bs = boomerang.GetComponent<BoomerangSepter>();
         bs.Setup(transform, (int)Mathf.Sign(transform.localScale.x));
-        bs.SetPlayerID(pCont.playerID);
+        bs.SetPlayerID(pCont.GetPlayerID());
         pCont.IgnoreCollision(boomerang.GetComponent<Collider2D>());
         FinishAction();
     }
@@ -75,5 +75,10 @@ public class BoomerangThrow : MonoBehaviour, IAction
     public void ResetCounters()
     {
         fireTimer = 0;
+    }
+
+    public float GetPercentage()
+    {
+        return (fireDelay - fireTimer) / fireDelay;
     }
 }

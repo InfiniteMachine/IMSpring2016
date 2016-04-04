@@ -9,7 +9,7 @@ public class Freezer : MonoBehaviour {
     public int hits = 2;
     private int timesHit = 0;
     // Use this for initialization
-	void Start () {
+    void Start () {
         pCont = player.GetComponent<PlayerController>();
         pCont.Freeze(duration);
         Destroy(gameObject, duration);
@@ -27,7 +27,7 @@ public class Freezer : MonoBehaviour {
             timesHit++;
             if (timesHit >= hits)
             {
-                pCont.Attack();
+                pCont.Attack(col.GetComponent<IPlayerID>().GetPlayerID());
                 Destroy(gameObject);
             }
             Destroy(col.gameObject);

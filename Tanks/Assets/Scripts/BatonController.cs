@@ -13,9 +13,11 @@ public class BatonController : MonoBehaviour {
 
     public void Update()
     {
-        if(transform.position.y < bottom)
+        if (transform.position.y < bottom)
+        {
             Manager.instance.ResetBaton(true);
-        rBody.velocity = Vector2.zero;
+            rBody.velocity = Vector2.zero;
+        }
     }
 
     public void Activate()

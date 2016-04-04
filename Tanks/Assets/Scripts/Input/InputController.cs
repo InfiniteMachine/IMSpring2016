@@ -158,8 +158,7 @@ public class InputController : MonoBehaviour
 
         if (controller.GetButtonDown(2))
         {
-            Debug.Log("Capturing Screenshot: " + Application.persistentDataPath + "/" + "screen" + screen + ".png");
-//            Application.CaptureScreenshot(Application.persistentDataPath + "/" + "screen" + screen + ".png");
+            Application.CaptureScreenshot(Application.persistentDataPath + "/" + "screen" + screen + ".png");
             screen++;
         }
     }

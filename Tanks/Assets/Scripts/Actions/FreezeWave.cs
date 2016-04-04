@@ -76,4 +76,9 @@ public class FreezeWave : MonoBehaviour, IAction
     {
         fireTimer = 0;
     }
+
+    public float GetPercentage()
+    {
+        return (fireDelay - fireTimer) / fireDelay;
+    }
 }

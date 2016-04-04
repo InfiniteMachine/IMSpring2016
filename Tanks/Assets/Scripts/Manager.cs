@@ -247,14 +247,11 @@ public class Manager : MonoBehaviour {
 
             // Spawn new tank
             newPlayerObjects[x] = (GameObject)Instantiate(tanks[playerTanks[x]], nextSpawn, Quaternion.identity);
-            newPlayerObjects[x].GetComponent<PlayerController>().playerID = x;
+            newPlayerObjects[x].GetComponent<PlayerController>().SetPlayerID(x);
             newPlayerObjects[x].GetComponent<PlayerController>().controllerNumber = playerControllers[x];
-            GameObject go = new GameObject("PlayerTag");
-            go.transform.SetParent(newPlayerObjects[x].transform.FindChild("CrownLocation"));
-            go.transform.localPosition = Vector3.up;
-            go.transform.rotation = Quaternion.identity;
-            go.AddComponent<SpriteRenderer>().sprite = playerTags[x];
-            
+
+            newPlayerObjects[x].transform.FindChild("Tag").GetComponent<SpriteRenderer>().sprite = playerTags[x];
+
             screenCanvas.transform.FindChild("Score" + (x + 1) + "Panel").FindChild("Image").GetComponent<Image>().sprite = newPlayerObjects[x].GetComponent<SpriteRenderer>().sprite;
             newPlayerObjects[x].GetComponent<SpriteRenderer>().material.SetColor("_Color", playerColors[x]);
         }
