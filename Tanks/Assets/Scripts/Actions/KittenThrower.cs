@@ -9,10 +9,11 @@ public class KittenThrower : MonoBehaviour, IAction
     public float speed = 3f;
     public GameObject kitten;
     private PlayerController pCont;
-
+    private int playerID;
     void Start()
     {
         pCont = GetComponent<PlayerController>();
+        playerID = pCont.GetPlayerID();
     }
 
     void UpdateTimer()
@@ -47,11 +48,16 @@ public class KittenThrower : MonoBehaviour, IAction
         GameObject go = (GameObject)Instantiate(kitten, transform.position, Quaternion.identity);
         go.GetComponent<Rigidbody2D>().velocity = Quaternion.Euler(0, 0, angle) * Vector2.right * speed;
         pCont.IgnoreCollision(go.GetComponent<Collider2D>());
-        go.GetComponent<ExplodingKitten>().player = gameObject;
+        ExplodingKitten k = go.GetComponent<ExplodingKitten>();
+        k.player = gameObject;
+        k.SetPlayerID(playerID);
+
         go = (GameObject)Instantiate(kitten, transform.position, Quaternion.identity);
         go.GetComponent<Rigidbody2D>().velocity = Quaternion.Euler(0, 0, 180 - angle) * Vector2.right * speed;
         pCont.IgnoreCollision(go.GetComponent<Collider2D>());
-        go.GetComponent<ExplodingKitten>().player = gameObject;
+        k = go.GetComponent<ExplodingKitten>();
+        k.player = gameObject;
+        k.SetPlayerID(playerID);
         FinishAction();
         //Start Action Here, If the action doesnt happen over time, call FinishAction()
     }

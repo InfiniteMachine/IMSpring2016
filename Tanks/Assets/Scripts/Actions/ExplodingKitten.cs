@@ -1,19 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ExplodingKitten : MonoBehaviour {
+public class ExplodingKitten : MonoBehaviour, iPlayerID {
     [HideInInspector]
     public GameObject player;
     public GameObject explosion;
     public float radius = 1f;
     private int playerID;
-	// Use this for initialization
-	void Start () {
-        playerID = GetComponent<PlayerController>().GetPlayerID();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    public void SetPlayerID(int id) { playerID = id; }
+    public int GetPlayerID() { return playerID; }
+    // Update is called once per frame
+    void Update () {
 	
 	}
 
