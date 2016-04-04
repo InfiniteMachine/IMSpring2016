@@ -11,6 +11,8 @@ public class ArrowStorm : MonoBehaviour, IAction {
     void Start()
     {
         tGun = GetComponentInChildren<TankGun>();
+        if (Manager.instance.gameMode == Manager.GameModes.BLITZKRIEG)
+            fireDelay *= 0.5f;
     }
 
     void UpdateTimer()

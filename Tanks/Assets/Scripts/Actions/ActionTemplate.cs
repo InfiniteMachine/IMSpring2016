@@ -5,7 +5,13 @@ public class ActionTemplate : MonoBehaviour, IAction {
     //Can be modified
     public float fireDelay = 5; //seconds between uses
     
-	void UpdateTimer()
+    void Start()
+    {
+        if (Manager.instance.gameMode == Manager.GameModes.BLITZKRIEG)
+            fireDelay *= 0.5f;
+    }
+
+    void UpdateTimer()
 	{
         if (fireTimer > 0)
         {

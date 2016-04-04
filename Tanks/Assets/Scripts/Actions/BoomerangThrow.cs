@@ -11,6 +11,8 @@ public class BoomerangThrow : MonoBehaviour, IAction
     void Start()
     {
         pCont = transform.GetComponent<PlayerController>();
+        if (Manager.instance.gameMode == Manager.GameModes.BLITZKRIEG)
+            fireDelay *= 0.5f;
     }
 
     void UpdateTimer()

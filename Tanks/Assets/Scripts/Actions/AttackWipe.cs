@@ -11,6 +11,8 @@ public class AttackWipe : MonoBehaviour, IAction
     void Start()
     {
         cFollow = Camera.main.GetComponent<CamFollow>();
+        if (Manager.instance.gameMode == Manager.GameModes.BLITZKRIEG)
+            fireDelay *= 0.5f;
     }
 
     void UpdateTimer()

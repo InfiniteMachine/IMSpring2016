@@ -31,6 +31,8 @@ public class BatShield : MonoBehaviour, IAction
         shield.transform.localPosition = Vector3.zero + Vector3.forward * -0.1f;
         shieldPrefab = shield;
         shieldPrefab.SetActive(false);
+        if (Manager.instance.gameMode == Manager.GameModes.BLITZKRIEG)
+            fireDelay *= 0.5f;
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -49,21 +51,20 @@ public class BatShield : MonoBehaviour, IAction
             if (fireTimer < 0)
                 fireTimer = 0;
         }
-        if (batShieldTimer >= 0 && iCont.GetButton(InputController.Buttons.SPECIAL_DEFENSE))
+        if (batShieldTimer >= 0)
         {
-            batShieldTimer -= Time.deltaTime;
-            shieldPrefab.transform.localScale = Vector3.one * Mathf.Lerp(1.5f, 2.5f, batShieldTimer / batShieldDuration);
+            if (iCont.GetButton(InputController.Buttons.SPECIAL_DEFENSE)) {
+                batShieldTimer -= Time.deltaTime;
+                shieldPrefab.transform.localScale = Vector3.one * Mathf.Lerp(1.5f, 2.5f, batShieldTimer / batShieldDuration);
+            }else if (batShieldActive && iCont.GetButton(InputController.Buttons.FIRE))
+            {
+                ForceDeactivate();
+                tGun.Fire();
+            }
         }
         else if (batShieldActive)
         {
-            iCont.ClearButton(InputController.Buttons.SPECIAL_DEFENSE);
-            batShield.enabled = false;
-            batShieldActive = false;
-            pCont.enabled = true;
-            tGun.enabled = true;
-            rbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-            shieldPrefab.SetActive(false);
-            FinishAction();
+            ForceDeactivate();
         }
     }
 
@@ -73,9 +74,7 @@ public class BatShield : MonoBehaviour, IAction
         iCont.ClearButton(InputController.Buttons.SPECIAL_DEFENSE);
         batShield.enabled = false;
         batShieldActive = false;
-        pCont.enabled = true;
         tGun.enabled = true;
-        rbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         shieldPrefab.SetActive(false);
         FinishAction();
     }
@@ -91,9 +90,7 @@ public class BatShield : MonoBehaviour, IAction
         shieldPrefab.transform.localScale = Vector3.one * 3f;
         batShieldTimer = batShieldDuration;
         batShieldActive = true;
-        pCont.enabled = false;
         tGun.enabled = false;
-        rbody.constraints = RigidbodyConstraints2D.FreezeAll;
         shieldPrefab.SetActive(true);
     }
 

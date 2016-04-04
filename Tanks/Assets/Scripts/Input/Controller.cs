@@ -80,7 +80,9 @@ public class Controller{
         if (!isConnected || !hasSync)
             return false;
         if (axes[number] > 0)
+        {
             return false;
+        }
         float value = GetAxis(number);
         if ((positive && value > dead) || (!positive && value < -dead))
         {

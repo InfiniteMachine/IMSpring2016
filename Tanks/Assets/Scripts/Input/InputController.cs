@@ -102,11 +102,11 @@ public class InputController : MonoBehaviour
         axis[(int)Axis.AIM_Y] = Mathf.Max(-controller.GetAxis(4), 0);
         axis[(int)Axis.AIM_ANGLE] = Mathf.Atan2(axis[(int)Axis.AIM_Y], axis[(int)Axis.AIM_X]) * Mathf.Rad2Deg;
 
-        if (buttons[(int)Buttons.JUMP] == State.RELEASED && controller.GetButton(0))
+        if (buttons[(int)Buttons.JUMP] == State.RELEASED && controller.GetAxisAsButton(8, true))
         {
             buttons[(int)Buttons.JUMP] = State.PRESSED;
         }
-        else if (buttons[(int)Buttons.JUMP] != State.RELEASED && !controller.GetButton(0))
+        else if (buttons[(int)Buttons.JUMP] != State.RELEASED && !controller.GetAxisAsButton(8, true))
         {
             buttons[(int)Buttons.JUMP] = State.RELEASED;
         }

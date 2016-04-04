@@ -41,6 +41,8 @@ public class BearBite : MonoBehaviour, IAction
         tPlayAnim = Animator.StringToHash("tPlayAnim");
 
         playerID = GetComponent<PlayerController>().GetPlayerID();
+        if (Manager.instance.gameMode == Manager.GameModes.BLITZKRIEG)
+            fireDelay *= 0.5f;
     }
     void OnTriggerEnter2D(Collider2D col)
     {

@@ -9,6 +9,12 @@ public class ForcePush : MonoBehaviour, IAction
     public float radius = 2;
     public float disableTime = 2f;
 
+    void Start()
+    {
+        if (Manager.instance.gameMode == Manager.GameModes.BLITZKRIEG)
+            fireDelay *= 0.5f;
+    }
+
     void UpdateTimer()
     {
         if (fireTimer > 0)

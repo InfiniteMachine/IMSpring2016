@@ -137,11 +137,16 @@ public class TankGun : MonoBehaviour {
                 transform.eulerAngles = new Vector3(0, 0, Mathf.Clamp(iCont.GetAxis(InputController.Axis.AIM_ANGLE), maxAngleDown, maxAngleUp));
                 scale.x = Mathf.Abs(scale.x);
             }
-            transform.parent.localScale = scale;
         }
+        else
+        {
+            if (iCont.GetAxis(InputController.Axis.MOVE) != 0)
+                scale.x = Mathf.Sign(iCont.GetAxis(InputController.Axis.MOVE));
+        }
+        transform.parent.localScale = scale;
     }
 
-	public void Fire()	{
+    public void Fire()	{
         SoundManager.instance.PlayOneShot("Shoot");
         GameObject go = (GameObject)Instantiate(particles, firePosition.position, Quaternion.identity);
         go.transform.SetParent(firePosition);

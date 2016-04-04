@@ -40,11 +40,15 @@ public class Manager : MonoBehaviour {
 
     private int lastSecond = -1;
 
-    public enum GameModes { KINGME= 0, DONTKINGME, ANARCHY };
+    public enum GameModes { KINGME= 0, BLITZKRIEG, ANARCHY };
     [HideInInspector]
     public GameModes gameMode = GameModes.KINGME;
-	// Use this for initialization
-	void Awake () {
+    [HideInInspector]
+    public float moveMultiplier = 1;
+    [HideInInspector]
+    public float gravityScale = 1;
+    // Use this for initialization
+    void Awake () {
 		DontDestroyOnLoad(gameObject);
 		instance = this;
         playerTanks = new int[maxPlayers];
@@ -144,6 +148,16 @@ public class Manager : MonoBehaviour {
                     insert = true;
                     break;
                 }
+                else if (indScore[i] == indScore[players[j]])
+                {
+                    //Sort by kills
+                    if(kills[i] > kills[players[j]])
+                    {
+                        players.Insert(j, i);
+                        insert = true;
+                        break;
+                    }
+                }
             }
             if (!insert)
                 players.Add(i);
@@ -193,10 +207,12 @@ public class Manager : MonoBehaviour {
 
 	public bool SpawnTanks()
 	{
-        // Assumed that spawns are somewhat symmetrical
+        Physics2D.gravity = Vector2.down * 9.81f * gravityScale;
         // Assumed that any spawn may accept any player regardless of number of players
         batonLocations = GameObject.FindGameObjectsWithTag("BatonLocation");
         baton = GameObject.FindGameObjectWithTag("Baton");
+        if (gameMode == GameModes.ANARCHY)
+            Destroy(baton);
         ResetBaton(true);
         GameObject[] newPlayerObjects = new GameObject[numPlayers];
 		GameObject[] spawnLocations = GameObject.FindGameObjectsWithTag("Spawn");

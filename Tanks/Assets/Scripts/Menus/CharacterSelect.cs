@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CharacterSelect : MonoBehaviour {
     private enum MenuState { CHARACTER, SCENE, MATCH_OPTIONS, LOADING}
@@ -25,21 +26,23 @@ public class CharacterSelect : MonoBehaviour {
     public Sprite[] scenes;
     private int sceneChooser = -1;
     private int arena = 0;
-    private Image arenaDisplay;
-    private Text playerDisplay;
-    private Text arenaNameDisplay;
+    private Dictionary<string, Image> images;
+    private Dictionary<string, Text> texts;
     private CanvasGroup matchOptions;
     [Header("Match Options")]
     public Vector2 timeRange = new Vector2(300, 900);
     public float timeStep = 30f;
-    public string[] gameModeNames = new string[] { "King Me", "Don't King Me", "Anarchy" };
+    public Vector2 moveRange = new Vector2(0.5f, 3f);
+    public float moveStep = 0.5f;
+    public Vector2 gravRange = new Vector2(0.5f, 3f);
+    public float gravStep = 0.5f;
+    public string[] gameModeNames = new string[] { "King Me", "Blitzkrieg", "Anarchy" };
+    public string[] gameModeDesc = new string[] { "Maintain control of the crown for as long as possible.",
+        "What makes war faster than being able to use attacks faster?",
+        "There is no king. Be the best conqourer out there." };
     public Color activeColor = Color.yellow;
     public Color disabledColor = Color.gray;
     private int button = 0;
-    private Text gameModeText;
-    private Text matchDurationText;
-    private Text gameMode;
-    private Text matchDuration;
     private GameObject loading;
     private bool debug = false;
 #if UNITY_EDITOR
@@ -52,10 +55,15 @@ public class CharacterSelect : MonoBehaviour {
     // Update is called once per frame
     void Start()
     {
+        texts = new Dictionary<string, Text>();
+        images = new Dictionary<string, Image>();
         Manager.instance.numPlayers = 0;
-        for(int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
             Manager.instance.playerTanks[i] = 0;
         playerSelect = transform.FindChild("PlayerSelect").GetComponent<CanvasGroup>();
+        playerSelect.alpha = 1;
+        playerSelect.interactable = true;
+        playerSelect.blocksRaycasts = true;
         loading = transform.FindChild("Loading").gameObject;
         loading.SetActive(false);
         sceneSelect = transform.FindChild("SceneSelect").GetComponent<CanvasGroup>();
@@ -77,18 +85,23 @@ public class CharacterSelect : MonoBehaviour {
         }
         if(scenes.Length != areaNames.Length)
             Debug.Log("There is a mismatch of artwork and arena names");
-        playerDisplay = sceneSelect.transform.FindChild("SelectPlayer").GetComponent<Text>();
-        arenaDisplay = sceneSelect.transform.FindChild("LevelArt").GetComponent<Image>();
-        arenaNameDisplay = sceneSelect.transform.FindChild("LevelName").GetComponent<Text>();
+        texts.Add("PlayerDisplay", sceneSelect.transform.FindChild("SelectPlayer").GetComponent<Text>());
+        images.Add("ArenaDisplay", sceneSelect.transform.FindChild("LevelArt").GetComponent<Image>());
+        texts.Add("ArenaNameDisplay", sceneSelect.transform.FindChild("LevelName").GetComponent<Text>());
         matchOptions = transform.FindChild("MatchOptions").GetComponent<CanvasGroup>();
         matchOptions.alpha = 0;
         matchOptions.interactable = false;
         matchOptions.blocksRaycasts = false;
 
-        gameModeText = matchOptions.transform.FindChild("GameModeText").GetComponent<Text>();
-        matchDurationText = matchOptions.transform.FindChild("MatchDurationText").GetComponent<Text>();
-        gameMode = matchOptions.transform.FindChild("GameMode/Text").GetComponent<Text>();
-        matchDuration = matchOptions.transform.FindChild("MatchDuration/Text").GetComponent<Text>();
+        texts.Add("GameModeText", matchOptions.transform.FindChild("GameModeText").GetComponent<Text>());
+        texts.Add("MatchDurationText", matchOptions.transform.FindChild("MatchDurationText").GetComponent<Text>());
+        texts.Add("GameModeDesc", matchOptions.transform.FindChild("GameModeDesc").GetComponent<Text>());
+        texts.Add("MatchDuration", matchOptions.transform.FindChild("MatchDuration/Text").GetComponent<Text>());
+        texts.Add("GameMode", matchOptions.transform.FindChild("GameMode/Text").GetComponent<Text>());
+        texts.Add("MovementMultiplier", matchOptions.transform.FindChild("MovementMultiplier/Text").GetComponent<Text>());
+        texts.Add("MovementMultiplierText", matchOptions.transform.FindChild("MovementMultiplierText").GetComponent<Text>());
+        texts.Add("GravityScale", matchOptions.transform.FindChild("GravityScale/Text").GetComponent<Text>());
+        texts.Add("GravityScaleText", matchOptions.transform.FindChild("GravityScaleText").GetComponent<Text>());
 
         UpdatePodiums();
         UpdateSceneSelectVisual();
@@ -364,9 +377,9 @@ public class CharacterSelect : MonoBehaviour {
 
     public void UpdateSceneSelectVisual()
     {
-        playerDisplay.text = "Player " + (sceneChooser + 1) + ", Select Arena";
-        arenaDisplay.sprite = scenes[arena];
-        arenaNameDisplay.text = areaNames[arena];
+        texts["PlayerDisplay"].text = "Player " + (sceneChooser + 1) + ", Select Arena";
+        images["ArenaDisplay"].sprite = scenes[arena];
+        texts["ArenaNameDisplay"].text = areaNames[arena];
     }
 
     public void UpdateMatchOptions()
@@ -396,7 +409,7 @@ public class CharacterSelect : MonoBehaviour {
                 SoundManager.instance.PlayOneShot("Swap");
                 upDown = 1;
             }
-            else if (controllers[i].GetAxisAsButton(1, true) || controllers[i].GetAxisAsButton(6, true))
+            else if (controllers[i].GetAxisAsButton(1, false) || controllers[i].GetAxisAsButton(6, false))
             {
                 //Up
                 SoundManager.instance.PlayOneShot("Swap");
@@ -499,14 +512,50 @@ public class CharacterSelect : MonoBehaviour {
                             Manager.instance.endTime += timeStep;
                     }
                     break;
+                case 2:
+                    if (leftRight < 0)
+                    {
+                        //Left
+                        if (Manager.instance.moveMultiplier <= moveRange.x)
+                            Manager.instance.moveMultiplier = moveRange.y;
+                        else
+                            Manager.instance.moveMultiplier -= moveStep;
+                    }
+                    else
+                    {
+                        //Right
+                        if (Manager.instance.moveMultiplier >= moveRange.y)
+                            Manager.instance.moveMultiplier = moveRange.x;
+                        else
+                            Manager.instance.moveMultiplier += moveStep;
+                    }
+                    break;
+                case 3:
+                    if (leftRight < 0)
+                    {
+                        //Left
+                        if (Manager.instance.gravityScale <= gravRange.x)
+                            Manager.instance.gravityScale = gravRange.y;
+                        else
+                            Manager.instance.gravityScale -= gravStep;
+                    }
+                    else
+                    {
+                        //Right
+                        if (Manager.instance.gravityScale >= gravRange.y)
+                            Manager.instance.gravityScale = gravRange.x;
+                        else
+                            Manager.instance.gravityScale += gravStep;
+                    }
+                    break;
             }
         }
         else if(upDown != 0)
         {
             button += upDown;
             if (button < 0)
-                button = 1;
-            else if (button > 1)
+                button = 3;
+            else if (button > 3)
                 button = 0;
         }
         UpdateMatchOptionsVisual();
@@ -514,12 +563,23 @@ public class CharacterSelect : MonoBehaviour {
 
     public void UpdateMatchOptionsVisual()
     {
-        gameModeText.color = (button == 0 ? activeColor : disabledColor);
-        matchDurationText.color = (button == 1 ? activeColor : disabledColor);
-        gameMode.color = (button == 0 ? activeColor : disabledColor);
-        gameMode.text = gameModeNames[(int)Manager.instance.gameMode];
-        matchDuration.color = (button == 1 ? activeColor : disabledColor);
-        matchDuration.text = string.Format("{0:0}:{1:00}", (int)(Manager.instance.endTime / 60), (int)(Manager.instance.endTime % 60));
+        texts["GameModeText"].color = (button == 0 ? activeColor : disabledColor);
+        texts["GameMode"].color = (button == 0 ? activeColor : disabledColor);
+        texts["GameMode"].text = gameModeNames[(int)Manager.instance.gameMode];
+
+        texts["GameModeDesc"].text = gameModeDesc[(int)Manager.instance.gameMode];
+
+        texts["MatchDurationText"].color = (button == 1 ? activeColor : disabledColor);
+        texts["MatchDuration"].color = (button == 1 ? activeColor : disabledColor);
+        texts["MatchDuration"].text = string.Format("{0:0}:{1:00}", (int)(Manager.instance.endTime / 60), (int)(Manager.instance.endTime % 60));
+
+        texts["MovementMultiplierText"].color = (button == 2 ? activeColor : disabledColor);
+        texts["MovementMultiplier"].color = (button == 2 ? activeColor : disabledColor);
+        texts["MovementMultiplier"].text = string.Format("{0:0.0}x", Manager.instance.moveMultiplier);
+
+        texts["GravityScaleText"].color = (button == 3 ? activeColor : disabledColor);
+        texts["GravityScale"].color = (button == 3 ? activeColor : disabledColor);
+        texts["GravityScale"].text = string.Format("{0:0.0}x", Manager.instance.gravityScale);
     }
 
     public void GotoSelectedArena()

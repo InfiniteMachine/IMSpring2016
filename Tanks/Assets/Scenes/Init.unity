@@ -146,6 +146,8 @@ MonoBehaviour:
   deaths: 
   scoreScreenDuration: 10
   gameMode: 0
+  moveMultiplier: 1
+  gravityScale: 1
 --- !u!4 &1160713445
 Transform:
   m_ObjectHideFlags: 0
@@ -172,7 +174,7 @@ MonoBehaviour:
   deadBand: 0.15
   numAxes: 10
   numButtons: 10
-  clearDuration: 0.15
+  clearDuration: 0.25
 --- !u!114 &1160713447
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,6 +15,8 @@ public class Spears : MonoBehaviour, IAction
     void Start()
     {
         playerID = GetComponent<PlayerController>().GetPlayerID();
+        if (Manager.instance.gameMode == Manager.GameModes.BLITZKRIEG)
+            fireDelay *= 0.5f;
     }
 
     void UpdateTimer()

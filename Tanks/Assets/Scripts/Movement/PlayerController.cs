@@ -50,6 +50,8 @@ public class PlayerController : MonoBehaviour, IPlayerID {
     public float sideDashDuration = 0.5f;
     public float sideDashSpeed = 10f;
     private bool canDash = false;
+    public float dashDelay = 1.5f;
+    private float dashCounter = 0f;
     //Ability Specific
     private float disabledCounter = 0;
     //Crown
@@ -67,7 +69,7 @@ public class PlayerController : MonoBehaviour, IPlayerID {
         groundCheck = GetComponentInChildren<IsGrounded>();
         iCont = GetComponent<InputController>();
         IAction[] attachedActions = GetComponents<IAction>();
-        for(int i = 0; i < attachedActions.Length; i++)
+        for (int i = 0; i < attachedActions.Length; i++)
         {
             if (attachedActions[i].IsAttack())
                 specialAttack = attachedActions[i];
@@ -87,6 +89,7 @@ public class PlayerController : MonoBehaviour, IPlayerID {
         aController = GetComponent<Animator>();
         crownLocation = transform.FindChild("CrownLocation");
         GetComponentInChildren<TankGun>().playerID = playerID;
+        movementSpeed *= Manager.instance.moveMultiplier;
     }
 
     // Update is called once per frame
@@ -126,7 +129,9 @@ public class PlayerController : MonoBehaviour, IPlayerID {
                 {
                     velocity.x = Mathf.MoveTowards(velocity.x, 0, movementSpeed / accelDuration * Time.deltaTime);
                 }
-                if (iCont.GetButton(InputController.Buttons.DASH))
+                if (dashCounter > 0)
+                    dashCounter -= Time.deltaTime;
+                if (dashCounter <= 0 && iCont.GetButton(InputController.Buttons.DASH))
                 {
                     iCont.ClearButton(InputController.Buttons.DASH);
                     forceMoveCounter = sideDashDuration;
@@ -187,6 +192,7 @@ public class PlayerController : MonoBehaviour, IPlayerID {
                         velocity.y = -dashVelocity;
                     }
                 }
+                canJump = false;
             }
 
             if ((canJump || canDoubleJump) && iCont.GetButton(InputController.Buttons.JUMP))

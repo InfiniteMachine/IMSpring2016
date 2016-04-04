@@ -12,6 +12,8 @@ public class Teleport : MonoBehaviour, IAction
     {
         col = GetComponent<BoxCollider2D>();
         rBody = GetComponent<Rigidbody2D>();
+        if(Manager.instance.gameMode == Manager.GameModes.BLITZKRIEG)
+            fireDelay *= 0.5f;
     }
 
     void UpdateTimer()
