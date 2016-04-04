@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ExplodingKitten : MonoBehaviour, iPlayerID {
+public class ExplodingKitten : MonoBehaviour, IPlayerID {
     [HideInInspector]
     public GameObject player;
     public GameObject explosion;
