@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour, IPlayerID {
             }
             if (specialAttack != null)
             {
-                if (iCont.GetButton(InputController.Buttons.SPECIAL_FIRE) && specialAttack.CanFire())
+                if (specialDefense.GetPercentage() != 0 && iCont.GetButton(InputController.Buttons.SPECIAL_FIRE) && specialAttack.CanFire())
                 {
                     specialAttack.AllowFire();
                     SoundManager.instance.PlayOneShot("AbilityActivation");
@@ -255,7 +255,7 @@ public class PlayerController : MonoBehaviour, IPlayerID {
         {
             Die(true);
         }
-        else if (other.gameObject.CompareTag("Bullet") && spawnCounter <= 0)
+        else if (other.gameObject.CompareTag("Bullet") && spawnCounter <= 0 && specialDefense.GetPercentage() != 0)
         {
             Die(false, other.GetComponent<IPlayerID>().GetPlayerID());
         }
