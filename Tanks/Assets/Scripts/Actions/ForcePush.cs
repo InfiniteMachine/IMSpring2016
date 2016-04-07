@@ -52,7 +52,7 @@ public class ForcePush : MonoBehaviour, IAction
         {
             if (col.tag == "Player" && col.gameObject != gameObject)
             {
-                col.gameObject.GetComponent<PlayerController>().ForcePush((Vector2)((col.transform.position - transform.position).normalized) * force, disableTime);
+                col.gameObject.GetComponent<PlayerController>().ForcePush((Vector2)((col.transform.position - transform.position).normalized) * Mathf.Lerp(force, 0, Vector2.Distance(transform.position, col.transform.position) / radius), disableTime);
             }
         }
         FinishAction();

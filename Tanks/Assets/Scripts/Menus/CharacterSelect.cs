@@ -9,15 +9,13 @@ public class CharacterSelect : MonoBehaviour {
     private MenuState curMenu = MenuState.CHARACTER;
     [Header("Player Chooser")]
     public Sprite[] characterArt;
+    public Sprite disabledSprite;
     private CanvasGroup playerSelect;
     private enum PStates { DISABLED, CHOOSING, LOCKED };
     private class Podium
     {
         public PStates state;
         public Image display;
-        public Image leftArrow, rightArrow;
-        public Text name;
-        public Image disabled;
     }
     private Podium[] podiums;
     private CanvasGroup sceneSelect;
@@ -60,34 +58,47 @@ public class CharacterSelect : MonoBehaviour {
         Manager.instance.numPlayers = 0;
         for (int i = 0; i < 4; i++)
             Manager.instance.playerTanks[i] = 0;
+        //Cache all player select data
         playerSelect = transform.FindChild("PlayerSelect").GetComponent<CanvasGroup>();
         playerSelect.alpha = 1;
         playerSelect.interactable = true;
         playerSelect.blocksRaycasts = true;
-        loading = transform.FindChild("Loading").gameObject;
-        loading.SetActive(false);
+        podiums = new Podium[4];
+        for (int i = 0; i < podiums.Length; i++)
+        {
+            Transform tank = playerSelect.transform.FindChild("Player" + (i + 1));
+            podiums[i] = new Podium();
+            podiums[i].state = PStates.DISABLED;
+            podiums[i].display = tank.FindChild("Display").GetComponent<Image>();
+            podiums[i].display.sprite = disabledSprite;
+        }
+
+        for(int i = 0; i < 9; i++)
+        {
+            Image im = playerSelect.transform.FindChild("Portraits/" + (i + 1)).GetComponent<Image>();
+            im.sprite = characterArt[i];
+            images.Add("Character" + (i + 1) + "P1", im.transform.FindChild("P1").GetComponent<Image>());
+            images["Character" + (i + 1) + "P1"].enabled = false;
+            images.Add("Character" + (i + 1) + "P2", im.transform.FindChild("P2").GetComponent<Image>());
+            images["Character" + (i + 1) + "P2"].enabled = false;
+            images.Add("Character" + (i + 1) + "P3", im.transform.FindChild("P3").GetComponent<Image>());
+            images["Character" + (i + 1) + "P3"].enabled = false;
+            images.Add("Character" + (i + 1) + "P4", im.transform.FindChild("P4").GetComponent<Image>());
+            images["Character" + (i + 1) + "P4"].enabled = false;
+        }
+
+        //Cache all scene select data
+        if (scenes.Length != areaNames.Length)
+            Debug.Log("There is a mismatch of artwork and arena names");
         sceneSelect = transform.FindChild("SceneSelect").GetComponent<CanvasGroup>();
         sceneSelect.alpha = 0;
         sceneSelect.interactable = false;
         sceneSelect.blocksRaycasts = false;
-        Transform displays = playerSelect.transform.FindChild("CharacterDisplays");
-        podiums = new Podium[4];
-        for (int i = 0; i < podiums.Length; i++)
-        {
-            Transform tank = displays.FindChild("Tank" + (i + 1));
-            podiums[i] = new Podium();
-            podiums[i].state = PStates.DISABLED;
-            podiums[i].display = tank.FindChild("Image").GetComponent<Image>();
-            podiums[i].disabled = tank.FindChild("Disabled").GetComponent<Image>();
-            podiums[i].name = tank.FindChild("Name").GetComponent<Text>();
-            podiums[i].leftArrow = tank.FindChild("LeftArrow").GetComponent<Image>();
-            podiums[i].rightArrow = tank.FindChild("RightArrow").GetComponent<Image>();
-        }
-        if(scenes.Length != areaNames.Length)
-            Debug.Log("There is a mismatch of artwork and arena names");
+
         texts.Add("PlayerDisplay", sceneSelect.transform.FindChild("SelectPlayer").GetComponent<Text>());
         images.Add("ArenaDisplay", sceneSelect.transform.FindChild("LevelArt").GetComponent<Image>());
         texts.Add("ArenaNameDisplay", sceneSelect.transform.FindChild("LevelName").GetComponent<Text>());
+        //Cache all match options data
         matchOptions = transform.FindChild("MatchOptions").GetComponent<CanvasGroup>();
         matchOptions.alpha = 0;
         matchOptions.interactable = false;
@@ -102,6 +113,9 @@ public class CharacterSelect : MonoBehaviour {
         texts.Add("MovementMultiplierText", matchOptions.transform.FindChild("MovementMultiplierText").GetComponent<Text>());
         texts.Add("GravityScale", matchOptions.transform.FindChild("GravityScale/Text").GetComponent<Text>());
         texts.Add("GravityScaleText", matchOptions.transform.FindChild("GravityScaleText").GetComponent<Text>());
+
+        loading = transform.FindChild("Loading").gameObject;
+        loading.SetActive(false);
 
         UpdatePodiums();
         UpdateSceneSelectVisual();
@@ -158,18 +172,38 @@ public class CharacterSelect : MonoBehaviour {
                         if (controllers[i].GetAxisAsButton(0, true) || controllers[i].GetAxisAsButton(5, true))
                         {
                             //Right
-                            Manager.instance.playerTanks[p] += 1;
-                            if (Manager.instance.playerTanks[p] >= characterArt.Length)
-                                Manager.instance.playerTanks[p] = 0;
-                            SoundManager.instance.PlayOneShot("Swap");
+                            if ((Manager.instance.playerTanks[p] + 1) % 3 != 0)
+                            {
+                                Manager.instance.playerTanks[p] += 1;
+                                SoundManager.instance.PlayOneShot("Swap");
+                            }
                         }
                         else if (controllers[i].GetAxisAsButton(0, false) || controllers[i].GetAxisAsButton(5, false))
                         {
                             //Right's demon twin
-                            Manager.instance.playerTanks[p] -= 1;
-                            if (Manager.instance.playerTanks[p] < 0)
-                                Manager.instance.playerTanks[p] = characterArt.Length - 1;
-                            SoundManager.instance.PlayOneShot("Swap");
+                            if (Manager.instance.playerTanks[p] % 3 != 0)
+                            {
+                                Manager.instance.playerTanks[p] -= 1;
+                                SoundManager.instance.PlayOneShot("Swap");
+                            }
+                        }
+                        else if (controllers[i].GetAxisAsButton(1, true) || controllers[i].GetAxisAsButton(6, false))
+                        {
+                            //Down?
+                            if (Manager.instance.playerTanks[p] + 3 <= 8)
+                            {
+                                Manager.instance.playerTanks[p] += 3;
+                                SoundManager.instance.PlayOneShot("Swap");
+                            }
+                        }
+                        else if (controllers[i].GetAxisAsButton(1, false) || controllers[i].GetAxisAsButton(6, true))
+                        {
+                            //Up
+                            if (Manager.instance.playerTanks[p] - 3 >= 0)
+                            {
+                                Manager.instance.playerTanks[p] -= 3;
+                                SoundManager.instance.PlayOneShot("Swap");
+                            }
                         }
                         else if (controllers[i].GetButtonDown(0))
                         {
@@ -210,18 +244,38 @@ public class CharacterSelect : MonoBehaviour {
                     if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
                     {
                         //Right's demon twin
-                        Manager.instance.playerTanks[p] -= 1;
-                        if (Manager.instance.playerTanks[p] < 0)
-                            Manager.instance.playerTanks[p] = characterArt.Length - 1;
-                        SoundManager.instance.PlayOneShot("Swap");
+                        if (Manager.instance.playerTanks[p] % 3 != 0)
+                        {
+                            Manager.instance.playerTanks[p] -= 1;
+                            SoundManager.instance.PlayOneShot("Swap");
+                        }
                     }
                     else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
                     {
                         //Right
-                        Manager.instance.playerTanks[p] += 1;
-                        if (Manager.instance.playerTanks[p] >= characterArt.Length)
-                            Manager.instance.playerTanks[p] = 0;
-                        SoundManager.instance.PlayOneShot("Swap");
+                        if ((Manager.instance.playerTanks[p] + 1) % 3 != 0)
+                        {
+                            Manager.instance.playerTanks[p] += 1;
+                            SoundManager.instance.PlayOneShot("Swap");
+                        }
+                    }
+                    else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                    {
+                        //Up
+                        if (Manager.instance.playerTanks[p] - 3 >= 0)
+                        {
+                            Manager.instance.playerTanks[p] -= 3;
+                            SoundManager.instance.PlayOneShot("Swap");
+                        }
+                    }
+                    else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+                    {
+                        //Down
+                        if (Manager.instance.playerTanks[p] + 3 <= 8)
+                        {
+                            Manager.instance.playerTanks[p] += 3;
+                            SoundManager.instance.PlayOneShot("Swap");
+                        }
                     }
                     else if (Input.GetKeyDown(KeyCode.Return))
                     {
@@ -275,27 +329,23 @@ public class CharacterSelect : MonoBehaviour {
             switch (podiums[i].state)
             {
                 case PStates.DISABLED:
-                    podiums[i].display.enabled = false;
+                    podiums[i].display.sprite = disabledSprite;
                     podiums[i].display.color = Color.white;
-                    podiums[i].disabled.enabled = true;
-                    podiums[i].name.text = "";
-                    podiums[i].leftArrow.enabled = false;
-                    podiums[i].rightArrow.enabled = false;
                     break;
                 case PStates.CHOOSING:
-                    podiums[i].display.enabled = true;
                     podiums[i].display.sprite = characterArt[Manager.instance.playerTanks[i]];
                     podiums[i].display.color = Color.white;
-                    podiums[i].disabled.enabled = false;
-                    podiums[i].name.text = Manager.instance.tanks[Manager.instance.playerTanks[i]].GetComponent<PlayerController>().characterName;
-                    podiums[i].leftArrow.enabled = true;
-                    podiums[i].rightArrow.enabled = true;
                     break;
                 case PStates.LOCKED:
                     podiums[i].display.color = Color.gray;
-                    podiums[i].leftArrow.enabled = false;
-                    podiums[i].rightArrow.enabled = false;
                     break;
+            }
+        }
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < Manager.instance.numPlayers; j++)
+            {
+                images["Character" + (i + 1) + "P" + (j + 1)].enabled = Manager.instance.playerTanks[j] == i;
             }
         }
     }
@@ -403,13 +453,13 @@ public class CharacterSelect : MonoBehaviour {
                 SoundManager.instance.PlayOneShot("Swap");
                 leftRight = -1;
             }
-            else if (controllers[i].GetAxisAsButton(1, true) || controllers[i].GetAxisAsButton(6, true))
+            else if (controllers[i].GetAxisAsButton(1, true) || controllers[i].GetAxisAsButton(6, false))
             {
                 //Down?
                 SoundManager.instance.PlayOneShot("Swap");
                 upDown = 1;
             }
-            else if (controllers[i].GetAxisAsButton(1, false) || controllers[i].GetAxisAsButton(6, false))
+            else if (controllers[i].GetAxisAsButton(1, false) || controllers[i].GetAxisAsButton(6, true))
             {
                 //Up
                 SoundManager.instance.PlayOneShot("Swap");

@@ -477,7 +477,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireDelay: 5
   force: 20
-  radius: 4
+  radius: 15
   disableTime: 2
 --- !u!114 &11409622
 MonoBehaviour:

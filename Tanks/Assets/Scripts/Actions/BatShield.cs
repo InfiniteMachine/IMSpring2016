@@ -39,7 +39,7 @@ public class BatShield : MonoBehaviour, IAction
     {
         if (col.CompareTag("Bullet"))
         {
-            Destroy(col.gameObject);
+            //Destroy(col.gameObject);
         }
     }
 
@@ -53,10 +53,9 @@ public class BatShield : MonoBehaviour, IAction
         }
         if (batShieldTimer >= 0)
         {
-            if (iCont.GetButton(InputController.Buttons.SPECIAL_DEFENSE)) {
-                batShieldTimer -= Time.deltaTime;
-                shieldPrefab.transform.localScale = Vector3.one * Mathf.Lerp(1.5f, 2.5f, batShieldTimer / batShieldDuration);
-            }else if (batShieldActive && iCont.GetButton(InputController.Buttons.FIRE))
+            batShieldTimer -= Time.deltaTime;
+            shieldPrefab.transform.localScale = Vector3.one * Mathf.Lerp(1.5f, 2.5f, batShieldTimer / batShieldDuration);
+            if (batShieldActive && iCont.GetButton(InputController.Buttons.FIRE))
             {
                 ForceDeactivate();
                 tGun.Fire();
