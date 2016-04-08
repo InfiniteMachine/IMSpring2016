@@ -105,6 +105,13 @@ public class CamFollow : MonoBehaviour
 
     private Rect GenerateRect()
     {
+        for(int i = 0; i < visibleObjects.Count; i++) {
+            if (visibleObjects[i] == null)
+            {
+                visibleObjects.RemoveAt(i);
+                i--;
+            }
+        }
         Rect r = new Rect();
         r.yMax = r.yMin = visibleObjects[0].position.y;
         r.xMax = r.xMin = visibleObjects[0].position.x;
