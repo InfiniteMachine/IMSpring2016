@@ -75,16 +75,25 @@ public class CharacterSelect : MonoBehaviour {
 
         for(int i = 0; i < 9; i++)
         {
-            Image im = playerSelect.transform.FindChild("Portraits/" + (i + 1)).GetComponent<Image>();
+            Image im = playerSelect.transform.FindChild("Portraits/" + (i + 1) + "/Display").GetComponent<Image>();
             im.sprite = characterArt[i];
-            images.Add("Character" + (i + 1) + "P1", im.transform.FindChild("P1").GetComponent<Image>());
+            images.Add("Character" + (i + 1) + "P1", im.transform.parent.FindChild("P1").GetComponent<Image>());
             images["Character" + (i + 1) + "P1"].enabled = false;
-            images.Add("Character" + (i + 1) + "P2", im.transform.FindChild("P2").GetComponent<Image>());
+            images.Add("Character" + (i + 1) + "P2", im.transform.parent.FindChild("P2").GetComponent<Image>());
             images["Character" + (i + 1) + "P2"].enabled = false;
-            images.Add("Character" + (i + 1) + "P3", im.transform.FindChild("P3").GetComponent<Image>());
+            images.Add("Character" + (i + 1) + "P3", im.transform.parent.FindChild("P3").GetComponent<Image>());
             images["Character" + (i + 1) + "P3"].enabled = false;
-            images.Add("Character" + (i + 1) + "P4", im.transform.FindChild("P4").GetComponent<Image>());
+            images.Add("Character" + (i + 1) + "P4", im.transform.parent.FindChild("P4").GetComponent<Image>());
             images["Character" + (i + 1) + "P4"].enabled = false;
+
+            images.Add("Character" + (i + 1) + "P1Tag", im.transform.parent.FindChild("P1Tag").GetComponent<Image>());
+            images["Character" + (i + 1) + "P1Tag"].enabled = false;
+            images.Add("Character" + (i + 1) + "P2Tag", im.transform.parent.FindChild("P2Tag").GetComponent<Image>());
+            images["Character" + (i + 1) + "P2Tag"].enabled = false;
+            images.Add("Character" + (i + 1) + "P3Tag", im.transform.parent.FindChild("P3Tag").GetComponent<Image>());
+            images["Character" + (i + 1) + "P3Tag"].enabled = false;
+            images.Add("Character" + (i + 1) + "P4Tag", im.transform.parent.FindChild("P4Tag").GetComponent<Image>());
+            images["Character" + (i + 1) + "P4Tag"].enabled = false;
         }
 
         //Cache all scene select data
@@ -346,6 +355,9 @@ public class CharacterSelect : MonoBehaviour {
             for (int j = 0; j < Manager.instance.numPlayers; j++)
             {
                 images["Character" + (i + 1) + "P" + (j + 1)].enabled = Manager.instance.playerTanks[j] == i;
+                images["Character" + (i + 1) + "P" + (j + 1)].color = (podiums[j].state == PStates.LOCKED) ? Color.gray : Color.white;
+                images["Character" + (i + 1) + "P" + (j + 1) + "Tag"].enabled = Manager.instance.playerTanks[j] == i;
+                images["Character" + (i + 1) + "P" + (j + 1) + "Tag"].color = (podiums[j].state == PStates.LOCKED) ? Color.gray : Color.white;
             }
         }
     }

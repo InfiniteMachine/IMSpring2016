@@ -42,7 +42,7 @@ public class MenuController : MonoBehaviour {
         for (int i = 0; i < controllers.Length; i++)
         {
             broken= true;
-            if (controllers[i].GetAxisAsButton(0, true) || controllers[i].GetAxisAsButton(5, false))
+            if (controllers[i].GetAxisAsButton(1, true) || controllers[i].GetAxisAsButton(6, false))
             {
                 //Down
                 selected++;
@@ -51,7 +51,7 @@ public class MenuController : MonoBehaviour {
                 SoundManager.instance.PlayOneShot("Swap");
                 break;
             }
-            else if (controllers[i].GetAxisAsButton(0, false) || controllers[i].GetAxisAsButton(5, true))
+            else if (controllers[i].GetAxisAsButton(1, false) || controllers[i].GetAxisAsButton(6, true))
             {
                 //Up
                 selected--;
@@ -71,7 +71,7 @@ public class MenuController : MonoBehaviour {
         }
         if (!broken)
         {
-            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 //Down
                 selected++;
@@ -79,7 +79,7 @@ public class MenuController : MonoBehaviour {
                     selected = Buttons.Play;
                 SoundManager.instance.PlayOneShot("Swap");
             }
-            else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+            else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 //Up
                 selected--;

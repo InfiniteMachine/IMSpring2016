@@ -1,10 +1,14 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class uGUITools : MonoBehaviour {
 	[MenuItem("uGUI/Anchors to Corners %[")]
 	static void AnchorsToCorners(){
-		foreach(Transform transform in Selection.transforms){
+        Undo.RecordObjects(Selection.gameObjects, "uGUITools: AnchorsToCorners");
+        foreach (Transform transform in Selection.transforms){
 			RectTransform t = transform as RectTransform;
 			RectTransform pt = Selection.activeTransform.parent as RectTransform;
 
@@ -19,18 +23,21 @@ public class uGUITools : MonoBehaviour {
 			t.anchorMax = newAnchorsMax;
 			t.offsetMin = t.offsetMax = new Vector2(0, 0);
 		}
+        EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
 	}
 
 	[MenuItem("uGUI/Corners to Anchors %]")]
 	static void CornersToAnchors(){
-		foreach(Transform transform in Selection.transforms){
+        Undo.RecordObjects(Selection.gameObjects, "uGUITools: CornersToAnchors");
+        foreach (Transform transform in Selection.transforms){
 			RectTransform t = transform as RectTransform;
 
 			if(t == null) return;
 
 			t.offsetMin = t.offsetMax = new Vector2(0, 0);
 		}
-	}
+        EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
+    }
 
 	[MenuItem("uGUI/Mirror Horizontally Around Anchors %;")]
 	static void MirrorHorizontallyAnchors(){
@@ -43,7 +50,8 @@ public class uGUITools : MonoBehaviour {
 	}
 
 	static void MirrorHorizontally(bool mirrorAnchors){
-		foreach(Transform transform in Selection.transforms){
+        Undo.RecordObjects(Selection.gameObjects, "uGUITools: MirrorHorizontally");
+        foreach (Transform transform in Selection.transforms){
 			RectTransform t = transform as RectTransform;
 			RectTransform pt = Selection.activeTransform.parent as RectTransform;
 			
@@ -61,7 +69,8 @@ public class uGUITools : MonoBehaviour {
 
 			t.localScale = new Vector3(-t.localScale.x, t.localScale.y, t.localScale.z);
 		}
-	}
+        EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
+    }
 
 	[MenuItem("uGUI/Mirror Vertically Around Anchors %'")]
 	static void MirrorVerticallyAnchors(){
@@ -74,8 +83,9 @@ public class uGUITools : MonoBehaviour {
 	}
 	
 	static void MirrorVertically(bool mirrorAnchors){
-		foreach(Transform transform in Selection.transforms){
-			RectTransform t = transform as RectTransform;
+        Undo.RecordObjects(Selection.gameObjects, "uGUITools: MirrorVertically");
+        foreach (Transform transform in Selection.transforms){
+            RectTransform t = transform as RectTransform;
 			RectTransform pt = Selection.activeTransform.parent as RectTransform;
 			
 			if(t == null || pt == null) return;
@@ -92,5 +102,6 @@ public class uGUITools : MonoBehaviour {
 			
 			t.localScale = new Vector3(t.localScale.x, -t.localScale.y, t.localScale.z);
 		}
-	}
+        EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
+    }
 }
