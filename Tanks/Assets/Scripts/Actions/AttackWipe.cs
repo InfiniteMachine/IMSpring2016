@@ -49,17 +49,19 @@ public class AttackWipe : MonoBehaviour, IAction
         Vector2 bound1 = new Vector2(cFollow.GetLeftBound(), cFollow.GetTopBound());
         Vector2 bound2 = new Vector2(cFollow.GetRightBound(), cFollow.GetLowerBound());
         Collider2D[] cols = Physics2D.OverlapAreaAll(bound1, bound2);
-        foreach(Collider2D col in cols)
+        foreach (Collider2D col in cols)
         {
-            if(col.tag == "Bullet")
+            if (col.tag == "Bullet")
             {
-                Instantiate(explosionPrefab, col.transform.position, Quaternion.identity);
-                Destroy(col.gameObject);
+                col.gameObject.SetActive(false);
+                col.gameObject.SetActive(true);
+                TankBullet tBullet = col.GetComponent<TankBullet>();
+                tBullet.SetPower(tBullet.power, Random.Range(0, 360f), tBullet.intType);
             }
         }
         FinishAction();
     }
-
+    
     //Don't touch
     private float fireTimer = 0; //counter variable
     public bool CanFire()

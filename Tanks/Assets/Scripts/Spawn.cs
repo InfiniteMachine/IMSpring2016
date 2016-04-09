@@ -5,17 +5,22 @@ public class Spawn : MonoBehaviour {
 
     private BoxCollider2D col;
 
+    private List<Collider2D> playerColliders;
+
     void Start()
     {
         col = GetComponent<BoxCollider2D>();
+        playerColliders = new List<Collider2D>();
+        GameObject[] gos = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject go in gos)
+            playerColliders.Add(go.GetComponent<BoxCollider2D>());
     }
 
     public bool IsEmpty()
     {
-        Collider2D[] cols = Physics2D.OverlapAreaAll(transform.position + col.bounds.center - col.bounds.extents, transform.position + col.bounds.center + col.bounds.extents);
-        foreach(Collider2D obj in cols)
+        foreach (Collider2D obj in playerColliders)
         {
-            if (obj.gameObject.tag == "Player")
+            if(col.IsTouching(obj))
                 return false;
         }
         return true;
