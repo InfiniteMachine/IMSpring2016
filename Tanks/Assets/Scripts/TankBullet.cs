@@ -86,7 +86,7 @@ public class TankBullet : MonoBehaviour, IPlayerID {
 		{
 			myBulletType.BlockCollision(other.gameObject);
 		}
-        else if(other.gameObject.tag == "Player")
+        else if(other.gameObject.tag == "Player" && !other.gameObject.GetComponent<PlayerController>().IsShield())
         {
             myBulletType.BlockCollision(other.gameObject);
         }

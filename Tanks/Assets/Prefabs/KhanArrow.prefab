@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11429976}
   - 50: {fileID: 5095164}
   - 212: {fileID: 21245122}
-  - 58: {fileID: 5823986}
+  - 61: {fileID: 6142904}
   m_Layer: 0
   m_Name: KhanArrow
   m_TagString: Bullet
@@ -26,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 168310}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.68, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalPosition: {x: 0.32, y: 0, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -48,8 +48,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &5823986
-CircleCollider2D:
+--- !u!61 &6142904
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -61,7 +61,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.3333334
+  m_Size: {x: 14.666667, y: 3.3333333}
 --- !u!114 &11429976
 MonoBehaviour:
   m_ObjectHideFlags: 1

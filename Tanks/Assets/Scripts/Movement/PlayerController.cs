@@ -384,4 +384,9 @@ public class PlayerController : MonoBehaviour, IPlayerID {
         yield return new WaitForSeconds(duration);
         SetInteractable(true);
     }
+
+    public bool IsShield()
+    {
+        return specialDefense.GetPercentage() == 0;
+    }
 }
