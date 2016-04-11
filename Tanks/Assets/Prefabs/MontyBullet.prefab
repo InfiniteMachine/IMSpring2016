@@ -79,6 +79,7 @@ MonoBehaviour:
   weight: 0
   velocity: 0
   strength: 0
+  impactParticles: {fileID: 179940, guid: 658c788ea8557b64ba4a91fe35364ed9, type: 2}
 --- !u!212 &21281008
 SpriteRenderer:
   m_ObjectHideFlags: 1

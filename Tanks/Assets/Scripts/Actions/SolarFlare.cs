@@ -48,11 +48,22 @@ public class SolarFlare : MonoBehaviour, IAction {
         Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, radius);
         foreach(Collider2D col in cols)
         {
-            if (col.gameObject != gameObject && col.tag == "Player")
+            if (col.gameObject != gameObject)
             {
-                col.gameObject.GetComponent<PlayerController>().Attack(playerID);
-            }
-                
+                if (col.tag == "Player")
+                {
+                    PlayerController pCont = col.gameObject.GetComponent<PlayerController>();
+                    if (!pCont.IsShield())
+                        pCont.Attack(playerID);
+                } else if (col.tag == "Ground")
+                {
+                    DestructibleObj des = col.GetComponent<DestructibleObj>();
+                    if(des != null)
+                    {
+                        des.Hit();
+                    }
+                }
+            }   
         }
         FinishAction();
     }

@@ -39,11 +39,11 @@ public class TankBullet : MonoBehaviour, IPlayerID {
         }
 
 		override public void BlockCollision(GameObject block) {
-			Destroy(script.gameObject);
+            Destroy(script.gameObject);
 		}
 
 		override public void TankCollision(GameObject tank) {
-			Destroy(script.gameObject);
+            Destroy(script.gameObject);
 		}
 	}
 
@@ -67,6 +67,7 @@ public class TankBullet : MonoBehaviour, IPlayerID {
 	public float velocity = 0f;
 	public float strength = 0f;
     private int playerID;
+    public GameObject impactParticles;
 	// Use this for initialization
 	void Awake () {
 		myRigidbody = GetComponent<Rigidbody2D>();
@@ -82,13 +83,15 @@ public class TankBullet : MonoBehaviour, IPlayerID {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if(other.gameObject.tag=="Ground")
+        if (other.gameObject.tag=="Ground")
 		{
 			myBulletType.BlockCollision(other.gameObject);
-		}
+            Instantiate(impactParticles, Vector2.Lerp(transform.position, other.transform.position, 0.5f), Quaternion.identity);
+        }
         else if(other.gameObject.tag == "Player" && !other.gameObject.GetComponent<PlayerController>().IsShield())
         {
             myBulletType.BlockCollision(other.gameObject);
+            Instantiate(impactParticles, Vector2.Lerp(transform.position, other.transform.position, 0.5f), Quaternion.identity);
         }
 	}
 

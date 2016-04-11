@@ -46,9 +46,19 @@ public class BearBite : MonoBehaviour, IAction
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Player") && bearBite.IsTouching(col))
+        if (bearBite.IsTouching(col))
         {
-            col.gameObject.GetComponent<PlayerController>().Attack(playerID);
+            if (col.tag == "Player")
+            {
+                PlayerController pCont = col.gameObject.GetComponent<PlayerController>();
+                if (!pCont.IsShield())
+                    pCont.Attack(playerID);
+            }else if(col.tag == "Ground")
+            {
+                DestructibleObj des = col.GetComponent<DestructibleObj>();
+                if (des != null)
+                    des.Hit();
+            }
         }
     }
 

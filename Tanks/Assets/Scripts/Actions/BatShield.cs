@@ -37,25 +37,28 @@ public class BatShield : MonoBehaviour, IAction
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag == "Bullet")
+        if (col.tag == "Bullet" && batShieldActive)
         {
             Vector2 direction;
             TankBullet tBullet = col.GetComponent<TankBullet>();
-            RaycastHit2D hit = Physics2D.Raycast(col.transform.position, tBullet.myRigidbody.velocity.normalized);
-            if (hit)
+            if (tBullet != null)
             {
-                if (hit.collider.gameObject == gameObject)
-                    direction = Vector2.Reflect(tBullet.myRigidbody.velocity, hit.normal);
+                RaycastHit2D hit = Physics2D.Raycast(col.transform.position, tBullet.myRigidbody.velocity.normalized);
+                if (hit)
+                {
+                    if (hit.collider.gameObject == gameObject)
+                        direction = Vector2.Reflect(tBullet.myRigidbody.velocity, hit.normal);
+                    else
+                        direction = -tBullet.myRigidbody.velocity;
+                }
                 else
                     direction = -tBullet.myRigidbody.velocity;
+                col.gameObject.SetActive(false);
+                col.gameObject.SetActive(true);
+                pCont.IgnoreCollision(col);
+                Physics2D.IgnoreCollision(batShield, col);
+                tBullet.SetPower(tBullet.power, Quaternion.FromToRotation(Vector2.right, direction).eulerAngles.z, tBullet.intType);
             }
-            else
-                direction = -tBullet.myRigidbody.velocity;
-            col.gameObject.SetActive(false);
-            col.gameObject.SetActive(true);
-            pCont.IgnoreCollision(col);
-            Physics2D.IgnoreCollision(batShield, col);
-            tBullet.SetPower(tBullet.power, Quaternion.FromToRotation(Vector2.right, direction).eulerAngles.z, tBullet.intType);
         }
     }
 

@@ -16,19 +16,32 @@ public class ExplodingKitten : MonoBehaviour, IPlayerID {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if((col.tag == "Player" && col.gameObject != player) || col.tag == "Ground")
+        if ((col.tag == "Player" && col.gameObject != player) || col.tag == "Ground")
         {
             //Explode
+            SoundManager.instance.PlayOneShot("Explosion");
             Instantiate(explosion, transform.position, Quaternion.identity);
             //Physics
             Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, radius);
-            foreach(Collider2D col1 in cols)
+            foreach (Collider2D col1 in cols)
             {
                 if (col1.tag == "Player" && col1.gameObject != player)
-                    col1.GetComponent<PlayerController>().Attack(playerID);
+                {
+                    PlayerController pCont = col1.gameObject.GetComponent<PlayerController>();
+                    if (!pCont.IsShield())
+                        pCont.Attack(playerID);
+                }
+                else if (col1.tag == "Ground")
+                {
+                    DestructibleObj des = col1.GetComponent<DestructibleObj>();
+                    if (des != null)
+                    {
+                        des.Hit();
+                    }
+                }
+                //Destroy
+                Destroy(gameObject);
             }
-            //Destroy
-            Destroy(gameObject);
         }
     }
 }

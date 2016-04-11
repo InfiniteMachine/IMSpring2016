@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour, IPlayerID {
     private bool canDash = false;
     public float dashDelay = 1.5f;
     private float dashCounter = 0f;
+    private bool canSideDash = true;
     //Ability Specific
     private float disabledCounter = 0;
     //Crown
@@ -61,6 +62,9 @@ public class PlayerController : MonoBehaviour, IPlayerID {
     //Animation variables
     private Animator aController;
     private bool playingMove = false;
+    private ParticleSystem jumpParticles;
+    private ParticleSystem explosionParticles;
+    private ParticleSystem dustParticles;
     // Use this for initialization
     void Start()
     {
@@ -90,6 +94,9 @@ public class PlayerController : MonoBehaviour, IPlayerID {
         crownLocation = transform.FindChild("CrownLocation");
         GetComponentInChildren<TankGun>().playerID = playerID;
         movementSpeed *= Manager.instance.moveMultiplier;
+        explosionParticles = transform.FindChild("player explosion").GetComponent<ParticleSystem>();
+        jumpParticles = transform.FindChild("Jump poof").GetComponent<ParticleSystem>();
+        dustParticles = transform.FindChild("dust poof").GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -123,15 +130,25 @@ public class PlayerController : MonoBehaviour, IPlayerID {
             else {
                 if (iCont.GetAxis(InputController.Axis.MOVE) != 0)
                 {
-                    velocity.x = movementSpeed * iCont.GetAxis(InputController.Axis.MOVE);
+                    if (disabledCounter > 0)
+                    {
+                        if (Mathf.Sign(iCont.GetAxis(InputController.Axis.MOVE)) != Mathf.Sign(velocity.x))
+                        {
+                            velocity.x = Mathf.MoveTowards(velocity.x, movementSpeed * iCont.GetAxis(InputController.Axis.MOVE), movementSpeed * Time.deltaTime);
+                        }
+                    }
+                    else
+                    {
+                        velocity.x = movementSpeed * iCont.GetAxis(InputController.Axis.MOVE);
+                    }
                 }
                 else if(groundCheck.CheckGrounded())
                 {
                     velocity.x = Mathf.MoveTowards(velocity.x, 0, movementSpeed / accelDuration * Time.deltaTime);
                 }
-                if (dashCounter > 0)
+                if (dashCounter >= 0)
                     dashCounter -= Time.deltaTime;
-                if (dashCounter <= 0 && iCont.GetButton(InputController.Buttons.DASH))
+                if (canSideDash && dashCounter <= 0 && iCont.GetButton(InputController.Buttons.DASH))
                 {
                     iCont.ClearButton(InputController.Buttons.DASH);
                     forceMoveCounter = sideDashDuration;
@@ -139,6 +156,8 @@ public class PlayerController : MonoBehaviour, IPlayerID {
                         forceMoveSpeed = sideDashSpeed * Mathf.Sign(transform.localScale.x);
                     else
                         forceMoveSpeed = sideDashSpeed * Mathf.Sign(velocity.x);
+                    dashCounter = dashDelay;
+                    canSideDash = false;
                 }
             }
 
@@ -178,6 +197,7 @@ public class PlayerController : MonoBehaviour, IPlayerID {
                         SoundManager.instance.PlayOneShot("GroundPound");
                 }
                 canDash = true;
+                canSideDash = true;
                 canJump = true;
                 canDoubleJump = true;
                 waitingForJump = false;
@@ -201,11 +221,13 @@ public class PlayerController : MonoBehaviour, IPlayerID {
                 {
                     canJump = false;
                     velocity.y = jumpVel;
+                    jumpParticles.Play();
                 }
                 else
                 {
                     canDoubleJump = false;
                     velocity.y = doubleJumpVel;
+                    jumpParticles.Play();
                 }
                 iCont.ClearButton(InputController.Buttons.JUMP);
                 SoundManager.instance.PlayOneShot("Jump");
@@ -214,9 +236,10 @@ public class PlayerController : MonoBehaviour, IPlayerID {
             if (disabledCounter > 0)
             {
                 disabledCounter -= Time.deltaTime;
-                return;
+                if (rBody.velocity.sqrMagnitude <= movementSpeed * movementSpeed)
+                    disabledCounter = 0;
             }
-            if(aController != null)
+            if (aController != null)
             {
                 aController.SetBool("bMoving", (velocity.x != 0));
             }
@@ -270,6 +293,9 @@ public class PlayerController : MonoBehaviour, IPlayerID {
             {
                 forceMoveSpeed = -movementSpeed;
             }
+        }else if(other.gameObject.tag == "Ground" && other.transform.position.y < transform.position.y && rBody.velocity.y < 0)
+        {
+            dustParticles.Play();
         }
     }
     
@@ -300,6 +326,7 @@ public class PlayerController : MonoBehaviour, IPlayerID {
 
     private void Die(bool self)
     {
+        explosionParticles.Play();
         SoundManager.instance.PlayOneShot("Explosion");
         if (playingMove)
         {

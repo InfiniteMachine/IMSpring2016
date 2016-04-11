@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class DestroyAfter : MonoBehaviour {
-    public float aliveDuration = 5f;
-	// Use this for initialization
-	void Start () {
-        Destroy(gameObject, aliveDuration);
+    ParticleSystem psystem;
+
+    void Start () {
+        psystem = GetComponent<ParticleSystem>();
 	}
+
+    void Update()
+    {
+        if (!psystem.isPlaying)
+            Destroy(gameObject);
+    }
 }

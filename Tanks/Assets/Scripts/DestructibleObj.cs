@@ -6,7 +6,9 @@ public class DestructibleObj : MonoBehaviour {
     private int timesHit = 0;
     public Sprite[] sprites;
     private SpriteRenderer sRender;
-	// Use this for initialization
+
+    public GameObject particleSystem;
+    // Use this for initialization
 	void Start () {
         sRender = GetComponent<SpriteRenderer>();
         sRender.sprite = sprites[0];
@@ -18,11 +20,18 @@ public class DestructibleObj : MonoBehaviour {
         //animations or whatever
         if (col.gameObject.tag == "Bullet")
         {
-            timesHit++;
-            if (timesHit >= hits)
-                Destroy(gameObject, 0);
-            else
-                sRender.sprite = sprites[timesHit];
+            Hit();
         }
 	}
+
+    public void Hit()
+    {
+        if (particleSystem != null)
+            Instantiate(particleSystem, transform.position, Quaternion.identity);
+        timesHit++;
+        if (timesHit >= hits)
+            Destroy(gameObject, 0);
+        else
+            sRender.sprite = sprites[timesHit];
+    }
 }

@@ -4,19 +4,17 @@ public class Spears : MonoBehaviour, IAction
 {
     //Can be modified
     public float fireDelay = 5; //seconds between uses
-    public float spearDelay = 3;
-    public Vector2 spearlocation;
-    public GameObject spear;
-    private GameObject storage;
-    public float spearTimer = 0;
-    private bool spearActive = false;
     private int playerID;
+    public GameObject spearObject;
+    public float speed = 5f;
+    private PlayerController pCont;
     //Use for initiation
     void Start()
     {
         playerID = GetComponent<PlayerController>().GetPlayerID();
         if (Manager.instance.gameMode == Manager.GameModes.BLITZKRIEG)
             fireDelay *= 0.5f;
+        pCont = GetComponent<PlayerController>();
     }
 
     void UpdateTimer()
@@ -33,25 +31,10 @@ public class Spears : MonoBehaviour, IAction
     void Update()
     {
         UpdateTimer(); // Should probably always be called.
-        // Update effect code here
-        if (spearTimer >= 0)
-        {
-            spearTimer -= Time.deltaTime;
-        }
-        else if (spearActive)
-        {
-            Destroy(storage);
-            spearActive = false;
-            FinishAction();
-        }
     }
 
     public void ForceDeactivate()
     {
-        spearTimer = 0;
-        if(spearActive)
-            Destroy(storage);
-        spearActive = false;
         FinishAction();
     }
 
@@ -64,12 +47,23 @@ public class Spears : MonoBehaviour, IAction
     public void StartAction()
     {
         //Start Action Here, If the action doesnt happen over time, call FinishAction()
-        storage = Instantiate(spear);
-        storage.transform.SetParent(transform);
-        storage.transform.localPosition = spearlocation;
-        storage.GetComponent<IPlayerID>().SetPlayerID(playerID);
-        spearActive = true;
-        spearTimer = spearDelay;
+        GameObject spear = (GameObject)Instantiate(spearObject, (Vector2)transform.position + Vector2.right * 2f, Quaternion.Euler(0, 0, 0));
+        spear.GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
+        pCont.IgnoreCollision(spear.GetComponent<Collider2D>());
+        spear = (GameObject)Instantiate(spearObject, transform.position + Quaternion.Euler(0, 0, 45) * Vector2.right * 2f, Quaternion.Euler(0, 0, 45));
+        spear.GetComponent<Rigidbody2D>().velocity = Quaternion.Euler(0, 0, 45) * Vector2.right * speed;
+        pCont.IgnoreCollision(spear.GetComponent<Collider2D>());
+        spear = (GameObject)Instantiate(spearObject, transform.position + Quaternion.Euler(0, 0, 90) * Vector2.right * 2f, Quaternion.Euler(0, 0, 90));
+        spear.GetComponent<Rigidbody2D>().velocity = Quaternion.Euler(0, 0, 90) * Vector2.right * speed;
+        pCont.IgnoreCollision(spear.GetComponent<Collider2D>());
+        spear = (GameObject)Instantiate(spearObject, transform.position + Quaternion.Euler(0, 0, 135) * Vector2.right * 2f, Quaternion.Euler(0, 0, 135));
+        spear.GetComponent<Rigidbody2D>().velocity = Quaternion.Euler(0, 0, 135) * Vector2.right * speed;
+        pCont.IgnoreCollision(spear.GetComponent<Collider2D>());
+        spear = (GameObject)Instantiate(spearObject, transform.position + Quaternion.Euler(0, 0, 180) * Vector2.right * 2f, Quaternion.Euler(0, 0, 180));
+        spear.GetComponent<Rigidbody2D>().velocity = Quaternion.Euler(0, 0, 180) * Vector2.right * speed;
+        pCont.IgnoreCollision(spear.GetComponent<Collider2D>());
+
+        FinishAction();
     }
 
     //Don't touch
@@ -96,8 +90,6 @@ public class Spears : MonoBehaviour, IAction
 
     public float GetPercentage()
     {
-        if (spearActive)
-            return 0;
         return (fireDelay - fireTimer) / fireDelay;
     }
 }

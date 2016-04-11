@@ -59,6 +59,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 74d7ec96e14997040bb0fd8526a11b20, type: 3}
   - {fileID: 21300000, guid: 65fa46c18b479554987fd0a253409f59, type: 3}
+  particleSystem: {fileID: 146614, guid: a9e4ed06edd76af4c91e32b98158effd, type: 2}
 --- !u!212 &21204552
 SpriteRenderer:
   m_ObjectHideFlags: 1

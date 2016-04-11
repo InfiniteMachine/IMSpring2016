@@ -60,6 +60,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a397e559154914d4ea8176c0f6fcfb3b, type: 3}
   - {fileID: 21300000, guid: 801c9ac343d435f4fb43edb9e6f07efd, type: 3}
   - {fileID: 21300000, guid: 4caa9afff82b0374295ec1a3efd981b2, type: 3}
+  particleSystem: {fileID: 155818, guid: b28dc7cc21308664db442c89033dbc4c, type: 2}
 --- !u!212 &21209316
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -7,12 +7,15 @@ public class AttackWipe : MonoBehaviour, IAction
     public float fireDelay = 5; //seconds between uses
     private CamFollow cFollow;
     public GameObject explosionPrefab;
+    private int playerID;
+    public Sprite newSprite;
     //Use for initiation
     void Start()
     {
         cFollow = Camera.main.GetComponent<CamFollow>();
         if (Manager.instance.gameMode == Manager.GameModes.BLITZKRIEG)
             fireDelay *= 0.5f;
+        playerID = GetComponent<PlayerController>().GetPlayerID();
     }
 
     void UpdateTimer()
@@ -53,10 +56,16 @@ public class AttackWipe : MonoBehaviour, IAction
         {
             if (col.tag == "Bullet")
             {
-                col.gameObject.SetActive(false);
-                col.gameObject.SetActive(true);
                 TankBullet tBullet = col.GetComponent<TankBullet>();
-                tBullet.SetPower(tBullet.power, Random.Range(0, 360f), tBullet.intType);
+                if (tBullet != null)
+                {
+                    Instantiate(explosionPrefab, col.transform.position, Quaternion.identity);
+                    tBullet.SetPower(tBullet.power, Random.Range(0, 360f), tBullet.intType);
+                    col.GetComponent<SpriteRenderer>().sprite = newSprite;
+                    tBullet.SetPlayerID(playerID);
+                    col.gameObject.SetActive(false);
+                    col.gameObject.SetActive(true);
+                }
             }
         }
         FinishAction();

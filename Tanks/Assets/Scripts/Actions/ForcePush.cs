@@ -9,10 +9,15 @@ public class ForcePush : MonoBehaviour, IAction
     public float radius = 2;
     public float disableTime = 2f;
 
+    private ParticleSystem pSystem;
+    private ParticleSystem pSystem2;
+
     void Start()
     {
         if (Manager.instance.gameMode == Manager.GameModes.BLITZKRIEG)
             fireDelay *= 0.5f;
+        pSystem = transform.FindChild("Leo Force Push").GetComponent<ParticleSystem>();
+        pSystem2 = pSystem.transform.FindChild("SubEmitter").GetComponent<ParticleSystem>();
     }
 
     void UpdateTimer()
@@ -55,6 +60,8 @@ public class ForcePush : MonoBehaviour, IAction
                 col.gameObject.GetComponent<PlayerController>().ForcePush((Vector2)((col.transform.position - transform.position).normalized) * Mathf.Lerp(force, 0, Vector2.Distance(transform.position, col.transform.position) / radius), disableTime);
             }
         }
+        pSystem.Play();
+        pSystem2.Play();
         FinishAction();
         //Start Action Here, If the action doesnt happen over time, call FinishAction()
     }
