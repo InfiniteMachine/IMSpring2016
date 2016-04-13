@@ -30,9 +30,12 @@ public class ControllerPool : MonoBehaviour{
         pool = new List<Controller>();
         controllers = Input.GetJoystickNames();
         joined = string.Join(" ", controllers);
-        for (int i = 0; i < controllers.Length; i++)
+        for (int i = 0; i < controllers.Length && pool.Count < 4; i++)
         {
-            AddController(controllers[i]);
+            if (controllers[i] != "")
+            {
+                AddController(controllers[i]);
+            }
         }
 
         if (pool.Count == 0)
@@ -40,6 +43,8 @@ public class ControllerPool : MonoBehaviour{
             AddController("null");
             pool[0].Disconnected();
         }
+
+        Debug.Log(pool.Count);
     }
 
     // Update is called once per frame

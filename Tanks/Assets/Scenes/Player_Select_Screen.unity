@@ -462,33 +462,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fce9627b1e509004cb3aaa33a897b7ff, type: 3}
   disabledSprite: {fileID: 21300000, guid: 3750a9f46b737b443bdf4e27f5028251, type: 3}
   areaNames:
-  - Arena1
   - Level1
   - Level2
   - Level3
-  - Level4
-  - Level5
-  - Level6
-  - Level7
-  - Level8
-  - Level9
-  - Level10
-  - Level11
-  - Level12
   scenes:
-  - {fileID: 21300000, guid: cb65f866ccf48b44792525c9ecdc9112, type: 3}
-  - {fileID: 21300000, guid: 2f9a1b7a1b52d7a42bdd51c02ccf212c, type: 3}
-  - {fileID: 21300000, guid: 022e1f5090aeb3841b0fd482ac817266, type: 3}
-  - {fileID: 21300000, guid: ebc03d2207c9bc24aa2aeaa06b40c6db, type: 3}
-  - {fileID: 21300000, guid: 9028bde0c52f7294ca0f832219a9cf5e, type: 3}
-  - {fileID: 21300000, guid: 657f977b1c96ad740b53e70ae31c8952, type: 3}
-  - {fileID: 21300000, guid: 4059c09b2db186a4f8cd59151b141ec3, type: 3}
-  - {fileID: 21300000, guid: e62099b0707d03e4baa3fe6cedb6cff0, type: 3}
-  - {fileID: 21300000, guid: 205a242b1a408cd4c8d544fc3f476212, type: 3}
-  - {fileID: 21300000, guid: ad03cda17af0a154892b6a9d953a36d4, type: 3}
-  - {fileID: 21300000, guid: 679b48346efb7f74eb4ae77be844cfad, type: 3}
-  - {fileID: 21300000, guid: ee6bdc12e40e3c14ca32a0da6ae9d798, type: 3}
-  - {fileID: 21300000, guid: 489a3d7df2fcd8046bc29fcc560ec8b3, type: 3}
+  - {fileID: 21300000, guid: c6b17793ed8592e4a8b41fe54568f5bf, type: 3}
+  - {fileID: 21300000, guid: 28a1a460596d33341b6313801996b9f9, type: 3}
+  - {fileID: 21300000, guid: de523c9e8b3f999469612f9b328fd1aa, type: 3}
   timeRange: {x: 120, y: 600}
   timeStep: 30
   moveRange: {x: 0.5, y: 1.5}
