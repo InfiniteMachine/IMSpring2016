@@ -15,7 +15,7 @@ public class BatShield : MonoBehaviour, IAction
     private TankGun tGun;
     private Rigidbody2D rbody;
 
-    void Start()
+    void Awake()
     {
         iCont = GetComponent<InputController>();
         rbody = GetComponent<Rigidbody2D>();

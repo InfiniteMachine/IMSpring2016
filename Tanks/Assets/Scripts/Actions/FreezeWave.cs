@@ -5,14 +5,22 @@ public class FreezeWave : MonoBehaviour, IAction
 {
     //Can be modified
     public float fireDelay = 5; //seconds between uses
-    public GameObject wave;
-    private PlayerController pCont;
+
+    public float killDistance = 2f;
+    public float freezeDistance = 4f;
+    public float freezeDelay = 1f;
+    private float freezeCounter = 0;
+    private bool waitingForFreeze = false;
+    public float height = 4f;
+    public GameObject freezer;
+    private int playerID;
     //Use for initiation
     void Start()
     {
-        pCont = GetComponent<PlayerController>();
+        PlayerController pCont = GetComponent<PlayerController>();
         if (Manager.instance.gameMode == Manager.GameModes.BLITZKRIEG)
             fireDelay *= 0.5f;
+        playerID = pCont.GetPlayerID();
     }
 
     void UpdateTimer()
@@ -30,6 +38,27 @@ public class FreezeWave : MonoBehaviour, IAction
     {
         UpdateTimer(); // Should probably always be called.
         // Update effect code here
+        if (waitingForFreeze)
+        {
+            freezeCounter += Time.deltaTime;
+            if(freezeCounter >= freezeDelay)
+            {
+                freezeCounter = 0;
+                waitingForFreeze = false;
+                //Freeze
+                Collider2D[] hits = Physics2D.OverlapAreaAll((Vector2)transform.position - (Vector2.up * height) - (Vector2.right * freezeDistance),
+                    (Vector2)transform.position + (Vector2.right * freezeDistance));
+                for (int i = 0; i < hits.Length; i++)
+                {
+                    if (hits[i].gameObject != gameObject && hits[i].tag == "Player")
+                    {
+                        GameObject go = (GameObject)Instantiate(freezer, hits[i].transform.position, Quaternion.identity);
+                        go.GetComponent<Freezer>().player = hits[i].gameObject;
+                    }
+                }
+                FinishAction();
+            }
+        }
     }
 
     public void ForceDeactivate()
@@ -44,15 +73,28 @@ public class FreezeWave : MonoBehaviour, IAction
 
     public void StartAction()
     {
-        GameObject go = (GameObject)Instantiate(wave, transform.position, Quaternion.identity);
-        go.GetComponent<Wave>().direction = -1;
-        go.transform.localScale = Vector3.zero;
-        pCont.IgnoreCollision(go.GetComponent<Collider2D>());
-        go = (GameObject)Instantiate(wave, transform.position, Quaternion.identity);
-        go.transform.localScale = Vector3.zero;
-        go.GetComponent<Wave>().direction = 1;
-        pCont.IgnoreCollision(go.GetComponent<Collider2D>());
-        FinishAction();
+        //KillEnemies too close
+        Collider2D[] hits = Physics2D.OverlapAreaAll((Vector2)transform.position - (Vector2.up * height) - (Vector2.right * killDistance),
+            (Vector2)transform.position + (Vector2.right * killDistance));
+        for(int i = 0; i < hits.Length; i++)
+        {
+            if(hits[i].gameObject != gameObject)
+            {
+                if(hits[i].tag == "Ground")
+                {
+                    DestructibleObj des = hits[i].GetComponent<DestructibleObj>();
+                    if(des != null)
+                        Destroy(des.gameObject);
+                }
+                else if(hits[i].tag == "Player")
+                {
+                    PlayerController pCont = hits[i].GetComponent<PlayerController>();
+                    if (!pCont.IsShield())
+                        pCont.Attack(playerID);
+                }
+            }
+        }
+        waitingForFreeze = true;
     }
 
     //Don't touch

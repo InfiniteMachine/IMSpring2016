@@ -393,7 +393,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6172495, y: -0.7427983, z: -1}
+  m_LocalPosition: {x: -5.4810543, y: -12.347191, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 445662}
@@ -523,7 +523,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!58 &5854928
 CircleCollider2D:
@@ -633,8 +633,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireDelay: 5
   bearBitePrefab: {fileID: 126504, guid: d21570b49d8960b42a4edee03d0b445f, type: 2}
-  offset: {x: 1.5, y: 0}
-  size: {x: 1, y: 1.5}
+  offset: {x: 3.9, y: 0}
+  size: {x: 4, y: 6.6}
   bearBiteDelay: 0.75
 --- !u!114 &11451438
 MonoBehaviour:

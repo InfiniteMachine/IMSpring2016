@@ -57,7 +57,7 @@ public class BearBite : MonoBehaviour, IAction
             {
                 DestructibleObj des = col.GetComponent<DestructibleObj>();
                 if (des != null)
-                    des.Hit();
+                    Destroy(des.gameObject);
             }
         }
     }

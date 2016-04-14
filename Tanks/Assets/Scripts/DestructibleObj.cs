@@ -7,7 +7,7 @@ public class DestructibleObj : MonoBehaviour {
     public Sprite[] sprites;
     private SpriteRenderer sRender;
 
-    public GameObject particleSystem;
+    public GameObject pSystem;
     // Use this for initialization
 	void Start () {
         sRender = GetComponent<SpriteRenderer>();
@@ -26,8 +26,8 @@ public class DestructibleObj : MonoBehaviour {
 
     public void Hit()
     {
-        if (particleSystem != null)
-            Instantiate(particleSystem, transform.position, Quaternion.identity);
+        if (pSystem != null)
+            Instantiate(pSystem, transform.position, Quaternion.identity);
         timesHit++;
         if (timesHit >= hits)
             Destroy(gameObject, 0);

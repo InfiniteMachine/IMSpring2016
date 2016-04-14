@@ -36,7 +36,7 @@ public class ExplodingKitten : MonoBehaviour, IPlayerID {
                     DestructibleObj des = col1.GetComponent<DestructibleObj>();
                     if (des != null)
                     {
-                        des.Hit();
+                        Destroy(des.gameObject);
                     }
                 }
                 //Destroy

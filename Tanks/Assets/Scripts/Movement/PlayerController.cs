@@ -142,9 +142,13 @@ public class PlayerController : MonoBehaviour, IPlayerID {
                         velocity.x = movementSpeed * iCont.GetAxis(InputController.Axis.MOVE);
                     }
                 }
-                else if(groundCheck.CheckGrounded())
+                else if(!groundCheck.CheckGrounded())
                 {
                     velocity.x = Mathf.MoveTowards(velocity.x, 0, movementSpeed / accelDuration * Time.deltaTime);
+                }
+                else
+                {
+                    velocity.x = 0;
                 }
                 if (dashCounter >= 0)
                     dashCounter -= Time.deltaTime;
@@ -187,7 +191,7 @@ public class PlayerController : MonoBehaviour, IPlayerID {
                     SoundManager.instance.PlayOneShot("AbilityActivation");
                 }
             }
-            if (groundCheck.CheckGrounded() && velocity.y >= 0)
+            if (groundCheck.CheckGrounded() && velocity.y <= 0)
             {
                 if (!canJump)
                 {
@@ -257,6 +261,8 @@ public class PlayerController : MonoBehaviour, IPlayerID {
                 playingMove = false;
                 SoundManager.instance.StopBackground("TankMovement");
             }
+            if (canJump && velocity.y < 0)
+                velocity.y = 0;
             if (interactable)
                 rBody.velocity = velocity;
             else
@@ -287,13 +293,13 @@ public class PlayerController : MonoBehaviour, IPlayerID {
             forceMoveCounter = wrapMoveDuration;
             if (other.name.Contains("Left"))
             {
-                forceMoveSpeed = movementSpeed;
+                forceMoveSpeed = -movementSpeed;
             }
             else
             {
-                forceMoveSpeed = -movementSpeed;
+                forceMoveSpeed = movementSpeed;
             }
-        }else if(other.gameObject.tag == "Ground" && other.transform.position.y < transform.position.y && rBody.velocity.y < 0)
+        }else if(other.gameObject.tag == "Ground" && other.transform.position.y < transform.position.y && rBody.velocity.y < -0.25f)
         {
             dustParticles.Play();
         }
@@ -394,10 +400,20 @@ public class PlayerController : MonoBehaviour, IPlayerID {
             srend.enabled = interactable;
     }
 
-    public void IgnoreCollision(Collider2D ignoreCol)
+    public void IgnoreCollision(Collider2D ignoreCol, bool ignore = true)
     {
         foreach (Collider2D col in colliders)
-            Physics2D.IgnoreCollision(col, ignoreCol);
+            Physics2D.IgnoreCollision(col, ignoreCol, ignore);
+    }
+
+    public bool Intersects(Collider2D col)
+    {
+        foreach (Collider2D c in colliders)
+        {
+            if(c.bounds.Intersects(col.bounds))
+                return true;
+        }
+        return false;
     }
 
     public void Freeze(float duration)
