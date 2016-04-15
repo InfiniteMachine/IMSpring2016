@@ -20,6 +20,7 @@ public class Manager : MonoBehaviour {
     [Header("Setup Match Info:")] // Match info for setup, not used in active game
     public int maxPlayers = 4;
     public float endTime = 300f;
+    public float targetScore = 150f;
     public Color[] playerColors = new Color[] { Color.green, Color.red, Color.blue, Color.yellow };
     public Sprite[] playerTags;
     [Header("Active Match Info:")]
@@ -69,21 +70,32 @@ public class Manager : MonoBehaviour {
 			time += Time.deltaTime;
 			if(time>endTime)
 			{
-				ApplyScore(endTime - (time - Time.deltaTime));
+                if(gameMode != GameModes.ANARCHY)
+                    ApplyScore(endTime - (time - Time.deltaTime));
 				EndMatch(true);
 			}
 			else
 			{
-                ApplyScore(Time.deltaTime);
+                if (gameMode != GameModes.ANARCHY)
+                    ApplyScore(Time.deltaTime);
+                if (targetScore != 0)
+                {
+                    for (int i = 0; i < numPlayers; i++)
+                    {
+                        if (indScore[i] >= targetScore)
+                            EndMatch(false);
+                    }
+                }
                 if (endTime - time > 60)
                 {
-                    timer.text = string.Format("{0:0}:{1:00}", (int)(endTime - time) / 60, (int)(endTime - time) % 60);
+                    timer.text = string.Format("{0:0} :{1:00}", (int)(endTime - time) / 60, (int)(endTime - time) % 60);
                 }
                 else
                 {
                     timer.text = (Mathf.RoundToInt((endTime - time) * 10) / 10f).ToString();
                     if (!timer.text.Contains("."))
                         timer.text += ".0";
+                    timer.text.Replace(".", " .");
                     if (endTime - time < 10)
                     {
                         timer.text = " " + timer.text;
@@ -134,6 +146,8 @@ public class Manager : MonoBehaviour {
             scorePanel.transform.FindChild("Stats/Place" + i).gameObject.SetActive(false);
         }
         timer.gameObject.SetActive(false);
+        timer.transform.parent.FindChild("TargetLabel").gameObject.SetActive(false);
+        timer.transform.parent.FindChild("TargetScore").gameObject.SetActive(false);
         scorePanel.SetActive(true);
         List<int> players = new List<int>();
         players.Add(0);
@@ -156,6 +170,14 @@ public class Manager : MonoBehaviour {
                         players.Insert(j, i);
                         insert = true;
                         break;
+                    }else if(kills[i] == kills[players[j]])
+                    {
+                        if(deaths[i] < deaths[players[j]])
+                        {
+                            players.Insert(j, i);
+                            insert = true;
+                            break;
+                        }
                     }
                 }
             }
@@ -241,7 +263,14 @@ public class Manager : MonoBehaviour {
             scoreDisplays[i].text = 0 + "";
         }
         timer = screenCanvas.transform.FindChild("Timer").GetComponent<Text>();
-		bool[] spawnUsed = new bool[spawns.Length];
+        if (targetScore == 0)
+        {
+            Destroy(screenCanvas.transform.FindChild("TargetScore").gameObject);
+            Destroy(screenCanvas.transform.FindChild("TargetLabel").gameObject);
+        }
+        else
+            screenCanvas.transform.FindChild("TargetScore").GetComponent<Text>().text = "" + targetScore;
+        bool[] spawnUsed = new bool[spawns.Length];
 		for(int x=0;x<spawnUsed.Length;x++)
 			spawnUsed[x] = false;
 
@@ -302,5 +331,16 @@ public class Manager : MonoBehaviour {
     {
         SoundManager.instance.StopBackground("backgroundMusic");
         SceneManager.LoadScene("Menu");
+    }
+
+    public void RecordDeath(int killer, int target)
+    {
+        kills[killer]++;
+        deaths[target]++;
+        if (gameMode == GameModes.ANARCHY)
+        {
+            indScore[killer]++;
+            scoreDisplays[killer].text = Mathf.RoundToInt(indScore[killer]).ToString();
+        }
     }
 }

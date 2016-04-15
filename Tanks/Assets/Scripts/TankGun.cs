@@ -4,7 +4,6 @@ using System.Collections;
 public class TankGun : MonoBehaviour {
 
 	public GameObject bullet;
-    public GameObject particles;
 	[System.Serializable]
 	public class Charge {
 		public float time;
@@ -148,7 +147,6 @@ public class TankGun : MonoBehaviour {
 
     public void Fire()	{
         SoundManager.instance.PlayOneShot("Shoot");
-        GameObject go = (GameObject)Instantiate(particles, firePosition.position, Quaternion.identity);
         //go.transform.SetParent(firePosition);
         GameObject newBullet = (GameObject)Instantiate(bullet, firePosition.position, Quaternion.identity);
         pCont.IgnoreCollision(newBullet.GetComponent<Collider2D>());

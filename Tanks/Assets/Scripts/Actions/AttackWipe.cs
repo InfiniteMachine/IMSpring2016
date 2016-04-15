@@ -60,11 +60,11 @@ public class AttackWipe : MonoBehaviour, IAction
                 if (tBullet != null)
                 {
                     Instantiate(explosionPrefab, col.transform.position, Quaternion.identity);
-                    tBullet.SetPower(tBullet.power, Random.Range(0, 360f), tBullet.intType);
-                    col.GetComponent<SpriteRenderer>().sprite = newSprite;
-                    tBullet.SetPlayerID(playerID);
                     col.gameObject.SetActive(false);
                     col.gameObject.SetActive(true);
+                    tBullet.SetPower(tBullet.power, Quaternion.FromToRotation(Vector2.right, col.transform.position - transform.position).eulerAngles.z, tBullet.intType);
+                    col.GetComponent<SpriteRenderer>().sprite = newSprite;
+                    tBullet.SetPlayerID(playerID);
                 }
             }
         }

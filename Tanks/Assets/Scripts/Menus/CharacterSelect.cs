@@ -30,6 +30,10 @@ public class CharacterSelect : MonoBehaviour {
     [Header("Match Options")]
     public Vector2 timeRange = new Vector2(300, 900);
     public float timeStep = 30f;
+    public Vector2 killRange = new Vector2(0, 20);
+    public int killStep = 1;
+    public Vector2 oddballRange = new Vector2(0, 900);
+    public float oddballStep = 10f;
     public Vector2 moveRange = new Vector2(0.5f, 3f);
     public float moveStep = 0.5f;
     public Vector2 gravRange = new Vector2(0.5f, 3f);
@@ -117,6 +121,10 @@ public class CharacterSelect : MonoBehaviour {
         texts.Add("GameModeDesc", matchOptions.transform.FindChild("GameModeDesc").GetComponent<Text>());
         texts.Add("MatchDuration", matchOptions.transform.FindChild("MatchDuration/Text").GetComponent<Text>());
         texts.Add("GameMode", matchOptions.transform.FindChild("GameMode/Text").GetComponent<Text>());
+
+        texts.Add("TargetScore", matchOptions.transform.FindChild("TargetScore/Text").GetComponent<Text>());
+        texts.Add("TargetScoreText", matchOptions.transform.FindChild("TargetScoreText").GetComponent<Text>());
+
         texts.Add("MovementMultiplier", matchOptions.transform.FindChild("MovementMultiplier/Text").GetComponent<Text>());
         texts.Add("MovementMultiplierText", matchOptions.transform.FindChild("MovementMultiplierText").GetComponent<Text>());
         texts.Add("GravityScale", matchOptions.transform.FindChild("GravityScale/Text").GetComponent<Text>());
@@ -544,6 +552,7 @@ public class CharacterSelect : MonoBehaviour {
                             Manager.instance.gameMode = Manager.GameModes.ANARCHY;
                         else
                             Manager.instance.gameMode -= 1;
+                        Manager.instance.targetScore = 0;
                     }
                     else
                     {
@@ -552,6 +561,7 @@ public class CharacterSelect : MonoBehaviour {
                             Manager.instance.gameMode = Manager.GameModes.KINGME;
                         else
                             Manager.instance.gameMode += 1;
+                        Manager.instance.targetScore = 0;
                     }
                     break;
                 case 1:
@@ -571,8 +581,51 @@ public class CharacterSelect : MonoBehaviour {
                         else
                             Manager.instance.endTime += timeStep;
                     }
+                    if (Manager.instance.gameMode != Manager.GameModes.ANARCHY)
+                    {
+                        if (Manager.instance.targetScore > Manager.instance.endTime)
+                        {
+                            Manager.instance.targetScore = Manager.instance.endTime;
+                        }
+                    }
                     break;
                 case 2:
+                    if (leftRight > 0)
+                    {
+                       if(Manager.instance.gameMode == Manager.GameModes.ANARCHY)
+                        {
+                            if (Manager.instance.targetScore >= killRange.y)
+                                Manager.instance.targetScore = killRange.x;
+                            else
+                                Manager.instance.targetScore += killStep;
+                        }
+                        else
+                        {
+                            if (Manager.instance.targetScore >= oddballRange.y || Manager.instance.targetScore >= Manager.instance.endTime)
+                                Manager.instance.targetScore = oddballRange.x;
+                            else
+                                Manager.instance.targetScore += oddballStep;
+                        }
+                    }
+                    else
+                    {
+                        if (Manager.instance.gameMode == Manager.GameModes.ANARCHY)
+                        {
+                            if (Manager.instance.targetScore <= killRange.x)
+                                Manager.instance.targetScore = killRange.y;
+                            else
+                                Manager.instance.targetScore -= killStep;
+                        }
+                        else
+                        {
+                            if (Manager.instance.targetScore <= oddballRange.x)
+                                Manager.instance.targetScore = Mathf.Min(oddballRange.y, Manager.instance.endTime);
+                            else
+                                Manager.instance.targetScore -= oddballStep;
+                        }
+                    }
+                    break;
+                case 3:
                     if (leftRight < 0)
                     {
                         //Left
@@ -590,7 +643,7 @@ public class CharacterSelect : MonoBehaviour {
                             Manager.instance.moveMultiplier += moveStep;
                     }
                     break;
-                case 3:
+                case 4:
                     if (leftRight < 0)
                     {
                         //Left
@@ -614,8 +667,8 @@ public class CharacterSelect : MonoBehaviour {
         {
             button += upDown;
             if (button < 0)
-                button = 3;
-            else if (button > 3)
+                button = 4;
+            else if (button > 4)
                 button = 0;
         }
         UpdateMatchOptionsVisual();
@@ -633,13 +686,18 @@ public class CharacterSelect : MonoBehaviour {
         texts["MatchDuration"].color = (button == 1 ? activeColor : disabledColor);
         texts["MatchDuration"].text = string.Format("{0:0}:{1:00}", (int)(Manager.instance.endTime / 60), (int)(Manager.instance.endTime % 60));
 
-        texts["MovementMultiplierText"].color = (button == 2 ? activeColor : disabledColor);
-        texts["MovementMultiplier"].color = (button == 2 ? activeColor : disabledColor);
-        texts["MovementMultiplier"].text = string.Format("{0:0.0}x", Manager.instance.moveMultiplier);
+        texts["TargetScoreText"].color = (button == 2 ? activeColor : disabledColor);
+        texts["TargetScoreText"].text = (Manager.instance.gameMode == Manager.GameModes.ANARCHY) ? "Target Kills" : "Target Points";
+        texts["TargetScore"].color = (button == 2 ? activeColor : disabledColor);
+        texts["TargetScore"].text = (Manager.instance.targetScore != 0) ? "" + Manager.instance.targetScore : "Unlimited";
 
-        texts["GravityScaleText"].color = (button == 3 ? activeColor : disabledColor);
-        texts["GravityScale"].color = (button == 3 ? activeColor : disabledColor);
-        texts["GravityScale"].text = string.Format("{0:0.0}x", Manager.instance.gravityScale);
+        texts["MovementMultiplierText"].color = (button == 3 ? activeColor : disabledColor);
+        texts["MovementMultiplier"].color = (button == 3 ? activeColor : disabledColor);
+        texts["MovementMultiplier"].text = string.Format("{0:0 .0}x", Manager.instance.moveMultiplier);
+
+        texts["GravityScaleText"].color = (button == 4 ? activeColor : disabledColor);
+        texts["GravityScale"].color = (button == 4 ? activeColor : disabledColor);
+        texts["GravityScale"].text = string.Format("{0:0 .0}x", Manager.instance.gravityScale);
     }
 
     public void GotoSelectedArena()

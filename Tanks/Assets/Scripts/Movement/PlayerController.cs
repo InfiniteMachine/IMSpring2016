@@ -325,8 +325,7 @@ public class PlayerController : MonoBehaviour, IPlayerID {
 
     private void Die(bool self, int player)
     {
-        Manager.instance.kills[player]++;
-        Manager.instance.deaths[playerID]++;
+        Manager.instance.RecordDeath(player, playerID);
         Die(self);
     }
 
@@ -342,10 +341,7 @@ public class PlayerController : MonoBehaviour, IPlayerID {
         respawnCounter = respawnTime;
         if (hasCrown)
         {
-            if (!crown.GetComponent<SpriteRenderer>().isVisible)
-                Manager.instance.ResetBaton(true);
-            else
-                Manager.instance.ResetBaton(self);
+            Manager.instance.ResetBaton(true);
             hasCrown = false;
         }
         GetComponentInChildren<TankGun>().enabled = false;
