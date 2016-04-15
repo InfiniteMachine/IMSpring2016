@@ -49,18 +49,27 @@ public class Spears : MonoBehaviour, IAction
         //Start Action Here, If the action doesnt happen over time, call FinishAction()
         GameObject spear = (GameObject)Instantiate(spearObject, (Vector2)transform.position + Vector2.right * 2f, Quaternion.Euler(0, 0, 0));
         spear.GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
+        spear.GetComponent<IPlayerID>().SetPlayerID(playerID);
         pCont.IgnoreCollision(spear.GetComponent<Collider2D>());
+
         spear = (GameObject)Instantiate(spearObject, transform.position + Quaternion.Euler(0, 0, 45) * Vector2.right * 2f, Quaternion.Euler(0, 0, 45));
         spear.GetComponent<Rigidbody2D>().velocity = Quaternion.Euler(0, 0, 45) * Vector2.right * speed;
+        spear.GetComponent<IPlayerID>().SetPlayerID(playerID);
         pCont.IgnoreCollision(spear.GetComponent<Collider2D>());
+
         spear = (GameObject)Instantiate(spearObject, transform.position + Quaternion.Euler(0, 0, 90) * Vector2.right * 2f, Quaternion.Euler(0, 0, 90));
         spear.GetComponent<Rigidbody2D>().velocity = Quaternion.Euler(0, 0, 90) * Vector2.right * speed;
+        spear.GetComponent<IPlayerID>().SetPlayerID(playerID);
         pCont.IgnoreCollision(spear.GetComponent<Collider2D>());
+
         spear = (GameObject)Instantiate(spearObject, transform.position + Quaternion.Euler(0, 0, 135) * Vector2.right * 2f, Quaternion.Euler(0, 0, 135));
         spear.GetComponent<Rigidbody2D>().velocity = Quaternion.Euler(0, 0, 135) * Vector2.right * speed;
+        spear.GetComponent<IPlayerID>().SetPlayerID(playerID);
         pCont.IgnoreCollision(spear.GetComponent<Collider2D>());
+
         spear = (GameObject)Instantiate(spearObject, transform.position + Quaternion.Euler(0, 0, 180) * Vector2.right * 2f, Quaternion.Euler(0, 0, 180));
         spear.GetComponent<Rigidbody2D>().velocity = Quaternion.Euler(0, 0, 180) * Vector2.right * speed;
+        spear.GetComponent<IPlayerID>().SetPlayerID(playerID);
         pCont.IgnoreCollision(spear.GetComponent<Collider2D>());
 
         FinishAction();
