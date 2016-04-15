@@ -75,7 +75,9 @@ public class ControllerPool : MonoBehaviour{
                     if (controllers[i] != "")
                     {
                         Debug.Log("Controller Disconnected: #" + i + " (" + controllers[i] + ")");
-                        pool[i].Disconnected();
+                        //Error?
+                        if(i < pool.Count)
+                            pool[i].Disconnected();
                     }
                     else
                     {
