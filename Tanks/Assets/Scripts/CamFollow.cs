@@ -23,10 +23,10 @@ public class CamFollow : MonoBehaviour
     private float screenWorldWidth;
     private float screenWorldHeight;
     private Vector3 lastPosition;
-    private float lastOrtographicSize = 5f;
+    private float lastOrtographicSize = -1f;
 
     private List<Transform> visibleObjects;
-
+    
     //add timer, camera only does zoom thing after x time
 
     void Awake()
@@ -44,10 +44,16 @@ public class CamFollow : MonoBehaviour
             visibleObjects.Add(go.transform);
 
         lastPosition = transform.position;
-        lastOrtographicSize = Camera.main.orthographicSize;
+        if (Camera.main.orthographicSize * (2 * Camera.main.aspect) > (rightBounds - leftBounds))
+        {
+            Camera.main.orthographicSize = (rightBounds - leftBounds) / (2 * Camera.main.aspect);
+        }
+        if (Camera.main.orthographicSize * 2 > (upperBounds - lowerBounds))
+        {
+            Camera.main.orthographicSize = (upperBounds - lowerBounds) / 2;
+        }
         CalculateWindowResize();
         ConstrainCameraToView();
-        
     }
 
     // Update is called once per frame

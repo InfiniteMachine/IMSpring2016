@@ -250,6 +250,10 @@ public class Manager : MonoBehaviour {
 		}
 
         GameObject screenCanvas = GameObject.FindGameObjectWithTag("UICanvas");
+        Canvas screen = screenCanvas.GetComponent<Canvas>();
+        screen.renderMode = RenderMode.ScreenSpaceCamera;
+        screen.worldCamera = Camera.main;
+        screen.planeDistance = 1f;
         scorePanel = screenCanvas.transform.FindChild("ScoresPanel").gameObject;
         scorePanel.SetActive(false);
         for (int i = numPlayers + 1; i <= 4; i++)
