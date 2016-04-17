@@ -13,12 +13,10 @@ public class BatShield : MonoBehaviour, IAction
 
     private PlayerController pCont;
     private TankGun tGun;
-    private Rigidbody2D rbody;
 
     void Awake()
     {
         iCont = GetComponent<InputController>();
-        rbody = GetComponent<Rigidbody2D>();
         pCont = GetComponent<PlayerController>();
         tGun = GetComponentInChildren<TankGun>();
         batShield = gameObject.AddComponent<CircleCollider2D>();

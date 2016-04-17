@@ -44,7 +44,6 @@ public class PlayerController : MonoBehaviour, IPlayerID {
     public float extraJumpDelay = 0.25f;
     private bool canJump = false;
     private bool canDoubleJump = false;
-    private bool waitingForJump = false;
     [Header("Dash")]
     public float dashVelocity = 4;
     public float sideDashDuration = 0.5f;
@@ -204,7 +203,6 @@ public class PlayerController : MonoBehaviour, IPlayerID {
                 canSideDash = true;
                 canJump = true;
                 canDoubleJump = true;
-                waitingForJump = false;
             }
             else
             {
