@@ -484,6 +484,7 @@ GameObject:
   - 224: {fileID: 22475828}
   - 222: {fileID: 22205314}
   - 114: {fileID: 11496454}
+  - 114: {fileID: 11411678}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -635,6 +636,7 @@ GameObject:
   - 224: {fileID: 22463618}
   - 222: {fileID: 22254964}
   - 114: {fileID: 11430224}
+  - 114: {fileID: 11488520}
   m_Layer: 5
   m_Name: Resume
   m_TagString: Untagged
@@ -720,6 +722,7 @@ GameObject:
   - 224: {fileID: 22484540}
   - 222: {fileID: 22206764}
   - 114: {fileID: 11498620}
+  - 114: {fileID: 11468978}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -1368,6 +1371,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11411678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5019ba650ab8c5b4ebb170ebbc63ce24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSpeed: 5
+  amplitude: 0.1
 --- !u!114 &11415976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2687,6 +2703,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11468978
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5019ba650ab8c5b4ebb170ebbc63ce24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSpeed: 5
+  amplitude: 0.1
 --- !u!114 &11469476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3011,6 +3040,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 4th
+--- !u!114 &11488520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5019ba650ab8c5b4ebb170ebbc63ce24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSpeed: 5
+  amplitude: 0.1
 --- !u!114 &11490772
 MonoBehaviour:
   m_ObjectHideFlags: 1

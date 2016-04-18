@@ -7,6 +7,7 @@ public class Pause : MonoBehaviour {
     private bool paused = false;
 
     private List<Text> buttons;
+    private List<PauseScale> buttonAnimation;
     private Text playerDisplay;
     private int selectedButton = 0;
     public Color selected = Color.yellow;
@@ -20,9 +21,13 @@ public class Pause : MonoBehaviour {
         foreach (Transform t in transform)
             t.gameObject.SetActive(false);
         buttons = new List<Text>();
+        buttonAnimation = new List<PauseScale>();
         buttons.Add(transform.FindChild("Resume").GetComponent<Text>());
         buttons.Add(transform.FindChild("MainMenu").GetComponent<Text>());
         buttons.Add(transform.FindChild("Quit").GetComponent<Text>());
+        for (int i = 0; i < buttons.Count; i++) {
+            buttonAnimation.Add(buttons[i].GetComponent<PauseScale>());
+        }
         playerDisplay = transform.FindChild("PlayerDisplay").GetComponent<Text>();
     }
 
@@ -35,15 +40,19 @@ public class Pause : MonoBehaviour {
         {
             //Down
             SoundManager.instance.PlayOneShot("Swap");
+            buttonAnimation[selectedButton].SetState(false);
             selectedButton = (selectedButton + 1) % 3;
+            buttonAnimation[selectedButton].SetState(true);
         }
         else if (controller.GetAxisAsButton(1, false) || controller.GetAxisAsButton(6, true))
         {
             //Up
             SoundManager.instance.PlayOneShot("Swap");
+            buttonAnimation[selectedButton].SetState(false);
             selectedButton = (selectedButton - 1);
             if (selectedButton < 0)
                 selectedButton = 2;
+            buttonAnimation[selectedButton].SetState(true);
         }
         else if (controller.GetButtonDown(0))
         {
@@ -82,6 +91,7 @@ public class Pause : MonoBehaviour {
             t.gameObject.SetActive(true);
         paused = true;
         selectedButton = 0;
+        buttonAnimation[selectedButton].SetState(true);
         controller = ControllerPool.GetInstance().GetController(controllerNumber);
         playerDisplay.text = "Player " + (playerID + 1);
         SoundManager.instance.SetBackgroundVolume("backgroundMusic", 0.5f);
@@ -94,6 +104,8 @@ public class Pause : MonoBehaviour {
         Time.timeScale = 1;
         foreach (Transform t in transform)
             t.gameObject.SetActive(false);
+        for (int i = 0; i < buttonAnimation.Count; i++)
+            buttonAnimation[i].SetState(false);
         SoundManager.instance.SetBackgroundVolume("backgroundMusic", 1f);
         SoundManager.instance.SetBackgroundVolume("TankMovement", SoundManager.instance.backgroundClips[1].defautVolume);
         paused = false;
