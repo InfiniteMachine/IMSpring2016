@@ -58,7 +58,7 @@ MonoBehaviour:
   hits: 2
   sprites:
   - {fileID: 21300000, guid: 81e469cb74bafa142b93c98b14dc649c, type: 3}
-  - {fileID: 21300000, guid: 81e469cb74bafa142b93c98b14dc649c, type: 3}
+  - {fileID: 21300000, guid: 791003074cc536541bae766bf957a4a2, type: 3}
   pSystem: {fileID: 155818, guid: b28dc7cc21308664db442c89033dbc4c, type: 2}
 --- !u!212 &21280540
 SpriteRenderer:

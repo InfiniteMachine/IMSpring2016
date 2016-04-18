@@ -14,6 +14,7 @@ public class FreezeWave : MonoBehaviour, IAction
     public float height = 4f;
     public GameObject freezer;
     private int playerID;
+    private ParticleSystem waves;
     //Use for initiation
     void Start()
     {
@@ -21,6 +22,7 @@ public class FreezeWave : MonoBehaviour, IAction
         if (Manager.instance.gameMode == Manager.GameModes.BLITZKRIEG)
             fireDelay *= 0.5f;
         playerID = pCont.GetPlayerID();
+        waves = transform.FindChild("waves").GetComponent<ParticleSystem>();
     }
 
     void UpdateTimer()
@@ -74,6 +76,7 @@ public class FreezeWave : MonoBehaviour, IAction
     public void StartAction()
     {
         //KillEnemies too close
+        waves.Play();
         Collider2D[] hits = Physics2D.OverlapAreaAll((Vector2)transform.position - (Vector2.up * height) - (Vector2.right * killDistance),
             (Vector2)transform.position + (Vector2.right * killDistance));
         for(int i = 0; i < hits.Length; i++)

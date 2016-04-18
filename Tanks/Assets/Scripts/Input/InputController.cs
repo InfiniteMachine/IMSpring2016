@@ -14,6 +14,8 @@ public class InputController : MonoBehaviour
 
     private static int screen = -1;
 
+    private int playerID;
+
     void Start()
     {
         Cursor.visible = false;
@@ -23,10 +25,12 @@ public class InputController : MonoBehaviour
         buttons = new State[System.Enum.GetNames(typeof(Buttons)).Length];
         for (int i = 0; i < buttons.Length; i++)
             buttons[i] = State.RELEASED;
-        if(GetComponent<PlayerController>().controllerNumber == -1 || ControllerPool.GetInstance() == null)
+        PlayerController pCont = GetComponent<PlayerController>();
+        if(pCont.controllerNumber == -1 || ControllerPool.GetInstance() == null)
             useKeyboard = true;
         else
-            controller = ControllerPool.GetInstance().GetController(GetComponent<PlayerController>().controllerNumber);
+            controller = ControllerPool.GetInstance().GetController(pCont.controllerNumber);
+        playerID = pCont.GetPlayerID();
         if (screen == -1)
         {
             screen = 1;
@@ -38,6 +42,8 @@ public class InputController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale == 0)
+            return;
         if (!useKeyboard)
             GamePadControl();
         else
@@ -161,6 +167,8 @@ public class InputController : MonoBehaviour
             Application.CaptureScreenshot(Application.persistentDataPath + "/" + "screen" + screen + ".png");
             screen++;
         }
+        if (controller.GetButtonDown(7))
+            Pause.instance.PauseGame(playerID, controller.GetControllerNumber());
     }
 
     private void KeyboardControl()

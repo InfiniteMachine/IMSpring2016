@@ -23,12 +23,19 @@ public class Paralax : MonoBehaviour {
         width = (cFollow.rightBounds - cFollow.leftBounds) / 2;
         zero = cFollow.leftBounds + width;
 
+        Vector3 selfPosition = transform.position;
+        selfPosition.y = (cFollow.upperBounds - cFollow.lowerBounds) / 2;
+        selfPosition.x = zero;
+        transform.position = selfPosition;
+
         for (int i = 0; i < srs.Count; i++)
         {
             Vector3 pos = srs[i].transform.position;
             pos.x = zero;
             srs[i].transform.position = pos;
         }
+
+
 	}
 	
 	// Update is called once per frame
@@ -38,7 +45,7 @@ public class Paralax : MonoBehaviour {
         {
             float distance = srs[i].bounds.size.x - width;
             Vector3 pos = srs[i].transform.position;
-            pos.x = distance * (offset / (2 * width));
+            pos.x = distance * (offset / (2 * width)) + zero;
             srs[i].transform.position = pos;
         }
 	}
