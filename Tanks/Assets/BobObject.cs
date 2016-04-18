@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BobObject : MonoBehaviour {
 
-    public float amplitude = 1.5f;
+    public float amplitude = 0.5f;
     private float min = 2f;
     private float max = 3f;
 
