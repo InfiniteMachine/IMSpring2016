@@ -472,10 +472,10 @@ MonoBehaviour:
   - Snow1
   - Snow2
   scenes:
-  - {fileID: 21300000, guid: 85050dacc96989049a5b8f7bc0d33681, type: 3}
-  - {fileID: 21300000, guid: 2d083ecc79e4bc84fb578b76db82ff37, type: 3}
-  - {fileID: 21300000, guid: 3d8867715bc05514e855db75ec8c49fd, type: 3}
-  - {fileID: 21300000, guid: b0df987a4adcb3b4d9bba6cf064517b1, type: 3}
+  - {fileID: 21300000, guid: fa9489d5c2e52a742b16e21b0d0c1410, type: 3}
+  - {fileID: 21300000, guid: 27ace34696344b140b20cd8863f5c1d4, type: 3}
+  - {fileID: 21300000, guid: 8124fe507a261a548a2bdd93719c177e, type: 3}
+  - {fileID: 21300000, guid: 04e805a21f79ee7469473ca9de3a2b23, type: 3}
   timeRange: {x: 120, y: 600}
   timeStep: 30
   killRange: {x: 0, y: 20}
