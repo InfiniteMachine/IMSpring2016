@@ -24,7 +24,7 @@ public class Paralax : MonoBehaviour {
         zero = cFollow.leftBounds + width;
 
         Vector3 selfPosition = transform.position;
-        selfPosition.y = (cFollow.upperBounds - cFollow.lowerBounds) / 2;
+        selfPosition.y = (cFollow.upperBounds + cFollow.lowerBounds) / 2;
         selfPosition.x = zero;
         transform.position = selfPosition;
 
