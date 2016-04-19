@@ -135,6 +135,11 @@ MonoBehaviour:
   - {r: 0, g: 1, b: 0, a: 1}
   - {r: 0, g: 0, b: 1, a: 1}
   - {r: 1, g: 1, b: 0, a: 1}
+  trailParticles:
+  - {fileID: 125818, guid: c8ee362c12f53f549bc27241758e7a15, type: 2}
+  - {fileID: 167452, guid: 9de5b15082c620a4e8fa8b0885de6212, type: 2}
+  - {fileID: 181644, guid: ddb9146cfbe56004fb02ad23a863c667, type: 2}
+  - {fileID: 120116, guid: cced65e15597eb24e9cd2940abd6a92e, type: 2}
   playerTags:
   - {fileID: 21300000, guid: 3d9f774a7a47da2468d826a5efd5fbae, type: 3}
   - {fileID: 21300000, guid: da3f0b4745e69b041ad6e5fb52843a6a, type: 3}

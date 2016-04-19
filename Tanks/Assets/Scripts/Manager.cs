@@ -21,6 +21,7 @@ public class Manager : MonoBehaviour {
     public float endTime = 300f;
     public float targetScore = 150f;
     public Color[] playerColors = new Color[] { Color.green, Color.red, Color.blue, Color.yellow };
+    public GameObject[] trailParticles;
     public Sprite[] playerTags;
     [Header("Active Match Info:")]
 	// Variables for an active game
@@ -299,7 +300,11 @@ public class Manager : MonoBehaviour {
             newPlayerObjects[x].GetComponent<PlayerController>().controllerNumber = playerControllers[x];
 
             newPlayerObjects[x].transform.FindChild("Tag").GetComponent<SpriteRenderer>().sprite = playerTags[x];
-
+            GameObject go = Instantiate(trailParticles[x]);
+            go.transform.SetParent(newPlayerObjects[x].transform);
+            Vector3 pos = Vector3.zero;
+            pos.z = 0.1f;
+            go.transform.localPosition = pos;
             screenCanvas.transform.FindChild("Score" + (x + 1) + "Panel").FindChild("Image").GetComponent<Image>().sprite = newPlayerObjects[x].GetComponent<SpriteRenderer>().sprite;
             newPlayerObjects[x].GetComponent<SpriteRenderer>().material.SetColor("_Color", playerColors[x]);
         }

@@ -21,6 +21,7 @@ public class CharacterSelect : MonoBehaviour {
     private CanvasGroup sceneSelect;
     [Header("Scene Chooser")]
     public string[] areaNames;
+    public string[] areaDisplayNames;
     public Sprite[] scenes;
     private int sceneChooser = -1;
     private int arena = 0;
@@ -451,7 +452,7 @@ public class CharacterSelect : MonoBehaviour {
     {
         texts["PlayerDisplay"].text = "Player " + (sceneChooser + 1) + ", Select Arena";
         images["ArenaDisplay"].sprite = scenes[arena];
-        texts["ArenaNameDisplay"].text = areaNames[arena];
+        texts["ArenaNameDisplay"].text = areaDisplayNames[arena];
     }
 
     public void UpdateMatchOptions()

@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: SpriteClipShader
+  m_Name: SpriteClipShaderLTR
   m_Shader: {fileID: 4800000, guid: 4d12d69dafb599f43a38883ff0993a4d, type: 3}
   m_ShaderKeywords: PIXELSNAP_ON
   m_LightmapFlags: 5
@@ -143,6 +143,10 @@ Material:
         first:
           name: _Height
         second: 1
+      data:
+        first:
+          name: _RTL
+        second: 0
     m_Colors:
       data:
         first:
