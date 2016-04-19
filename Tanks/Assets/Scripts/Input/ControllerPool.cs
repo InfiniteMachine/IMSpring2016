@@ -43,8 +43,6 @@ public class ControllerPool : MonoBehaviour{
             AddController("null");
             pool[0].Disconnected();
         }
-
-        Debug.Log(pool.Count);
     }
 
     // Update is called once per frame
@@ -103,7 +101,6 @@ public class ControllerPool : MonoBehaviour{
     {
         pool.Add(new Controller(controllerName, (pool.Count + 1)));
         pool[pool.Count - 1].Connect();
-        Debug.Log("controller connected");
     }
 
     public Controller GetController(int controller)

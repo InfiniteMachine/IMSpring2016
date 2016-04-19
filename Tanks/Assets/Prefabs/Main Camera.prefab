@@ -13,6 +13,7 @@ GameObject:
   - 124: {fileID: 12448094}
   - 81: {fileID: 8131602}
   - 114: {fileID: 11432074}
+  - 114: {fileID: 11451664}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -92,15 +93,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   margin: 6
-  moveFastSpeed: 15
-  moveSlowSpeed: 2
-  orthoGrowSpeed: 3
-  orthoShrinkSpeed: 1
-  distancePadding: 2
+  orthoFallOff:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0.001461988
+      value: 0.1
+      inSlope: 3.603517
+      outSlope: 3.812278
+      tangentMode: 0
+    - time: 0.75
+      value: 1
+      inSlope: 0.0476678
+      outSlope: 0.0476678
+      tangentMode: 0
+    - time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  orthoSpeed: 10
+  deltaFallOff:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 5.737174
+      outSlope: 5.737174
+      tangentMode: 0
+    - time: 0.5
+      value: 1
+      inSlope: 0.02810661
+      outSlope: 0.02810661
+      tangentMode: 0
+    - time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  deltaSpeed: 25
   leftBounds: -25.282303
   rightBounds: 27.356598
   upperBounds: 17.462702
   lowerBounds: -15.411135
+--- !u!114 &11451664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e45b741b10178044b991040542de2289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenRatio: {x: 16, y: 9}
 --- !u!124 &12448094
 Behaviour:
   m_ObjectHideFlags: 1

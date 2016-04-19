@@ -39,7 +39,7 @@ public class Pause : MonoBehaviour {
         if (controller.GetAxisAsButton(1, true) || controller.GetAxisAsButton(6, false))
         {
             //Down
-            SoundManager.instance.PlayOneShot("Swap");
+            SoundManager.instance.PlayOneShot("menu_move");
             buttonAnimation[selectedButton].SetState(false);
             selectedButton = (selectedButton + 1) % 3;
             buttonAnimation[selectedButton].SetState(true);
@@ -47,7 +47,7 @@ public class Pause : MonoBehaviour {
         else if (controller.GetAxisAsButton(1, false) || controller.GetAxisAsButton(6, true))
         {
             //Up
-            SoundManager.instance.PlayOneShot("Swap");
+            SoundManager.instance.PlayOneShot("menu_move");
             buttonAnimation[selectedButton].SetState(false);
             selectedButton = (selectedButton - 1);
             if (selectedButton < 0)
@@ -57,7 +57,7 @@ public class Pause : MonoBehaviour {
         else if (controller.GetButtonDown(0))
         {
             //Submit
-            SoundManager.instance.PlayOneShot("Select");
+            SoundManager.instance.PlayOneShot("menu_select");
             if (selectedButton == 0)
                 UnPause();
             else if (selectedButton == 1)
@@ -95,7 +95,6 @@ public class Pause : MonoBehaviour {
         controller = ControllerPool.GetInstance().GetController(controllerNumber);
         playerDisplay.text = "Player " + (playerID + 1);
         SoundManager.instance.SetBackgroundVolume("backgroundMusic", 0.5f);
-        SoundManager.instance.SetBackgroundVolume("TankMovement", 0f);
         Update();
     }
 
@@ -107,7 +106,6 @@ public class Pause : MonoBehaviour {
         for (int i = 0; i < buttonAnimation.Count; i++)
             buttonAnimation[i].SetState(false);
         SoundManager.instance.SetBackgroundVolume("backgroundMusic", 1f);
-        SoundManager.instance.SetBackgroundVolume("TankMovement", SoundManager.instance.backgroundClips[1].defautVolume);
         paused = false;
     }
 }

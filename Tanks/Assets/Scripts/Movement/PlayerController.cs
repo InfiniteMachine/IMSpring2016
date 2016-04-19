@@ -60,7 +60,6 @@ public class PlayerController : MonoBehaviour, IPlayerID {
     private Transform crownLocation;
     //Animation variables
     private Animator aController;
-    private bool playingMove = false;
     private ParticleSystem jumpParticles;
     private ParticleSystem explosionParticles;
     private ParticleSystem dustParticles;
@@ -154,6 +153,7 @@ public class PlayerController : MonoBehaviour, IPlayerID {
                 if (canSideDash && dashCounter <= 0 && iCont.GetButton(InputController.Buttons.DASH))
                 {
                     iCont.ClearButton(InputController.Buttons.DASH);
+                    SoundManager.instance.PlayOneShot("dash");
                     forceMoveCounter = sideDashDuration;
                     if(velocity.x == 0)
                         forceMoveSpeed = sideDashSpeed * Mathf.Sign(transform.localScale.x);
@@ -179,7 +179,7 @@ public class PlayerController : MonoBehaviour, IPlayerID {
                 if (specialDefense.GetPercentage() != 0 && iCont.GetButton(InputController.Buttons.SPECIAL_FIRE) && specialAttack.CanFire())
                 {
                     specialAttack.AllowFire();
-                    SoundManager.instance.PlayOneShot("AbilityActivation");
+                    SoundManager.instance.PlayOneShot("special_attack");
                 }
             }
             if (specialDefense != null)
@@ -187,18 +187,11 @@ public class PlayerController : MonoBehaviour, IPlayerID {
                 if (iCont.GetButton(InputController.Buttons.SPECIAL_DEFENSE) && specialDefense.CanFire())
                 {
                     specialDefense.AllowFire();
-                    SoundManager.instance.PlayOneShot("AbilityActivation");
+                    SoundManager.instance.PlayOneShot("special_attack");
                 }
             }
             if (groundCheck.CheckGrounded() && velocity.y <= 0)
             {
-                if (!canJump)
-                {
-                    if (canDash)
-                        SoundManager.instance.PlayOneShot("Landing");
-                    else
-                        SoundManager.instance.PlayOneShot("GroundPound");
-                }
                 canDash = true;
                 canSideDash = true;
                 canJump = true;
@@ -232,7 +225,7 @@ public class PlayerController : MonoBehaviour, IPlayerID {
                     jumpParticles.Play();
                 }
                 iCont.ClearButton(InputController.Buttons.JUMP);
-                SoundManager.instance.PlayOneShot("Jump");
+                SoundManager.instance.PlayOneShot("jump");
             }
 
             if (disabledCounter > 0)
@@ -245,20 +238,7 @@ public class PlayerController : MonoBehaviour, IPlayerID {
             {
                 aController.SetBool("bMoving", (velocity.x != 0));
             }
-
-            if(velocity.x != 0)
-            {
-                if (!playingMove)
-                {
-                    playingMove = true;
-                    SoundManager.instance.PlayBackground("TankMovement");
-                }
-            }
-            else if (playingMove)
-            {
-                playingMove = false;
-                SoundManager.instance.StopBackground("TankMovement");
-            }
+            
             if (canJump && velocity.y < 0)
                 velocity.y = 0;
             if (interactable)
@@ -287,10 +267,12 @@ public class PlayerController : MonoBehaviour, IPlayerID {
             other.enabled = false;
             hasCrown = true;
             Manager.instance.GiveBaton(playerID);
+            SoundManager.instance.PlayOneShot("crown_pickup");
         }
         else if (other.gameObject.CompareTag("KillBox"))
         {
-            Die(true);
+            Die(true, playerID);
+            SoundManager.instance.PlayOneShot("sploosh");
         }
         else if (other.gameObject.CompareTag("Bullet") && spawnCounter <= 0 && specialDefense.GetPercentage() != 0)
         {
@@ -307,9 +289,11 @@ public class PlayerController : MonoBehaviour, IPlayerID {
             {
                 forceMoveSpeed = movementSpeed;
             }
+            SoundManager.instance.PlayOneShot("warp");
         }else if(other.gameObject.tag == "Ground" && other.transform.position.y < transform.position.y && rBody.velocity.y < -0.25f)
         {
             dustParticles.Play();
+            SoundManager.instance.PlayOneShot("land");
         }
     }
     
@@ -340,12 +324,8 @@ public class PlayerController : MonoBehaviour, IPlayerID {
     private void Die(bool self)
     {
         explosionParticles.Play();
-        SoundManager.instance.PlayOneShot("Explosion");
-        if (playingMove)
-        {
-            playingMove = false;
-            SoundManager.instance.StopBackground("TankMovement");
-        }
+        if(!self)
+            SoundManager.instance.PlayOneShot("player_death");
         respawnCounter = respawnTime;
         Invoke("ResetPosition", respawnTime / 2);
         if (hasCrown)
@@ -391,6 +371,7 @@ public class PlayerController : MonoBehaviour, IPlayerID {
     {
         SetInteractable(true);
         spawnCounter = spawnInvulnurability;
+        SoundManager.instance.PlayOneShot("player_spawn");
         
     }
 

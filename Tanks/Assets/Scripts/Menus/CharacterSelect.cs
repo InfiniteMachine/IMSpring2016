@@ -192,7 +192,7 @@ public class CharacterSelect : MonoBehaviour {
                             if ((Manager.instance.playerTanks[p] + 1) % 3 != 0)
                             {
                                 Manager.instance.playerTanks[p] += 1;
-                                SoundManager.instance.PlayOneShot("Swap");
+                                SoundManager.instance.PlayOneShot("menu_move");
                             }
                         }
                         else if (controllers[i].GetAxisAsButton(0, false) || controllers[i].GetAxisAsButton(5, false))
@@ -201,7 +201,7 @@ public class CharacterSelect : MonoBehaviour {
                             if (Manager.instance.playerTanks[p] % 3 != 0)
                             {
                                 Manager.instance.playerTanks[p] -= 1;
-                                SoundManager.instance.PlayOneShot("Swap");
+                                SoundManager.instance.PlayOneShot("menu_move");
                             }
                         }
                         else if (controllers[i].GetAxisAsButton(1, true) || controllers[i].GetAxisAsButton(6, false))
@@ -210,7 +210,7 @@ public class CharacterSelect : MonoBehaviour {
                             if (Manager.instance.playerTanks[p] + 3 <= 8)
                             {
                                 Manager.instance.playerTanks[p] += 3;
-                                SoundManager.instance.PlayOneShot("Swap");
+                                SoundManager.instance.PlayOneShot("menu_move");
                             }
                         }
                         else if (controllers[i].GetAxisAsButton(1, false) || controllers[i].GetAxisAsButton(6, true))
@@ -219,20 +219,26 @@ public class CharacterSelect : MonoBehaviour {
                             if (Manager.instance.playerTanks[p] - 3 >= 0)
                             {
                                 Manager.instance.playerTanks[p] -= 3;
-                                SoundManager.instance.PlayOneShot("Swap");
+                                SoundManager.instance.PlayOneShot("menu_move");
                             }
                         }
                         else if (controllers[i].GetButtonDown(0))
                         {
                             //Submit
                             podiums[p].state = PStates.LOCKED;
-                            SoundManager.instance.PlayOneShot("Select");
+                            SoundManager.instance.PlayOneShot("menu_select");
+                        }else if (controllers[i].GetButtonDown(1))
+                        {
+                            //Cancel
+                            SoundManager.instance.PlayOneShot("menu_back");
+                            SceneManager.LoadScene("Menu");
                         }
                     }
                     else if (controllers[i].GetButtonDown(1))
                     {
                         //Cancel
                         podiums[p].state = PStates.CHOOSING;
+                        SoundManager.instance.PlayOneShot("menu_back");
                     }
                 }
             }
@@ -245,15 +251,16 @@ public class CharacterSelect : MonoBehaviour {
                     Manager.instance.playerTanks[Manager.instance.numPlayers] = 0;
                     podiums[Manager.instance.numPlayers].state = PStates.CHOOSING;
                     Manager.instance.numPlayers++;
-                    SoundManager.instance.PlayOneShot("Select");
+                    SoundManager.instance.PlayOneShot("menu_select");
                 }
                 else if (controllers[i].GetButtonDown(1))
                 {
+                    SoundManager.instance.PlayOneShot("menu_back");
                     SceneManager.LoadScene("Menu");
                 }
             }
         }
-        bool usedKeyboard = false;
+        /*bool usedKeyboard = false;
         for (int p = 0; p < Manager.instance.numPlayers; p++)
         {
             if (Manager.instance.playerControllers[p] == -1)
@@ -268,7 +275,7 @@ public class CharacterSelect : MonoBehaviour {
                         if (Manager.instance.playerTanks[p] % 3 != 0)
                         {
                             Manager.instance.playerTanks[p] -= 1;
-                            SoundManager.instance.PlayOneShot("Swap");
+                            SoundManager.instance.PlayOneShot("menu_move");
                         }
                     }
                     else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
@@ -277,7 +284,7 @@ public class CharacterSelect : MonoBehaviour {
                         if ((Manager.instance.playerTanks[p] + 1) % 3 != 0)
                         {
                             Manager.instance.playerTanks[p] += 1;
-                            SoundManager.instance.PlayOneShot("Swap");
+                            SoundManager.instance.PlayOneShot("menu_move");
                         }
                     }
                     else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
@@ -286,7 +293,7 @@ public class CharacterSelect : MonoBehaviour {
                         if (Manager.instance.playerTanks[p] - 3 >= 0)
                         {
                             Manager.instance.playerTanks[p] -= 3;
-                            SoundManager.instance.PlayOneShot("Swap");
+                            SoundManager.instance.PlayOneShot("menu_move");
                         }
                     }
                     else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
@@ -295,20 +302,21 @@ public class CharacterSelect : MonoBehaviour {
                         if (Manager.instance.playerTanks[p] + 3 <= 8)
                         {
                             Manager.instance.playerTanks[p] += 3;
-                            SoundManager.instance.PlayOneShot("Swap");
+                            SoundManager.instance.PlayOneShot("menu_move");
                         }
                     }
                     else if (Input.GetKeyDown(KeyCode.Return))
                     {
                         //Submit
                         podiums[p].state = PStates.LOCKED;
-                        SoundManager.instance.PlayOneShot("Select");
+                        SoundManager.instance.PlayOneShot("menu_select");
                     }
                 }
                 else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
                 {
                     //Cancel
                     podiums[p].state = PStates.CHOOSING;
+                    SoundManager.instance.PlayOneShot("menu_back");
                 }
 
             }
@@ -322,9 +330,9 @@ public class CharacterSelect : MonoBehaviour {
                 Manager.instance.playerTanks[Manager.instance.numPlayers] = 0;
                 podiums[Manager.instance.numPlayers].state = PStates.CHOOSING;
                 Manager.instance.numPlayers++;
-                SoundManager.instance.PlayOneShot("Select");
+                SoundManager.instance.PlayOneShot("menu_select");
             }
-        }
+        }*/
 
         if (Manager.instance.numPlayers > 1 || (debug && Manager.instance.numPlayers > 0))
         {
@@ -336,7 +344,7 @@ public class CharacterSelect : MonoBehaviour {
             if (go)
             {
                 //Setup arena select screen
-                sceneChooser = 1;//Random.Range(0, Manager.instance.numPlayers);
+                sceneChooser = 0;//Random.Range(0, Manager.instance.numPlayers);
                 StartCoroutine(SwapMenu(MenuState.SCENE));
             }
         }
@@ -383,7 +391,7 @@ public class CharacterSelect : MonoBehaviour {
                 arena--;
                 if (arena < 0)
                     arena = areaNames.Length - 1;
-                SoundManager.instance.PlayOneShot("Swap");
+                SoundManager.instance.PlayOneShot("menu_move");
             }
             else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
@@ -391,13 +399,13 @@ public class CharacterSelect : MonoBehaviour {
                 arena++;
                 if (arena >= areaNames.Length)
                     arena = 0;
-                SoundManager.instance.PlayOneShot("Swap");
+                SoundManager.instance.PlayOneShot("menu_move");
             }
             else if (Input.GetKeyDown(KeyCode.Return))
             {
                 //Submit
                 GotoSelectedArena();
-                SoundManager.instance.PlayOneShot("Select");
+                SoundManager.instance.PlayOneShot("menu_select");
             }
             //else if (Input.GetKeyDown(KeyCode.X))
             //{
@@ -414,7 +422,7 @@ public class CharacterSelect : MonoBehaviour {
                 arena++;
                 if (arena >= areaNames.Length)
                     arena = 0;
-                SoundManager.instance.PlayOneShot("Swap");
+                SoundManager.instance.PlayOneShot("menu_move");
             }
             else if (c.GetAxisAsButton(0, false) || c.GetAxisAsButton(5, false))
             {
@@ -422,18 +430,18 @@ public class CharacterSelect : MonoBehaviour {
                 arena--;
                 if (arena < 0)
                     arena = areaNames.Length - 1;
-                SoundManager.instance.PlayOneShot("Swap");
+                SoundManager.instance.PlayOneShot("menu_move");
             }
             else if (c.GetButtonDown(0))
             {
                 //Submit
                 GotoSelectedArena();
-                SoundManager.instance.PlayOneShot("Select");
+                SoundManager.instance.PlayOneShot("menu_select");
             }
             else if (c.GetButtonDown(2))
             {
                 StartCoroutine(SwapMenu(MenuState.MATCH_OPTIONS));
-                SoundManager.instance.PlayOneShot("Select");
+                SoundManager.instance.PlayOneShot("menu_select");
             }
             else if (c.GetButtonDown(1))
             {
@@ -443,6 +451,7 @@ public class CharacterSelect : MonoBehaviour {
                         podiums[i].state = PStates.CHOOSING;
                 }
                 StartCoroutine(SwapMenu(MenuState.CHARACTER));
+                SoundManager.instance.PlayOneShot("menu_back");
             }
         }
         UpdateSceneSelectVisual();
@@ -467,37 +476,38 @@ public class CharacterSelect : MonoBehaviour {
             if (controllers[i].GetAxisAsButton(0, true) || controllers[i].GetAxisAsButton(5, true))
             {
                 //Right
-                SoundManager.instance.PlayOneShot("Swap");
+                SoundManager.instance.PlayOneShot("menu_move");
                 leftRight = 1;
             }
             else if (controllers[i].GetAxisAsButton(0, false) || controllers[i].GetAxisAsButton(5, false))
             {
                 //Right's demon twin
-                SoundManager.instance.PlayOneShot("Swap");
+                SoundManager.instance.PlayOneShot("menu_move");
                 leftRight = -1;
             }
             else if (controllers[i].GetAxisAsButton(1, true) || controllers[i].GetAxisAsButton(6, false))
             {
                 //Down?
-                SoundManager.instance.PlayOneShot("Swap");
+                SoundManager.instance.PlayOneShot("menu_move");
                 upDown = 1;
             }
             else if (controllers[i].GetAxisAsButton(1, false) || controllers[i].GetAxisAsButton(6, true))
             {
                 //Up
-                SoundManager.instance.PlayOneShot("Swap");
+                SoundManager.instance.PlayOneShot("menu_move");
                 upDown = -1;
             }
             else if (controllers[i].GetButtonDown(0))
             {
                 //Submit
-                SoundManager.instance.PlayOneShot("Swap");
+                SoundManager.instance.PlayOneShot("menu_select");
                 leftRight = 1;
             }
             else if (controllers[i].GetButtonDown(1))
             {
                 //Cancel
                 cancel = true;
+                SoundManager.instance.PlayOneShot("menu_back");
             }
         }
         for(int i = 0; i < Manager.instance.numPlayers; i++)
@@ -507,37 +517,38 @@ public class CharacterSelect : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     //Right
-                    SoundManager.instance.PlayOneShot("Swap");
+                    SoundManager.instance.PlayOneShot("menu_move");
                     leftRight = -1;
                 }
                 else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     //Right's demon twin
-                    SoundManager.instance.PlayOneShot("Swap");
+                    SoundManager.instance.PlayOneShot("menu_move");
                     leftRight = 1;
                 }
                 else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     //Down?
-                    SoundManager.instance.PlayOneShot("Swap");
+                    SoundManager.instance.PlayOneShot("menu_move");
                     upDown = 1;
                 }
                 else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     //Up
-                    SoundManager.instance.PlayOneShot("Swap");
+                    SoundManager.instance.PlayOneShot("menu_move");
                     upDown = -1;
                 }
                 else if (Input.GetKeyDown(KeyCode.Return))
                 {
                     //Submit
-                    SoundManager.instance.PlayOneShot("Swap");
+                    SoundManager.instance.PlayOneShot("menu_move");
                     leftRight = 1;
                 }
                 else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
                 {
                     //Cancel
                     cancel = true;
+                    SoundManager.instance.PlayOneShot("menu_back");
                 }
             }
         }
@@ -714,6 +725,7 @@ public class CharacterSelect : MonoBehaviour {
         Manager.instance.InitOnNextScene();
         //SceneManager.LoadScene(areaNames[arena]);
         SceneManager.LoadSceneAsync(areaNames[arena]);
+        SoundManager.instance.StopAll();
         curMenu = MenuState.LOADING;
         animating = true;
     }

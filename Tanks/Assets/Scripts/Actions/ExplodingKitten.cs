@@ -19,7 +19,7 @@ public class ExplodingKitten : MonoBehaviour, IPlayerID {
         if ((col.tag == "Player" && col.gameObject != player) || col.tag == "Ground")
         {
             //Explode
-            SoundManager.instance.PlayOneShot("Explosion");
+            SoundManager.instance.PlayOneShot("explosion");
             Instantiate(explosion, transform.position, Quaternion.identity);
             //Physics
             Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, radius);

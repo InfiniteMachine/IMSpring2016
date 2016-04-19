@@ -9,6 +9,7 @@ public class Manager : MonoBehaviour {
 	public GameObject[] tanks;
 	[HideInInspector]
     public int[] playerTanks;
+    public Sprite[] playerPortraits;
     [HideInInspector]
     public int[] playerControllers;
     [HideInInspector]
@@ -22,6 +23,7 @@ public class Manager : MonoBehaviour {
     public float targetScore = 150f;
     public Color[] playerColors = new Color[] { Color.green, Color.red, Color.blue, Color.yellow };
     public GameObject[] trailParticles;
+    public Sprite[] playerDisplayTags;
     public Sprite[] playerTags;
     [Header("Active Match Info:")]
 	// Variables for an active game
@@ -105,7 +107,7 @@ public class Manager : MonoBehaviour {
                             if(value != lastSecond && value > 0)
                             {
                                 lastSecond = value;
-                                SoundManager.instance.PlayOneShot("Countdown");
+                                SoundManager.instance.PlayOneShot("timer_beep");
                             }
                         }
                     }
@@ -142,11 +144,12 @@ public class Manager : MonoBehaviour {
             scoreDisplays[i].transform.parent.gameObject.SetActive(false);
         for (int i = numPlayers + 1; i <= 4; i++)
         {
-            scorePanel.transform.FindChild("Place" + i).gameObject.SetActive(false);
-            scorePanel.transform.FindChild("Stats/Place" + i).gameObject.SetActive(false);
+            scorePanel.transform.FindChild("" + (i)).gameObject.SetActive(false);
+            scorePanel.transform.FindChild("Character" + (i)).gameObject.SetActive(false);
+            scorePanel.transform.FindChild("Crown" + (i)).gameObject.SetActive(false);
         }
         timer.gameObject.SetActive(false);
-        timer.transform.parent.FindChild("TargetLabel").gameObject.SetActive(false);
+        timer.transform.parent.FindChild("TimeBackground").gameObject.SetActive(false);
         timer.transform.parent.FindChild("TargetScore").gameObject.SetActive(false);
         scorePanel.SetActive(true);
         List<int> players = new List<int>();
@@ -186,14 +189,18 @@ public class Manager : MonoBehaviour {
         }
         for (int i = 0; i < players.Count; i++)
         {
-            Transform placeHolder = scorePanel.transform.FindChild("Place" + (i + 1));
-            placeHolder.FindChild("Display").GetComponent<Image>().sprite = tanks[playerTanks[players[i]]].GetComponent<SpriteRenderer>().sprite;
-            placeHolder.FindChild("Character").GetComponent<Text>().text = tanks[playerTanks[players[i]]].GetComponent<PlayerController>().characterName;
-            placeHolder.FindChild("Player").GetComponent<Text>().text = "Player " + (players[i] + 1);
-            placeHolder = scorePanel.transform.FindChild("Stats/Place" + (i + 1));
-            placeHolder.FindChild("Player").GetComponent<Text>().text = "Player " + (players[i] + 1);
+            scorePanel.transform.FindChild("Character" + (i + 1)).GetComponent<Image>().sprite = playerPortraits[playerTanks[players[i]]];
+            Transform placeHolder = scorePanel.transform.FindChild("" + (i + 1));
+            placeHolder.FindChild("PlayerTag").GetComponent<Image>().sprite = playerDisplayTags[players[i]];
+            placeHolder.FindChild("Score").GetComponent<Text>().text = "" + Mathf.RoundToInt(indScore[players[i]]);
             placeHolder.FindChild("Kills").GetComponent<Text>().text = "" + kills[players[i]];
             placeHolder.FindChild("Deaths").GetComponent<Text>().text = "" + deaths[players[i]];
+            if (deaths[players[i]] > 0)
+            {
+                placeHolder.FindChild("Ratio").GetComponent<Text>().text = "" + (Mathf.Round(((float)kills[players[i]] / (float)deaths[players[i]]) * 100f) / 100f);
+            }
+            else
+                placeHolder.FindChild("Ratio").GetComponent<Text>().text = "" + kills[players[i]];
         }
         SoundManager.instance.StopAll();
         Invoke("GotoMenu", scoreScreenDuration);
@@ -305,7 +312,7 @@ public class Manager : MonoBehaviour {
             Vector3 pos = Vector3.zero;
             pos.z = 0.1f;
             go.transform.localPosition = pos;
-            screenCanvas.transform.FindChild("Score" + (x + 1) + "Panel").FindChild("Image").GetComponent<Image>().sprite = newPlayerObjects[x].GetComponent<SpriteRenderer>().sprite;
+            screenCanvas.transform.FindChild("Score" + (x + 1) + "Panel").FindChild("Image").GetComponent<Image>().sprite = playerPortraits[playerTanks[x]];//newPlayerObjects[x].GetComponent<SpriteRenderer>().sprite;
             newPlayerObjects[x].GetComponent<SpriteRenderer>().material.SetColor("_Color", playerColors[x]);
         }
 		return true;
@@ -343,7 +350,8 @@ public class Manager : MonoBehaviour {
 
     public void RecordDeath(int killer, int target)
     {
-        kills[killer]++;
+        if (target != killer)
+            kills[killer]++;
         deaths[target]++;
         if (gameMode == GameModes.ANARCHY)
         {

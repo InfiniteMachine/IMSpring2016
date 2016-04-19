@@ -4,12 +4,14 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class MenuController : MonoBehaviour {
-    public Color defaultColor = Color.white;
-    public Color selectedColor = Color.yellow;
-    private enum Buttons { Play = 0, Quit};
-    private int numButtons = 2;
+    private enum Buttons { Play = 0, Controls, Quit};
+    private int numButtons = 3;
     private Buttons selected = Buttons.Play;
     private Image[] buttons;
+
+    private enum State { Menu = 0, Controls1, Controls2 };
+    private State s = State.Menu;
+    private CanvasGroup controls1, controls2;
 	// Use this for initialization
 	void Start () {
         buttons = new Image[numButtons];
@@ -33,64 +35,128 @@ public class MenuController : MonoBehaviour {
                 Debug.LogError("There is an image missing from the menu.");
             }
         }
-	}
+        controls1 = transform.parent.FindChild("Controls1").GetComponent<CanvasGroup>();
+        controls1.alpha = 0;
+        controls1.interactable = false;
+        controls1.blocksRaycasts = false;
+        controls2 = transform.parent.FindChild("Controls2").GetComponent<CanvasGroup>();
+        controls2.alpha = 0;
+        controls2.interactable = false;
+        controls2.blocksRaycasts = false;
+
+        SoundManager.instance.PlayBackground("menuMusic");
+    }
 	
 	// Update is called once per frame
 	void Update () {
         Controller[] controllers = ControllerPool.GetInstance().GetControllers();
-        bool broken = false;
-        for (int i = 0; i < controllers.Length; i++)
+        if (s == State.Menu)
         {
-            broken= true;
-            if (controllers[i].GetAxisAsButton(1, true) || controllers[i].GetAxisAsButton(6, false))
+            bool broken = false;
+            for (int i = 0; i < controllers.Length; i++)
             {
-                //Down
-                selected++;
-                if (selected > Buttons.Quit)
-                    selected = Buttons.Play;
-                SoundManager.instance.PlayOneShot("Swap");
-                break;
+                broken = true;
+                if (controllers[i].GetAxisAsButton(1, true) || controllers[i].GetAxisAsButton(6, false))
+                {
+                    //Down
+                    selected++;
+                    if (selected > Buttons.Quit)
+                        selected = Buttons.Play;
+                    SoundManager.instance.PlayOneShot("menu_move");
+                    break;
+                }
+                else if (controllers[i].GetAxisAsButton(1, false) || controllers[i].GetAxisAsButton(6, true))
+                {
+                    //Up
+                    selected--;
+                    if (selected < Buttons.Play)
+                        selected = Buttons.Quit;
+                    SoundManager.instance.PlayOneShot("menu_move");
+                    break;
+                }
+                else if (controllers[i].GetButtonDown(0))
+                {
+                    //Submit
+                    PerformAction();
+                    SoundManager.instance.PlayOneShot("menu_select");
+                    break;
+                }
+                broken = false;
             }
-            else if (controllers[i].GetAxisAsButton(1, false) || controllers[i].GetAxisAsButton(6, true))
+            if (!broken)
             {
-                //Up
-                selected--;
-                if (selected < Buttons.Play)
-                    selected = Buttons.Quit;
-                SoundManager.instance.PlayOneShot("Swap");
-                break;
+                if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    //Down
+                    selected++;
+                    if (selected > Buttons.Quit)
+                        selected = Buttons.Play;
+                    SoundManager.instance.PlayOneShot("menu_move");
+                }
+                else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    //Up
+                    selected--;
+                    if (selected < Buttons.Play)
+                        selected = Buttons.Quit;
+                    SoundManager.instance.PlayOneShot("menu_move");
+                }
+                else if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    PerformAction();
+                    SoundManager.instance.PlayOneShot("menu_select");
+                }
             }
-            else if (controllers[i].GetButtonDown(0))
-            {
-                //Submit
-                PerformAction();
-                SoundManager.instance.PlayOneShot("Select");
-                break;
-            }
-            broken = false;
+            UpdateColors();
         }
-        if (!broken)
+        else
         {
-            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+            for(int i = 0; i < controllers.Length; i++)
             {
-                //Down
-                selected++;
-                if (selected > Buttons.Quit)
-                    selected = Buttons.Play;
-                SoundManager.instance.PlayOneShot("Swap");
-            }
-            else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                //Up
-                selected--;
-                if (selected < Buttons.Play)
-                    selected = Buttons.Quit;
-                SoundManager.instance.PlayOneShot("Swap");
-            }
-            else if (Input.GetKeyDown(KeyCode.Return))
-            {
-                PerformAction();
-                SoundManager.instance.PlayOneShot("Select");
+                if (controllers[i].GetButtonDown(0))
+                {
+                    //Submit
+                    if (s == State.Controls2)
+                    {
+                        s = State.Menu;
+                        controls2.alpha = 0;
+                        controls2.interactable = false;
+                        controls2.blocksRaycasts = false;
+                    }
+                    else
+                    {
+                        s = State.Controls2;
+                        controls2.alpha = 1;
+                        controls2.interactable = true;
+                        controls2.blocksRaycasts = true;
+                        controls1.alpha = 0;
+                        controls1.interactable = false;
+                        controls1.blocksRaycasts = false;
+                    }
+                    SoundManager.instance.PlayOneShot("menu_select");
+                }
+                else if (controllers[i].GetButtonDown(1))
+                {
+                    //Cancel
+                    if (s == State.Controls1)
+                    {
+                        s = State.Menu;
+                        controls1.alpha = 0;
+                        controls1.interactable = false;
+                        controls1.blocksRaycasts = false;
+                    }
+                    else
+                    {
+                        s = State.Controls1;
+                        controls1.alpha = 1;
+                        controls1.interactable = true;
+                        controls1.blocksRaycasts = true;
+                        controls2.alpha = 0;
+                        controls2.interactable = false;
+                        controls2.blocksRaycasts = false;
+                    }
+                    SoundManager.instance.PlayOneShot("menu_back");
+                }
             }
         }
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -98,8 +164,7 @@ public class MenuController : MonoBehaviour {
             selected = Buttons.Quit;
             PerformAction();
         }
-        UpdateColors();
-	}
+    }
 
     private void PerformAction()
     {
@@ -107,6 +172,12 @@ public class MenuController : MonoBehaviour {
         {
             case Buttons.Play:
                 SceneManager.LoadScene("Player_Select_Screen");
+                break;
+            case Buttons.Controls:
+                s = State.Controls1;
+                controls1.alpha = 1;
+                controls1.interactable = true;
+                controls1.blocksRaycasts = true;
                 break;
             case Buttons.Quit:
                 Application.Quit();
@@ -119,7 +190,7 @@ public class MenuController : MonoBehaviour {
     {
         for(int i = 0; i < numButtons; i++)
         {
-            buttons[i].color = ((int)selected == i) ? selectedColor : defaultColor;
+            buttons[i].enabled = ((int)selected == i);
         }
     }
 }

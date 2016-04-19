@@ -43,6 +43,7 @@ public class SolarFlare : MonoBehaviour, IAction {
 
     public void StartAction()
     {
+        SoundManager.instance.PlayOneShot("explosion");
         Instantiate(particles, transform.position, Quaternion.identity);
         //3.185
         Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, radius);

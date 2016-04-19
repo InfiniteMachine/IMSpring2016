@@ -125,11 +125,21 @@ MonoBehaviour:
   - {fileID: 165736, guid: 6c391a399430b964c88a974dfe8e062c, type: 2}
   - {fileID: 197362, guid: 86d70891b28cd1e45bd411e4f9263288, type: 2}
   playerTanks: 
+  playerPortraits:
+  - {fileID: 21300000, guid: 046441a8593ee9448a27a1f415ba0b1d, type: 3}
+  - {fileID: 21300000, guid: 42c154bbb85c9564d8de0cbeef451c75, type: 3}
+  - {fileID: 21300000, guid: bdd3f1c16517e1e43a0cd558fd48a654, type: 3}
+  - {fileID: 21300000, guid: cd2300b4a9897994f979128732266317, type: 3}
+  - {fileID: 21300000, guid: 9b184f36db83cff4083532536b277330, type: 3}
+  - {fileID: 21300000, guid: fc6df71968db1ec4a8dac061c879aef2, type: 3}
+  - {fileID: 21300000, guid: 91304db637ecee948af99ecc98ec64c0, type: 3}
+  - {fileID: 21300000, guid: 7412dd8622f6c344ea923f9a232e731c, type: 3}
+  - {fileID: 21300000, guid: fea242d5dc888c342b4a326b5f518d82, type: 3}
   playerControllers: 
   numPlayers: 0
   maxPlayers: 4
-  endTime: 150
-  targetScore: 150
+  endTime: 300
+  targetScore: 90
   playerColors:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 1, b: 0, a: 1}
@@ -140,6 +150,11 @@ MonoBehaviour:
   - {fileID: 167452, guid: 9de5b15082c620a4e8fa8b0885de6212, type: 2}
   - {fileID: 181644, guid: ddb9146cfbe56004fb02ad23a863c667, type: 2}
   - {fileID: 120116, guid: cced65e15597eb24e9cd2940abd6a92e, type: 2}
+  playerDisplayTags:
+  - {fileID: 21300000, guid: 7b50ba0d3cbbde24aaf482815bb44a52, type: 3}
+  - {fileID: 21300000, guid: 2af6bbbf51fb31e4985f90a5edde8444, type: 3}
+  - {fileID: 21300000, guid: 1f9e5f3230122514b99fb1cf9c8b23d6, type: 3}
+  - {fileID: 21300000, guid: 1d72fc89d62d0d7458b8f8a077c494b7, type: 3}
   playerTags:
   - {fileID: 21300000, guid: 3d9f774a7a47da2468d826a5efd5fbae, type: 3}
   - {fileID: 21300000, guid: da3f0b4745e69b041ad6e5fb52843a6a, type: 3}
@@ -197,29 +212,43 @@ MonoBehaviour:
   backgroundClips:
   - soundEffect: {fileID: 8300000, guid: ef1e64c64225f0541af631c538656531, type: 3}
     defautVolume: 1
-  - soundEffect: {fileID: 8300000, guid: 308a9185c2cb04642924a2d3236580d5, type: 3}
-    defautVolume: 0.125
+  - soundEffect: {fileID: 8300000, guid: 556be72fefc2edb418fea528a51e2c97, type: 3}
+    defautVolume: 0.5
   soundEffects:
-  - soundEffect: {fileID: 8300000, guid: 94b5afdc7ebc30e4f879a5dd804fe808, type: 3}
-    defautVolume: 0.5
-  - soundEffect: {fileID: 8300000, guid: f092173b13c2fb046988b80f517fa835, type: 3}
-    defautVolume: 0.75
-  - soundEffect: {fileID: 8300000, guid: 8fa165aa115ae49419483455058352b3, type: 3}
-    defautVolume: 0.5
-  - soundEffect: {fileID: 8300000, guid: 41c1550b7fb764c488307e0ae3002413, type: 3}
-    defautVolume: 0.5
-  - soundEffect: {fileID: 8300000, guid: 623d459c7b8accb45a4788c2e38117f0, type: 3}
-    defautVolume: 0.5
-  - soundEffect: {fileID: 8300000, guid: 6b0f8624e67189646928d8a51d811d33, type: 3}
-    defautVolume: 0.25
-  - soundEffect: {fileID: 8300000, guid: c65884dbe20f93a4b94815e7d004552c, type: 3}
-    defautVolume: 0.5
-  - soundEffect: {fileID: 8300000, guid: e40eabd10d4714d4da50f1cb1f6879a5, type: 3}
-    defautVolume: 0.25
-  - soundEffect: {fileID: 8300000, guid: 578580986691c544dbdaecc061f63a62, type: 3}
-    defautVolume: 0.5
-  - soundEffect: {fileID: 8300000, guid: d6038acd57780684a9ce18debcb74ebc, type: 3}
-    defautVolume: 0.25
+  - soundEffect: {fileID: 8300000, guid: 1b73b10bcb9d75245aebb70d36c31982, type: 3}
+    defautVolume: 1
+  - soundEffect: {fileID: 8300000, guid: 14ba2059448c44b4fb1f706dd67496bb, type: 3}
+    defautVolume: 1
+  - soundEffect: {fileID: 8300000, guid: 2638c1cec9c0cd34c913d7df52ca7cf9, type: 3}
+    defautVolume: 1
+  - soundEffect: {fileID: 8300000, guid: 367b92b03879d3e4e872d07cc45a482b, type: 3}
+    defautVolume: 1
+  - soundEffect: {fileID: 8300000, guid: d1bc9a336c935194db98b941effbad08, type: 3}
+    defautVolume: 1
+  - soundEffect: {fileID: 8300000, guid: adaa4a91955809b4cbd9df7a1bf56b7c, type: 3}
+    defautVolume: 1
+  - soundEffect: {fileID: 8300000, guid: ef5cdd92f07aed043b5a71b1f2aa28e7, type: 3}
+    defautVolume: 1
+  - soundEffect: {fileID: 8300000, guid: a5d14265db1547e419d487f1f75ffcd2, type: 3}
+    defautVolume: 1
+  - soundEffect: {fileID: 8300000, guid: dcea9e99d8ff4154ab5c6ff8020d4b94, type: 3}
+    defautVolume: 1
+  - soundEffect: {fileID: 8300000, guid: debcb51b31ae55f4186bab6a18c68645, type: 3}
+    defautVolume: 1
+  - soundEffect: {fileID: 8300000, guid: 2a96838907bad4d4abc25cef478c516d, type: 3}
+    defautVolume: 1
+  - soundEffect: {fileID: 8300000, guid: acc2b425073fff84fafdc601e3a6cc90, type: 3}
+    defautVolume: 1
+  - soundEffect: {fileID: 8300000, guid: 425dd4c6343c5744cac5982d39a19b2f, type: 3}
+    defautVolume: 1
+  - soundEffect: {fileID: 8300000, guid: 29e650817a711324880a3743f702e247, type: 3}
+    defautVolume: 1
+  - soundEffect: {fileID: 8300000, guid: 95936d1f85a05424696e166bd73ceb2b, type: 3}
+    defautVolume: 1
+  - soundEffect: {fileID: 8300000, guid: e620859136aff6940af7582ba29d2695, type: 3}
+    defautVolume: 1
+  - soundEffect: {fileID: 8300000, guid: f49ca13b969fb9e4bb3be3dea15c8c3e, type: 3}
+    defautVolume: 1
   globalVolume: 1
 --- !u!1 &1579034475
 GameObject:

@@ -46,11 +46,11 @@ public class RandomCharacterSpawner : MonoBehaviour {
             rightLoc = Random.Range(0, yLocations.Length);
         }
 
-        int leftCharacter = Random.Range(0, 5);
+        int leftCharacter = Random.Range(0, 8);
         int rightCharacter = leftCharacter;
         while (rightCharacter == leftCharacter)
         {
-            rightCharacter = Random.Range(0, 5);
+            rightCharacter = Random.Range(0, 8);
         }
 
         if(rightLoc + 1 == leftLoc)

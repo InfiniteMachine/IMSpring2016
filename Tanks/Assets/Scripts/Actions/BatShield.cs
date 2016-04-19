@@ -56,6 +56,8 @@ public class BatShield : MonoBehaviour, IAction
                 pCont.IgnoreCollision(col);
                 Physics2D.IgnoreCollision(batShield, col);
                 tBullet.SetPower(tBullet.power, Quaternion.FromToRotation(Vector2.right, direction).eulerAngles.z, tBullet.intType);
+
+                SoundManager.instance.PlayOneShot("shield_hit");
             }
         }
     }

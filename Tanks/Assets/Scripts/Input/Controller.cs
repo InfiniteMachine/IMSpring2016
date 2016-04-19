@@ -166,7 +166,7 @@ public class Controller{
                     return;
                 }
             }
-            for (int i = 0; i < axes.Length; i++)
+            for (int i = 0; i < 4; i++)
             {
                 if (Mathf.Abs(Input.GetAxis("joy_" + (controllerNumber - 1) + "_axis_" + i)) > dead)
                 {
