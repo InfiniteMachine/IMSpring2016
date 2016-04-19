@@ -7,7 +7,6 @@ public class Manager : MonoBehaviour {
 	// I could load these in dynamically from Resources but lets not unless we add a bunch more tanks
 	[Tooltip("Should contain the prefabs of all the tanks.")]
 	public GameObject[] tanks;
-
 	[HideInInspector]
     public int[] playerTanks;
     [HideInInspector]

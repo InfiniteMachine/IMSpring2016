@@ -25,6 +25,7 @@ public class BatonController : MonoBehaviour {
         bCol.isTrigger = false;
         rBody.gravityScale = 1;
         transform.rotation = Quaternion.identity;
+        rBody.velocity = Vector2.zero;
     }
 
     void OnCollisionEnter2D(Collision2D col) {

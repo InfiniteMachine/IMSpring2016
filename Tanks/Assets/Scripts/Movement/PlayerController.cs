@@ -268,6 +268,16 @@ public class PlayerController : MonoBehaviour, IPlayerID {
         }
     }
     
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Baton"))
+        {
+            hasCrown = true;
+            col.collider.enabled = false;
+            Manager.instance.GiveBaton(playerID);
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (respawnCounter > 0 || !enabled)
@@ -337,12 +347,18 @@ public class PlayerController : MonoBehaviour, IPlayerID {
             SoundManager.instance.StopBackground("TankMovement");
         }
         respawnCounter = respawnTime;
+        Invoke("ResetPosition", respawnTime / 2);
         if (hasCrown)
         {
-            Manager.instance.ResetBaton(true);
+            if (!crown.GetComponent<SpriteRenderer>().isVisible)
+                Manager.instance.ResetBaton(true);
+            else
+                Manager.instance.ResetBaton(self);
             hasCrown = false;
         }
         GetComponentInChildren<TankGun>().enabled = false;
+        
+        rBody.velocity = Vector2.zero;
         SetInteractable(false);
         if (specialAttack != null)
         {
@@ -357,6 +373,14 @@ public class PlayerController : MonoBehaviour, IPlayerID {
         CancelInvoke("UnFreeze");
     }
 
+    private void ResetPosition()
+    {
+        if (Manager.instance != null)
+            transform.position = Manager.instance.GetRandomSpawn();
+        else
+            transform.position = startLocation;
+    }
+
     public void ForcePush(Vector2 force, float disable)
     {
         rBody.AddForce(force, ForceMode2D.Impulse);
@@ -365,17 +389,9 @@ public class PlayerController : MonoBehaviour, IPlayerID {
 
     private void Respawn()
     {
-        if (Manager.instance != null)
-        {
-            transform.position = Manager.instance.GetRandomSpawn();
-        }
-        else
-        {
-            transform.position = startLocation;
-        }
         SetInteractable(true);
         spawnCounter = spawnInvulnurability;
-        rBody.velocity = Vector2.zero;
+        
     }
 
     private void SetInteractable(bool interactable)
@@ -392,6 +408,10 @@ public class PlayerController : MonoBehaviour, IPlayerID {
             col.enabled = interactable;
         foreach (SpriteRenderer srend in renderers)
             srend.enabled = interactable;
+        if (interactable)
+            rBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        else
+            rBody.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     public void IgnoreCollision(Collider2D ignoreCol, bool ignore = true)

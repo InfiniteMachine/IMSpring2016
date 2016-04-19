@@ -246,6 +246,10 @@ public class CharacterSelect : MonoBehaviour {
                     Manager.instance.numPlayers++;
                     SoundManager.instance.PlayOneShot("Select");
                 }
+                else if (controllers[i].GetButtonDown(1))
+                {
+                    SceneManager.LoadScene("Menu");
+                }
             }
         }
         bool usedKeyboard = false;
@@ -331,7 +335,7 @@ public class CharacterSelect : MonoBehaviour {
             if (go)
             {
                 //Setup arena select screen
-                sceneChooser = Random.Range(0, Manager.instance.numPlayers);
+                sceneChooser = 1;//Random.Range(0, Manager.instance.numPlayers);
                 StartCoroutine(SwapMenu(MenuState.SCENE));
             }
         }
@@ -394,11 +398,11 @@ public class CharacterSelect : MonoBehaviour {
                 GotoSelectedArena();
                 SoundManager.instance.PlayOneShot("Select");
             }
-            else if (Input.GetKeyDown(KeyCode.X))
-            {
-                StartCoroutine(SwapMenu(MenuState.MATCH_OPTIONS));
-                SoundManager.instance.PlayOneShot("Select");
-            }
+            //else if (Input.GetKeyDown(KeyCode.X))
+            //{
+            //    StartCoroutine(SwapMenu(MenuState.MATCH_OPTIONS));
+            //    SoundManager.instance.PlayOneShot("Select");
+            //}
         }
         else
         {
