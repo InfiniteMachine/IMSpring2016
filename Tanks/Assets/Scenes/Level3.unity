@@ -37648,7 +37648,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 6143308, guid: a6cb055c81671d244b91d2142e09482a, type: 2}
       propertyPath: m_Offset.y
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 182670, guid: a6cb055c81671d244b91d2142e09482a, type: 2}
       propertyPath: m_Name

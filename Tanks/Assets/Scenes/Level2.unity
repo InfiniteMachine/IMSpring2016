@@ -15485,6 +15485,10 @@ Prefab:
       propertyPath: m_Name
       value: MapWraparound (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6168326, guid: a6cb055c81671d244b91d2142e09482a, type: 2}
+      propertyPath: m_Offset.y
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6cb055c81671d244b91d2142e09482a, type: 2}
   m_IsPrefabParent: 0
@@ -21309,6 +21313,10 @@ Prefab:
     - target: {fileID: 182670, guid: a6cb055c81671d244b91d2142e09482a, type: 2}
       propertyPath: m_Name
       value: MapWraparound (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168326, guid: a6cb055c81671d244b91d2142e09482a, type: 2}
+      propertyPath: m_Offset.y
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6cb055c81671d244b91d2142e09482a, type: 2}
