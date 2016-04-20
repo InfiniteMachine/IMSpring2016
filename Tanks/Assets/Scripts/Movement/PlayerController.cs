@@ -146,7 +146,10 @@ public class PlayerController : MonoBehaviour, IPlayerID {
                 }
                 else
                 {
-                    velocity.x = 0;
+                    if(disabledCounter <= 0)
+                        velocity.x = 0;
+                    else
+                        velocity.x = Mathf.MoveTowards(velocity.x, 0, movementSpeed / accelDuration * Time.deltaTime);
                 }
                 if (dashCounter >= 0)
                     dashCounter -= Time.deltaTime;
