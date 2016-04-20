@@ -10924,12 +10924,11 @@ Transform:
   - {fileID: 1458717018}
   - {fileID: 1026867842}
   - {fileID: 272348592}
-  - {fileID: 1831690160}
+  - {fileID: 1120452730}
   - {fileID: 1997080972}
   - {fileID: 2135370009}
   - {fileID: 1322085014}
   - {fileID: 265176234}
-  - {fileID: 1120452730}
   - {fileID: 1118627906}
   - {fileID: 1335356878}
   - {fileID: 1029763899}
@@ -10943,6 +10942,7 @@ Transform:
   - {fileID: 1861563936}
   - {fileID: 460859836}
   - {fileID: 1550014755}
+  - {fileID: 1831690160}
   - {fileID: 294577495}
   - {fileID: 1671320460}
   - {fileID: 1403760845}
@@ -10963,11 +10963,13 @@ Transform:
   - {fileID: 318937510}
   - {fileID: 478718118}
   - {fileID: 84587420}
+  - {fileID: 1741922473}
   - {fileID: 541178163}
   - {fileID: 2035637632}
   - {fileID: 496487706}
-  - {fileID: 1741922473}
+  - {fileID: 767585729}
   - {fileID: 251918994}
+  - {fileID: 2022278473}
   - {fileID: 1693759924}
   - {fileID: 1114545927}
   - {fileID: 1886990861}
@@ -10976,13 +10978,14 @@ Transform:
   - {fileID: 2048734687}
   - {fileID: 262898394}
   - {fileID: 1708814860}
-  - {fileID: 767585729}
-  - {fileID: 2022278473}
   - {fileID: 208841611}
+  - {fileID: 766125882}
   - {fileID: 1638076423}
   - {fileID: 2055486933}
+  - {fileID: 877951556}
   - {fileID: 464995457}
   - {fileID: 1705051044}
+  - {fileID: 1198455731}
   - {fileID: 1481141901}
   - {fileID: 1980950555}
   - {fileID: 1995506485}
@@ -10992,7 +10995,7 @@ Transform:
   - {fileID: 626013991}
   - {fileID: 1766272849}
   - {fileID: 1781743435}
-  - {fileID: 766125882}
+  - {fileID: 340179019}
   - {fileID: 1893204502}
   - {fileID: 362990247}
   - {fileID: 1409444742}
@@ -11001,9 +11004,6 @@ Transform:
   - {fileID: 1970705146}
   - {fileID: 1780025543}
   - {fileID: 697205629}
-  - {fileID: 1198455731}
-  - {fileID: 340179019}
-  - {fileID: 877951556}
   m_Father: {fileID: 0}
   m_RootOrder: 6
 --- !u!1001 &714849751
@@ -18729,6 +18729,26 @@ Prefab:
     - target: {fileID: 410210, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11432074, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
+      propertyPath: upperBounds
+      value: 18.473246
+      objectReference: {fileID: 0}
+    - target: {fileID: 11432074, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
+      propertyPath: lowerBounds
+      value: -16.421682
+      objectReference: {fileID: 0}
+    - target: {fileID: 2043578, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
+      propertyPath: orthographic size
+      value: 14.714461
+      objectReference: {fileID: 0}
+    - target: {fileID: 11432074, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
+      propertyPath: rightBounds
+      value: 31.709743
+      objectReference: {fileID: 0}
+    - target: {fileID: 11432074, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
+      propertyPath: leftBounds
+      value: -30.64597
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
