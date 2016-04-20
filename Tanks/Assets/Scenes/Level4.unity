@@ -24429,11 +24429,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11432074, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
       propertyPath: leftBounds
-      value: -23.185667
+      value: -22.976467
       objectReference: {fileID: 0}
     - target: {fileID: 2043578, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
       propertyPath: orthographic size
-      value: 13.03795
+      value: 7.6028347
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}

@@ -16409,7 +16409,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 2043578, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
       propertyPath: orthographic size
-      value: 15.553637
+      value: 8.101395
       objectReference: {fileID: 0}
     - target: {fileID: 11432074, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
       propertyPath: upperBounds

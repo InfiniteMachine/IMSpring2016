@@ -32597,11 +32597,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11432074, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
       propertyPath: leftBounds
-      value: -16.492966
+      value: -16.305271
       objectReference: {fileID: 0}
     - target: {fileID: 11432074, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
       propertyPath: rightBounds
-      value: 36.510944
+      value: 36.370174
       objectReference: {fileID: 0}
     - target: {fileID: 11432074, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
       propertyPath: upperBounds
@@ -32609,7 +32609,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 2043578, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
       propertyPath: orthographic size
-      value: 15.016401
+      value: 10.2867985
       objectReference: {fileID: 0}
     - target: {fileID: 11432074, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
       propertyPath: margin

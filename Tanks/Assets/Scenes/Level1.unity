@@ -19440,7 +19440,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 2043578, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
       propertyPath: orthographic size
-      value: 14.714461
+      value: 9.817704
       objectReference: {fileID: 0}
     - target: {fileID: 11432074, guid: 951302630b3879844bdd3ed056a4afd2, type: 2}
       propertyPath: rightBounds
@@ -28909,7 +28909,7 @@ Transform:
   - {fileID: 69376207}
   - {fileID: 131727763}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!1001 &1904766426
 Prefab:
   m_ObjectHideFlags: 0
