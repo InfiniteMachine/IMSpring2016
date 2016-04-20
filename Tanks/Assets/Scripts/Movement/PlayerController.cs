@@ -34,8 +34,6 @@ public class PlayerController : MonoBehaviour, IPlayerID {
     private float forceMoveSpeed = 0;
     public float wrapMoveDuration = 0.5f;
     private bool interactable = true;
-    private bool inWater = false;
-    public float waterSlowDown = 0.75f;
     [Header("Extra Gravity")]
     public float downAccelDuration = 1f;
     public float downMaxAccel = 0.5f;
@@ -134,12 +132,12 @@ public class PlayerController : MonoBehaviour, IPlayerID {
                     {
                         if (Mathf.Sign(iCont.GetAxis(InputController.Axis.MOVE)) != Mathf.Sign(velocity.x))
                         {
-                            velocity.x = Mathf.MoveTowards(velocity.x, movementSpeed * (inWater?waterSlowDown:1) * iCont.GetAxis(InputController.Axis.MOVE), movementSpeed * Time.deltaTime);
+                            velocity.x = Mathf.MoveTowards(velocity.x, movementSpeed * iCont.GetAxis(InputController.Axis.MOVE), movementSpeed * Time.deltaTime);
                         }
                     }
                     else
                     {
-                        velocity.x = movementSpeed * (inWater ? waterSlowDown : 1) * iCont.GetAxis(InputController.Axis.MOVE);
+                        velocity.x = movementSpeed * iCont.GetAxis(InputController.Axis.MOVE);
                     }
                 }
                 else if(!groundCheck.CheckGrounded())
@@ -259,13 +257,7 @@ public class PlayerController : MonoBehaviour, IPlayerID {
             Manager.instance.GiveBaton(playerID);
         }
     }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("KillBox"))
-            inWater = false;
-    }
-
+    
     void OnTriggerEnter2D(Collider2D other)
     {
         if (respawnCounter > 0 || !enabled)
@@ -278,7 +270,10 @@ public class PlayerController : MonoBehaviour, IPlayerID {
             SoundManager.instance.PlayOneShot("crown_pickup");
         }
         if (other.gameObject.CompareTag("KillBox"))
-            inWater = true;
+        {
+            Die(true, playerID);
+            SoundManager.instance.PlayOneShot("sploosh");
+        }
         else if (other.gameObject.CompareTag("Bullet") && spawnCounter <= 0 && specialDefense.GetPercentage() != 0)
         {
             Die(false, other.GetComponent<IPlayerID>().GetPlayerID());
@@ -295,7 +290,8 @@ public class PlayerController : MonoBehaviour, IPlayerID {
                 forceMoveSpeed = movementSpeed;
             }
             SoundManager.instance.PlayOneShot("warp");
-        }else if(other.gameObject.tag == "Ground" && other.transform.position.y < transform.position.y && rBody.velocity.y < -0.25f)
+        }
+        else if (other.gameObject.tag == "Ground" && other.transform.position.y < transform.position.y && rBody.velocity.y < -0.25f)
         {
             dustParticles.Play();
             SoundManager.instance.PlayOneShot("land");
