@@ -5,10 +5,10 @@ public class PlayerTag : MonoBehaviour {
     private Vector3 startScale;
     private Material left;
     private float leftFill = 1;
-    private ParticleSystem leftParticles;
+    //private ParticleSystem leftParticles;
     private Material right;
     private float rightFill = 1;
-    private ParticleSystem rightParticles;
+    //private ParticleSystem rightParticles;
     private int fillID;
 
     private IAction attack;
@@ -19,9 +19,9 @@ public class PlayerTag : MonoBehaviour {
         startScale = transform.localScale;
         fillID = Shader.PropertyToID("_Fill");
         right = transform.FindChild("Right").GetComponent<SpriteRenderer>().material;
-        rightParticles = transform.FindChild("Right/Particles").GetComponent<ParticleSystem>();
+        //rightParticles = transform.FindChild("Right/Particles").GetComponent<ParticleSystem>();
         left = transform.FindChild("Left").GetComponent<SpriteRenderer>().material;
-        leftParticles = transform.FindChild("Left/Particles").GetComponent<ParticleSystem>();
+        //leftParticles = transform.FindChild("Left/Particles").GetComponent<ParticleSystem>();
         IAction[] attachedActions = transform.parent.GetComponents<IAction>();
         for (int i = 0; i < attachedActions.Length; i++)
         {
@@ -44,16 +44,16 @@ public class PlayerTag : MonoBehaviour {
 
     private void SetLeftFill(float fill)
     {
-        if (fill >= 1 && leftFill < 1)
-            leftParticles.Play();
+        //if (fill >= 1 && leftFill < 1)
+        //    leftParticles.Play();
         left.SetFloat(fillID, fill);
         leftFill = fill;
     }
 
     private void SetRightFill(float fill)
     {
-        if (fill >= 1 && rightFill < 1)
-            rightParticles.Play();
+        //if (fill >= 1 && rightFill < 1)
+        //    rightParticles.Play();
         right.SetFloat(fillID, fill);
         rightFill = fill;
     }

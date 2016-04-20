@@ -5,7 +5,7 @@ Shader "Sprites/Vertical Clip"
 		[PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
 		_Color ("Tint", Color) = (1,1,1,1)
 		_Fill("Fill", Range(0.0, 1.0)) = 1.0
-		[MaterialToggle] _RTL("RightToLeft", Float) = 0
+//		[MaterialToggle] _RTL("RightToLeft", Float) = 0
 		[MaterialToggle] PixelSnap ("Pixel snap", Float) = 0
 	}
 
@@ -68,7 +68,7 @@ Shader "Sprites/Vertical Clip"
 			float _Fill;
 			float _Width;
 			float _Height;
-			float _RTL;
+//			float _RTL;
 			fixed4 SampleSpriteTexture (float2 uv)
 			{
 				fixed4 color = tex2D (_MainTex, uv);
@@ -83,16 +83,16 @@ Shader "Sprites/Vertical Clip"
 
 			fixed4 frag(v2f IN) : SV_Target
 			{
-				if (_RTL > 0) {
-					if (IN.texcoord.x > _Fill) {
+//				if (_RTL > 0) {
+					if (IN.texcoord.y > _Fill) {
 						return half4(0, 0, 0, 0);
 					}
-				}
-				else {
-					if (IN.texcoord.x < 1 - _Fill) {
-						return half4(0, 0, 0, 0);
-					}
-				}
+//				}
+//				else {
+//					if (IN.texcoord.x < 1 - _Fill) {
+//						return half4(0, 0, 0, 0);
+//					}
+//				}
 				fixed4 c = SampleSpriteTexture (IN.texcoord) * IN.color;
 				c.rgb *= c.a;
 				return c;
