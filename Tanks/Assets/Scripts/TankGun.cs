@@ -145,8 +145,9 @@ public class TankGun : MonoBehaviour {
         transform.parent.localScale = scale;
     }
 
-    public void Fire()	{
-        SoundManager.instance.PlayOneShot("basic_attack");
+    public void Fire(bool sfx = true)	{
+        if(sfx)
+            SoundManager.instance.PlayOneShot("basic_attack");
         //go.transform.SetParent(firePosition);
         GameObject newBullet = (GameObject)Instantiate(bullet, firePosition.position, Quaternion.identity);
         pCont.IgnoreCollision(newBullet.GetComponent<Collider2D>());

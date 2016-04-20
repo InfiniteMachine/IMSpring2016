@@ -67,9 +67,9 @@ public class ArrowStorm : MonoBehaviour, IAction {
         Vector3 euler = tGun.transform.eulerAngles;
         tGun.Fire();
         tGun.transform.eulerAngles = new Vector3(0, 0, euler.z - 10f);
-        tGun.Fire();
+        tGun.Fire(false);
         tGun.transform.eulerAngles = new Vector3(0, 0, euler.z + 10f);
-        tGun.Fire();
+        tGun.Fire(false);
         tGun.transform.eulerAngles = euler;
     }
     //Don't touch

@@ -51,13 +51,12 @@ public class ForcePush : MonoBehaviour, IAction
 
     public void StartAction()
     {
-        Debug.Log("ForcePush");
         Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, radius);
         foreach (Collider2D col in cols)
         {
             if (col.tag == "Player" && col.gameObject != gameObject)
             {
-                col.gameObject.GetComponent<PlayerController>().ForcePush((Vector2)((col.transform.position - transform.position).normalized) * Mathf.Lerp(force, 0, Vector2.Distance(transform.position, col.transform.position) / radius), disableTime);
+                col.gameObject.GetComponent<PlayerController>().ForcePush((Vector2)((col.transform.position - (transform.position + Vector3.down * 0.25f)).normalized) * Mathf.Lerp(force, 0, Vector2.Distance(transform.position, col.transform.position) / radius), disableTime);
             }
         }
         pSystem.Play();

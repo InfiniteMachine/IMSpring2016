@@ -90,14 +90,13 @@ public class Manager : MonoBehaviour {
                 }
                 if (endTime - time > 60)
                 {
-                    timer.text = string.Format("{0:0} :{1:00}", (int)(endTime - time) / 60, (int)(endTime - time) % 60);
+                    timer.text = string.Format("{0:0}:{1:00}", (int)(endTime - time) / 60, (int)(endTime - time) % 60);
                 }
                 else
                 {
                     timer.text = (Mathf.RoundToInt((endTime - time) * 10) / 10f).ToString();
                     if (!timer.text.Contains("."))
                         timer.text += ".0";
-                    timer.text.Replace(".", " .");
                     if (endTime - time < 10)
                     {
                         timer.text = " " + timer.text;
@@ -273,14 +272,13 @@ public class Manager : MonoBehaviour {
             scoreDisplays[i] = screenCanvas.transform.FindChild("Score" + (i + 1) + "Panel").FindChild("Text").GetComponent<Text>();
             scoreDisplays[i].text = 0 + "";
         }
-        timer = screenCanvas.transform.FindChild("Timer").GetComponent<Text>();
+        timer = screenCanvas.transform.FindChild("TimeBackground/Timer").GetComponent<Text>();
         if (targetScore == 0)
         {
-            Destroy(screenCanvas.transform.FindChild("TargetScore").gameObject);
-            Destroy(screenCanvas.transform.FindChild("TargetLabel").gameObject);
+            Destroy(screenCanvas.transform.FindChild("TimeBackground/TargetScore").gameObject);
         }
         else
-            screenCanvas.transform.FindChild("TargetScore").GetComponent<Text>().text = "" + targetScore;
+            screenCanvas.transform.FindChild("TimeBackground/TargetScore").GetComponent<Text>().text = "" + targetScore;
         bool[] spawnUsed = new bool[spawns.Length];
 		for(int x=0;x<spawnUsed.Length;x++)
 			spawnUsed[x] = false;

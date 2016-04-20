@@ -578,7 +578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireDelay: 5
-  shootDuration: 3
+  shootDuration: 2.75
   shootDelay: 0.25
 --- !u!114 &11408660
 MonoBehaviour:

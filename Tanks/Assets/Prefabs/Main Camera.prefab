@@ -96,11 +96,16 @@ MonoBehaviour:
   orthoFallOff:
     serializedVersion: 2
     m_Curve:
-    - time: 0.001461988
-      value: 0.1
-      inSlope: 3.603517
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: -0
+      tangentMode: 21
+    - time: 0.01
+      value: 0
+      inSlope: 0
       outSlope: 3.812278
-      tangentMode: 0
+      tangentMode: 5
     - time: 0.75
       value: 1
       inSlope: 0.0476678
@@ -113,16 +118,21 @@ MonoBehaviour:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   orthoSpeed: 10
   deltaFallOff:
     serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
-      inSlope: 5.737174
+      inSlope: 0
+      outSlope: -0
+      tangentMode: 17
+    - time: 0.01
+      value: 0
+      inSlope: 0
       outSlope: 5.737174
-      tangentMode: 0
+      tangentMode: 5
     - time: 0.5
       value: 1
       inSlope: 0.02810661
@@ -135,7 +145,7 @@ MonoBehaviour:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   deltaSpeed: 25
   leftBounds: -25.282303
   rightBounds: 27.356598
