@@ -147,9 +147,7 @@ public class Manager : MonoBehaviour {
             scorePanel.transform.FindChild("Character" + (i)).gameObject.SetActive(false);
             scorePanel.transform.FindChild("Crown" + (i)).gameObject.SetActive(false);
         }
-        timer.gameObject.SetActive(false);
-        timer.transform.parent.FindChild("TimeBackground").gameObject.SetActive(false);
-        timer.transform.parent.FindChild("TargetScore").gameObject.SetActive(false);
+        timer.transform.parent.gameObject.SetActive(false);
         scorePanel.SetActive(true);
         List<int> players = new List<int>();
         players.Add(0);
