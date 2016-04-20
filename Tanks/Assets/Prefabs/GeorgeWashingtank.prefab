@@ -706,13 +706,13 @@ MonoBehaviour:
   wrapMoveDuration: 0.5
   waterSlowDown: 0.75
   downAccelDuration: 1
-  downMaxAccel: 1
+  downMaxAccel: 1.5
   jumpVel: 8.5
   doubleJumpVel: 8.5
   extraJumpDelay: 0.25
-  dashVelocity: 15
+  dashVelocity: 25
   sideDashDuration: 0.25
-  sideDashSpeed: 20
+  sideDashSpeed: 30
   dashDelay: 1.5
 --- !u!114 &11409818
 MonoBehaviour:
