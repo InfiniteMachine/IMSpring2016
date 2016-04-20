@@ -138,8 +138,8 @@ MonoBehaviour:
   playerControllers: 
   numPlayers: 0
   maxPlayers: 4
-  endTime: 300
-  targetScore: 90
+  endTime: 180
+  targetScore: 50
   playerColors:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 1, b: 0, a: 1}

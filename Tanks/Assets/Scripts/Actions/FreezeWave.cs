@@ -15,6 +15,8 @@ public class FreezeWave : MonoBehaviour, IAction
     public GameObject freezer;
     private int playerID;
     private ParticleSystem waves;
+
+    private Vector2 startLocation;
     //Use for initiation
     void Start()
     {
@@ -48,7 +50,7 @@ public class FreezeWave : MonoBehaviour, IAction
                 freezeCounter = 0;
                 waitingForFreeze = false;
                 //Freeze
-                Collider2D[] hits = Physics2D.OverlapAreaAll((Vector2)transform.position - (Vector2.up * height) - (Vector2.right * freezeDistance),
+                Collider2D[] hits = Physics2D.OverlapAreaAll((Vector2)startLocation - (Vector2.up * height) - (Vector2.right * freezeDistance),
                     (Vector2)transform.position + (Vector2.right * freezeDistance));
                 for (int i = 0; i < hits.Length; i++)
                 {
@@ -97,6 +99,7 @@ public class FreezeWave : MonoBehaviour, IAction
                 }
             }
         }
+        startLocation = transform.position;
         waitingForFreeze = true;
     }
 
