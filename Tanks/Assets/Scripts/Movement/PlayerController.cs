@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour, IPlayerID {
     private float forceMoveSpeed = 0;
     public float wrapMoveDuration = 0.5f;
     private bool interactable = true;
+    private bool madeContact = false;
     [Header("Extra Gravity")]
     public float downAccelDuration = 1f;
     public float downMaxAccel = 0.5f;
@@ -44,6 +45,8 @@ public class PlayerController : MonoBehaviour, IPlayerID {
     public float extraJumpDelay = 0.25f;
     private bool canJump = false;
     private bool canDoubleJump = false;
+    public float jumpDelayTolerance = 1f;
+    private float waitCounter = 0;
     [Header("Dash")]
     public float dashVelocity = 4;
     public float sideDashDuration = 0.5f;
@@ -193,12 +196,13 @@ public class PlayerController : MonoBehaviour, IPlayerID {
                     SoundManager.instance.PlayOneShot("special_attack");
                 }
             }
-            if (groundCheck.CheckGrounded() && velocity.y <= 0)
+            if (groundCheck.CheckGrounded())
             {
                 canDash = true;
                 canSideDash = true;
                 canJump = true;
                 canDoubleJump = true;
+                waitCounter = 0;
             }
             else
             {
@@ -210,7 +214,10 @@ public class PlayerController : MonoBehaviour, IPlayerID {
                         velocity.y = -dashVelocity;
                     }
                 }
-                canJump = false;
+                madeContact = false;
+                waitCounter += Time.deltaTime;
+                if(waitCounter >= jumpDelayTolerance)
+                    canJump = false;
             }
 
             if ((canJump || canDoubleJump) && iCont.GetButton(InputController.Buttons.JUMP))
@@ -220,6 +227,7 @@ public class PlayerController : MonoBehaviour, IPlayerID {
                     canJump = false;
                     velocity.y = jumpVel;
                     jumpParticles.Play();
+                    groundCheck.Reset();
                 }
                 else
                 {
@@ -227,6 +235,7 @@ public class PlayerController : MonoBehaviour, IPlayerID {
                     velocity.y = doubleJumpVel;
                     jumpParticles.Play();
                 }
+                madeContact = false;
                 iCont.ClearButton(InputController.Buttons.JUMP);
                 SoundManager.instance.PlayOneShot("jump");
             }
@@ -242,7 +251,7 @@ public class PlayerController : MonoBehaviour, IPlayerID {
                 aController.SetBool("bMoving", (velocity.x != 0));
             }
             
-            if (canJump && velocity.y < 0)
+            if (madeContact && velocity.y < 0)
                 velocity.y = 0;
             if (interactable)
                 rBody.velocity = velocity;
@@ -258,6 +267,10 @@ public class PlayerController : MonoBehaviour, IPlayerID {
             hasCrown = true;
             col.collider.enabled = false;
             Manager.instance.GiveBaton(playerID);
+        }else if(col.gameObject.tag == "Ground")
+        {
+            if (groundCheck.CheckGrounded())
+                madeContact = true;
         }
     }
     

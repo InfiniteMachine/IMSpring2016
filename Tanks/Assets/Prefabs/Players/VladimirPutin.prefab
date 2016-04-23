@@ -98,8 +98,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 430624}
-  - 58: {fileID: 5854928}
   - 114: {fileID: 11401064}
+  - 61: {fileID: 6168498}
   m_Layer: 0
   m_Name: Grounded
   m_TagString: Untagged
@@ -405,20 +405,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!58 &5854928
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 146272}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.1
 --- !u!58 &5871934
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -433,6 +419,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.25}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!61 &6168498
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146272}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 0.75, y: 0.2}
 --- !u!61 &6172384
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -567,16 +567,16 @@ MonoBehaviour:
   characterName: Vladimir Putin
   controllerNumber: 0
   respawnTime: 1
-  spawnInvulnurability: 2
+  spawnInvulnurability: 1.5
   movementSpeed: 12
   accelDuration: 0.25
   wrapMoveDuration: 0.5
-  waterSlowDown: 0.75
   downAccelDuration: 1
   downMaxAccel: 1.5
   jumpVel: 8.5
   doubleJumpVel: 8.5
   extraJumpDelay: 0.25
+  jumpDelayTolerance: 0.1
   dashVelocity: 25
   sideDashDuration: 0.25
   sideDashSpeed: 30

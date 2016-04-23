@@ -56,8 +56,11 @@ public class FreezeWave : MonoBehaviour, IAction
                 {
                     if (hits[i].gameObject != gameObject && hits[i].tag == "Player")
                     {
-                        GameObject go = (GameObject)Instantiate(freezer, hits[i].transform.position, Quaternion.identity);
-                        go.GetComponent<Freezer>().player = hits[i].gameObject;
+                        if (!hits[i].GetComponent<PlayerController>().IsShield())
+                        {
+                            GameObject go = (GameObject)Instantiate(freezer, hits[i].transform.position, Quaternion.identity);
+                            go.GetComponent<Freezer>().player = hits[i].gameObject;
+                        }
                     }
                 }
                 FinishAction();

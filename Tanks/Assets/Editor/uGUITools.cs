@@ -104,4 +104,17 @@ public class uGUITools : MonoBehaviour {
 		}
         EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
     }
+
+    [MenuItem("uGUI/ApplyChangesToPrefabs %.")]
+    static void ApplyToPrefab()
+    {
+        Undo.RecordObjects(Selection.gameObjects, "uGUITools: ApplyPrefabs");
+        foreach (Transform transform in Selection.transforms)
+        {
+            GameObject go = PrefabUtility.FindRootGameObjectWithSameParentPrefab(transform.gameObject);
+            Object prefab = PrefabUtility.GetPrefabParent(go);
+            PrefabUtility.ReplacePrefab(go, prefab, ReplacePrefabOptions.ConnectToPrefab);
+        }
+        EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
+    }
 }

@@ -1,26 +1,43 @@
 ﻿using UnityEngine;
 
 public class IsGrounded : MonoBehaviour {
-    private bool grounded = false;
-    
-    public void Reset()
+    private bool reset = false;
+    private Vector2 pointA, pointB;
+
+    public void Start()
     {
-        grounded = false;
+        reset = false;
+        BoxCollider2D col = GetComponent<BoxCollider2D>();
+        pointA = col.offset - (Vector2)col.bounds.extents;
+        pointB = col.offset + (Vector2)col.bounds.extents;
     }
 
-    void Update()
+    public void Reset()
     {
-        Collider2D[] hit = Physics2D.OverlapPointAll(transform.position);
-        grounded = false;
-        for (int i = 0; i < hit.Length; i++)
-        {
-            if (hit[i].tag == "Ground")
-                grounded = true;
-        }
+        if (CheckGrounded())
+            reset = true;
     }
 
     public bool CheckGrounded()
     {
-        return grounded;
+        if (reset)
+            return false;
+        Collider2D[] cols = Physics2D.OverlapAreaAll((Vector2)transform.position + pointA, (Vector2)transform.position + pointB);
+
+        for (int i = 0; i < cols.Length; i++)
+        {
+            if (cols[i].tag == "Ground")
+                return true;
+        }
+        return false;
+    }
+    
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.tag == "Ground")
+        {
+            if (reset)
+                reset = false;
+        }
     }
 }
