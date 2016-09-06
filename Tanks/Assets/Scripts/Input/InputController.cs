@@ -153,11 +153,11 @@ public class InputController : MonoBehaviour
             buttons[(int)Buttons.DASH] = State.RELEASED;
         }
 
-        if (buttons[(int)Buttons.FIRE] == State.RELEASED && controller.GetAxis(2) < 0)
+        if (buttons[(int)Buttons.FIRE] == State.RELEASED && controller.GetAxis(5) < 0)
         {
             buttons[(int)Buttons.FIRE] = State.PRESSED;
         }
-        else if (buttons[(int)Buttons.FIRE] != State.RELEASED && !(controller.GetAxis(2) < 0))
+        else if (buttons[(int)Buttons.FIRE] != State.RELEASED && !(controller.GetAxis(5) < 0))
         {
             buttons[(int)Buttons.FIRE] = State.RELEASED;
         }

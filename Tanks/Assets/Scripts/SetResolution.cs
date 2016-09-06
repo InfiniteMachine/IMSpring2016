@@ -11,9 +11,9 @@ public class SetResolution : MonoBehaviour {
         ResetScreen();
     }
 
-    void OnLevelWasLoaded(int index)
+    void LevelWasLoaded(Scene s, LoadSceneMode mode)
     {
-        if(SceneManager.GetActiveScene().name != "Menu" && SceneManager.GetActiveScene().name != "Player_Select_Screen")
+        if(s.name != "Menu" && s.name != "Player_Select_Screen")
             ResetScreen();
     }
 

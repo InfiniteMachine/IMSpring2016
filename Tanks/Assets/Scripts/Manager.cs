@@ -61,6 +61,7 @@ public class Manager : MonoBehaviour {
             playerTanks[i] = -1;
             playerControllers[i] = -1;
         }
+        SceneManager.sceneLoaded += LevelWasLoaded;
 	}
 	
 	// Update is called once per frame
@@ -329,7 +330,7 @@ public class Manager : MonoBehaviour {
         initOnLoad = true;
     }
 
-    void OnLevelWasLoaded(int level)
+    void LevelWasLoaded(Scene scene, LoadSceneMode mode)
     {
         if (initOnLoad)
         {
